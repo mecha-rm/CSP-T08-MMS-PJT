@@ -9,8 +9,21 @@ public class GameplayManager : MonoBehaviour
     // the player
     public Player player;
 
+    // the mouse operations for the game.
+    public Mouse mouse;
+
     // the current screen. It also saves the next screens.
     public RoomScreen currentScreen;
+
+    // the last object that has been clicked.
+    private GameObject lastClicked = null;
+
+    // the user interface buttons.
+    [Header("UI")]
+    public Button leftScreenButton;
+    public Button rightScreenButton;
+    public Button forwardScreenButton;
+    public Button backScreenButton;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +31,10 @@ public class GameplayManager : MonoBehaviour
         // finds the player in the scene.
         if (player == null)
             player = FindObjectOfType<Player>();
+
+        // if no mouse is set, find it.
+        if (mouse == null)
+            mouse = FindObjectOfType<Mouse>();
 
         // // if no current screen is set, just set a random room.
         // if (currentScreen == null)
@@ -90,6 +107,41 @@ public class GameplayManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // checks if the last clicked object is another screen.
+        if(mouse.lastClickedObject != lastClicked)
+        {
+            // saves the clicked object.
+            lastClicked = mouse.lastClickedObject;
+
+            // something has been clicked.
+            if(lastClicked != null)
+            {
+                // checks the room screen.
+                RoomScreen rs;
+
+                // tries to grab the room screen component.
+                if (mouse.lastClickedObject.TryGetComponent<RoomScreen>(out rs))
+                {
+                    // sets the forward screen of the last clicked object.
+                    currentScreen.forwardScreen = rs;
+
+                    // saves the back screen for the forward screen.
+                    rs.backScreen = currentScreen;
+                }
+            }
+        }
+
+        // no last clicked object. This is kind of a quick fix.
+        // if (lastClicked == null && currentScreen.forwardScreen != null)
+        //     currentScreen.forwardScreen = null;
+
+        // enables/disables buttons as needed.
+        {
+            leftScreenButton.interactable = (currentScreen.leftScreen != null);
+            rightScreenButton.interactable = (currentScreen.rightScreen != null);
+            forwardScreenButton.interactable = (currentScreen.forwardScreen != null);
+            backScreenButton.interactable = (currentScreen.backScreen != null);
+        }
+
     }
 }

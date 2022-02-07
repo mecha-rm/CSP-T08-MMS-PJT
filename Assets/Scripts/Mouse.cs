@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // class for the mouse interacting with the game world.
+// NOTE: clickong on UI elements triggers the click check. This cannot collide with the UI, so it acts as if you clicked on something behind the UI.
 public class Mouse : MonoBehaviour
 {
     // the world position of the mouse.
@@ -11,8 +12,12 @@ public class Mouse : MonoBehaviour
     // the object the mouse is hovering over.
     public GameObject hoveredObject = null;
 
-    // the object that has been clicked. This variable gets set to null when the mouse button is released.
-    public GameObject clickedObject = null;
+    // the object that has been clicked and held on.
+    // when the mouse button is released, this is set to null. This variable gets set to null when the mouse button is released.
+    public GameObject heldObject = null;
+
+    // the last object that was clicked on. The next time someone clicks on something, this will be set to null.
+    public GameObject lastClickedObject = null;
 
     // Start is called before the first frame update
     void Start()
@@ -100,14 +105,25 @@ public class Mouse : MonoBehaviour
         // gets the mouse position.
         mouseWorldPosition = GetMousePositionInWorldSpace();
 
-        // tries to get a hit with the ray. Since it's orthographic, the ray goes straight forward.
-        target = Camera.main.transform.forward; // target is into the screen (z-direction), so camera.forward is used.
+        // checks if the camera is perspective or orthographic.
+        if (Camera.main.orthographic) // orthographic
+        {
+            // tries to get a hit. Since it's orthographic, the ray goes straight forward.
+            target = Camera.main.transform.forward; // target is into the screen (z-direction), so camera.forward is used.
 
-        // ray position is mouse position in world space.
-        ray = new Ray(mouseWorldPosition, target.normalized);
+            // ray position is mouse position in world space.
+            ray = new Ray(mouseWorldPosition, target.normalized);
 
-        // cast the ray about as far as the camera can see.
-        rayHit = Physics.Raycast(ray, out hitInfo, Camera.main.farClipPlane - Camera.main.nearClipPlane);
+            // cast the ray about as far as the camera can see.
+            rayHit = Physics.Raycast(ray, out hitInfo, Camera.main.farClipPlane - Camera.main.nearClipPlane);
+        }
+        else // perspective
+        {
+            target = GetMouseTargetPositionInWorldSpace(Camera.main.gameObject);
+            ray = new Ray(Camera.main.transform.position, target.normalized);
+            rayHit = Physics.Raycast(ray, out hitInfo);
+        }
+
 
         // checks if the ray got a hit. If it did, save the object the mouse is hovering over.
         // also checks if object has been clicked on.
@@ -115,18 +131,26 @@ public class Mouse : MonoBehaviour
         {
             hoveredObject = hitInfo.collider.gameObject;
 
-            // left mouse button has been clicked, so save to clicked object as well.
+            // left mouse button has been clicked, so save to held object as well.
             if (Input.GetKeyDown(KeyCode.Mouse0))
-                clickedObject = hitInfo.collider.gameObject;
+            {
+                heldObject = hitInfo.collider.gameObject;
+                lastClickedObject = heldObject;
+            }
         }
         else
         {
+            // no object beng hovered over.
             hoveredObject = null;
+
+            // mouse hasb een clicked down again.
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+                lastClickedObject = null;
         }
 
         // left mouse button released, so clear clicked object.
         if (Input.GetKeyUp(KeyCode.Mouse0))
-            clickedObject = null;
+            heldObject = null;
 
     }
 }

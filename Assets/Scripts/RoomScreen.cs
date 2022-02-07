@@ -25,6 +25,7 @@ public class RoomScreen : MonoBehaviour
     // this may be disabled if zoomed in on a given object.
     public RoomScreen rightScreen = null;
 
+    // TODO: check if these need to be reset once you leave the screen.
     // goes forward a screen. This is set based on what the player clicked on, and constantly has its value changed.
     public RoomScreen forwardScreen = null;
 
@@ -77,14 +78,25 @@ public class RoomScreen : MonoBehaviour
     // switches to the forward screen.
     public void SwitchToBackScreen()
     {
+        // player needs to click to go forward again.
+        if (backScreen != null)
+            backScreen.forwardScreen = null;
+
         SwitchScreen(backScreen);
     }
 
     // moves to the next screen.
     public void SwitchScreen(RoomScreen nextRoom)
     {
+        // no next room.
+        if (nextRoom == null)
+            return;
+
         // enables the next room.
         nextRoom.EnableScreen();
+
+        // removes the forward screen so that the player needs to click on something to move forward again.
+        forwardScreen = null;
     }
 
     // Update is called once per frame
