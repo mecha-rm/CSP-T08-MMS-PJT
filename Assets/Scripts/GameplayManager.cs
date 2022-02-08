@@ -116,11 +116,28 @@ public class GameplayManager : MonoBehaviour
             // something has been clicked.
             if(lastClicked != null)
             {
-                // checks the room screen.
-                RoomScreen rs;
+                // checks for a screen trigger.
+                ScreenTrigger st = null;
 
-                // tries to grab the room screen component.
-                if (mouse.lastClickedObject.TryGetComponent<RoomScreen>(out rs))
+                // checks the room screen.
+                RoomScreen rs = null;
+
+                // tries to grab the screen trigger first.
+                if (mouse.lastClickedObject.TryGetComponent<ScreenTrigger>(out st))
+                {
+                    // sets the room screen to the screen trigger's screen.
+                    rs = st.screen;
+                }
+
+                // the room screen is still set to null, so check for a room screen component.
+                if(rs == null)
+                {
+                    // tries to grab the room screen component.
+                    rs = mouse.lastClickedObject.GetComponent<RoomScreen>();
+                }
+
+                // room found.
+                if(rs != null)
                 {
                     // sets the forward screen of the last clicked object.
                     currentScreen.forwardScreen = rs;
@@ -136,6 +153,7 @@ public class GameplayManager : MonoBehaviour
         //     currentScreen.forwardScreen = null;
 
         // enables/disables buttons as needed.
+        // TODO: these probably don't have to happen every frame. Could be optimized.
         {
             leftScreenButton.interactable = (currentScreen.leftScreen != null);
             rightScreenButton.interactable = (currentScreen.rightScreen != null);

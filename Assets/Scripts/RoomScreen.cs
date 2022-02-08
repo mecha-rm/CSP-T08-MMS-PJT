@@ -86,7 +86,7 @@ public class RoomScreen : MonoBehaviour
     }
 
     // moves to the next screen.
-    public void SwitchScreen(RoomScreen nextRoom)
+    private void SwitchScreen(RoomScreen nextRoom)
     {
         // no next room.
         if (nextRoom == null)
