@@ -27,9 +27,11 @@ public class RoomScreen : MonoBehaviour
 
     // TODO: check if these need to be reset once you leave the screen.
     // goes forward a screen. This is set based on what the player clicked on, and constantly has its value changed.
+    // leave this as blank. Maybe hide them from the inspector?
     public RoomScreen forwardScreen = null;
 
     // goes back a screen. This is active if zoomed into a specific room portion.
+    // leave this as blank. Maybe hide them from the inspector?
     public RoomScreen backScreen = null;
 
     // Start is called before the first frame update

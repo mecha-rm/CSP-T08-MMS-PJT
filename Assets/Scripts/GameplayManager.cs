@@ -136,8 +136,8 @@ public class GameplayManager : MonoBehaviour
                     rs = mouse.lastClickedObject.GetComponent<RoomScreen>();
                 }
 
-                // room found.
-                if(rs != null)
+                // screen found, and it's not the screen you're currently in.
+                if(rs != null && rs != currentScreen)
                 {
                     // sets the forward screen of the last clicked object.
                     currentScreen.forwardScreen = rs;
