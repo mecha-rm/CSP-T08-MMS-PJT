@@ -6,6 +6,9 @@ using UnityEngine;
 // NOTE: clickong on UI elements triggers the click check. This cannot collide with the UI, so it acts as if you clicked on something behind the UI.
 public class Mouse : MonoBehaviour
 {
+    // the mouse key for mouse operations. The default is Keycode.Mouse0, which is the left mouse button.
+    public KeyCode mouseKey = KeyCode.Mouse0;
+
     // the world position of the mouse.
     public Vector3 mouseWorldPosition;
 
@@ -132,7 +135,7 @@ public class Mouse : MonoBehaviour
             hoveredObject = hitInfo.collider.gameObject;
 
             // left mouse button has been clicked, so save to held object as well.
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(mouseKey))
             {
                 heldObject = hitInfo.collider.gameObject;
                 lastClickedObject = heldObject;
@@ -163,7 +166,7 @@ public class Mouse : MonoBehaviour
                     hoveredObject = rayHit2D.collider.gameObject;
 
                     // left mouse button has been clicked, so save to clicked object as well.
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    if (Input.GetKeyDown(mouseKey))
                     {
                         heldObject = hitInfo.collider.gameObject;
                         lastClickedObject = heldObject;
@@ -179,13 +182,13 @@ public class Mouse : MonoBehaviour
                 hoveredObject = null;
 
                 // mouse hasb een clicked down again.
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(mouseKey))
                     lastClickedObject = null;
             }
         }
 
         // left mouse button released, so clear clicked object.
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(mouseKey))
             heldObject = null;
 
     }

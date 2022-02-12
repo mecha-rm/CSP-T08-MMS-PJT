@@ -1179,6 +1179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39945db8fb848e549bf1ea733c140566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseKey: 323
   mouseWorldPosition: {x: 0, y: 0, z: 0}
   hoveredObject: {fileID: 0}
   heldObject: {fileID: 0}
