@@ -140,12 +140,48 @@ public class Mouse : MonoBehaviour
         }
         else
         {
-            // no object beng hovered over.
-            hoveredObject = null;
+            // if the camera is orthographic, attempt a 2D raycast as well.
+            if(Camera.main.orthographic)
+            {
+                // setting up the 2D raycast for the orthographic camera.
+                RaycastHit2D rayHit2D = Physics2D.Raycast(
+                    new Vector2(mouseWorldPosition.x, mouseWorldPosition.y),
+                    new Vector2(target.normalized.x, target.normalized.y),
+                    Camera.main.farClipPlane - Camera.main.nearClipPlane
+                    );
 
-            // mouse hasb een clicked down again.
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-                lastClickedObject = null;
+                // if a collider was hit, then the rayhit was successful.
+                rayHit = rayHit2D.collider != null;
+
+                // checks rayHit value.
+                if (rayHit)
+                {
+                    // the ray hit was successful.
+                    rayHit = true;
+
+                    // saves the hovered over object.
+                    hoveredObject = rayHit2D.collider.gameObject;
+
+                    // left mouse button has been clicked, so save to clicked object as well.
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        heldObject = hitInfo.collider.gameObject;
+                        lastClickedObject = heldObject;
+                    }
+                }
+            }
+
+            // if ray hit was not successful.
+            // this means the 3D raycast failed, and the 2D raycast (orthographic only).
+            if(!rayHit)
+            {
+                // no object beng hovered over.
+                hoveredObject = null;
+
+                // mouse hasb een clicked down again.
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                    lastClickedObject = null;
+            }
         }
 
         // left mouse button released, so clear clicked object.
