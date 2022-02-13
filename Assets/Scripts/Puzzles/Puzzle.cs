@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // this script is for a puzzle.
+// maybe try to make a puzzle component?
 public class Puzzle : MonoBehaviour
 {
     // Start is called before the first frame update
