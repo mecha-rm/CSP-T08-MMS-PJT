@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems; // used for event system components.
 
 // class for the mouse interacting with the game world.
 // NOTE: clickong on UI elements triggers the click check. This cannot collide with the UI, so it acts as if you clicked on something behind the UI.
@@ -21,6 +22,11 @@ public class Mouse : MonoBehaviour
 
     // the last object that was clicked on. The next time someone clicks on something, this will be set to null.
     public GameObject lastClickedObject = null;
+
+    // if set to 'true', the UI is ignored for raycasting.
+    // if set to 'false', the UI can block a raycast.
+    [Tooltip("if true, the UI is ignored for raycast collisions. If false, UI elements can block a raycast.")]
+    public bool ignoreUI = true;
 
     // Start is called before the first frame update
     void Start()
@@ -105,85 +111,93 @@ public class Mouse : MonoBehaviour
         RaycastHit hitInfo; // info on hit.
         bool rayHit; // true if the ray hit.
 
+        // if 'ignoreUI' is true, this is always false (the UI will never block the ray).
+        // if 'ignoreUI' is false, then a check is done to see if a UI element is blocking the ray.
+        bool rayBlocked = (ignoreUI) ? false : EventSystem.current.IsPointerOverGameObject();
+
         // gets the mouse position.
         mouseWorldPosition = GetMousePositionInWorldSpace();
 
-        // checks if the camera is perspective or orthographic.
-        if (Camera.main.orthographic) // orthographic
+        // if the ray is not blocked.
+        if(!rayBlocked)
         {
-            // tries to get a hit. Since it's orthographic, the ray goes straight forward.
-            target = Camera.main.transform.forward; // target is into the screen (z-direction), so camera.forward is used.
-
-            // ray position is mouse position in world space.
-            ray = new Ray(mouseWorldPosition, target.normalized);
-
-            // cast the ray about as far as the camera can see.
-            rayHit = Physics.Raycast(ray, out hitInfo, Camera.main.farClipPlane - Camera.main.nearClipPlane);
-        }
-        else // perspective
-        {
-            target = GetMouseTargetPositionInWorldSpace(Camera.main.gameObject);
-            ray = new Ray(Camera.main.transform.position, target.normalized);
-            rayHit = Physics.Raycast(ray, out hitInfo);
-        }
-
-
-        // checks if the ray got a hit. If it did, save the object the mouse is hovering over.
-        // also checks if object has been clicked on.
-        if (rayHit)
-        {
-            hoveredObject = hitInfo.collider.gameObject;
-
-            // left mouse button has been clicked, so save to held object as well.
-            if (Input.GetKeyDown(mouseKey))
+            // checks if the camera is perspective or orthographic.
+            if (Camera.main.orthographic) // orthographic
             {
-                heldObject = hitInfo.collider.gameObject;
-                lastClickedObject = heldObject;
+                // tries to get a hit. Since it's orthographic, the ray goes straight forward.
+                target = Camera.main.transform.forward; // target is into the screen (z-direction), so camera.forward is used.
+
+                // ray position is mouse position in world space.
+                ray = new Ray(mouseWorldPosition, target.normalized);
+
+                // cast the ray about as far as the camera can see.
+                rayHit = Physics.Raycast(ray, out hitInfo, Camera.main.farClipPlane - Camera.main.nearClipPlane);
             }
-        }
-        else
-        {
-            // if the camera is orthographic, attempt a 2D raycast as well.
-            if(Camera.main.orthographic)
+            else // perspective
             {
-                // setting up the 2D raycast for the orthographic camera.
-                RaycastHit2D rayHit2D = Physics2D.Raycast(
-                    new Vector2(mouseWorldPosition.x, mouseWorldPosition.y),
-                    new Vector2(target.normalized.x, target.normalized.y),
-                    Camera.main.farClipPlane - Camera.main.nearClipPlane
-                    );
+                target = GetMouseTargetPositionInWorldSpace(Camera.main.gameObject);
+                ray = new Ray(Camera.main.transform.position, target.normalized);
+                rayHit = Physics.Raycast(ray, out hitInfo);
+            }
 
-                // if a collider was hit, then the rayhit was successful.
-                rayHit = rayHit2D.collider != null;
 
-                // checks rayHit value.
-                if (rayHit)
+            // checks if the ray got a hit. If it did, save the object the mouse is hovering over.
+            // also checks if object has been clicked on.
+            if (rayHit)
+            {
+                hoveredObject = hitInfo.collider.gameObject;
+
+                // left mouse button has been clicked, so save to held object as well.
+                if (Input.GetKeyDown(mouseKey))
                 {
-                    // the ray hit was successful.
-                    rayHit = true;
-
-                    // saves the hovered over object.
-                    hoveredObject = rayHit2D.collider.gameObject;
-
-                    // left mouse button has been clicked, so save to clicked object as well.
-                    if (Input.GetKeyDown(mouseKey))
-                    {
-                        heldObject = hitInfo.collider.gameObject;
-                        lastClickedObject = heldObject;
-                    }
+                    heldObject = hitInfo.collider.gameObject;
+                    lastClickedObject = heldObject;
                 }
             }
-
-            // if ray hit was not successful.
-            // this means the 3D raycast failed, and the 2D raycast (orthographic only).
-            if(!rayHit)
+            else
             {
-                // no object beng hovered over.
-                hoveredObject = null;
+                // if the camera is orthographic, attempt a 2D raycast as well.
+                if (Camera.main.orthographic)
+                {
+                    // setting up the 2D raycast for the orthographic camera.
+                    RaycastHit2D rayHit2D = Physics2D.Raycast(
+                        new Vector2(mouseWorldPosition.x, mouseWorldPosition.y),
+                        new Vector2(target.normalized.x, target.normalized.y),
+                        Camera.main.farClipPlane - Camera.main.nearClipPlane
+                        );
 
-                // mouse hasb een clicked down again.
-                if (Input.GetKeyDown(mouseKey))
-                    lastClickedObject = null;
+                    // if a collider was hit, then the rayhit was successful.
+                    rayHit = rayHit2D.collider != null;
+
+                    // checks rayHit value.
+                    if (rayHit)
+                    {
+                        // the ray hit was successful.
+                        rayHit = true;
+
+                        // saves the hovered over object.
+                        hoveredObject = rayHit2D.collider.gameObject;
+
+                        // left mouse button has been clicked, so save to clicked object as well.
+                        if (Input.GetKeyDown(mouseKey))
+                        {
+                            heldObject = hitInfo.collider.gameObject;
+                            lastClickedObject = heldObject;
+                        }
+                    }
+                }
+
+                // if ray hit was not successful.
+                // this means the 3D raycast failed, and the 2D raycast (orthographic only).
+                if (!rayHit)
+                {
+                    // no object beng hovered over.
+                    hoveredObject = null;
+
+                    // mouse hasb een clicked down again.
+                    if (Input.GetKeyDown(mouseKey))
+                        lastClickedObject = null;
+                }
             }
         }
 

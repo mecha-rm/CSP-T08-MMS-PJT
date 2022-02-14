@@ -69,6 +69,7 @@ MonoBehaviour:
   hoveredObject: {fileID: 0}
   heldObject: {fileID: 0}
   lastClickedObject: {fileID: 0}
+  ignoreUI: 0
 --- !u!1 &3603107489178966727
 GameObject:
   m_ObjectHideFlags: 0

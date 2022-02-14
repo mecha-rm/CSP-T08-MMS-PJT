@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; // used for saving user-interface components.
 
 // manages gameplay operations.
 public class GameplayManager : MonoBehaviour
