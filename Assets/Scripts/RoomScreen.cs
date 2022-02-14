@@ -41,11 +41,28 @@ public class RoomScreen : MonoBehaviour
             manager = FindObjectOfType<GameplayManager>();
     }
 
+    // called when entering the screen.
+    public virtual void OnScreenEnter()
+    {
+        /// override for screen enter functionality.
+    }
+    // called whene exiting the screen.
+    public virtual void OnScreenExit()
+    {
+        /// override for screen exit functionality.
+    }
+
     // enables the room screen.
     public void EnableScreen()
     {
         // changes current screen.
+        // called for the screen exit.
+        if (manager.currentScreen != null)
+            manager.currentScreen.OnScreenExit();
+        
+        // switch screen and call enter function.
         manager.currentScreen = this;
+        OnScreenEnter();
 
         // makes the player a child of this screen.
 
