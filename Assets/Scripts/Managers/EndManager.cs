@@ -10,6 +10,12 @@ public class EndManager : MonoBehaviour
         
     }
 
+    // starts the game scene.
+    public void ReturnToTitle()
+    {
+        SceneHelper.ChangeScene("TitleScene");
+    }
+
     // Update is called once per frame
     void Update()
     {
