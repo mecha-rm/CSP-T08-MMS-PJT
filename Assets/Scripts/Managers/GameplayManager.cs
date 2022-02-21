@@ -18,6 +18,8 @@ public class GameplayManager : MonoBehaviour
     // the last object that has been clicked.
     private GameObject lastClicked = null;
 
+    // TODO: do item UI.
+
     // the user interface buttons.
     [Header("UI")]
     public Button leftScreenButton;
@@ -104,6 +106,65 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    // tries to get the room screen from the clicked object.
+    private bool GetRoomScreenFromClicked()
+    {
+        // SCREEN TRIGGER CHECK
+        // checks for a screen trigger.
+        ScreenTrigger st = null;
+
+        // checks the room screen.
+        RoomScreen rs = null;
+
+        // tries to grab the screen trigger first.
+        if (mouse.lastClickedObject.TryGetComponent<ScreenTrigger>(out st))
+        {
+            // sets the room screen to the screen trigger's screen.
+            rs = st.screen;
+        }
+
+        // the room screen is still set to null, so check for a room screen component.
+        if (rs == null)
+        {
+            // tries to grab the room screen component.
+            rs = mouse.lastClickedObject.GetComponent<RoomScreen>();
+        }
+
+        // screen found, and it's not the screen you're currently in.
+        if (rs != null && rs != currentScreen)
+        {
+            // sets the forward screen of the last clicked object.
+            currentScreen.forwardScreen = rs;
+
+            // saves the back screen for the forward screen.
+            rs.backScreen = currentScreen;
+
+            // screen switched.
+            return true;
+        }
+
+        // screen did not switch.
+        return false;
+    }
+
+    // tries to get the item from the clicked object.
+    private bool GetItemFromClicked()
+    {
+        Item item;
+
+        // tries to grab the item component.
+        if (mouse.lastClickedObject.TryGetComponent<Item>(out item))
+        {
+            // TODO: maybe make this a function in the Item class?
+            player.inventory.Add(item);
+            // TODO: refresh inventory UI
+            item.gameObject.SetActive(false);
+        }
+
+        return false;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -116,35 +177,14 @@ public class GameplayManager : MonoBehaviour
             // something has been clicked.
             if(lastClicked != null)
             {
-                // checks for a screen trigger.
-                ScreenTrigger st = null;
+                bool success;
 
-                // checks the room screen.
-                RoomScreen rs = null;
+                // tries to grab the room screen from the clicked object.
+                success = GetRoomScreenFromClicked();
 
-                // tries to grab the screen trigger first.
-                if (mouse.lastClickedObject.TryGetComponent<ScreenTrigger>(out st))
-                {
-                    // sets the room screen to the screen trigger's screen.
-                    rs = st.screen;
-                }
-
-                // the room screen is still set to null, so check for a room screen component.
-                if(rs == null)
-                {
-                    // tries to grab the room screen component.
-                    rs = mouse.lastClickedObject.GetComponent<RoomScreen>();
-                }
-
-                // screen found, and it's not the screen you're currently in.
-                if(rs != null && rs != currentScreen)
-                {
-                    // sets the forward screen of the last clicked object.
-                    currentScreen.forwardScreen = rs;
-
-                    // saves the back screen for the forward screen.
-                    rs.backScreen = currentScreen;
-                }
+                // TODO: this may not be needed, but an item shouldn't be set to a room screen anyway.
+                if (!success)
+                    GetItemFromClicked();
             }
         }
 

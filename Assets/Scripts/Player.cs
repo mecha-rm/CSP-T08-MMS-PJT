@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     // the gameplay manager for the game.
     public GameplayManager manager;
 
-
+    // the player's inventory.
+    public List<Item> inventory = new List<Item>();
 
     // Start is called before the first frame update
     void Start()
