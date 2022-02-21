@@ -35,7 +35,7 @@ public class RoomScreen : MonoBehaviour
     public RoomScreen backScreen = null;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         if (manager == null)
             manager = FindObjectOfType<GameplayManager>();
@@ -119,7 +119,7 @@ public class RoomScreen : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
     }

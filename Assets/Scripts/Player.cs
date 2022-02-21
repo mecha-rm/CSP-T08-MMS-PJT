@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     // the gameplay manager for the game.
     public GameplayManager manager;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
