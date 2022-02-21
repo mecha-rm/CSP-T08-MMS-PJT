@@ -18,10 +18,16 @@ public class GameplayManager : MonoBehaviour
     // the last object that has been clicked.
     private GameObject lastClicked = null;
 
-    // TODO: do item UI.
+    // inventory UI
+    [Header("UI/Inventory")]
+    public Image item1;
+    public Image item2;
+    public Image item3;
+    public Image item4;
+    public Image item5;
 
     // the user interface buttons.
-    [Header("UI")]
+    [Header("UI/Buttons")]
     public Button leftScreenButton;
     public Button rightScreenButton;
     public Button forwardScreenButton;
@@ -106,6 +112,32 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    // refreshes the inventory display for the game.
+    public void RefreshInventoryDisplay()
+    {
+        // queues up all of the item icons.
+        Queue<Image> itemIcons = new Queue<Image>();
+        itemIcons.Enqueue(item1);
+        itemIcons.Enqueue(item2);
+        itemIcons.Enqueue(item3);
+        itemIcons.Enqueue(item4);
+        itemIcons.Enqueue(item5);
+
+        // goes through all items.
+        for(int i = 0; i < player.inventory.Count && itemIcons.Count != 0; i++)
+        {
+            Image itemIcon = itemIcons.Dequeue(); // grabs the first one.
+            itemIcon.sprite = player.inventory[0].itemIcon;
+        }
+
+        // removes all other icons.
+        while(itemIcons.Count != 0)
+        {
+            itemIcons.Peek().sprite = null;
+            itemIcons.Dequeue();
+        }
+    }
+
     // tries to get the room screen from the clicked object.
     private bool GetRoomScreenFromClicked()
     {
@@ -157,7 +189,8 @@ public class GameplayManager : MonoBehaviour
         {
             // TODO: maybe make this a function in the Item class?
             player.inventory.Add(item);
-            // TODO: refresh inventory UI
+            item.OnItemGet();
+            RefreshInventoryDisplay();
             item.gameObject.SetActive(false);
         }
 

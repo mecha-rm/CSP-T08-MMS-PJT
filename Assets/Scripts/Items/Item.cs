@@ -13,13 +13,22 @@ public class Item : MonoBehaviour
     public string itemDesc = "";
 
     // the icon for this item to be used in the user interface.
-    public Sprite icon;
+    // the items CANNOT be destroyed, otherwise the icons are lost.
+    // TODO: see if there's a more efficient way to do this.
+    public Sprite itemIcon;
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
+    // called when the item is put into the player's inventory.
+    public virtual void OnItemGet()
+    {
+
+    }
+
 
     // Update is called once per frame
     void Update()
