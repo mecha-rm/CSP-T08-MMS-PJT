@@ -19,7 +19,7 @@ public class ExitScreen : RoomScreen
         // exits the game the moment this screen is entered.
         // as such, this screen can point to nothing, basically.
         // TODO: maybe put up a message or something?
-        SceneHelper.ChangeScene("EndScene");
+        SceneHelper.LoadScene("EndScene");
     }
 
     // called when exiting the screen.

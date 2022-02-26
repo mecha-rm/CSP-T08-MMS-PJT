@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI; // used for saving user-interface components.
 
 // manages gameplay operations.
-public class GameplayManager : MonoBehaviour
+public class GameplayManager : Manager
 {
     // the player
     public Player player;

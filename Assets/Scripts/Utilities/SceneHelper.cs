@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class SceneHelper : MonoBehaviour
 {
     // changes the scene using the scene number.
-    public static void ChangeScene(int scene)
+    public static void LoadScene(int scene)
     {
         SceneManager.LoadScene(scene);
 
     }
 
     // changes the scene using the scene name.
-    public static void ChangeScene(string scene)
+    public static void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);
     }
@@ -63,7 +63,7 @@ public class SceneHelper : MonoBehaviour
     }
 
     // exits the game
-    public void ExitApplication()
+    public void QuitApplication()
     {
         Application.Quit();
     }
