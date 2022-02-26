@@ -51,9 +51,11 @@ public class ItemIcon : MonoBehaviour
     // updates the icon image.
     public void UpdateIcon(Sprite newSprite, int amount, bool showAmount)
     {
+        // updates the sprite.
         iconImage.sprite = newSprite;
         iconImage.enabled = (newSprite != null);
 
+        // updates the text.
         amountText.text = "x" + amount.ToString();
         amountText.enabled = showAmount;
 

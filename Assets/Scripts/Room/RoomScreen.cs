@@ -6,6 +6,9 @@ using UnityEngine;
 // the room screen objects are equipped with cameras for positioning. This is just for planning, so disable said component when it's not being used.
 public class RoomScreen : MonoBehaviour
 {
+    // the room the screen is part of.
+    public Room room;
+
     // the name of the screen. This can just be a number, or a full-blown name.
     public string screenName = "";
 
@@ -37,6 +40,13 @@ public class RoomScreen : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        // if the room is not set, try to grab it.
+        if (room == null)
+        {
+            room = GetComponentInParent<Room>();
+        }            
+
+        // gets gameplay manager.
         if (manager == null)
             manager = FindObjectOfType<GameplayManager>();
     }
@@ -44,8 +54,11 @@ public class RoomScreen : MonoBehaviour
     // called when entering the screen.
     public virtual void OnScreenEnter()
     {
-        /// override for screen enter functionality.
+        // checks if the lighting for the room is on.
+        if(room != null)
+            manager.SetRoomLightingEnabled(room.IsLightingEnabled());
     }
+
     // called whene exiting the screen.
     public virtual void OnScreenExit()
     {

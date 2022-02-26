@@ -54,6 +54,42 @@ public class GameplayManager : MonoBehaviour
             currentScreen.manager = this;
             currentScreen.EnableScreen();
         }
+
+        // // if any of the item components are empty.
+        // if(item1 == null || item2 == null || item3 == null || item4 == null || item5 == null)
+        // {
+        //     // grabs all the components (will likely be out of order)
+        //     ItemIcon[] icons = FindObjectsOfType<ItemIcon>();
+        // 
+        //     // puts in components.
+        //     for(int i = 0; i < icons.Length; i++)
+        //     {
+        //         // finds empty object.
+        //         switch(i)
+        //         {
+        //             case 0:
+        //                 if (item1 == null)
+        //                     item1 = icons[i];
+        //                 break;
+        //             case 1:
+        //                 if (item2 == null)
+        //                     item2 = icons[i];
+        //                 break;
+        //             case 2:
+        //                 if (item3 == null)
+        //                     item3 = icons[i];
+        //                 break;
+        //             case 3:
+        //                 if (item4 == null)
+        //                     item4 = icons[i];
+        //                 break;
+        //             case 4:
+        //                 if (item5 == null)
+        //                     item5 = icons[i];
+        //                 break;
+        //         }
+        //     }
+        // }
             
     }
 
@@ -231,6 +267,19 @@ public class GameplayManager : MonoBehaviour
 
         return false;
 
+    }
+    
+    // returns 'true' if the room lighting is enabled.
+    public bool IsRoomLightingEnabled()
+    {
+        return currentScreen.room.IsLightingEnabled();
+    }
+
+    // sets if the room lights should be enabled.
+    public void SetRoomLightingEnabled(bool e)
+    {
+        currentScreen.room.SetLightingEnabled(e);
+        player.SetMouseLightEnabled(!e);
     }
 
     // Update is called once per frame
