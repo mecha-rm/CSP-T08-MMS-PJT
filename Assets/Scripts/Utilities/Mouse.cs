@@ -28,12 +28,6 @@ public class Mouse : MonoBehaviour
     [Tooltip("if true, the UI is ignored for raycast collisions. If false, UI elements can block a raycast.")]
     public bool ignoreUI = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // checks to see if the cursor is in the window.
     public static bool MouseInWindow()
     {
