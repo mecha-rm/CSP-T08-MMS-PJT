@@ -20,11 +20,11 @@ public class GameplayManager : MonoBehaviour
 
     // inventory UI
     [Header("UI/Inventory")]
-    public Image item1;
-    public Image item2;
-    public Image item3;
-    public Image item4;
-    public Image item5;
+    public ItemIcon item1;
+    public ItemIcon item2;
+    public ItemIcon item3;
+    public ItemIcon item4;
+    public ItemIcon item5;
 
     // the user interface buttons.
     [Header("UI/Buttons")]
@@ -115,26 +115,61 @@ public class GameplayManager : MonoBehaviour
     // refreshes the inventory display for the game.
     public void RefreshInventoryDisplay()
     {
-        // queues up all of the item icons.
-        Queue<Image> itemIcons = new Queue<Image>();
+        // gets the list of the player's items.
+        List<Item> itemList = new List<Item>(player.inventory);
+
+        // queue of item icons.
+        Queue<ItemIcon> itemIcons = new Queue<ItemIcon>();
+
+        // adds all item icons.
         itemIcons.Enqueue(item1);
         itemIcons.Enqueue(item2);
         itemIcons.Enqueue(item3);
         itemIcons.Enqueue(item4);
         itemIcons.Enqueue(item5);
 
-        // goes through all items.
-        for(int i = 0; i < player.inventory.Count && itemIcons.Count != 0; i++)
+        // gets all the items.
+        while (itemList.Count > 0 && itemIcons.Count > 0)
         {
-            Image itemIcon = itemIcons.Dequeue(); // grabs the first one.
-            itemIcon.sprite = player.inventory[0].itemIcon;
-        }
+            // index stack
+            Stack<int> indexes = new Stack<int>();
 
-        // removes all other icons.
-        while(itemIcons.Count != 0)
-        {
-            itemIcons.Peek().sprite = null;
-            itemIcons.Dequeue();
+            // the amount in this stack.
+            int amount = 0;
+
+            // grabs first item, and puts it in the list.
+            Item item = itemList[0];
+            indexes.Push(0);
+        
+            // blank IDs do not stack.
+            if(item.stackId != "")
+            {
+                // checks for stackable items.
+                // skips the first index since it has already been put into the list.
+                for (int i = 1; i < itemList.Count; i++)
+                {
+                    // items should stack.
+                    if (itemList[i].stackId == item.stackId)
+                        indexes.Push(i); // save index.
+
+                }
+            }
+
+            // saves the amount of items in the stack.
+            amount = indexes.Count;
+
+            // while there are remaining indexes.
+            while(indexes.Count > 0)
+            {
+                itemList.RemoveAt(indexes.Pop()); // removes at index
+            }
+
+            // grabs the first item icon, and removes it from the queue.
+            ItemIcon itemIcon = itemIcons.Dequeue();
+
+            // updates the icon.
+            // if there is only one item in the stack the number is not listed.
+            itemIcon.UpdateIcon(item.itemIcon, amount, (amount > 1));
         }
     }
 

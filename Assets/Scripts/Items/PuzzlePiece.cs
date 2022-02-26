@@ -6,8 +6,10 @@ using UnityEngine;
 public class PuzzlePiece : Item
 {
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Start();
+
         // name
         if (itemName == "")
             itemName = "Unnumbered Puzzle Piece";
@@ -15,6 +17,10 @@ public class PuzzlePiece : Item
         // description
         if (itemDesc == "")
             itemDesc = "An unnumbered puzzle piece.";
+
+        // stack id
+        if (stackId == "") // stack all puzzle pieces.
+            stackId = "puzzle-piece";
     }
 
     // Update is called once per frame

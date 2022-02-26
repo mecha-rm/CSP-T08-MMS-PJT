@@ -12,13 +12,17 @@ public class Item : MonoBehaviour
     // the description for the item. 
     public string itemDesc = "";
 
+    // the ID for stacking the item for the UI display.
+    [Tooltip("Items with the same ID are stacked together for the inventory display. Blank IDs do not stack with anything.")]
+    public string stackId = "";
+
     // the icon for this item to be used in the user interface.
     // the items CANNOT be destroyed, otherwise the icons are lost.
     // TODO: see if there's a more efficient way to do this.
     public Sprite itemIcon;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         
     }
