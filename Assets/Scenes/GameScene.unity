@@ -782,6 +782,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room 3
       objectReference: {fileID: 0}
+    - target: {fileID: 538297237395239178, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 538297237395239179, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_RootOrder
@@ -867,6 +872,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1457571103}
     - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: roomNumber
@@ -1482,6 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
+  disableInactiveRoom: 1
   screenName: 
   screenDesc: 
   manager: {fileID: 0}
@@ -3037,6 +3048,11 @@ PrefabInstance:
       objectReference: {fileID: 2079011266}
     - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
+      propertyPath: disableRoomsOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
       propertyPath: forwardScreenButton
       value: 
       objectReference: {fileID: 2079011265}
@@ -4014,6 +4030,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1457571103}
     - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: roomNumber

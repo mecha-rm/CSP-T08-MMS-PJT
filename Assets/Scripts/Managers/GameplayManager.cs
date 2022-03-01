@@ -13,7 +13,12 @@ public class GameplayManager : Manager
     public Mouse mouse;
 
     // the current screen. It also saves the next screens.
+    [Tooltip("The current screen. This this to the starting screen when you start running the game.")]
     public RoomScreen currentScreen;
+
+    // if 'true', inactive rooms are disabled.
+    [Tooltip("Disables all but the current room when the game starts.")]
+    public bool disableRoomsOnStart = true;
 
     // the last object that has been clicked.
     private GameObject lastClicked = null;
@@ -285,8 +290,27 @@ public class GameplayManager : Manager
     // Update is called once per frame
     void Update()
     {
+        // if the current room has been set.
+        // this needs to happen after all the start() functions finish.
+        if (currentScreen.room != null && disableRoomsOnStart)
+        {
+            // finds all rooms
+            Room[] rooms = FindObjectsOfType<Room>();
+
+            // disables all other rooms.
+            foreach (Room room in rooms)
+            {
+                // disables all but the current room.
+                if (room != currentScreen.room)
+                    room.gameObject.SetActive(false);
+            }
+
+            // rooms were disabled, so don't do it again.
+            disableRoomsOnStart = false;
+        }
+
         // checks if the last clicked object is another screen.
-        if(mouse.lastClickedObject != lastClicked)
+        if (mouse.lastClickedObject != lastClicked)
         {
             // saves the clicked object.
             lastClicked = mouse.lastClickedObject;
