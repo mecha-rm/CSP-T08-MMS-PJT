@@ -9,8 +9,9 @@ public class RoomScreen : MonoBehaviour
     // the room the screen is part of.
     public Room room;
 
+    // TODO: this works, but until we get a more streamlined solution I'm taking this out.
     // if a room is provided, the room activity is changed when entering and leaving a scene.
-    public bool disableInactiveRoom = true;
+    // public bool disableInactiveRoom = true;
 
     // the name of the screen. This can just be a number, or a full-blown name.
     public string screenName = "";
@@ -63,8 +64,8 @@ public class RoomScreen : MonoBehaviour
             manager.SetRoomLightingEnabled(room.IsLightingEnabled());
 
             // if the room activity should be changed.
-            if(disableInactiveRoom)
-                room.gameObject.SetActive(true);
+            // if(disableInactiveRoom)
+            //     room.gameObject.SetActive(true);
         }
             
     }
@@ -73,8 +74,8 @@ public class RoomScreen : MonoBehaviour
     public virtual void OnScreenExit()
     {
         // exiting the screen, so turn off the room.
-        if (room != null && disableInactiveRoom)
-            room.gameObject.SetActive(false);
+        // if (room != null && disableInactiveRoom)
+        //     room.gameObject.SetActive(false);
     }
 
     // enables the room screen.

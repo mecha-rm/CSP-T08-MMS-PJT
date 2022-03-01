@@ -8,6 +8,7 @@ public class MouseLight : MonoBehaviour
     // a mouse object for getting the mouse position.
     public Mouse mouse;
 
+    // TODO: this is null when re-entering the scene from GameScene > EndScene > TitleScene. Fix it.
     // the light that follows the mouse cursor.
     public Light mouseLight;
 
