@@ -23,8 +23,11 @@ public class TitleManager : Manager
     private Image highContrastCheckmark;
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start() 
     {
+        // changes frame rate at the start of the game.
+        base.Start();
+
         //initialize all required menu objects
         screenReaderCheckmark = GameObject.Find("Screen Reader Checkmark").GetComponent<Image>();
         highContrastCheckmark = GameObject.Find("High Contrast Checkmark").GetComponent<Image>();

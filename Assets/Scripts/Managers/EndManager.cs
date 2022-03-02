@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class EndManager : Manager
 {
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
-        
+        // changes frame rate
+        // this is called by the title manager, so in normal play this isn't called.
+        if (Application.isEditor)
+            base.Start();
     }
 
     // starts the game scene.

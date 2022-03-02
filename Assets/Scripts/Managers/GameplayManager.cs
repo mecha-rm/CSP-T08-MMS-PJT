@@ -40,8 +40,13 @@ public class GameplayManager : Manager
     public Button backScreenButton;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        // sets the frame rate.
+        // This happens in the title scene, so this function call is only needed when testing.
+        if(Application.isEditor)
+            base.Start();
+
         // finds the player in the scene.
         if (player == null)
             player = FindObjectOfType<Player>();
