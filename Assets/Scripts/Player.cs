@@ -23,16 +23,16 @@ public class Player : MonoBehaviour
 
         // finds the mouse light in the scene.
         if (mouseLight == null)
-            mouseLight = FindObjectOfType<MouseLight>();
+            mouseLight = FindObjectOfType<MouseLight>(true);
     }
 
-    // returns 'true' if the mouse light is enabled.
+    // returns 'true' if the mouse light component is enabled
     public bool IsMouseLightEnabled()
     {
         return mouseLight.IsLightEnabled();
     }
 
-    // sets mouse light enabled.
+    // sets mouse light enabled (enables component).
     public void SetMouseLightEnabled(bool e)
     {
         mouseLight.SetLightEnabled(e);

@@ -12,6 +12,10 @@ public class GameplayManager : Manager
     // the mouse operations for the game.
     public Mouse mouse;
 
+    // post processing object.
+    // this is used to simulate the flashlight.
+    public GameObject postProcessing;
+
     // the current screen. It also saves the next screens.
     [Tooltip("The current screen. This this to the starting screen when you start running the game.")]
     public RoomScreen currentScreen;
@@ -54,6 +58,19 @@ public class GameplayManager : Manager
         // if no mouse is set, find it.
         if (mouse == null)
             mouse = FindObjectOfType<Mouse>();
+
+        // if the post processing object has not been set.
+        if(postProcessing == null)
+        {
+            // looks for the post processing volume n the scene.
+            UnityEngine.Rendering.PostProcessing.PostProcessVolume temp =
+                FindObjectOfType<UnityEngine.Rendering.PostProcessing.PostProcessVolume>(true);
+            
+            // saves the game object.
+            if (temp != null)
+                postProcessing = temp.gameObject;
+
+        }
 
         // // if no current screen is set, just set a random room.
         // if (currentScreen == null)
@@ -280,16 +297,30 @@ public class GameplayManager : Manager
 
     }
     
-    // returns 'true' if the room lighting is enabled.
+    // TODO: turn off local emissive lights in the rooms.
+
+    // if the room's lighting is enabled then turn off the post processing layer.
     public bool IsRoomLightingEnabled()
     {
+        // if(postProcessing != null)
+        //     return !postProcessing.activeSelf;
+        // 
+        // return false;
+
+        // does the current room have its lighting enabled?
         return currentScreen.room.IsLightingEnabled();
     }
 
     // sets if the room lights should be enabled.
     public void SetRoomLightingEnabled(bool e)
     {
-        currentScreen.room.SetLightingEnabled(e);
+        // turn on post processing to simulate flashlight if lights are off.
+        // postProcessing.SetActive(!e);
+
+        // call this function to change the settings.
+        // currentScreen.room.SetLightingEnabled(e);
+        
+        // enable the mouse light (post-processing effect)
         player.SetMouseLightEnabled(!e);
     }
 
