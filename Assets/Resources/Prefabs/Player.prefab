@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   inventory: []
-  mouseLight: {fileID: 0}
+  mouseLight: {fileID: 6480731993145763622}
 --- !u!1 &5809319065401387636
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +209,11 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5539024884287395351, guid: 41ca339502bc8c04da3245a5cd757645,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5539024884671093150, guid: 41ca339502bc8c04da3245a5cd757645,
         type: 3}
       propertyPath: m_RootOrder
@@ -282,3 +287,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1526366919524417215}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6480731993145763622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5539024884671093145, guid: 41ca339502bc8c04da3245a5cd757645,
+    type: 3}
+  m_PrefabInstance: {fileID: 1526366919524417215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3570421efe1c3714baa08d20880e96f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

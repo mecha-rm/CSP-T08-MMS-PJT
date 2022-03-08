@@ -66,9 +66,9 @@ public class RoomScreen : MonoBehaviour
         // checks if the lighting for the room is on.
         if(room != null)
         {
-            // turn on or off the room lights.
-            if(manager.IsRoomLightingEnabled() != room.lightsOn)
-                manager.SetRoomLightingEnabled(room.lightsOn);
+            // if the room lighting should change.
+            if (manager.IsRoomLightingEnabled() != room.lightsOn)
+                room.SetLightingEnabled(room.lightsOn);
 
             // if the room activity should be changed.
             // if(disableInactiveRoom)

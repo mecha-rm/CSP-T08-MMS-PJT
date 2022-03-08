@@ -323,6 +323,7 @@ MonoBehaviour:
   room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 623072272}
   rightScreen: {fileID: 2008952477}
@@ -479,6 +480,7 @@ MonoBehaviour:
   room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 2008952477}
   rightScreen: {fileID: 623072272}
@@ -588,6 +590,7 @@ MonoBehaviour:
   room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 349972588}
   rightScreen: {fileID: 119248058}
@@ -1623,6 +1626,7 @@ MonoBehaviour:
   room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
@@ -1828,6 +1832,7 @@ MonoBehaviour:
   room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
@@ -2065,6 +2070,7 @@ MonoBehaviour:
   room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 119248058}
   rightScreen: {fileID: 349972588}
@@ -2156,6 +2162,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Post Processing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7af2d8da7617804f885dbbab72a3d53, type: 3}

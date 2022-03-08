@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.019607844, g: 0.019607844, b: 0.019607844, a: 1}
+  m_AmbientSkyColor: {r: 0.23529412, g: 0.23529412, b: 0.23529412, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -777,7 +777,7 @@ PrefabInstance:
     - target: {fileID: 538297236344353284, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 538297237395239178, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -1501,6 +1501,7 @@ MonoBehaviour:
   room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 590050934}
   rightScreen: {fileID: 590050934}
@@ -2135,7 +2136,7 @@ PrefabInstance:
     - target: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7af2d8da7617804f885dbbab72a3d53, type: 3}
@@ -3113,6 +3114,11 @@ PrefabInstance:
       objectReference: {fileID: 1371474757}
     - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
+      propertyPath: postProcessing
+      value: 
+      objectReference: {fileID: 1976545524}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
       propertyPath: backScreenButton
       value: 
       objectReference: {fileID: 2079011264}
@@ -3121,6 +3127,11 @@ PrefabInstance:
       propertyPath: leftScreenButton
       value: 
       objectReference: {fileID: 2079011267}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
+      propertyPath: postProcessVolume
+      value: 
+      objectReference: {fileID: 1976545525}
     - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
       propertyPath: rightScreenButton
@@ -4043,7 +4054,7 @@ PrefabInstance:
     - target: {fileID: 538297236344353284, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 538297237395239178, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -4117,6 +4128,11 @@ PrefabInstance:
       objectReference: {fileID: 1457571103}
     - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
+      propertyPath: lightsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
       propertyPath: roomNumber
       value: 2
       objectReference: {fileID: 0}
@@ -4149,6 +4165,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9c95c923ab3ad54b8c9999f9e47ac55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1976545524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
+    type: 3}
+  m_PrefabInstance: {fileID: 928046751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1976545525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1109588672756804417, guid: f7af2d8da7617804f885dbbab72a3d53,
+    type: 3}
+  m_PrefabInstance: {fileID: 928046751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976545524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1991074704
@@ -4823,7 +4857,7 @@ PrefabInstance:
     - target: {fileID: 538297236344353284, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 538297237395239178, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -4888,7 +4922,7 @@ PrefabInstance:
     - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: lightsOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}

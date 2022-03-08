@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // used for saving user-interface components.
+using UnityEngine.Rendering.PostProcessing; // post processing volume.
 
 // manages gameplay operations.
 public class GameplayManager : Manager
@@ -62,13 +63,12 @@ public class GameplayManager : Manager
         // if the post processing object has not been set.
         if(postProcessing == null)
         {
-            // looks for the post processing volume n the scene.
-            UnityEngine.Rendering.PostProcessing.PostProcessVolume temp =
-                FindObjectOfType<UnityEngine.Rendering.PostProcessing.PostProcessVolume>(true);
-            
-            // saves the game object.
-            if (temp != null)
-                postProcessing = temp.gameObject;
+            // looks to find the post-process volume.
+            PostProcessVolume volume = FindObjectOfType<PostProcessVolume>(true);
+
+            // object found.
+            if (volume != null)
+                postProcessing = volume.gameObject;
 
         }
 
@@ -299,19 +299,24 @@ public class GameplayManager : Manager
     
     // TODO: turn off local emissive lights in the rooms.
 
-    // if the room's lighting is enabled then turn off the post processing layer.
+    // checks if the room's lighting is enabled.
+    // this works by altering the post-processing layer.
     public bool IsRoomLightingEnabled()
     {
-        // if(postProcessing != null)
-        //     return !postProcessing.activeSelf;
-        // 
-        // return false;
-
         // does the current room have its lighting enabled?
-        return currentScreen.room.IsLightingEnabled();
+        // return currentScreen.room.IsLightingEnabled();
+
+
+        // this simulates a flashlight, so if it's on, the room lighting is considered off.
+        if (postProcessing != null)
+            return !postProcessing.activeSelf;
+        
+        // on by default.
+        return true;
     }
 
-    // sets if the room lights should be enabled.
+    // sets whether the room lighting is on.
+    // if it's off, the post processing 
     public void SetRoomLightingEnabled(bool e)
     {
         // turn on post processing to simulate flashlight if lights are off.
@@ -319,8 +324,15 @@ public class GameplayManager : Manager
 
         // call this function to change the settings.
         // currentScreen.room.SetLightingEnabled(e);
-        
-        // enable the mouse light (post-processing effect)
+
+
+        // if the post-processing effect is on, the lighting is considered "off".
+        // Debug.Log("Room Lighting: " + e.ToString());
+
+        // enable the post-processing effect.
+        postProcessing.SetActive(!e);
+
+        // sets the mouse light so that it can control the post-processed vingette effect.
         player.SetMouseLightEnabled(!e);
     }
 
