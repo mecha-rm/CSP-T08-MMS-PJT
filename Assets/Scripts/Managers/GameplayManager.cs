@@ -319,6 +319,10 @@ public class GameplayManager : Manager
     // if it's off, the post processing 
     public void SetRoomLightingEnabled(bool e)
     {
+        // variable not set.
+        if (postProcessing == null)
+            return;
+
         // turn on post processing to simulate flashlight if lights are off.
         // postProcessing.SetActive(!e);
 
