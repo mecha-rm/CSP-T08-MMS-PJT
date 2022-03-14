@@ -237,6 +237,15 @@ public class GameplayManager : Manager
         }
     }
 
+    // returns the amount of puzzle pieces in the game.
+    public static int PuzzlePieceCount
+    {
+        get
+        {
+            return 9;
+        }
+    }
+
     // tries to get the room screen from the clicked object.
     private bool GetRoomScreenFromClicked()
     {

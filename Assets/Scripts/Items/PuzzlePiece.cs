@@ -5,6 +5,9 @@ using UnityEngine;
 // the puzzle piece item in the game world.
 public class PuzzlePiece : Item
 {
+    // the default stack id for the puzzle piece.
+    private static string defaultStackId = "puzzle-piece";
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -20,7 +23,16 @@ public class PuzzlePiece : Item
 
         // stack id
         if (stackId == "") // stack all puzzle pieces.
-            stackId = "puzzle-piece";
+            stackId = defaultStackId;
+    }
+
+    // returns the default stack id for puzle pieces.
+    public static string DefaultStackId
+    {
+        get
+        {
+            return defaultStackId;
+        }
     }
 
     // Update is called once per frame

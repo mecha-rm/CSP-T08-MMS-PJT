@@ -38,6 +38,25 @@ public class Player : MonoBehaviour
         mouseLight.SetLightEnabled(e);
     }
 
+    // returns 'true' if the player has all of the puzzle pieces.
+    public bool HasAllPuzzlePieces()
+    {
+        // the last piece is already in the frame, so the player must collect it before they can fill the frame.
+        // TODO: maybe rework this?
+        int ownedPieces = 0;
+        string stackId = PuzzlePiece.DefaultStackId;
+
+        // goes through the inventory.
+        foreach(Item item in inventory)
+        {
+            if (item.stackId == stackId)
+                ownedPieces++;
+        }
+
+        // all puzzle pieces collected.
+        return (ownedPieces == GameplayManager.PuzzlePieceCount);
+    }
+
     // Update is called once per frame
     void Update()
     {
