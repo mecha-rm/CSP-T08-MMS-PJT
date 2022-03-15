@@ -8,7 +8,7 @@ public class ToggleActiveOnClick : MonoBehaviour
     // game object this component relates to.
     public GameObject pairedObject = null;
 
-    // TODO: include space for animation.    
+    // TODO: include space for animation.
 
     // becomes 'true' when the object should toggle.
     private bool toggle = false;
@@ -18,6 +18,9 @@ public class ToggleActiveOnClick : MonoBehaviour
 
     // use this for mouse interactions if you don't want to use the OnClickFunction.
     public MouseInteraction interact;
+
+    // if 'true', unity mouse operations triggered on this object also apply.
+    public bool useUnityMouse = true;
 
     // Start is called before the first frame update
     void Start()
@@ -31,20 +34,23 @@ public class ToggleActiveOnClick : MonoBehaviour
     private void OnMouseDown()
     {
         // key has been pressed down.
-        if (Input.GetKeyDown(key))
+        if (useUnityMouse && Input.GetKeyDown(key))
             toggle = true;
     }
 
     // called to check the interaction variable.
-    public void OnInteractDown()
+    private void OnInteractDown()
     {
-        // checks if the mouse is down.
-        if(interact.MouseDown)
-        {
-            // key has been pressed down.
-            if (Input.GetKeyDown(key))
-                toggle = true;
-        }
+        // checks if the mouse key is down.
+        if (interact.MouseDown && Input.GetKeyDown(key))
+            toggle = true;
+    }
+
+    // called when the entity is toggled.
+    protected virtual void OnToggle()
+    {
+        toggle = false; // allows deactivation again if activated again.
+        pairedObject.SetActive(!pairedObject.activeSelf); // deactivates the paired object.
     }
 
     // Update is called once per frame
@@ -57,8 +63,8 @@ public class ToggleActiveOnClick : MonoBehaviour
         // if the object should be deactivated.
         if (toggle)
         {
-            toggle = false; // allows deactivation again if activated again.
-            pairedObject.SetActive(!gameObject.activeSelf);
+            // run operations.
+            OnToggle();
         }
             
 

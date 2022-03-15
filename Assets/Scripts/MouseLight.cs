@@ -12,9 +12,18 @@ public class MouseLight : MonoBehaviour
     // the post-processing volume for the cene.
     public PostProcessVolume postProcessVolume;
 
+    // TODO: doesn't seem like this stopped the lag.
+    // the update rate for the mouse light in seconds.
+    public float updateRate = 0.0F;
+
+    // the update timer for updating the light position.
+    private float updateTimer = 0.0F;
+
     // the post processing effect from the profile being used.
     private Vignette effect;
-    private Vector2 effectCenterDefault; // the default center value.
+
+    // the default center value.
+    private Vector2 effectCenterDefault;
 
     // if 'true', the effect is altered by the mouse.
     public bool alterEffect = true;
@@ -95,8 +104,11 @@ public class MouseLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if the effect should be altered.
-        if(alterEffect)
+        // updates the timer.
+        updateTimer += Time.deltaTime;
+
+        // if the effect should be altered, and the alloted time has passed.
+        if(alterEffect && updateTimer >= updateRate)
         {
             // original
             // // updates to mouse world position.
@@ -105,6 +117,7 @@ public class MouseLight : MonoBehaviour
             // // sets new forward.
             // transform.forward = newNormal;
 
+            // TODO: maybe check to see if the mouse has actually moved.
             // gets the viewpoint position ([0, 1] range)
             Vector3 viewPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
@@ -112,6 +125,8 @@ public class MouseLight : MonoBehaviour
             // Vector2Parameter v2p = new Vector2Parameter();
             effect.center.value = new Vector2(viewPos.x, viewPos.y);
             // Debug.Log(effect.center.value.ToString());
+
+            updateTimer = 0.0F;
         }
         
     }

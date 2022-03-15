@@ -137,4 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouse: {fileID: 0}
-  mouseLight: {fileID: 0}
+  postProcessVolume: {fileID: 0}
+  updateRate: 0
+  alterEffect: 1

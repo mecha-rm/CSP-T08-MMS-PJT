@@ -24,6 +24,23 @@ public class PuzzlePiece : Item
         // stack id
         if (stackId == "") // stack all puzzle pieces.
             stackId = defaultStackId;
+
+        // item icon not set.
+        if (itemIcon == null)
+        {
+            string file = "Images/Inventory/puzzle_piece_icon";
+
+            // loads resource.
+            Sprite temp = Resources.Load<Sprite>(file);
+
+            // checks if valid.
+            if(temp != null)
+            {
+                // if the object can be converted from a sprite.
+                itemIcon = temp;
+            }
+        }
+            
     }
 
     // returns the default stack id for puzle pieces.
