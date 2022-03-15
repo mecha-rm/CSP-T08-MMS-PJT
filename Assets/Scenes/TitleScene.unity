@@ -3196,7 +3196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Items Collected are inserted into your inventory. These items are used
+  m_Text: Items collected are inserted into your inventory. These items are used
     automatically with the spacebar interaction
 --- !u!222 &1660572551
 CanvasRenderer:

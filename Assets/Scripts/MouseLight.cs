@@ -19,6 +19,21 @@ public class MouseLight : MonoBehaviour
     // the update timer for updating the light position.
     private float updateTimer = 0.0F;
 
+    // PREDICTION //
+    // if set to 'true' the code will try to predict the light position.
+    public bool usePrediction = true;
+
+    // the old view pos of the mouse.
+    private Vector2 mouseVP0;
+
+    // the newest view pos of the mouse.
+    private Vector2 mouseVP1;
+
+    // the factor for moving with prediction.
+    private float moveFactor = 0.0F;
+
+    // EFFECT //
+
     // the post processing effect from the profile being used.
     private Vignette effect;
 
@@ -57,7 +72,7 @@ public class MouseLight : MonoBehaviour
             effect.center.overrideState = true;
             effectCenterDefault = effect.center.value; // saves default.
         }
-            
+
 
         // // light component not set.
         // if(mouseLight == null)
@@ -69,6 +84,12 @@ public class MouseLight : MonoBehaviour
         //     if (mouseLight == null)
         //         mouseLight = GetComponentInChildren<Light>();
         // }
+
+        // gets the mouse's current position and saves it for prediction.
+        // both are the same.
+        Vector3 viewPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        mouseVP0 = new Vector2(viewPos.x, viewPos.y);
+        mouseVP1 = mouseVP0;
     }
 
     // light is not enabled.
@@ -120,13 +141,35 @@ public class MouseLight : MonoBehaviour
             // TODO: maybe check to see if the mouse has actually moved.
             // gets the viewpoint position ([0, 1] range)
             Vector3 viewPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            
+            // gets the view pos as a 2D vector.
+            Vector2 viewPos2d = new Vector2(viewPos.x, viewPos.y);
 
-            // move the vingette
-            // Vector2Parameter v2p = new Vector2Parameter();
-            effect.center.value = new Vector2(viewPos.x, viewPos.y);
-            // Debug.Log(effect.center.value.ToString());
+            // only update if the mouse position has actually changed.
+            if(effect.center.value != viewPos2d)
+            {
+                // move the vingette
+                effect.center.value = new Vector2(viewPos.x, viewPos.y);
+                // Debug.Log(effect.center.value.ToString());
 
-            updateTimer = 0.0F;
+                // reset the timer, and update the new positions.
+                updateTimer = 0.0F;
+                mouseVP0 = mouseVP1;
+                mouseVP1 = viewPos;
+            }
+        }
+        // not time to update to the exact position, and use prediction.
+        // if the mouse hasn't moved, then don't update.
+        else if (usePrediction && mouseVP0 != mouseVP1)
+        {
+            // gets the vector between the two mouse points.
+            Vector2 v = mouseVP1 - mouseVP0;
+
+            // forms a new position going at the provided speed.
+            Vector2 newPos = v.normalized * (v.magnitude) * Time.deltaTime;
+
+            // alter the effect.
+            effect.center.value += newPos;
         }
         
     }
