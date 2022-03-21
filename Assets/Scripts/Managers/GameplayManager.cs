@@ -29,6 +29,12 @@ public class GameplayManager : Manager
     // the last object that has been clicked.
     private GameObject lastClicked = null;
 
+    // if 'true', the player got the bonus easter egg.
+    public bool hasCertificate;
+
+    // the timer for the game. There should only be one.
+    public Timer timer;
+
     // inventory UI
     [Header("UI/Inventory")]
     public ItemIcon item1;
@@ -83,41 +89,9 @@ public class GameplayManager : Manager
             currentScreen.EnableScreen();
         }
 
-        // // if any of the item components are empty.
-        // if(item1 == null || item2 == null || item3 == null || item4 == null || item5 == null)
-        // {
-        //     // grabs all the components (will likely be out of order)
-        //     ItemIcon[] icons = FindObjectsOfType<ItemIcon>();
-        // 
-        //     // puts in components.
-        //     for(int i = 0; i < icons.Length; i++)
-        //     {
-        //         // finds empty object.
-        //         switch(i)
-        //         {
-        //             case 0:
-        //                 if (item1 == null)
-        //                     item1 = icons[i];
-        //                 break;
-        //             case 1:
-        //                 if (item2 == null)
-        //                     item2 = icons[i];
-        //                 break;
-        //             case 2:
-        //                 if (item3 == null)
-        //                     item3 = icons[i];
-        //                 break;
-        //             case 3:
-        //                 if (item4 == null)
-        //                     item4 = icons[i];
-        //                 break;
-        //             case 4:
-        //                 if (item5 == null)
-        //                     item5 = icons[i];
-        //                 break;
-        //         }
-        //     }
-        // }
+        // grabs the timer component.
+        if (timer == null)
+            timer = GetComponent<Timer>();
             
     }
 
@@ -348,6 +322,32 @@ public class GameplayManager : Manager
         // sets the mouse light so that it can control the post-processed vingette effect.
         player.SetMouseLightEnabled(!e);
     }
+
+    // called when the game ends.
+    // this is called by the exit screen.
+    public void OnGameEnd()
+    {
+        // tries to find the results data object if it already exists.
+        ResultsData resultsData = FindObjectOfType<ResultsData>();
+
+        // this object doe not exist, so make a new object.
+        if (resultsData == null)
+        {
+            GameObject temp = new GameObject("Game Results");
+            resultsData = temp.AddComponent<ResultsData>();
+        }
+
+        // saves the current time.
+        if(timer != null)
+            resultsData.completionTime = timer.currentTime;
+
+        // saves this value.
+        resultsData.gotCertificate = hasCertificate;
+
+        // goes to the end screen.
+        SceneHelper.LoadScene("EndScene");
+    }
+
 
     // Update is called once per frame
     void Update()

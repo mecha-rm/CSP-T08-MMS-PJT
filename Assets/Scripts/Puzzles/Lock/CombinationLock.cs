@@ -6,6 +6,9 @@ using UnityEngine.UI;
 // the combination lock (will have 4 numbers)
 public class CombinationLock : MonoBehaviour
 {
+    // the puzzle that this keypad belongs to.
+    public Puzzle puzzle;
+
     // the combination lock entries (four total, but the value can vary).
     public List<int> entries = new List<int>();
 
@@ -85,13 +88,18 @@ public class CombinationLock : MonoBehaviour
         }
 
         // gets the result.
-        bool result = number == combinaton;
+        bool correct = number == combinaton;
 
         // debug message.
-        Debug.Log((result) ? "CORRECT COMBINATION" : "WRONG COMBINATION");
+        // TODO: uncomment.
+        Debug.Log((correct) ? "CORRECT COMBINATION" : "WRONG COMBINATION");
+
+        // if the combination is correct and the puzzle is set.
+        if (correct && puzzle != null)
+            puzzle.OnPuzzleCompletion();
 
         // return result
-        return result;
+        return correct;
     }
 
     // Update is called once per frame

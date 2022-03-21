@@ -29,8 +29,8 @@ public class MouseLight : MonoBehaviour
     // the newest view pos of the mouse.
     private Vector2 mouseVP1;
 
-    // the factor for moving with prediction.
-    private float moveFactor = 0.0F;
+    // // the factor for moving with prediction.
+    // private float moveFactor = 0.0F;
 
     // EFFECT //
 

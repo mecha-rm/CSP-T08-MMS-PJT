@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3603107488084803636}
   - component: {fileID: 3603107488084803639}
   - component: {fileID: 3603107488084803637}
+  - component: {fileID: 7908407170224848497}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: GameScene Manager
   m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +48,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   mouse: {fileID: 3603107488084803637}
+  postProcessing: {fileID: 0}
   currentScreen: {fileID: 0}
+  hasCertificate: 0
+  timer: {fileID: 7908407170224848497}
+  item1: {fileID: 0}
+  item2: {fileID: 0}
+  item3: {fileID: 0}
+  item4: {fileID: 0}
+  item5: {fileID: 0}
   leftScreenButton: {fileID: 0}
   rightScreenButton: {fileID: 0}
   forwardScreenButton: {fileID: 0}
@@ -70,6 +79,23 @@ MonoBehaviour:
   heldObject: {fileID: 0}
   lastClickedObject: {fileID: 0}
   ignoreUI: 0
+--- !u!114 &7908407170224848497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603107488084803638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d7673cabc73a9418ba920a868a54b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdown: 0
+  paused: 0
+  runOnStart: 1
+  currentTime: 0
+  startTime: 0
 --- !u!1 &3603107489178966727
 GameObject:
   m_ObjectHideFlags: 0

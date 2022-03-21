@@ -6,7 +6,7 @@ using UnityEngine;
 public class ResultsData : MonoBehaviour
 {
     // the time it took for the player to beat the game.
-    public float finalTime = 0.0F;
+    public float completionTime = 0.0F;
 
     // if 'true', the player got the easter egg certificate.
     public bool gotCertificate = false;

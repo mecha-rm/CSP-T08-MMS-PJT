@@ -6,6 +6,9 @@ using UnityEngine.UI;
 // the class for the keypad object.
 public class Keypad : MonoBehaviour
 {
+    // the puzzle that this keypad belongs to.
+    public Puzzle puzzle;
+
     // the text for the keypad
     public string text = "*****";
 
@@ -57,12 +60,16 @@ public class Keypad : MonoBehaviour
     public bool ConfirmEntry()
     {
         // checks if text is equal to right passcode.
-        bool result = (text == passcode);
+        bool correct = (text == passcode);
 
         // output message.
-        Debug.Log((result) ? "SUCCESS" : "FAIL");
+        Debug.Log((correct) ? "SUCCESS" : "FAIL");
 
-        return result;
+        // if the combination is correct and the puzzle is set.
+        if (correct && puzzle != null)
+            puzzle.OnPuzzleCompletion();
+
+        return correct;
     }
 
     // Update is called once per frame

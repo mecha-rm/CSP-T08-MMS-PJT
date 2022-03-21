@@ -9,6 +9,9 @@ public class EndManager : Manager
     // the name input field
     public InputField nameInputField;
 
+    // the length of the game the player just completed.
+    // TODO: this is here for testing purposes. This value only needs to be updated once, so this can be a local variable.
+    public float completionTime = 0.0F;
 
     // Start is called before the first frame update
     protected new void Start()
@@ -31,7 +34,11 @@ public class EndManager : Manager
         // there is endgame data.
         if(resultsData != null)
         {
-            // TODO: get the values and save them.
+            // TODO: gets the values and save them.
+            // grabs the final time.
+            completionTime = resultsData.completionTime;
+
+            // TODO: CHECK CERTIFICATE VALUE
 
             // destroy the object and by extension this script.
             Destroy(resultsData.gameObject);
