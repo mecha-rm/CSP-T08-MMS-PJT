@@ -26,15 +26,8 @@ public class EndManager : Manager
 
         // finds the input field if not set.
         // TODO: if there's more than one input field remove this.
-        //See Note below:
         if (nameInputField == null)
             nameInputField = FindObjectOfType<InputField>();    
-
-        //auto focus text field on start, if user clicks anywhere, the field is 
-        //no longer focused until they click back into it, maybe move this into the 
-        //update function?
-        nameInputField.Select();
-        nameInputField.ActivateInputField();
 
         // RESULTS DATA //
 
@@ -86,6 +79,7 @@ public class EndManager : Manager
     void Update()
     {
 
+        //continually re-focus textbox in case user clicks off it
         nameInputField.Select();
         nameInputField.ActivateInputField();
 
