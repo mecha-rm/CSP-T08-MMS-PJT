@@ -9,6 +9,9 @@ public class EndManager : Manager
     // the name input field
     public InputField nameInputField;
 
+    //used to change opacity of name field
+    private int sign = -1;
+
     // the length of the game the player just completed.
     // TODO: this is here for testing purposes. This value only needs to be updated once, so this can be a local variable.
     public float completionTime = 0.0F;
@@ -23,8 +26,15 @@ public class EndManager : Manager
 
         // finds the input field if not set.
         // TODO: if there's more than one input field remove this.
+        //See Note below:
         if (nameInputField == null)
-            nameInputField = FindObjectOfType<InputField>();
+            nameInputField = FindObjectOfType<InputField>();    
+
+        //auto focus text field on start, if user clicks anywhere, the field is 
+        //no longer focused until they click back into it, maybe move this into the 
+        //update function?
+        nameInputField.Select();
+        nameInputField.ActivateInputField();
 
         // RESULTS DATA //
 
@@ -51,10 +61,55 @@ public class EndManager : Manager
     {
         SceneHelper.LoadScene("TitleScene");
     }
+    
+    //sends player to mining matters website
+    public void LearnMore()
+    {
+        Application.OpenURL("https://miningmatters.ca/");
+    }
+
+    //captures screenshot of Certificate of completion
+    public void CaptureScreen()
+    {
+        //TODO: ask Robert how they implemented this
+        //did they use this SaveFileDialog? looked like it in the last game
+        //System.Windows.Forms.SaveFileDialog;
+        //does this only work for windows machines? what about macs?
+
+        //this funtion expects hard coded file path value, we prob dont want to use
+        //ScreenCapture.CaptureScreenshot("C:/image.png");
+
+        print("I do nothing right now");
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        nameInputField.Select();
+        nameInputField.ActivateInputField();
+
+        //updates opacity of enter name field if user has not entered anything
+        if(nameInputField.text == "")
+        {
+            Color placeholderColor = nameInputField.placeholder.color;
+
+            //if placeholder alpha is above 0.9 start to decrease alpha value
+            if(placeholderColor.a > 0.9)
+            {
+                sign = -1;
+            }
+            //if placeholder alpha is below 0.1 start to increase alpha value
+            else if(placeholderColor.a < 0.1)
+            {
+                sign = 1;
+            }
+
+            //calculate new alpha value
+            placeholderColor.a = placeholderColor.a + sign * 0.01F;
+
+            //update alpha value
+            nameInputField.placeholder.color = placeholderColor;
+        }
     }
 }
