@@ -6,16 +6,29 @@ using UnityEngine.UI;
 // the ending manager for the game.
 public class EndManager : Manager
 {
-    // the name input field
-    public InputField nameInputField;
-
-    //used to change opacity of name field
-    private int sign = -1;
-
     // the length of the game the player just completed.
     // TODO: this is here for testing purposes. This value only needs to be updated once, so this can be a local variable.
     public float completionTime = 0.0F;
 
+    // if the end manager has the certificate.
+    public bool gotCertificate;
+
+    // user interface 
+    [Header("UI")]
+
+    // the name input field
+    public InputField nameInputField;
+
+    // used to change opacity of name field
+    private int sign = -1;
+
+    // the text for the completion time.
+    public Text timeText;
+
+    // the text for the bonus item.
+    public Text bonusText;
+
+   
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -37,15 +50,31 @@ public class EndManager : Manager
         // there is endgame data.
         if(resultsData != null)
         {
-            // TODO: gets the values and save them.
             // grabs the final time.
             completionTime = resultsData.completionTime;
 
-            // TODO: CHECK CERTIFICATE VALUE
+            // the player got the certificate.
+            gotCertificate = resultsData.gotCertificate;
+
 
             // destroy the object and by extension this script.
             Destroy(resultsData.gameObject);
         }
+
+        // updates the time text.
+        if (timeText != null)
+            timeText.text = "Completion Time: " + Timer.TimeToString(completionTime, false);
+
+        // updates the bonus text.
+        if (bonusText != null)
+        {
+            // TODO: maybe replace this with an icon instead of a text component.
+            if(gotCertificate)
+                bonusText.text = "Got Bonus Item!";
+            else
+                bonusText.text = "Did not get bonus item.";
+        }
+            
 
     }
 

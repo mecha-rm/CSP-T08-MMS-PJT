@@ -122,8 +122,10 @@ public class Timer : MonoBehaviour
 
     }
 
-    // returns the time as a string.
-    public string TimerToString(bool showDecimal = true)
+    
+    // converts a seconds string into a time string of HH:MM:SS.
+    // if 'round' is true, the value is rounded up using Mathf.Ceil().
+    public static string TimeToString(float timeInSeconds, bool round = true)
     {
         // 1 hour converted to seconds.
         const float HourToSec = 3600.0F;
@@ -134,7 +136,7 @@ public class Timer : MonoBehaviour
         // GETTING TIMES //
 
         // time in seconds (timer is already in seconds.)
-        float seconds = currentTime;
+        float seconds = timeInSeconds;
 
         // time in full hours
         float hours = Mathf.Floor(seconds / HourToSec); // 3600 seconds in an hour.
@@ -147,12 +149,21 @@ public class Timer : MonoBehaviour
 
         // TIME STRING //
         // formatting the string.
-        string timeString = 
-            hours.ToString() + ":" + 
-            minutes.ToString() + ":" + 
-            (showDecimal ? seconds.ToString() : Mathf.Ceil(seconds).ToString());
-        
+        // has the option to round the seconds value.
+        // a minimum of 2 digits per value.
+        string timeString =
+            hours.ToString("00") + ":" +
+            minutes.ToString("00") + ":" +
+            (round ? Mathf.Ceil(seconds).ToString("00") : seconds.ToString("00"));
+
         // return the time string.
         return timeString;
+    }
+
+    // converts a seconds string into a time string of HH:MM:SS.
+    // if 'round' is true, the value is rounded up using Mathf.Ceil().
+    public string TimeToString(bool round = true)
+    {
+        return TimeToString(currentTime, round);
     }
 }

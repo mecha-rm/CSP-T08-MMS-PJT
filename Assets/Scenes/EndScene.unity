@@ -182,10 +182,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 52
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 52
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -239,7 +239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 0, y: 255}
   m_SizeDelta: {x: 960, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &161091200
@@ -534,8 +534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7538da384aba14d8319fa9e1e7e693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInputField: {fileID: 161091200}
   completionTime: 0
+  gotCertificate: 0
+  nameInputField: {fileID: 161091200}
+  timeText: {fileID: 613427992}
+  bonusText: {fileID: 1243915313}
 --- !u!1 &399921680
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,10 +748,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 42
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -756,7 +759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Take screenshot
+  m_Text: Take Screenshot
 --- !u!222 &581879803
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -777,7 +780,7 @@ GameObject:
   - component: {fileID: 613427993}
   - component: {fileID: 613427992}
   m_Layer: 5
-  m_Name: Completed in
+  m_Name: Completion Time Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,12 +798,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 741510209}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: -150}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 0, y: -150}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613427992
 MonoBehaviour:
@@ -824,7 +827,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 42
+    m_FontSize: 34
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -903,7 +906,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 42
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -914,7 +917,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Return to title screen
+  m_Text: "Return to \nTitle Screen"
 --- !u!222 &652816300
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -959,9 +962,9 @@ RectTransform:
   - {fileID: 161091199}
   - {fileID: 1537416100}
   - {fileID: 399921681}
+  - {fileID: 613427991}
   - {fileID: 1543342817}
   - {fileID: 1243915312}
-  - {fileID: 613427991}
   m_Father: {fileID: 766582097}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1165,7 +1168,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Learn more about Mining Matters
+  m_Text: Learn More about Mining Matters
 --- !u!222 &856879438
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1334,7 +1337,7 @@ GameObject:
   - component: {fileID: 1243915314}
   - component: {fileID: 1243915313}
   m_Layer: 5
-  m_Name: Bonus Item found
+  m_Name: Bonus Item Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1352,12 +1355,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 741510209}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243915313
 MonoBehaviour:
@@ -1381,18 +1384,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 42
+    m_FontSize: 34
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 42
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bonus Item Found:'
+  m_Text: Bonus Item Found?
 --- !u!222 &1243915314
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1488,7 +1491,7 @@ GameObject:
   - component: {fileID: 1537416102}
   - component: {fileID: 1537416101}
   m_Layer: 5
-  m_Name: Escaped The Mine
+  m_Name: Escaped The Mine Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1650,7 +1653,7 @@ GameObject:
   - component: {fileID: 1543342819}
   - component: {fileID: 1543342818}
   m_Layer: 5
-  m_Name: To be continued
+  m_Name: To Be Continued Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1668,7 +1671,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 741510209}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1776,10 +1779,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 52
+    m_FontSize: 48
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 52
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1876,7 +1879,7 @@ GameObject:
   - component: {fileID: 1662597537}
   - component: {fileID: 1662597536}
   m_Layer: 5
-  m_Name: Take Screenshot
+  m_Name: Screenshot Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
