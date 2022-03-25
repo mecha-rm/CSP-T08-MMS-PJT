@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 // the ending manager for the game.
 public class EndManager : Manager
@@ -28,6 +29,9 @@ public class EndManager : Manager
     // the text for the bonus item.
     public Text bonusText;
 
+    // Screenshot stuff from Robert
+    [DllImport("__Internal")]
+    private static extern void openWindow(string url);
    
     // Start is called before the first frame update
     protected new void Start()
@@ -93,15 +97,35 @@ public class EndManager : Manager
     //captures screenshot of Certificate of completion
     public void CaptureScreen()
     {
-        //TODO: ask Robert how they implemented this
-        //did they use this SaveFileDialog? looked like it in the last game
-        //System.Windows.Forms.SaveFileDialog;
-        //does this only work for windows machines? what about macs?
+        StartCoroutine(UploadPNG());
+    }
 
-        //this funtion expects hard coded file path value, we prob dont want to use
-        //ScreenCapture.CaptureScreenshot("C:/image.png");
+    IEnumerator UploadPNG()
+    {
+        //We should only read the screen after all rendering is complete
+        yield return new WaitForEndOfFrame();
 
-        print("I do nothing right now");
+        // Create a texture the size of the screen, RGB24 format
+        int width = Screen.width;
+        int height = Screen.height;
+        var tex = new Texture2D(width, height, TextureFormat.RGB24, false);
+
+        // Read screen contents into the texture
+        tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+        tex.Apply();
+
+        // Encode texture into PNG
+        byte[] bytes = tex.EncodeToPNG();
+        Destroy(tex);
+
+        //string ToBase64String byte[]
+        string encodedText = System.Convert.ToBase64String(bytes);
+
+        var image_url = "data:image/png;base64," + encodedText;
+
+        #if !UNITY_EDITOR
+            openWindow(image_url);
+        #endif
     }
 
     // Update is called once per frame
@@ -135,4 +159,5 @@ public class EndManager : Manager
             nameInputField.placeholder.color = placeholderColor;
         }
     }
+
 }
