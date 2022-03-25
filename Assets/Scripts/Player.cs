@@ -38,6 +38,21 @@ public class Player : MonoBehaviour
         mouseLight.SetLightEnabled(e);
     }
 
+    // checks if the player has a given item.
+    public bool HasItem(string itemId)
+    {
+        // goes through inventory.
+        foreach(Item item in inventory)
+        {
+            // id match.
+            if (item.itemId == itemId)
+                return true;
+        }
+
+        // no id match.
+        return false;
+    }
+
     // returns 'true' if the player has all of the puzzle pieces.
     public bool HasAllPuzzlePieces()
     {
@@ -49,7 +64,7 @@ public class Player : MonoBehaviour
         // goes through the inventory.
         foreach(Item item in inventory)
         {
-            if (item.stackId == stackId)
+            if (item.itemId == stackId)
                 ownedPieces++;
         }
 
