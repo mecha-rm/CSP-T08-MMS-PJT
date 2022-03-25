@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // wire connection puzzle
-public class WireConnect : MonoBehaviour
+public class WireConnect : PuzzleMechanic
 {
-    // the puzzle that this keypad belongs to.
-    public Puzzle puzzle;
-
     // the first node.
     public WireConnectNode node1;
 
@@ -31,9 +28,9 @@ public class WireConnect : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         // the list is empty.
-        if(nodes.Count == 0)
+        if (nodes.Count == 0)
         {
             // puts the nodes into the list.
             GetComponentsInChildren<WireConnectNode>(true, nodes);
@@ -65,6 +62,30 @@ public class WireConnect : MonoBehaviour
 
         // all of the nodes are connected.
         return true;
+    }
+
+    // checks if the puzzle was completed successfully successful.
+    public override bool CompleteSuccess()
+    {
+        // checks if complete.
+        return AllConnected();
+    }
+
+    // resets the puzzle.
+    public override void ResetPuzzle()
+    {
+        // disconnects all nodes.
+        foreach(WireConnectNode node in nodes)
+        {
+            node.Disconnect();
+        }
+
+        // TODO: check and see if the reset button works.
+
+        // sets both to null.
+        node1 = null;
+        node2 = null;
+        mouseDown = false;
     }
 
     // Update is called once per frame

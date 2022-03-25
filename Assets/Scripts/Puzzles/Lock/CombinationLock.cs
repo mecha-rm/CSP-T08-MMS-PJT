@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // the combination lock (will have 4 numbers)
-public class CombinationLock : MonoBehaviour
+public class CombinationLock : PuzzleMechanic
 {
-    // the puzzle that this keypad belongs to.
-    public Puzzle puzzle;
-
     // the combination lock entries (four total, but the value can vary).
     public List<int> entries = new List<int>();
 
@@ -102,9 +99,23 @@ public class CombinationLock : MonoBehaviour
         return correct;
     }
 
+    // checks if the puzzle was completed successfully successful.
+    public override bool CompleteSuccess()
+    {
+        // checks if complete.
+        return ConfirmCombination();
+    }
+
+    // resets the puzzle.
+    public override void ResetPuzzle()
+    {
+        // resets all entries to 0.
+        for (int i = 0; i < entries.Count; i++)
+            entries[i] = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // the class for the keypad object.
-public class Keypad : MonoBehaviour
+public class Keypad : PuzzleMechanic
 {
-    // the puzzle that this keypad belongs to.
-    public Puzzle puzzle;
-
     // the text for the keypad
     public string text = "*****";
+
+    // the default text.
+    private string defaultText = "*****";
 
     // the length limit for the text.
     // if it's negative, then there is no limit.
@@ -26,7 +26,9 @@ public class Keypad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        defaultText = text;
     }
+
 
     // adds text to the text object.
     public void AddCharacter(char ch)
@@ -70,6 +72,20 @@ public class Keypad : MonoBehaviour
             puzzle.OnPuzzleCompletion();
 
         return correct;
+    }
+
+    // checks if the puzzle was completed successfully successful.
+    public override bool CompleteSuccess()
+    {
+        // checks if complete.
+        return ConfirmEntry();
+    }
+
+    // resets the puzzle.
+    public override void ResetPuzzle()
+    {
+        // reset to the default text.
+        text = defaultText;
     }
 
     // Update is called once per frame

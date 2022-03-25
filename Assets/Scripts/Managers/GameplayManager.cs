@@ -180,14 +180,14 @@ public class GameplayManager : Manager
             indexes.Push(0);
         
             // blank IDs do not stack.
-            if(item.stackId != "")
+            if(item.itemId != "")
             {
                 // checks for stackable items.
                 // skips the first index since it has already been put into the list.
                 for (int i = 1; i < itemList.Count; i++)
                 {
                     // items should stack.
-                    if (itemList[i].stackId == item.stackId)
+                    if (itemList[i].itemId == item.itemId)
                         indexes.Push(i); // save index.
 
                 }

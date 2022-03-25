@@ -251,6 +251,22 @@ public class WireConnectNode : MonoBehaviour
         return connected;
     }
 
+    // disconnects the node.
+    public void Disconnect()
+    {
+        // disconnects on this end.
+        connected = false;
+
+        // disconnects on the other end.
+        if (paired != null)
+            paired.connected = false;
+
+        // hides both lines.
+        line.enabled = false;
+        paired.line.enabled = false;
+
+    }
+
     // Update is called once per frame
     void Update()
     {

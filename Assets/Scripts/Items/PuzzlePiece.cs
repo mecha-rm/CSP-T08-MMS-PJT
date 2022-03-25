@@ -22,8 +22,8 @@ public class PuzzlePiece : Item
             itemDesc = "An unnumbered puzzle piece.";
 
         // stack id
-        if (stackId == "") // stack all puzzle pieces.
-            stackId = defaultStackId;
+        if (itemId == "") // stack all puzzle pieces.
+            itemId = defaultStackId;
 
         // item icon not set.
         if (itemIcon == null)
