@@ -3,17 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // a maze puzzle.
+// NOTE: the maze movement assumes the maze has a rotation of (0, 0, 0)
+// this means that (x,z) are used for movement.
+// if the maze is oriented in another way, use a parent object and child the marker to it.
 public class Maze : PuzzleMechanic
 {
     // the maze direction.
     // straight and forward mean the same thing.
     public enum mazeDirec { left, right, forward, back }
 
+    // marker variables.
+    [Header("Marker")]
+
     // the marker that shows the current position.
     public GameObject marker;
 
-    // the reset position of the marker.
-    private Vector3 markerResetPos;
+    // if 'true', the marker rotates when moved.
+    // this changes what direction the marker is going in.
+    public bool reorientMarker = true;
+
+    // these values are automatically set.
+    // the reset position of the marker. This is set the marker's position at the start.
+    public Vector3 markerResetPos;
+
+    // the marker's reset rotation in eulers.
+    public Vector3 markerResetRotEulers;
+
+    // if 'true', the reset tranformation is automatically set.
+    public bool autoSetResetTransform = true;
 
     // TODO: leave room for opening doors animation.
 
@@ -46,20 +63,6 @@ public class Maze : PuzzleMechanic
     public KeyCode backKey1 = KeyCode.DownArrow;
     public KeyCode backKey2 = KeyCode.S;
 
-    // rotations
-    // TODO: setup the orientation properly so that these functions actually work.
-    [Header("Key Codes/Rotations")]
-    // if the rotation keys should be available.
-    public bool useRotationKeys = true;
-
-    // positive rotation
-    public KeyCode posRotKey1 = KeyCode.PageUp;
-    public KeyCode posRotKey2 = KeyCode.Q;
-
-    // negative rotation.
-    public KeyCode negRotKey1 = KeyCode.PageDown;
-    public KeyCode negRotKey2 = KeyCode.E;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -75,8 +78,15 @@ public class Maze : PuzzleMechanic
             
 
         // saves the marker position.
-        if (marker != null)
+        if (marker != null && autoSetResetTransform)
+        {
+            // reset position
             markerResetPos = marker.transform.position;
+
+            // reset euler rotation
+            markerResetRotEulers = marker.transform.eulerAngles;
+        }
+            
 
         // there is only one maze puzzle, so it's filled by default.
         if (path.Count == 0)
@@ -102,13 +112,11 @@ public class Maze : PuzzleMechanic
 
     }
 
-    // rotates the maze view.
-    // TODO:maybe have the maze be the wrong perspective by default?
-    public void Rotate(bool positive)
+    // rotates the maze view by 90 degrees.
+    // this was made because of a misinterpretation of what the client wanted.
+    // this function is still here, but it goes unused.
+    public void Rotate90(bool positive)
     {
-        // TODO: maybe rotate the camera instead?
-        // TODO: make sure this aligns with the orientation of the maze.
-
         // rotates the view of the maze.
         transform.Rotate(transform.up, (positive) ? 90.0F : -90.0F);
     }
@@ -127,33 +135,64 @@ public class Maze : PuzzleMechanic
         if(path[index] == direc)
         {
             index++;
-
-            // the marker's position translation
-            Vector3 translate = Vector3.zero;
-
-            // translation amount.
-            switch(direc)
+            
+            // move the marker if it exists.
+            if(marker != null)
             {
-                case mazeDirec.left: // -x
-                    translate.x = -spaceSize * transform.localScale.x;
-                    break;
-                case mazeDirec.right: // +x
-                    translate.x = spaceSize * transform.localScale.x;
-                    break;
+                // the marker's position translation
+                Vector3 translate = Vector3.zero;
 
-                case mazeDirec.forward: // y+
-                    translate.y = spaceSize * transform.localScale.y;
-                    break;
-                case mazeDirec.back: // -y
-                    translate.y = -spaceSize * transform.localScale.y;
-                    break;
+                // translation amount.
+                switch (direc)
+                {
+                    case mazeDirec.left: // -x
+                        translate.x = -spaceSize * transform.localScale.x;
+                        break;
+                    case mazeDirec.right: // +x
+                        translate.x = spaceSize * transform.localScale.x;
+                        break;
+
+                    case mazeDirec.forward: // z+
+                        translate.z = spaceSize * transform.localScale.z;
+                        break;
+                    case mazeDirec.back: // -z
+                        translate.z = -spaceSize * transform.localScale.z;
+                        break;
+                }
+
+                // marker translation
+                // the translation function goes by the 'forward' of the marker.
+                marker.transform.Translate(translate);
+
+
+                // if the marker should face the direction it moved in. 
+                if (reorientMarker)
+                {
+                    float angle = 0;
+
+                    // checks what direction the marker went.
+                    switch (direc)
+                    {
+                        case mazeDirec.left: // rotated left
+                            angle = -90.0F;
+                            break;
+                        case mazeDirec.right: // rotated right
+                            angle = 90.0F;
+                            break;
+
+                        case mazeDirec.forward: // no rotation
+                            angle = 0.0F;
+                            break;
+                        case mazeDirec.back: // rotated left twice/right twice
+                            angle = 180.0F;
+                            break;
+                    }
+
+                    // rotates the marker.
+                    marker.transform.Rotate(Vector3.up, angle);
+                }
             }
-
-            // marker translation
-            marker.transform.Translate(translate);
-
-            // TODO: prevent marker from leaving the maze.
-            // TODO: the wrong input resets the marker to the start. Is this what the client wants?
+            
 
             // check if the player has completed the maze.
             if (index >= path.Count)
@@ -201,8 +240,16 @@ public class Maze : PuzzleMechanic
         // reset to the default text.
         index = 0;
 
-        // reset position.
-        marker.transform.position = markerResetPos;
+        // reset position of the marker.
+        if(marker != null)
+        {
+            // reset position.
+            marker.transform.position = markerResetPos;
+
+            // reset rotation.
+            marker.transform.eulerAngles = markerResetRotEulers;
+        }
+            
     }
 
     // Update is called once per frame
@@ -223,18 +270,6 @@ public class Maze : PuzzleMechanic
         // moves backward.
         if (Input.GetKeyDown(backKey1) || Input.GetKeyDown(backKey2))
             OnInput(mazeDirec.back);
-
-        // rotates the maze.
-        if(useRotationKeys)
-        {
-            // rotate left (+rot)
-            if (Input.GetKeyDown(posRotKey1) || Input.GetKeyDown(posRotKey2))
-                Rotate(true);
-
-            // rotate right (-rot)
-            if (Input.GetKeyDown(negRotKey1) || Input.GetKeyDown(negRotKey2))
-                Rotate(false);
-        }
         
     }
 }

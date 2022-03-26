@@ -8,6 +8,8 @@ public abstract class PuzzleMechanic : MonoBehaviour
     // the puzzle that this keypad belongs to.
     public Puzzle puzzle;
 
+    // TODO: have puzzle enabled
+
     // TODO: make puzzle start?
 
     // checks if the puzzle is complete.

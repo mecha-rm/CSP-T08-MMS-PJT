@@ -29,6 +29,9 @@ public class EndManager : Manager
     // the text for the bonus item.
     public Text bonusText;
 
+    // the screenshot button.
+    public Button screenshotButton;
+
     // Screenshot stuff from Robert
     [DllImport("__Internal")]
     private static extern void openWindow(string url);
@@ -77,6 +80,23 @@ public class EndManager : Manager
                 bonusText.text = "Got Bonus Item!";
             else
                 bonusText.text = "Did not get bonus item.";
+        }
+
+        // if the screenshot button has been set.
+        if(screenshotButton != null)
+        {
+            // TODO: comment this out to disable the screenshot button in the editor.
+            // the game doesn't break if the button is pressed in the editor, but it won't work either.
+
+            // // if not in the editor, and the platform is a webgl player
+            // if(!Application.isEditor && Application.platform == RuntimePlatform.WebGLPlayer)
+            // {
+            //     screenshotButton.interactable = true;
+            // }
+            // else // disable button since it can't be used.
+            // {
+            //     screenshotButton.interactable = false;
+            // }
         }
             
 

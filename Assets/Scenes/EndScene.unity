@@ -539,6 +539,7 @@ MonoBehaviour:
   nameInputField: {fileID: 161091200}
   timeText: {fileID: 613427992}
   bonusText: {fileID: 1243915313}
+  screenshotButton: {fileID: 1662597537}
 --- !u!1 &399921680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,7 +2118,7 @@ GameObject:
   - component: {fileID: 1841223124}
   - component: {fileID: 1841223123}
   m_Layer: 5
-  m_Name: Congratulations
+  m_Name: Congratulations Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
