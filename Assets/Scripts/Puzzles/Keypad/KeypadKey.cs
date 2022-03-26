@@ -37,7 +37,7 @@ public class KeypadKey : MonoBehaviour
     }
 
     // performs the function.
-    private void PerformFunction()
+    public void PerformFunction()
     {
         // the text character this key provides.
         if (keypad != null)
