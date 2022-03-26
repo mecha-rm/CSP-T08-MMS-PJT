@@ -23,6 +23,11 @@ public class LockEntry : MonoBehaviour
     // on the entry being clocked on.
     private void OnMouseDown()
     {
+        IncreaseCombo();
+    }
+
+    public void IncreaseCombo()
+    {
         // increaes the entry.
         if (comboLock != null)
             comboLock.IncreaseEntryByOne(index);

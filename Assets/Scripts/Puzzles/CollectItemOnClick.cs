@@ -26,6 +26,8 @@ public class CollectItemOnClick : ToggleActiveOnClick
         // calls base function.
         base.OnToggle();
 
+        Debug.Log("Item toggled");
+
         // TODO: give item to player before toggling it.
         // also, maybe take out the conditional statement here?
 
