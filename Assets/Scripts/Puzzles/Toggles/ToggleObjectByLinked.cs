@@ -5,24 +5,52 @@ using UnityEngine;
 // toggles the paired object if all the linked objects are deactivated.
 public class ToggleObjectByLinked : ToggleObjectOnClick
 {
+    [Header("ToggleObjectByLinked")]
+
     // toggles off once all the linkedo objects are off.
-    public List<ToggleObjectOnClick> linkedObjects;
+    [Tooltip("The objects linked to this object.")]
+    public List<ToggleObjectOnClick> linkedObjects = new List<ToggleObjectOnClick>();
+
+    // if 'true', the list adds in the children.
+    [Tooltip("Add the children to the object to the linkedObjects list. This does not check for duplicates.")]
+    public bool addChildren = true;
 
     // if 'true', it's checking for objects being active.
     // if 'false', it's checking for objects being inactive.
+    [Tooltip("If 'true', it's checking if the objects are active or enabled. " +
+        "If false, it checks if the objects are inactived or disabled." +
+        "This is based on the 'checkLinked' parameter.")]
     public bool checkingActive = false;
 
     // if 'true', toggling the object is checked automatically in every update.
+    [Tooltip("If 'true', this script checks for toggling every update. " +
+        "If false, it doesn't, and you need to use Toggle() to do so.")]
     public bool checkInUpdate = true;
 
     // if 'true', only the linked components are checked.
     // if 'false', whether or not the object is checked.
+    [Tooltip("If 'true', the ToggleObjectOnClick components are checked to see if they're enabled. " +
+        "If false, whether or not the objects are active is checked.")]
     public bool checkLinkedComponents;
 
     // Start is called before the first frame update
     protected new void Start()
     {
         base.Start();
+
+        // if the children should be added.
+        if(addChildren)
+        {
+            // grabs the children.
+            List<ToggleObjectOnClick> list = new List<ToggleObjectOnClick>();
+            GetComponentsInChildren<ToggleObjectOnClick>(list);
+
+            // adds the objects to the list.
+            linkedObjects.AddRange(list);
+
+            // removes this component if it ended up in the list.
+            linkedObjects.Remove(this);
+        }
     }
 
     // activates all linked objects

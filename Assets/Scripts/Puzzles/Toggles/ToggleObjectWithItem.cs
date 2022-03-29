@@ -6,13 +6,21 @@ using UnityEngine;
 // toggles something on or off if the correct item is had.
 public class ToggleObjectWithItem : ToggleObjectOnClick
 {
+    [Header("ToggleObjectWithItem")]
+
     // the gameplay manager.
     public GameplayManager manager;
 
     // the item (stack ids) for the used items.
+    [Tooltip("The items being checked for. If no IDs are provided, the object is toggled without needing anything.")]
     public List<string> itemIds;
 
+    // NOTE: this doesn't allow for multiple instances of a given item being needed.
+    // this isn't needed for the project, so it will not be programmed.
+
     // if 'true', all items must be in the player's possession for this to work.
+    [Tooltip("If 'true', all items in the list are needed for the toggle to happen." +
+        "This only requires one of each item to trigger the toggle if set to true.")]
     public bool needAll = true;
 
     // Start is called before the first frame update

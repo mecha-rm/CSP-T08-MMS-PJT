@@ -38,6 +38,12 @@ public class Player : MonoBehaviour
         mouseLight.SetLightEnabled(e);
     }
 
+    // gives the player an item.
+    public void GiveItem(Item item)
+    {
+        inventory.Add(item);
+    }
+
     // checks if the player has a given item.
     public bool HasItem(string itemId)
     {
