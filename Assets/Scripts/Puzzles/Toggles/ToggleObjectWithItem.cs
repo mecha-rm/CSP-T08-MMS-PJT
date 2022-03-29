@@ -4,7 +4,7 @@ using UnityEngine;
 
 // TODO: implement light box.
 // toggles something on or off if the correct item is had.
-public class ToggleActiveWithItem : ToggleActiveOnClick
+public class ToggleObjectWithItem : ToggleObjectOnClick
 {
     // the gameplay manager.
     public GameplayManager manager;
@@ -16,8 +16,10 @@ public class ToggleActiveWithItem : ToggleActiveOnClick
     public bool needAll = true;
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Start();
+
         if(manager != null)
             manager = FindObjectOfType<GameplayManager>();
 
@@ -73,8 +75,8 @@ public class ToggleActiveWithItem : ToggleActiveOnClick
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
-        
+        base.Update();
     }
 }

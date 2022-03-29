@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // collects the item upon it being clicked on.
-public class CollectItemOnClick : ToggleActiveOnClick
+public class CollectItemOnClick : ToggleObjectOnClick
 {
     // the item that will be enabled or disabled upon this click occurring.
     public Item item;

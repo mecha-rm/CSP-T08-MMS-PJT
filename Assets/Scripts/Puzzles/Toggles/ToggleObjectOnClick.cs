@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // toggles the activity of the object upon being clicked.
-public class ToggleActiveOnClick : MonoBehaviour
+public class ToggleObjectOnClick : MonoBehaviour
 {
     // game object this component relates to.
     public GameObject pairedObject = null;
@@ -22,8 +22,11 @@ public class ToggleActiveOnClick : MonoBehaviour
     // if 'true', unity mouse operations triggered on this object also apply.
     public bool useUnityMouse = true;
 
+    // if 'true', the component is enabled/disabled instead of the object being activated/deactivated.
+    public bool changeToggleComponent = false;
+
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         // if go is set to null.
         if (pairedObject == null)
@@ -50,11 +53,39 @@ public class ToggleActiveOnClick : MonoBehaviour
     protected virtual void OnToggle()
     {
         toggle = false; // allows deactivation again if activated again.
-        pairedObject.SetActive(!pairedObject.activeSelf); // deactivates the paired object.
+
+        // checks if the component should be toggled, or the whole object.
+        if (changeToggleComponent) // toggle component
+        {
+            ToggleObjectOnClick temp;
+
+            // tries to grab thecomponent.
+            if(pairedObject.TryGetComponent(out temp))
+            {
+                // disables the component only.
+                temp.enabled = false;
+            }
+            else
+            {
+                // failed.
+                Debug.LogError("The object does not have a ToggleObjectOnClick component.");
+            }
+        }
+        else // toggle whole object.
+        {
+            pairedObject.SetActive(!pairedObject.activeSelf); // deactivates the paired object.
+        }
+        
+    }
+
+    // toggles the entity.
+    public virtual void Toggle()
+    {
+        OnToggle();
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         // checks interact variable.
         if (interact != null)
