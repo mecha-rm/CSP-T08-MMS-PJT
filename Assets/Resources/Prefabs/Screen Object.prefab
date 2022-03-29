@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6156828910853453653}
   - component: {fileID: 6156828910853453651}
-  - component: {fileID: 6156828910853453650}
+  - component: {fileID: -156592686222504753}
   m_Layer: 0
   m_Name: Screen Object
   m_TagString: Untagged
@@ -44,21 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c95c923ab3ad54b8c9999f9e47ac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   screenName: 
   screenDesc: 
+  orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
---- !u!20 &6156828910853453650
+--- !u!20 &-156592686222504753
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6156828910853453652}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -85,7 +87,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 7
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1

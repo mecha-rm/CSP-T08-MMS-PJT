@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
     {
         // sets the frame rate.
         // this only really needs to be called at the title scene.
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 30;
     }
 
     // toggles the activity of a game object.

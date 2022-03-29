@@ -19,6 +19,9 @@ public class RoomScreen : MonoBehaviour
     // the description of the screen. This can be used to describe what the player can view.
     public string screenDesc = "";
 
+    // if 'true', this scene uses a perspective camera. If false, this screen using an orthographic camera.
+    public bool orthographic = false;
+
     // manager for the game.
     public GameplayManager manager;
 
@@ -58,10 +61,14 @@ public class RoomScreen : MonoBehaviour
     // called when entering the screen.
     public virtual void OnScreenEnter()
     {
+        // TODO: change camera settings.
+
         // checks if the lighting for the room is on.
         if(room != null)
         {
-            manager.SetRoomLightingEnabled(room.IsLightingEnabled());
+            // if the room lighting should change.
+            if (manager.IsRoomLightingEnabled() != room.lightsOn)
+                room.SetLightingEnabled(room.lightsOn);
 
             // if the room activity should be changed.
             // if(disableInactiveRoom)

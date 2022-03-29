@@ -23,19 +23,59 @@ public class Player : MonoBehaviour
 
         // finds the mouse light in the scene.
         if (mouseLight == null)
-            mouseLight = FindObjectOfType<MouseLight>();
+            mouseLight = FindObjectOfType<MouseLight>(true);
     }
 
-    // returns 'true' if the mouse light is enabled.
+    // returns 'true' if the mouse light component is enabled
     public bool IsMouseLightEnabled()
     {
         return mouseLight.IsLightEnabled();
     }
 
-    // sets mouse light enabled.
+    // sets mouse light enabled (enables component).
     public void SetMouseLightEnabled(bool e)
     {
         mouseLight.SetLightEnabled(e);
+    }
+
+    // gives the player an item.
+    public void GiveItem(Item item)
+    {
+        inventory.Add(item);
+    }
+
+    // checks if the player has a given item.
+    public bool HasItem(string itemId)
+    {
+        // goes through inventory.
+        foreach(Item item in inventory)
+        {
+            // id match.
+            if (item.itemId == itemId)
+                return true;
+        }
+
+        // no id match.
+        return false;
+    }
+
+    // returns 'true' if the player has all of the puzzle pieces.
+    public bool HasAllPuzzlePieces()
+    {
+        // the last piece is already in the frame, so the player must collect it before they can fill the frame.
+        // TODO: maybe rework this?
+        int ownedPieces = 0;
+        string stackId = PuzzlePiece.DefaultStackId;
+
+        // goes through the inventory.
+        foreach(Item item in inventory)
+        {
+            if (item.itemId == stackId)
+                ownedPieces++;
+        }
+
+        // all puzzle pieces collected.
+        return (ownedPieces == GameplayManager.PuzzlePieceCount);
     }
 
     // Update is called once per frame

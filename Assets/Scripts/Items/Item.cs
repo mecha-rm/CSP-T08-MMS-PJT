@@ -13,8 +13,9 @@ public class Item : MonoBehaviour
     public string itemDesc = "";
 
     // the ID for stacking the item for the UI display.
+    // TODO: maybe hide this from the inspector?
     [Tooltip("Items with the same ID are stacked together for the inventory display. Blank IDs do not stack with anything.")]
-    public string stackId = "";
+    public string itemId = "";
 
     // the icon for this item to be used in the user interface.
     // the items CANNOT be destroyed, otherwise the icons are lost.

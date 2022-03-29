@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // used for saving user-interface components.
+using UnityEngine.Rendering.PostProcessing; // post processing volume.
 
 // manages gameplay operations.
 public class GameplayManager : Manager
@@ -11,6 +12,10 @@ public class GameplayManager : Manager
 
     // the mouse operations for the game.
     public Mouse mouse;
+
+    // post processing object.
+    // this is used to simulate the flashlight.
+    public GameObject postProcessing;
 
     // the current screen. It also saves the next screens.
     [Tooltip("The current screen. This this to the starting screen when you start running the game.")]
@@ -23,6 +28,12 @@ public class GameplayManager : Manager
 
     // the last object that has been clicked.
     private GameObject lastClicked = null;
+
+    // if 'true', the player got the bonus easter egg.
+    public bool hasCertificate;
+
+    // the timer for the game. There should only be one.
+    public Timer timer;
 
     // inventory UI
     [Header("UI/Inventory")]
@@ -55,6 +66,18 @@ public class GameplayManager : Manager
         if (mouse == null)
             mouse = FindObjectOfType<Mouse>();
 
+        // if the post processing object has not been set.
+        if(postProcessing == null)
+        {
+            // looks to find the post-process volume.
+            PostProcessVolume volume = FindObjectOfType<PostProcessVolume>(true);
+
+            // object found.
+            if (volume != null)
+                postProcessing = volume.gameObject;
+
+        }
+
         // // if no current screen is set, just set a random room.
         // if (currentScreen == null)
         //     currentScreen = FindObjectOfType<RoomScreen>();
@@ -66,41 +89,9 @@ public class GameplayManager : Manager
             currentScreen.EnableScreen();
         }
 
-        // // if any of the item components are empty.
-        // if(item1 == null || item2 == null || item3 == null || item4 == null || item5 == null)
-        // {
-        //     // grabs all the components (will likely be out of order)
-        //     ItemIcon[] icons = FindObjectsOfType<ItemIcon>();
-        // 
-        //     // puts in components.
-        //     for(int i = 0; i < icons.Length; i++)
-        //     {
-        //         // finds empty object.
-        //         switch(i)
-        //         {
-        //             case 0:
-        //                 if (item1 == null)
-        //                     item1 = icons[i];
-        //                 break;
-        //             case 1:
-        //                 if (item2 == null)
-        //                     item2 = icons[i];
-        //                 break;
-        //             case 2:
-        //                 if (item3 == null)
-        //                     item3 = icons[i];
-        //                 break;
-        //             case 3:
-        //                 if (item4 == null)
-        //                     item4 = icons[i];
-        //                 break;
-        //             case 4:
-        //                 if (item5 == null)
-        //                     item5 = icons[i];
-        //                 break;
-        //         }
-        //     }
-        // }
+        // grabs the timer component.
+        if (timer == null)
+            timer = GetComponent<Timer>();
             
     }
 
@@ -189,14 +180,14 @@ public class GameplayManager : Manager
             indexes.Push(0);
         
             // blank IDs do not stack.
-            if(item.stackId != "")
+            if(item.itemId != "")
             {
                 // checks for stackable items.
                 // skips the first index since it has already been put into the list.
                 for (int i = 1; i < itemList.Count; i++)
                 {
                     // items should stack.
-                    if (itemList[i].stackId == item.stackId)
+                    if (itemList[i].itemId == item.itemId)
                         indexes.Push(i); // save index.
 
                 }
@@ -217,6 +208,15 @@ public class GameplayManager : Manager
             // updates the icon.
             // if there is only one item in the stack the number is not listed.
             itemIcon.UpdateIcon(item.itemIcon, amount, (amount > 1));
+        }
+    }
+
+    // returns the amount of puzzle pieces in the game.
+    public static int PuzzlePieceCount
+    {
+        get
+        {
+            return 9;
         }
     }
 
@@ -280,18 +280,74 @@ public class GameplayManager : Manager
 
     }
     
-    // returns 'true' if the room lighting is enabled.
+    // TODO: turn off local emissive lights in the rooms.
+
+    // checks if the room's lighting is enabled.
+    // this works by altering the post-processing layer.
     public bool IsRoomLightingEnabled()
     {
-        return currentScreen.room.IsLightingEnabled();
+        // does the current room have its lighting enabled?
+        // return currentScreen.room.IsLightingEnabled();
+
+
+        // this simulates a flashlight, so if it's on, the room lighting is considered off.
+        if (postProcessing != null)
+            return !postProcessing.activeSelf;
+        
+        // on by default.
+        return true;
     }
 
-    // sets if the room lights should be enabled.
+    // sets whether the room lighting is on.
+    // if it's off, the post processing 
     public void SetRoomLightingEnabled(bool e)
     {
-        currentScreen.room.SetLightingEnabled(e);
+        // variable not set.
+        if (postProcessing == null)
+            return;
+
+        // turn on post processing to simulate flashlight if lights are off.
+        // postProcessing.SetActive(!e);
+
+        // call this function to change the settings.
+        // currentScreen.room.SetLightingEnabled(e);
+
+
+        // if the post-processing effect is on, the lighting is considered "off".
+        // Debug.Log("Room Lighting: " + e.ToString());
+
+        // enable the post-processing effect.
+        postProcessing.SetActive(!e);
+
+        // sets the mouse light so that it can control the post-processed vingette effect.
         player.SetMouseLightEnabled(!e);
     }
+
+    // called when the game ends.
+    // this is called by the exit screen.
+    public void OnGameEnd()
+    {
+        // tries to find the results data object if it already exists.
+        ResultsData resultsData = FindObjectOfType<ResultsData>();
+
+        // this object doe not exist, so make a new object.
+        if (resultsData == null)
+        {
+            GameObject temp = new GameObject("Game Results");
+            resultsData = temp.AddComponent<ResultsData>();
+        }
+
+        // saves the current time.
+        if(timer != null)
+            resultsData.completionTime = timer.currentTime;
+
+        // saves this value.
+        resultsData.gotCertificate = hasCertificate;
+
+        // goes to the end screen.
+        SceneHelper.LoadScene("EndScene");
+    }
+
 
     // Update is called once per frame
     void Update()
