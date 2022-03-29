@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // toggles the activity of the object upon being clicked.
+// NOTE: this does not seem to like spherical colliders in 2D. It seems fine with 3D Box Colliders in 2D though.
+// So, do NOT use sphereical colliders if you plan on using these functions in orthographic mode.
 public class ToggleObjectOnClick : MonoBehaviour
 {
     // game object this component relates to.

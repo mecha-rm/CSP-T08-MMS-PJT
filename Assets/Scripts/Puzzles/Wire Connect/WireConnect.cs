@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // wire connection puzzle
+// NOTE: do not use sphere colliders in orthographic mode for this.
 public class WireConnect : PuzzleMechanic
 {
     // the first node.
