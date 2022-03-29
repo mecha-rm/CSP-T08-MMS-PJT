@@ -15,6 +15,7 @@ public class Maze : PuzzleMechanic
     // marker variables.
     [Header("Marker")]
 
+    // TODO: change the marker so that it has bounds on where it can go.
     // the marker that shows the current position.
     public GameObject marker;
 
@@ -33,6 +34,14 @@ public class Maze : PuzzleMechanic
     public bool autoSetResetTransform = true;
 
     // TODO: leave room for opening doors animation.
+
+    // TODO: implement way to limit marker's movements.
+    // TODO: make it so that the marker has the option of not getting reset.
+    // the maze size in units.
+    public Vector2Int mazeSize;
+
+    // the cell that the marker starts in. This way the program knows how to limit the marker's movements.
+    public Vector2Int markerSpace;
 
     // the size of the space the marker is in.
     // this controls where the marker moves.
