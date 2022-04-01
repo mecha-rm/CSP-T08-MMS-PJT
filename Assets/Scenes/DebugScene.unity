@@ -5347,11 +5347,6 @@ MonoBehaviour:
   deactivateCopies: 0
   copyOnStart: 1
   copyInEditMode: 0
-  previewObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  preview: 1
   iteration: 0
   totalIterations: 3
   direction: 1
