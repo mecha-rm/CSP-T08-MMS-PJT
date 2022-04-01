@@ -5342,18 +5342,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2660927fc285239438388753f135e7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: {fileID: 0}
+  original: {fileID: 1582592831}
   originalAsParent: 0
   deactivateCopies: 0
   copyOnStart: 1
   copyInEditMode: 0
+  previewObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  preview: 1
   iteration: 0
   totalIterations: 3
-  direction: 0
+  direction: 1
   relativeToOriginal: 1
   spacing: 1
   applyScaleForSpacing: 1
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 2, y: 0, z: 0}
 --- !u!1 &1586191961
 GameObject:
   m_ObjectHideFlags: 0
