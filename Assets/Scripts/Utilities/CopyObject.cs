@@ -1,8 +1,17 @@
-﻿using System.Collections;
+﻿/*
+ * References:
+ * https://docs.unity3d.com/ScriptReference/ExecuteInEditMode.html
+ * https://docs.unity3d.com/ScriptReference/ExecuteAlways.html
+ * https://www.youtube.com/watch?v=EFSXZO32h_0
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 // copies the object.
+// this makes the script execute in edit mode.
+[ExecuteInEditMode]
 public class CopyObject : MonoBehaviour
 {
     // the direction of the copying.
@@ -17,8 +26,18 @@ public class CopyObject : MonoBehaviour
         "If false, the copies keep the originals parent.")]
     public bool originalAsParent = false;
 
+    // if 'true', the copies are inactive when generated. 
+    [Tooltip("Deactivates copies if true. If false, the activeSelf value is kept from the parent.")]
+    public bool deactivateCopies = false;
+
+    // initiates in the start function.
     [Tooltip("Generates copies when the program starts. This is set to 'false' when the Start() function is finished.")]
     public bool copyOnStart = true;
+
+    // if 'true', the copies are made in edit mode. This acts a button of sorts, and forces 'copyOnStart' to be true until it's done.
+    [Tooltip("A button that generates copies in edit mode. This forces copyOnStart to be active until the copies are made."
+        + "The copies must also be manually deleted by the user.")]
+    public bool copyInEditMode = false;
 
     [Header("Iterations")]
 
@@ -54,20 +73,30 @@ public class CopyObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // this is the original game object.
-        if (original == null)
-            original = gameObject;
-
-        // generates the copies.
-        if (copyOnStart)
+        // copy the object in edit mode, or if the application is playing.
+        if(copyInEditMode || Application.isPlaying)
         {
-            // sets this as false for generating copies on start.
-            // this is to prevent an infinte loop if the object has multiple instances of this script attached to it.
-            copyOnStart = false;
+            // should not make more copies once this runs once in edit mode.
+            copyInEditMode = false;
 
-            GenerateCopies();
+            // this is the original game object.
+            if (original == null)
+                original = gameObject;
+
+            // generates the copies.
+            if (copyOnStart)
+            {
+                // sets this as false for generating copies on start.
+                // this is to prevent an infinte loop if the object has multiple instances of this script attached to it.
+                copyOnStart = false;
+
+                GenerateCopies();
+            }
         }
+        
     }
+
+
 
     // returns the iteration number of the variable.
     public int Iteration
@@ -118,10 +147,14 @@ public class CopyObject : MonoBehaviour
     }
 
     // generates a copy, providing the iteration of said copy.
-    public CopyObject GenerateCopy(int iter)
+    public CopyObject GenerateCopy(int iter, bool deactivateCopy = false)
     {
         // makss a copy.
         CopyObject copy = Instantiate(this, transform.position, transform.rotation);
+
+        // if 'true', it deactivates the copy.
+        if(deactivateCopy)
+            copy.gameObject.SetActive(false);
 
         // this is the original.
         copy.original = original;
@@ -150,11 +183,14 @@ public class CopyObject : MonoBehaviour
         // translates the copy by the offset.
         copy.transform.Translate(offset * iter);
 
-        // TODO: fix this.
-        // if the parent is the parent.
+        // if 'original' should be the parent of the copy.
         if (originalAsParent)
         {
-            copy.transform.parent = transform;
+            // checks if original is set. If it isn't, it uses this object.
+            if (original != null)
+                copy.transform.parent = original.transform;
+            else
+                copy.transform.parent = transform;
         }
 
         return copy;
@@ -163,11 +199,11 @@ public class CopyObject : MonoBehaviour
     // generates a series of copies in accordance with totalIterations.
     public void GenerateCopies()
     {
-        GenerateCopies(totalIterations);
+        GenerateCopies(totalIterations, deactivateCopies);
     }
 
     // generates a series of copies in accordance with totalIterations.
-    public void GenerateCopies(int totalIters)
+    public void GenerateCopies(int totalIters, bool deactivateAll = false)
     {
         // no iterations.
         if (totalIters <= 0)
@@ -177,7 +213,27 @@ public class CopyObject : MonoBehaviour
         for(int i = 1; i <= totalIters; i++)
         {
             // generates a copy.
-            CopyObject copy = GenerateCopy(i);
+            CopyObject copy = GenerateCopy(i, deactivateAll);
+        }
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        // recalls the start function if this should run in edit mode.
+        if(Application.isEditor && copyInEditMode)
+        {
+            // saves the original start value.
+            bool startOrig = copyOnStart;
+
+            // since this is running in the editor, this should be set to true.
+            copyOnStart = true;
+
+            // calls Start() to set things up.
+            Start();
+
+            // restores it so that it's set for next time.
+            copyOnStart = startOrig;
         }
     }
 }
