@@ -9,7 +9,8 @@ public class Puzzle : MonoBehaviour
     // the description of the puzzle.
     public Descriptor desc;
 
-    // TODO: add completion parameter.
+    // becomes 'true' when the puzzle is complete.
+    // commented out because the puzzle might have multiple parts.
     // public bool puzzleComplete = false;
 
     // Start is called before the first frame update
@@ -23,12 +24,15 @@ public class Puzzle : MonoBehaviour
     // called when the puzzle is completed.
     public virtual void OnPuzzleCompletion()
     {
-        // the puzzle is complete.
-        // puzzleComplete = true;
-
         // override this function for the individual puzzle.
         // TODO: comment out this message.
         Debug.Log("Puzzle Complete!");
+    }
+
+    // called when the puzzle is being reset.
+    public virtual void OnPuzzleReset()
+    {
+        // ...
     }
 
     // Update is called once per frame

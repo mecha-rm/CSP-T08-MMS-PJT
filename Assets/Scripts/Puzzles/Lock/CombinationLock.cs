@@ -114,6 +114,10 @@ public class CombinationLock : PuzzleMechanic
         // resets all entries to 0.
         for (int i = 0; i < entries.Count; i++)
             entries[i] = 0;
+
+        // called to reset the puzzle.
+        if (puzzle != null)
+            puzzle.OnPuzzleReset();
     }
 
     // Update is called once per frame

@@ -43,15 +43,13 @@ public class ConveyorBelt : PuzzleMechanic
         // checks for the correct input.
         if (buttonInputs.Count == buttonOrder.Count)
         {
-            IsCorrectInputOrder(false);
-            IsCorrectInputOrder(true);
+            IsCorrectInputOrder();
         }
             
     }
 
     // checks if the combination is correct.
-    // if 'reversed' is true, then it checks if the combination is correct in reverse.
-    public bool IsCorrectInputOrder(bool reversed)
+    public bool IsCorrectInputOrder()
     {
         // if the amount of inputs does not match, it's automatically false.
         if (buttonInputs.Count != buttonOrder.Count)
@@ -60,64 +58,78 @@ public class ConveyorBelt : PuzzleMechanic
         // the result of the check.
         bool result = true;
 
+        // the result to check for a reverse order success.
+        bool resultReversed = true;
+
+
         // gets the button inputs.
         List<ConveyorButton.conveyorButton> order = buttonOrder;
 
-        // TODO: set this up so that it sets the value to false if it fails again.
-
-        // reverses the order of the list.
-        if (reversed)
-            order.Reverse();
-
-        // goes through each button..
+        // goes through each button from start to end.
         for(int i = 0; i < order.Count; i++)
         {
-            // if a mismatch is found, then the wrong order was inputed.
-            if(buttonInputs[i] != order[i])
+            // reverse index.
+            int ir = order.Count - 1 - i;
+
+            // checks forward order.
+            if (buttonInputs[i] != order[i])
             {
                 result = false;
-                break;
             }
+
+
+            // checks reverse order.
+            if (buttonInputs[ir] != order[i])
+            {
+                resultReversed = false;
+            }
+
+
+            // if neither result is true, then the order did not match.
+            if (!result && !resultReversed)
+                break;
         }
 
         // wrong button combination, so clear out the inputs.
-        if (!result)
+        if (!result && !resultReversed)
             buttonInputs.Clear();
 
-        // checks if things were reversed or not.
-        if (reversed)
-        {
-            completeReversed = result;
-        } 
-        else
-        {
-            complete = result;
-        }
 
-        // prints a message.
-        // TODO: take out print result.
+        // saves the content.
+        complete = result;
+        completeReversed = resultReversed;
+
+        // the combination is in the right order.
         if (result)
-            Debug.Log("COMBINATION" + ((reversed) ? "REVERSE SUCCESS!" : "SUCCESS!"));
+            Debug.Log("Combination in right order.");
         else
-            Debug.Log("FAILED.");
-            
+            Debug.Log("Failed in right order.");
 
-        // TODO: animate the conveyor belt.
+        // the combination is in the reverse order.
+        if (resultReversed)
+            Debug.Log("Combination in reverse order.");
+        else
+            Debug.Log("Failed in reverse order.");
+
+
+        // clears out the button inputs.
+        buttonInputs.Clear();
+
+        // the puzzle is complete.
+        if (result && puzzle != null)
+            puzzle.OnPuzzleCompletion();
 
         // returns the result.
         return result;
     }
 
-    // checks if the combination is correct in the right order.
-    public bool IsCorrectInputOrder()
+    // checks if the input order is in reverse.
+    public bool IsReverseInputOrder()
     {
-        return IsCorrectInputOrder(false);
-    }
+        IsCorrectInputOrder();
 
-    // checks if the inputs match the combination in reverse.
-    public bool IsCorrectInputOrderReversed()
-    {
-        return IsCorrectInputOrder(true);
+        // this value has been changed, so return it.
+        return completeReversed;
     }
 
     // only successful if completed in the right order.
@@ -132,7 +144,12 @@ public class ConveyorBelt : PuzzleMechanic
         complete = false;
         buttonInputs.Clear(); // clears out inputs.
 
+        // called to reset the puzzle.
+        if (puzzle != null)
+            puzzle.OnPuzzleReset();
+
         // TODO: restore conveyor belt to default.
+
     }
 
     // Update is called once per frame

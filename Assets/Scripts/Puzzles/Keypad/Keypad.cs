@@ -87,6 +87,10 @@ public class Keypad : PuzzleMechanic
     {
         // reset to the default text.
         text = defaultText;
+
+        // called to reset the puzzle.
+        if (puzzle != null)
+            puzzle.OnPuzzleReset();
     }
 
     // Update is called once per frame

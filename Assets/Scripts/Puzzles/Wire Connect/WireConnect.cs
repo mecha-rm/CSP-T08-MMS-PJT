@@ -49,22 +49,32 @@ public class WireConnect : PuzzleMechanic
     // checks to see if all of the wires are connected properly.
     public bool AllConnected()
     {
+        // checks to see if everything is connected.
+        bool result = true;
+
         // checks if all of the nodes are connected.
         foreach(WireConnectNode node in nodes)
         {
             // if an unconnected node is found, return false.
             if (!node.connected)
-                return false;
+            {
+                result = false;
+                break;
+            }
         }
 
         // the mouse down is now false.
         mouseDown = false;
 
+        // the puzzle is complete.
+        if (result && puzzle != null)
+            puzzle.OnPuzzleCompletion();
+
         // everything has been connected.
         Debug.Log("All Connected!");
 
         // all of the nodes are connected.
-        return true;
+        return result;
     }
 
     // checks if the puzzle was completed successfully successful.
@@ -89,6 +99,10 @@ public class WireConnect : PuzzleMechanic
         node1 = null;
         node2 = null;
         mouseDown = false;
+
+        // called to reset the puzzle.
+        if (puzzle != null)
+            puzzle.OnPuzzleReset();
     }
 
     // Update is called once per frame

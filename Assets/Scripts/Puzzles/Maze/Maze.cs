@@ -260,7 +260,10 @@ public class Maze : PuzzleMechanic
             // reset rotation.
             marker.transform.eulerAngles = markerResetRotEulers;
         }
-            
+
+        // called to reset the puzzle.
+        if (puzzle != null)
+            puzzle.OnPuzzleReset();
     }
 
     // Update is called once per frame
