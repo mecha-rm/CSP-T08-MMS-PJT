@@ -10,9 +10,10 @@ public class TitleManager : Manager
     public bool screenReaderToggle = false;
     public bool highContrastToggle = false;
 
-    private GameObject screen1;
-    private GameObject screen2;
-    private GameObject screen3;
+    // the screens for the menu.
+    public GameObject screen1;
+    public GameObject screen2;
+    public GameObject screen3;
 
     private GameObject controls;
     private GameObject objective;
@@ -32,9 +33,17 @@ public class TitleManager : Manager
         screenReaderCheckmark = GameObject.Find("Screen Reader Checkmark").GetComponent<Image>();
         highContrastCheckmark = GameObject.Find("High Contrast Checkmark").GetComponent<Image>();
         
-        screen1 = GameObject.Find("Screen 1");
-        screen2 = GameObject.Find("Screen 2");
-        screen3 = GameObject.Find("Screen 3");
+        // screen 1 not set.
+        if(screen1 == null)
+            screen1 = GameObject.Find("Screen 1");
+        
+        // screen 2 not set.
+        if(screen2 == null)
+            screen2 = GameObject.Find("Screen 2");
+        
+        // screen 3 not set.
+        if(screen3 == null)
+            screen3 = GameObject.Find("Screen 3");
 
         screen2.SetActive(false);
         screen3.SetActive(false);

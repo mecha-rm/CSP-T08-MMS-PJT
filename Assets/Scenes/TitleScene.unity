@@ -3606,6 +3606,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenReaderToggle: 0
   highContrastToggle: 0
+  screen1: {fileID: 0}
+  screen2: {fileID: 0}
+  screen3: {fileID: 0}
 --- !u!1 &1897116776
 GameObject:
   m_ObjectHideFlags: 0
