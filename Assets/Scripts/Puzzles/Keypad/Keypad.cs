@@ -24,8 +24,9 @@ public class Keypad : PuzzleMechanic
     public Text textDisplay;
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Start();
         defaultText = text;
     }
 
@@ -89,8 +90,9 @@ public class Keypad : PuzzleMechanic
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
+        base.Update();
         // limits the text length.
         if (lengthLimit >= 0 && text.Length > lengthLimit)
             text = text.Substring(0, lengthLimit);

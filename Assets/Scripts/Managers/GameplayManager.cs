@@ -35,6 +35,18 @@ public class GameplayManager : Manager
     // the timer for the game. There should only be one.
     public Timer timer;
 
+    // descriptor functions.
+    [Header("Descriptor")]
+
+    // the descriptor of the object that was clicked on.
+    public Descriptor descriptor = null;
+
+    // the name of the object clicked on.
+    public string descName = "NO_OBJECT_CLICKED";
+
+    // the description of the object clicked on.
+    public string descDesc = "NO_DESC_AVAILABLE";
+
     // inventory UI
     [Header("UI/Inventory")]
     public ItemIcon item1;
@@ -323,6 +335,24 @@ public class GameplayManager : Manager
         player.SetMouseLightEnabled(!e);
     }
 
+    // refreshes the game manager with its descriptor.
+    public void RefreshDescriptor()
+    {
+        // no descriptor.
+        if (descriptor == null)
+            return;
+
+        descName = descriptor.secondName;
+        descDesc = descriptor.description;
+    }
+
+    // sets the descriptor.
+    public void SetDescriptor(Descriptor newDesc)
+    {
+        descriptor = newDesc;
+        RefreshDescriptor();
+    }
+
     // called when the game ends.
     // this is called by the exit screen.
     public void OnGameEnd()
@@ -389,6 +419,16 @@ public class GameplayManager : Manager
                 // TODO: this may not be needed, but an item shouldn't be set to a room screen anyway.
                 if (!success)
                     GetItemFromClicked();
+
+                // tries to grab a descriptor.
+                Descriptor tempDesc;
+
+                // tries to find a descriptor object.
+                if(lastClicked.gameObject.TryGetComponent<Descriptor>(out tempDesc))
+                {
+                    // replaces the descriptor.
+                    SetDescriptor(tempDesc);
+                }
             }
         }
 

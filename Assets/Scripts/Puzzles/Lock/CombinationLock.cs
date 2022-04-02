@@ -13,11 +13,13 @@ public class CombinationLock : PuzzleMechanic
     public string combinaton = "1264";
 
     // displays for the text. This should match up wth the entry list size.
+    // NOTE: make it so that you don't need the text displays since the puzzle won't use them.
     public List<Text> textDisplays = new List<Text>();
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Start();
         // no text entries saved (may come in at the wrong order).
         // if(textDisplays.Count == 0)
         // {
@@ -115,7 +117,8 @@ public class CombinationLock : PuzzleMechanic
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
+        base.Update();
     }
 }

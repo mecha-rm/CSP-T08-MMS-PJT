@@ -28,8 +28,10 @@ public class WireConnect : PuzzleMechanic
     public bool mouseDown;
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Start();
+
         // the list is empty.
         if (nodes.Count == 0)
         {
@@ -90,7 +92,8 @@ public class WireConnect : PuzzleMechanic
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
+        base.Update();
     }
 }

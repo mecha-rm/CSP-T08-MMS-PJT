@@ -1266,6 +1266,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477249963}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &495179700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495179702}
+  - component: {fileID: 495179701}
+  m_Layer: 0
+  m_Name: Conveyor (Test)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &495179701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495179700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f4427b93ecd8b47b93334d5460b641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: {fileID: 0}
+  checkCompleteInUpdate: 0
+  buttonOrder: 
+  buttonInputs: 
+  complete: 0
+--- !u!4 &495179702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495179700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: 1, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &500701396 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5236862351708956146, guid: 1f11740eb949488409511f3b5267b80f,
@@ -3378,6 +3426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  checkCompleteInUpdate: 0
   text: '*****'
   lengthLimit: -1
   passcode: 44789
@@ -3989,6 +4038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  checkCompleteInUpdate: 0
   marker: {fileID: 1044747911}
   reorientMarker: 1
   markerResetPos: {x: 0, y: 0, z: 0}
@@ -4420,6 +4470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  checkCompleteInUpdate: 0
   node1: {fileID: 0}
   node2: {fileID: 0}
   nodes: []
@@ -5247,6 +5298,8 @@ GameObject:
   - component: {fileID: 1582592833}
   - component: {fileID: 1582592832}
   - component: {fileID: 1582592836}
+  - component: {fileID: 1582592838}
+  - component: {fileID: 1582592837}
   m_Layer: 0
   m_Name: Copier Cube
   m_TagString: Untagged
@@ -5328,7 +5381,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1582592836
 MonoBehaviour:
@@ -5354,6 +5407,54 @@ MonoBehaviour:
   spacing: 1
   applyScaleForSpacing: 1
   offset: {x: 2, y: 0, z: 0}
+--- !u!114 &1582592837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582592831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2660927fc285239438388753f135e7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  original: {fileID: 0}
+  originalAsParent: 0
+  deactivateCopies: 0
+  copyOnStart: 1
+  copyInEditMode: 0
+  iteration: 0
+  totalIterations: 3
+  direction: 5
+  relativeToOriginal: 1
+  spacing: 1
+  applyScaleForSpacing: 1
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &1582592838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582592831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2660927fc285239438388753f135e7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  original: {fileID: 0}
+  originalAsParent: 0
+  deactivateCopies: 0
+  copyOnStart: 1
+  copyInEditMode: 0
+  iteration: 0
+  totalIterations: 3
+  direction: 2
+  relativeToOriginal: 1
+  spacing: 1
+  applyScaleForSpacing: 1
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1586191961
 GameObject:
   m_ObjectHideFlags: 0
@@ -5631,6 +5732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  checkCompleteInUpdate: 0
   entries: 00000000000000000000000000000000
   combinaton: 1264
   textDisplays:

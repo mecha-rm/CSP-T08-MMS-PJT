@@ -73,8 +73,10 @@ public class Maze : PuzzleMechanic
     public KeyCode backKey2 = KeyCode.S;
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Update();
+
         // sets marker.
         if (marker == null)
         {
@@ -262,8 +264,10 @@ public class Maze : PuzzleMechanic
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
+        base.Update();
+
         // moves left.
         if (Input.GetKeyDown(leftKey1) || Input.GetKeyDown(leftKey2))
             OnInput(mazeDirec.left);
