@@ -40,15 +40,19 @@ public class ConveyorBelt : PuzzleMechanic
         // adds the button.
         buttonInputs.Add(button);
 
-
+        // checks for the correct input.
+        if (buttonInputs.Count == buttonOrder.Count)
+        {
+            IsCorrectInputOrder(false);
+            IsCorrectInputOrder(true);
+        }
+            
     }
 
     // checks if the combination is correct.
     // if 'reversed' is true, then it checks if the combination is correct in reverse.
     public bool IsCorrectInputOrder(bool reversed)
     {
-
-
         // if the amount of inputs does not match, it's automatically false.
         if (buttonInputs.Count != buttonOrder.Count)
             return false;
@@ -58,6 +62,8 @@ public class ConveyorBelt : PuzzleMechanic
 
         // gets the button inputs.
         List<ConveyorButton.conveyorButton> order = buttonOrder;
+
+        // TODO: set this up so that it sets the value to false if it fails again.
 
         // reverses the order of the list.
         if (reversed)
@@ -78,16 +84,25 @@ public class ConveyorBelt : PuzzleMechanic
         if (!result)
             buttonInputs.Clear();
 
-        // sets complete as true.
-        if (result)
+        // checks if things were reversed or not.
+        if (reversed)
         {
-            // checks if things were reversed or not.
-            if (reversed)
-                completeReversed = true;
-            else
-                complete = true;
+            completeReversed = result;
+        } 
+        else
+        {
+            complete = result;
         }
+
+        // prints a message.
+        // TODO: take out print result.
+        if (result)
+            Debug.Log("COMBINATION" + ((reversed) ? "REVERSE SUCCESS!" : "SUCCESS!"));
+        else
+            Debug.Log("FAILED.");
             
+
+        // TODO: animate the conveyor belt.
 
         // returns the result.
         return result;
@@ -111,6 +126,7 @@ public class ConveyorBelt : PuzzleMechanic
         return complete;
     }
 
+    // resets the puzzle.
     public override void ResetPuzzle()
     {
         complete = false;
