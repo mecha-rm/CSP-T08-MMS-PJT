@@ -7224,6 +7224,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1953318460225541168, guid: 0419a1a960a13eb49b522f0310edb8de,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953318460225541168, guid: 0419a1a960a13eb49b522f0310edb8de,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953318460225541168, guid: 0419a1a960a13eb49b522f0310edb8de,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953318460225541168, guid: 0419a1a960a13eb49b522f0310edb8de,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
       objectReference: {fileID: 0}
@@ -7276,6 +7291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wyvern
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953318460225541169, guid: 0419a1a960a13eb49b522f0310edb8de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0419a1a960a13eb49b522f0310edb8de, type: 3}
