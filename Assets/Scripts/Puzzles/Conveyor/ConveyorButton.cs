@@ -5,6 +5,7 @@ using UnityEngine;
 // a button for the conveyor belt.
 public class ConveyorButton : MonoBehaviour
 {
+    // enum for the conveyor buttons.
     public enum conveyorButton { pwave, swave, surface }
 
     // the conveyor belt this button is attached to.
@@ -34,8 +35,16 @@ public class ConveyorButton : MonoBehaviour
     // adds an input to the conveyor.
     public void AddInput()
     {
-        // adds an input.
+        // adds an input if this is set.
         if (conveyor != null)
+        {
+            // can't interact with the puzzle, so don't do anything.
+            if (!conveyor.interactable)
+                return;
+
+            // adds the input.
             conveyor.AddInput(button);
+        }
+            
     }
 }

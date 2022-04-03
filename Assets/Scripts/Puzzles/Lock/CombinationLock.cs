@@ -16,10 +16,16 @@ public class CombinationLock : PuzzleMechanic
     // NOTE: make it so that you don't need the text displays since the puzzle won't use them.
     public List<Text> textDisplays = new List<Text>();
 
+    // the highest number represented by the lock.
+    [Tooltip("The highest number in the lock for [0, highestNumber]. The total amount of numbers is highestNumber + 1 since 0 is included.")]
+    public int highestNumber = 9;
+
     // Start is called before the first frame update
     protected new void Start()
     {
         base.Start();
+        
+        // NOTE: text displays are not always needed.
         // no text entries saved (may come in at the wrong order).
         // if(textDisplays.Count == 0)
         // {
@@ -28,16 +34,51 @@ public class CombinationLock : PuzzleMechanic
         // }
     }
 
+    // gets the total amount of numbers.
+    public int GetNumberCount()
+    {
+        return highestNumber + 1;
+    }
+
+
     // sets the entry.
     public void SetEntry(int index, int value)
     {
         // index is valid.
         if (index >= 0 && index < entries.Count)
         {
+            // gets the total amount of numbers.
+            int numCount = GetNumberCount();
+
             // adjusts the entry.
-            entries[index] = value; // sets new value.
-            entries[index] = Mathf.Abs(entries[index]); // positive only
-            entries[index] = entries[index] % 9; // range of [0, 9]
+            // sets new value.
+            // if it's negative, loop around to the start and apply it to numCount.
+            entries[index] = (numCount > 0) ? value : numCount + value % numCount;
+
+            // inserts the value into the list.
+            // the value range is [0, 9].
+            if(value >= numCount) // overbound (loop back to start)
+            {
+                entries[index] = value % numCount;
+            }
+            else if(value < 0) // underbound (loop to end)
+            {
+                // this can result in a value of numCount if value is a multiple of -(numCount).
+                // this is because the modulus operation would return 0 in such a case.
+                // a later operation takes care of this.
+                entries[index] = numCount + value % numCount;
+            }
+            else // within bounds
+            {
+                entries[index] = value;
+            }
+
+            // positive only
+            entries[index] = Mathf.Abs(entries[index]);
+
+            // make sure its in the range of numCount (e.g., [0, 9]).
+            // this is needed for loop around cases the value is one more than it should be.
+            entries[index] = entries[index] % numCount; 
 
             // updates the text display.
             if (index < textDisplays.Count)
@@ -90,7 +131,7 @@ public class CombinationLock : PuzzleMechanic
         bool correct = number == combinaton;
 
         // debug message.
-        // TODO: uncomment.
+        // TODO: uncomment for final.
         Debug.Log((correct) ? "CORRECT COMBINATION" : "WRONG COMBINATION");
 
         // if the combination is correct and the puzzle is set.

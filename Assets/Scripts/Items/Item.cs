@@ -19,15 +19,18 @@ public class Item : MonoBehaviour
     // TODO: see if there's a more efficient way to do this.
     public Sprite itemIcon;
 
+    // ID names.
+
     // item IDs
     // puzzle piece
     public const string PUZZLE_ID = "puzzle-piece";
-
-    // treasure
-    public const string TREASURE_ID = "treasure";
-
+    
     // note id.
     public const string NOTE_ID = "note";
+    
+    // treasure
+    public const string TREASURE_ID = "treasure";
+    
 
     // Start is called before the first frame update
     protected virtual void Start()

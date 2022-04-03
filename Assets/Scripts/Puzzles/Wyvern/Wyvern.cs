@@ -87,6 +87,14 @@ public class Wyvern : PuzzleMechanic
     // tries to receive the item from the player.
     public bool ReceiveTreasure()
     {
+        // can't interact with the puzzle, so don't do anything.
+        if (!interactable)
+        {
+            Debug.Log("This can't be interacted with, so this always returns false.");
+            return false;
+        }
+            
+
         // tries to grab the item.
         bool hasItem = manager.player.HasItem(Item.TREASURE_ID);
 
@@ -132,13 +140,14 @@ public class Wyvern : PuzzleMechanic
     // the puzzle was successful.
     public override bool CompleteSuccess()
     {
-        throw new System.NotImplementedException();
+        return hasTreasure;
     }
 
     // the puzzle is being reset.
     public override void ResetPuzzle()
     {
-        throw new System.NotImplementedException();
+        hasTreasure = false;
+        UpdateDescriptor();
     }
 
     // Update is called once per frame

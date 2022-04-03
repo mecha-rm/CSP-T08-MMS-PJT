@@ -42,6 +42,10 @@ public class KeypadKey : MonoBehaviour
         // the text character this key provides.
         if (keypad != null)
         {
+            // can't interact with the puzzle, so don't do anything.
+            if (!keypad.interactable)
+                return;
+
             // checks which function it is.
             switch (keyFunction)
             {

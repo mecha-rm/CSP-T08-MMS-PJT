@@ -12,6 +12,9 @@ public abstract class PuzzleMechanic : MonoBehaviour
 
     // TODO: make puzzle start?
 
+    // the puzzle mechanic can be interacted with.
+    public bool interactable = true;
+
     // checks if the puzzle is complete in every update.
     public bool checkCompleteInUpdate = true;
 
@@ -32,6 +35,10 @@ public abstract class PuzzleMechanic : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        // if you can't interact with the puzzle mechanic, don't do anything.
+        if (!interactable)
+            return;
+
         // if the puzzle's completion should be checked in every update.
         if(checkCompleteInUpdate)
         {

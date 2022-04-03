@@ -267,6 +267,7 @@ public class Maze : PuzzleMechanic
     // Update is called once per frame
     protected new void Update()
     {
+        // handles interactions check.
         base.Update();
 
         // moves left.

@@ -96,7 +96,6 @@ public class Keypad : PuzzleMechanic
     // Update is called once per frame
     protected new void Update()
     {
-        base.Update();
         // limits the text length.
         if (lengthLimit >= 0 && text.Length > lengthLimit)
             text = text.Substring(0, lengthLimit);
@@ -108,6 +107,9 @@ public class Keypad : PuzzleMechanic
             if (textDisplay.text != text)
                 textDisplay.text = text;
         }
-            
+
+        // the bounds should still be checked, even if the puzzle is inactive.
+        // as such, the update goes down here instead.
+        base.Update();
     }
 }

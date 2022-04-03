@@ -9,7 +9,7 @@ public class PuzzleFrame : PuzzleMechanic
     public GameplayManager manager;
 
     // the game object for the complete puzzle.
-    public GameObject completePuzzle;
+    public GameObject completePuzzleObject;
 
     // if 'true', the puzzle is consideerd complete.
     public bool complete = false;
@@ -24,8 +24,8 @@ public class PuzzleFrame : PuzzleMechanic
             manager = FindObjectOfType<GameplayManager>();
 
         // hides the complete puzzle model.
-        if (completePuzzle != null)
-            completePuzzle.SetActive(complete);
+        if (completePuzzleObject != null)
+            completePuzzleObject.SetActive(complete);
 
     }
 
@@ -40,6 +40,13 @@ public class PuzzleFrame : PuzzleMechanic
     // checks to see if the player has all the pieces.
     public bool PlayerHasAllPuzzlePieces()
     {
+        // can't interact with the puzzle, so don't do anything.
+        if (!interactable)
+        {
+            Debug.Log("Puzzle is disabled, so this will always return false.");
+            return false;
+        }            
+
         // checks player for puzzle pieces.
         bool result = manager.player.HasAllPuzzlePieces();
 
@@ -50,20 +57,20 @@ public class PuzzleFrame : PuzzleMechanic
             manager.player.TakeItems(Item.PUZZLE_ID);
 
             // turns on the model.
-            if (completePuzzle != null)
-                completePuzzle.SetActive(true);
+            if (completePuzzleObject != null)
+                completePuzzleObject.SetActive(true);
 
             // puzzle has been completed.
             if (puzzle != null)
                 puzzle.OnPuzzleCompletion();
 
-            Debug.Log("All pieces inputted.");
+            Debug.Log("All pieces inputed.");
         }
         else
         {
             // turns off the model.
-            if (completePuzzle != null)
-                completePuzzle.SetActive(false);
+            if (completePuzzleObject != null)
+                completePuzzleObject.SetActive(false);
 
             Debug.Log("Missing pieces still.");
         }
@@ -83,8 +90,8 @@ public class PuzzleFrame : PuzzleMechanic
     public override void ResetPuzzle()
     {
         // revert to false.
-        if (completePuzzle != null)
-            completePuzzle.SetActive(false);
+        if (completePuzzleObject != null)
+            completePuzzleObject.SetActive(false);
 
         complete = false;
     }

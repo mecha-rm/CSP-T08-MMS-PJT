@@ -24,18 +24,19 @@ public class LockEntry : MonoBehaviour
             comboLock = GetComponentInParent<CombinationLock>();
     }
 
-    // on the entry being clocked on.
-    private void OnMouseDown()
-    {
-        // NOTE: OnMouseDown events only work for left mouse clicks, not right, so the second set of code is never reached.
-        // As such, it's done elsewhere.
-
-        // goes forward or backwards based on the input.
-        if (Input.GetKeyDown(KeyCode.Mouse0)) // left mouse click.
-        {
-            IncreaseEntryByOne();
-        }
-    }
+    // NOTE: for consistency, the left and right click have been put in the same place.
+    // // on the entry being clocked on.
+    // private void OnMouseDown()
+    // {
+    //     // NOTE: OnMouseDown events only work for left mouse clicks, not right, so the second set of code is never reached.
+    //     // As such, it's done elsewhere.
+    // 
+    //     // goes forward or backwards based on the input.
+    //     if (Input.GetKeyDown(KeyCode.Mouse0)) // left mouse click.
+    //     {
+    //         IncreaseEntryByOne();
+    //     }
+    // }
 
     // called when the mouse is over a collider element.
     private void OnMouseOver()
@@ -66,20 +67,31 @@ public class LockEntry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if over the button.
-        if(overButton)
+        // if the combo lock is set.
+        if(comboLock != null)
         {
-            // TODO: going in reverse doesn't work because of how you calculate things.
+            // can't interact with the puzzle, so don't do anything.
+            if (!comboLock.interactable)
+                return;
+        }
+
+        // if over the button.
+        if (overButton)
+        {
             // going to leave this alone for now, and come back later.
 
             // OnMouseDown handles the left click, so that's not done here.
             // this is just for the right click.
 
-            // // check for a right-click.
-            // if (Input.GetKeyDown(KeyCode.Mouse1)) // right mouse click.
-            // {
-            //     DecreaseEntryByOne();
-            // }
+            // check for a right-click.
+            if (Input.GetKeyDown(KeyCode.Mouse0)) // left mouse click.
+            {
+                IncreaseEntryByOne();
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse1)) // right mouse click.
+            {
+                DecreaseEntryByOne();
+            }
         }
     }
 }

@@ -5,23 +5,33 @@ using UnityEngine;
 // elevator puzzle.
 public class Elevator : PuzzleMechanic
 {
+    // if 'true', clicking on the elevator acts as a pull.
+    // if 'false', it doesn't.
+    public bool elevatorIsCable = true;
+
     // the amount of pulls done.
     public int pulls = 0;
 
     // goes by how many times the cable needs to be pulled.
     public int pullsNeeded = 2;
 
+    // timer values.
+    [Header("Timer")]
+
     // time for counting down the amount of pulls.
     public float resetTimer = 0.0F;
 
     // the timer for resetting the amount of pulls done.
-    public float resetTimerMax = 2.5F;
+    public float resetTimerMax = 2.0F;
 
     // have the timer run.
     public bool runTimer = true;
 
+    [Header("Other")]
+
     // becomes 'true' when the puzzle is complete.
     public bool complete = false;
+
 
     // TOOD: have space for opening the door in here or in the puzzle script.
 
@@ -44,22 +54,37 @@ public class Elevator : PuzzleMechanic
     // Called when the mouse button is pressed down.
     public void OnMouseDown()
     {
-        // called to pull the cable on the left mouse click.
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            PullCable();
+        // if the elevator should act as a cable.
+        if(elevatorIsCable)
+        {
+            // called to pull the cable on the left mouse click.
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+                PullCable();
+        }
+        
     }
 
     // pulls the cable.
-    public void PullCable()
+    public void PullCable(int times)
     {
+        // can't interact with the puzzle, so don't do anything.
+        if (!interactable)
+            return;
+
         // increases amount of pulls.
-        pulls++;
+        pulls += times;
 
         // restart timer.
         resetTimer = resetTimerMax;
 
-        // TODO: play animation
+        // TODO: play animation.
+    }
 
+    // pulls the cable once.
+    public void PullCable()
+    {
+        // pull only once.
+        PullCable(1);
     }
 
     // returns 'true' if the puzzle is complete.
