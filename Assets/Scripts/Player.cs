@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         for(int i = inventory.Count - 1; i >= 0; i--)
         {
             // item ID match.
-            if(removedItems[i].itemId == itemId)
+            if(inventory[i].itemId == itemId)
             {
                 removedItems.Add(inventory[i]);
                 inventory.RemoveAt(i);

@@ -33,15 +33,14 @@ public class Maze : PuzzleMechanic
     // if 'true', the reset tranformation is automatically set.
     public bool autoSetResetTransform = true;
 
-    // TODO: leave room for opening doors animation.
-
+    // TODO: since this is an extra, I'm not sure if I'll bother to change this.
     // TODO: implement way to limit marker's movements.
     // TODO: make it so that the marker has the option of not getting reset.
     // the maze size in units.
-    public Vector2Int mazeSize;
-
-    // the cell that the marker starts in. This way the program knows how to limit the marker's movements.
-    public Vector2Int markerSpace;
+    // public Vector2Int mazeSize;
+    // 
+    // // the cell that the marker starts in. This way the program knows how to limit the marker's movements.
+    // public Vector2Int markerSpace;
 
     // the size of the space the marker is in.
     // this controls where the marker moves.
@@ -118,7 +117,6 @@ public class Maze : PuzzleMechanic
             path.Add(mazeDirec.forward);
 
             // exit move (through the door)
-            // TODO: add straight move.
         }
 
     }
