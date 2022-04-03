@@ -6,11 +6,8 @@ using UnityEngine;
 // TODO: maybe make an inventory script?
 public class Item : MonoBehaviour
 {
-    // the name for the item.
-    public string itemName = "";
-
-    // the description for the item. 
-    public string itemDesc = "";
+    // the item's descriptor.
+    public Descriptor desc;
 
     // the ID for stacking the item for the UI display.
     // TODO: maybe hide this from the inspector?
@@ -22,16 +19,35 @@ public class Item : MonoBehaviour
     // TODO: see if there's a more efficient way to do this.
     public Sprite itemIcon;
 
+    // item IDs
+    // puzzle piece
+    public const string PUZZLE_ID = "puzzle-piece";
+
+    // treasure
+    public const string TREASURE_ID = "treasure";
+
+    // note id.
+    public const string NOTE_ID = "note";
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        
+        // description not set.
+        if (desc == null)
+        {
+            // try to get the component.
+            if (!TryGetComponent<Descriptor>(out desc))
+            {
+                // adds the description component.
+                desc = gameObject.AddComponent<Descriptor>();
+            }
+        }
     }
 
     // called when the item is put into the player's inventory.
     public virtual void OnItemGet()
     {
-
+        // ...
     }
 
 

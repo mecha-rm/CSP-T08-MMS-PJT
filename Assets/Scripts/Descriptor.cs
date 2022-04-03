@@ -9,6 +9,7 @@ public class Descriptor : MonoBehaviour
     public GameplayManager manager;
 
     // the secondary name of the object.
+    // not called 'name' because 'name' is the name of the object.
     public string secondName = "";
 
     // the description of the descriptor.
@@ -24,5 +25,33 @@ public class Descriptor : MonoBehaviour
         // gets the name of the game object an saves it as the secondary name.
         if (secondName == "")
             secondName = name;
+    }
+
+    // the name saved to the descriptor.
+    public string Name
+    {
+        get
+        {
+            return secondName;
+        }
+
+        set
+        {
+            secondName = value;
+        }
+    }
+
+    // the saved description.
+    public string Description
+    {
+        get
+        {
+            return description;
+        }
+
+        set
+        {
+            description = value;
+        }
     }
 }

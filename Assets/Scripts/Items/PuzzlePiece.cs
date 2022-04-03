@@ -5,25 +5,22 @@ using UnityEngine;
 // the puzzle piece item in the game world.
 public class PuzzlePiece : Item
 {
-    // the default stack id for the puzzle piece.
-    private static string defaultStackId = "puzzle-piece";
-
     // Start is called before the first frame update
     protected new void Start()
     {
         base.Start();
 
         // name
-        if (itemName == "")
-            itemName = "Unnumbered Puzzle Piece";
+        if (desc.secondName == "")
+            desc.secondName = "Unnumbered Puzzle Piece";
 
         // description
-        if (itemDesc == "")
-            itemDesc = "An unnumbered puzzle piece.";
+        if (desc.description == "")
+            desc.description = "An unnumbered puzzle piece.";
 
         // stack id
         if (itemId == "") // stack all puzzle pieces.
-            itemId = defaultStackId;
+            itemId = PUZZLE_ID;
 
         // item icon not set.
         if (itemIcon == null)
@@ -48,7 +45,7 @@ public class PuzzlePiece : Item
     {
         get
         {
-            return defaultStackId;
+            return PUZZLE_ID;
         }
     }
 

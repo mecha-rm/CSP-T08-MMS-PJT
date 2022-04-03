@@ -41,11 +41,17 @@ public class GameplayManager : Manager
     // the descriptor of the object that was clicked on.
     public Descriptor descriptor = null;
 
+    // the inspector default
+    private string inspectDefault = "...";
+
     // the name of the object clicked on.
-    public string descName = "NO_OBJECT_CLICKED";
+    public string inspectName = "...";
 
     // the description of the object clicked on.
-    public string descDesc = "NO_DESC_AVAILABLE";
+    public string inspectDesc = "...";
+
+    // display text for the description information.
+    public Text inspectText;
 
     // inventory UI
     [Header("UI/Inventory")]
@@ -171,11 +177,20 @@ public class GameplayManager : Manager
         // queue of item icons.
         Queue<ItemIcon> itemIcons = new Queue<ItemIcon>();
 
-        // adds all item icons.
+        // hides and adds all item icons.
+        // item1.iconImage.enabled = false;
         itemIcons.Enqueue(item1);
+
+        // item2.iconImage.enabled = false;
         itemIcons.Enqueue(item2);
+
+        // item3.iconImage.enabled = false;
         itemIcons.Enqueue(item3);
+
+        // item4.iconImage.enabled = false;
         itemIcons.Enqueue(item4);
+
+        // item5.iconImage.enabled = false;
         itemIcons.Enqueue(item5);
 
         // gets all the items.
@@ -342,8 +357,8 @@ public class GameplayManager : Manager
         if (descriptor == null)
             return;
 
-        descName = descriptor.secondName;
-        descDesc = descriptor.description;
+        inspectName = descriptor.secondName;
+        inspectDesc = descriptor.description;
     }
 
     // sets the descriptor.
@@ -429,8 +444,23 @@ public class GameplayManager : Manager
                     // replaces the descriptor.
                     SetDescriptor(tempDesc);
                 }
+                else
+                {
+                    // clear out the name and description.
+                    inspectName = inspectDefault;
+                    inspectDesc = inspectDefault;
+                }
             }
         }
+
+        // updates the text element.
+        if (inspectText != null)
+        {
+            // if the overhead text has not been updated.
+            if(inspectText.text != inspectDesc)
+                inspectText.text = inspectDesc;
+        }
+            
 
         // no last clicked object. This is kind of a quick fix.
         // if (lastClicked == null && currentScreen.forwardScreen != null)

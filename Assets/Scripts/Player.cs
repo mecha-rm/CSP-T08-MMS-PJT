@@ -42,6 +42,58 @@ public class Player : MonoBehaviour
     public void GiveItem(Item item)
     {
         inventory.Add(item);
+        manager.RefreshInventoryDisplay();
+    }
+
+    // takes an item from the player. Returns null if this failed.
+    public bool TakeItem(Item item)
+    {
+        // removes the item. Returns null if the item does not exist.
+        bool removed = inventory.Remove(item);
+        
+        // update the display and return the result.
+        manager.RefreshInventoryDisplay();
+        return removed;
+    }
+
+    // takes an item based on the item ID (1st instance only).
+    public Item TakeItem(string itemId)
+    {
+        // goes through all inventory items.
+        for(int i = 0; i < inventory.Count; i++)
+        {
+            // item ID matches, so return item.
+            if(inventory[i].itemId == itemId)
+            {
+                Item item = inventory[i];
+                inventory.Remove(item);
+                return item;
+            }
+        }
+
+        manager.RefreshInventoryDisplay();
+        return null;
+    }
+
+    // removes all items with a given ID.
+    public List<Item> TakeItems(string itemId)
+    {
+        // the list of the removed items.
+        List<Item> removedItems = new List<Item>();
+
+        // removes all items.
+        for(int i = inventory.Count - 1; i >= 0; i--)
+        {
+            // item ID match.
+            if(removedItems[i].itemId == itemId)
+            {
+                removedItems.Add(inventory[i]);
+                inventory.RemoveAt(i);
+            }
+        }
+
+        manager.RefreshInventoryDisplay();
+        return removedItems;
     }
 
     // checks if the player has a given item.
