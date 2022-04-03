@@ -21,6 +21,8 @@ public class GameplayManager : Manager
     [Tooltip("The current screen. This this to the starting screen when you start running the game.")]
     public RoomScreen currentScreen;
 
+    // public Room room;
+
     // getting rid of this feature until we can make it work in a more streamlined way.
     // if 'true', inactive rooms are disabled.
     // [Tooltip("Disables all but the current room when the game starts.")]
@@ -113,6 +115,49 @@ public class GameplayManager : Manager
             
     }
 
+
+    // switches the screen.
+    public void SwitchScreen(int screen)
+    {
+        // if the current screen is not set.
+        if (currentScreen == null)
+        {
+            Debug.LogError("No current screen set. Cannot move.");
+            return;
+        }
+
+        // saves the current secreen.
+        RoomScreen cs = currentScreen;
+
+
+        // sets the screen.
+        switch (screen)
+        {
+            case 0: // left
+                currentScreen.SwitchToLeftScreen();
+                break;
+
+            case 1: // right
+                currentScreen.SwitchToRightScreen();
+                break;
+
+            case 2: // forward
+                currentScreen.SwitchToForwardScreen();
+                break;
+
+            case 3: // back
+                currentScreen.SwitchToBackScreen();
+                break;
+        }
+
+        // screens switched, so change this variable.
+        if (cs != currentScreen)
+            lastClicked = null;
+
+        // TODO: sometimes the forward screen seems to be set automatically when it shouldn't. Try to fix that.
+
+    }
+
     // switches to the left screen.
     public void SwitchToLeftScreen()
     {
@@ -135,37 +180,6 @@ public class GameplayManager : Manager
     public void SwitchToBackScreen()
     {
         SwitchScreen(3);
-    }
-
-    // switches the screen.
-    public void SwitchScreen(int screen)
-    {
-        // if the current screen is not set.
-        if (currentScreen == null)
-        {
-            Debug.LogError("No current screen set. Cannot move.");
-            return;
-        }
-
-        // sets the screen.
-        switch (screen)
-        {
-            case 0: // left
-                currentScreen.SwitchToLeftScreen();
-                break;
-
-            case 1: // right
-                currentScreen.SwitchToRightScreen();
-                break;
-
-            case 2: // forward
-                currentScreen.SwitchToForwardScreen();
-                break;
-
-            case 3: // back
-                currentScreen.SwitchToBackScreen();
-                break;
-        }
     }
 
     // refreshes the inventory display for the game.
@@ -306,8 +320,6 @@ public class GameplayManager : Manager
         return false;
 
     }
-    
-    // TODO: turn off local emissive lights in the rooms.
 
     // checks if the room's lighting is enabled.
     // this works by altering the post-processing layer.
@@ -367,6 +379,30 @@ public class GameplayManager : Manager
         descriptor = newDesc;
         RefreshDescriptor();
     }
+
+
+    // initiates the main action in the game world.
+    public void InitiateMainAction()
+    {
+        // if there is an object available.
+        if(lastClicked != null)
+        {
+            // puzzle mechanic to trigger.
+            PuzzleMechanic pm;
+
+            // triggers the puzzle mechanic.
+            if (lastClicked.TryGetComponent<PuzzleMechanic>(out pm))
+            {
+                // triggers the action.
+                pm.InitiateMainAction();
+                return;
+            }
+        }
+
+        // no puzzle, so try to go forward a screen instead.
+        SwitchToForwardScreen();
+    }
+
 
     // called when the game ends.
     // this is called by the exit screen.

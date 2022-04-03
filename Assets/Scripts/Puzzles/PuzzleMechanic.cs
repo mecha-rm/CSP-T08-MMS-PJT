@@ -24,8 +24,11 @@ public abstract class PuzzleMechanic : MonoBehaviour
         // ...
     }
 
+    // iniates the main action from the puzzle.
+    public abstract void InitiateMainAction();
+
     // checks if the puzzle is complete.
-    public abstract bool CompleteSuccess();
+    public abstract bool IsPuzzleComplete();
 
     // resets the puzzle.
     // this makes sure that PuzzleMechanic is an abstract class.
@@ -46,7 +49,7 @@ public abstract class PuzzleMechanic : MonoBehaviour
             if(puzzle != null)
             {
                 // check if the puzzle was successful.
-                bool complete = CompleteSuccess();
+                bool complete = IsPuzzleComplete();
 
                 // if complete, call for puzzle completion.
                 if (complete)

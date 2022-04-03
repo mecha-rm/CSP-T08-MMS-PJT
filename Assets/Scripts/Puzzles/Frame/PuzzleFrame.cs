@@ -80,8 +80,14 @@ public class PuzzleFrame : PuzzleMechanic
         return result;
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        PlayerHasAllPuzzlePieces();
+    }
+
     // puzzle complete success
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         return complete;
     }

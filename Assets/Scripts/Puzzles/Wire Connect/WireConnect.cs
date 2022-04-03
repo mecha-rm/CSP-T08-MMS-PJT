@@ -77,8 +77,19 @@ public class WireConnect : PuzzleMechanic
         return result;
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        // can't interact.
+        if (!interactable)
+            return;
+
+        // checks if everything is connected.
+        AllConnected();
+    }
+
     // checks if the puzzle was completed successfully successful.
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         // checks if complete.
         return AllConnected();

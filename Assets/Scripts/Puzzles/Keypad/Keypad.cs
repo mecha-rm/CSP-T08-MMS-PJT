@@ -75,8 +75,18 @@ public class Keypad : PuzzleMechanic
         return correct;
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        // if this can't be interacted with, do nothing.
+        if (!interactable)
+            return;
+
+        ConfirmEntry();
+    }
+
     // checks if the puzzle was completed successfully successful.
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         // checks if complete.
         return ConfirmEntry();

@@ -132,8 +132,18 @@ public class ConveyorBelt : PuzzleMechanic
         return completeReversed;
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        // can't interact with this puzzle, so don't allow this.
+        if (!interactable)
+            return;
+
+        IsCorrectInputOrder();
+    }
+
     // only successful if completed in the right order.
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         return complete;
     }

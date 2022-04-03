@@ -142,8 +142,19 @@ public class CombinationLock : PuzzleMechanic
         return correct;
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        // can't interact, so return.
+        if (!interactable)
+            return;
+
+        // tries out the combination.
+        ConfirmCombination();
+    }
+
     // checks if the puzzle was completed successfully successful.
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         // checks if complete.
         return ConfirmCombination();

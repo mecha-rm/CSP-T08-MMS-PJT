@@ -87,8 +87,14 @@ public class Elevator : PuzzleMechanic
         PullCable(1);
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        PullCable();
+    }
+
     // returns 'true' if the puzzle is complete.
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         return complete;
     }

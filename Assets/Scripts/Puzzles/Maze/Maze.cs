@@ -136,7 +136,7 @@ public class Maze : PuzzleMechanic
         // index out of bounds.
         if (index >= path.Count)
         {
-            Complete();
+            IsComplete();
             return;
         }
 
@@ -205,7 +205,7 @@ public class Maze : PuzzleMechanic
 
             // check if the player has completed the maze.
             if (index >= path.Count)
-                Complete();
+                IsComplete();
         }
         else // wrong direction chosen, so reset.
         {
@@ -215,7 +215,7 @@ public class Maze : PuzzleMechanic
     }
 
     // checks the success function.
-    public bool Complete()
+    public bool IsComplete()
     {
         // if the index is at the end of the path...
         // the right combination has been put in, the index reaches the end. 
@@ -236,11 +236,22 @@ public class Maze : PuzzleMechanic
 
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        // can't interact.
+        if (!interactable)
+            return;
+
+        // checks if it's complete.
+        IsComplete();
+    }
+
     // checks if the puzzle was completed successfully successful.
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         // checks if complete.
-        return Complete();
+        return IsComplete();
     }
 
     // resets the puzzle.

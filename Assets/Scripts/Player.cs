@@ -136,8 +136,8 @@ public class Player : MonoBehaviour
         // if the space bar was pressed.
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            // NOTE: there needs to be player states to know what behaviour the space bar should use.
-            manager.SwitchToForwardScreen();
+            // iniates whatever highlighted action the player has.
+            manager.InitiateMainAction();
         }
     }
 }

@@ -137,8 +137,15 @@ public class Wyvern : PuzzleMechanic
         manager.RefreshDescriptor();
     }
 
+    // initiates the main action for this puzzle.
+    public override void InitiateMainAction()
+    {
+        // tries to receive the treasure.
+        ReceiveTreasure();
+    }
+
     // the puzzle was successful.
-    public override bool CompleteSuccess()
+    public override bool IsPuzzleComplete()
     {
         return hasTreasure;
     }
