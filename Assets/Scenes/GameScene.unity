@@ -6458,6 +6458,11 @@ PrefabInstance:
       objectReference: {fileID: 844199794}
     - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
+      propertyPath: inspectText
+      value: 
+      objectReference: {fileID: 2079011268}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
       propertyPath: currentScreen
       value: 
       objectReference: {fileID: 1371474757}
@@ -9386,6 +9391,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2079011268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7016222515427005853, guid: 1f11740eb949488409511f3b5267b80f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2079011263}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2113723916
