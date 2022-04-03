@@ -7,6 +7,9 @@ using UnityEngine.Rendering.PostProcessing; // post processing volume.
 // manages gameplay operations.
 public class GameplayManager : Manager
 {
+    // becomes 'true', when the first update has been finished.
+    private bool passedFirstUpdate = false;
+
     // the player
     public Player player;
 
@@ -21,7 +24,13 @@ public class GameplayManager : Manager
     [Tooltip("The current screen. This this to the starting screen when you start running the game.")]
     public RoomScreen currentScreen;
 
-    // public Room room;
+    // the list of rooms in the scene.
+    [Tooltip("The list of rooms.")]
+    public List<Room> rooms = new List<Room>();
+
+    // if 'true', other rooms are disabled when not being used.
+    [Tooltip("if 'true', other rooms are disabled when not being used.")]
+    public bool disableOtherRooms = true;
 
     // getting rid of this feature until we can make it work in a more streamlined way.
     // if 'true', inactive rooms are disabled.
@@ -109,12 +118,21 @@ public class GameplayManager : Manager
             currentScreen.EnableScreen();
         }
 
+        // finds the existing rooms.
+        if(rooms.Count == 0)
+        {
+            // finds all rooms.
+            Room[] roomArr = FindObjectsOfType<Room>(true);
+
+            // adds the array of rooms.
+            rooms.AddRange(roomArr);
+        }    
+
         // grabs the timer component.
         if (timer == null)
             timer = GetComponent<Timer>();
             
     }
-
 
     // switches the screen.
     public void SwitchScreen(int screen)
@@ -154,7 +172,12 @@ public class GameplayManager : Manager
         if (cs != currentScreen)
             lastClicked = null;
 
+        // disables all other rooms.
+        if (disableOtherRooms)
+            DisableAllOtherRooms();
+
         // TODO: sometimes the forward screen seems to be set automatically when it shouldn't. Try to fix that.
+        // maybe it's just an objects being overlayed issue? If so, just move things around.
 
     }
 
@@ -180,6 +203,39 @@ public class GameplayManager : Manager
     public void SwitchToBackScreen()
     {
         SwitchScreen(3);
+    }
+
+    // disables all rooms that are not being used.
+    public bool DisableAllOtherRooms()
+    {
+        // current screen not set.
+        if (currentScreen == null)
+            return false;
+
+        // current room not set.
+        if (currentScreen.room == null)
+            return false;
+
+        // no saved rooms.
+        if (rooms.Count == 0)
+            return false;
+
+        // saves the current room.
+        Room currRoom = currentScreen.room;
+
+        // room not in list, so add it.
+        if (!rooms.Contains(currRoom))
+            rooms.Add(currRoom);
+
+        // goes through every room.
+        foreach(Room r in rooms)
+        {
+            // change active.
+            r.gameObject.SetActive(r == currRoom ? true : false);
+        }
+
+        // successful.
+        return true;
     }
 
     // refreshes the inventory display for the game.
@@ -429,6 +485,22 @@ public class GameplayManager : Manager
         SceneHelper.LoadScene("EndScene");
     }
 
+    // called on the first update.
+    private void OnFirstUpdate()
+    {
+        // can only be called once.
+        if (passedFirstUpdate)
+            return;
+
+        // if the other rooms should be disabled.
+        if(disableOtherRooms)
+        {
+            DisableAllOtherRooms();
+        }
+
+        // now past the first update.
+        passedFirstUpdate = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -452,6 +524,11 @@ public class GameplayManager : Manager
         //     // rooms were disabled, so don't do it again.
         //     disableRoomsOnStart = false;
         // }
+
+        // calls code for the first update.
+        // TODO: this isn't efficient, so try to optimize this if possible.
+        if (!passedFirstUpdate)
+            OnFirstUpdate();
 
         // checks if the last clicked object is another screen.
         if (mouse.lastClickedObject != lastClicked)
