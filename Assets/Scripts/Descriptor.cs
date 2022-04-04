@@ -8,9 +8,9 @@ public class Descriptor : MonoBehaviour
     // the gameplay manager.
     public GameplayManager manager;
 
-    // the secondary name of the object.
+    // the secondary name/label of the object.
     // not called 'name' because 'name' is the name of the object.
-    public string secondName = "";
+    public string label = "";
 
     // the description of the descriptor.
     public string description = "";
@@ -23,21 +23,21 @@ public class Descriptor : MonoBehaviour
             manager = FindObjectOfType<GameplayManager>();
 
         // gets the name of the game object an saves it as the secondary name.
-        if (secondName == "")
-            secondName = name;
+        if (label == "")
+            label = name;
     }
 
     // the name saved to the descriptor.
-    public string Name
+    public string Label
     {
         get
         {
-            return secondName;
+            return label;
         }
 
         set
         {
-            secondName = value;
+            label = value;
         }
     }
 
@@ -53,5 +53,12 @@ public class Descriptor : MonoBehaviour
         {
             description = value;
         }
+    }
+
+    // copies the content from the copied description.
+    public void CopyContent(Descriptor sourceDesc)
+    {
+        label = sourceDesc.label;
+        description = sourceDesc.description;
     }
 }

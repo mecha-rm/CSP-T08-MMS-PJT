@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // the puzzle piece item in the game world.
-public class PuzzlePiece : Item
+public class PuzzlePieceItem : Item
 {
     // Start is called before the first frame update
     protected new void Start()
@@ -11,12 +11,12 @@ public class PuzzlePiece : Item
         base.Start();
 
         // name
-        if (desc.secondName == "")
-            desc.secondName = "Unnumbered Puzzle Piece";
+        if (descriptor.label == "")
+            descriptor.label = "Unnumbered Puzzle Piece";
 
         // description
-        if (desc.description == "")
-            desc.description = "An unnumbered puzzle piece.";
+        if (descriptor.description == "")
+            descriptor.description = "An unnumbered puzzle piece.";
 
         // stack id
         if (itemId == "") // stack all puzzle pieces.

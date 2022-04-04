@@ -11,12 +11,13 @@ public class NoteItem : Item
         base.Start();
 
         // name is not set.
-        if(desc.secondName == "")
-            desc.secondName = "Note";
+        if(descriptor.label == "")
+            descriptor.label = "Note";
 
         // description is not set.
-        if (desc.description == "")
-            desc.description = "...";
+        // the note's description will be what the note says.
+        if (descriptor.description == "")
+            descriptor.description = "...";
     }
 
     // note title.
@@ -24,12 +25,12 @@ public class NoteItem : Item
     {
         get
         {
-            return desc.secondName;
+            return descriptor.label;
         }
 
         set
         {
-            desc.secondName = value;
+            descriptor.label = value;
         }
     }
 
@@ -38,24 +39,24 @@ public class NoteItem : Item
     {
         get
         {
-            return desc.description;
+            return descriptor.description;
         }
 
         set
         {
-            desc.description = value;
+            descriptor.description = value;
         }
     }
 
     // gets the text.
     public string GetText()
     {
-        return desc.description;
+        return descriptor.description;
     }
 
     // sets the note's text.
     public void SetText(string text)
     {
-        desc.description = text;
+        descriptor.description = text;
     }
 }
