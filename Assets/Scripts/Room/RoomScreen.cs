@@ -44,6 +44,9 @@ public class RoomScreen : MonoBehaviour
     // leave this as blank. Maybe hide them from the inspector?
     public RoomScreen backScreen = null;
 
+    // if 'true', the attached camera script on this screen object is destroyed.
+    public bool destroyAttachedCamera = true;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -56,6 +59,18 @@ public class RoomScreen : MonoBehaviour
         // gets gameplay manager.
         if (manager == null)
             manager = FindObjectOfType<GameplayManager>();
+
+        // if the attached camera should be destroyed.
+        // these are just for testing purposes, and thus should not be kept.
+        if(destroyAttachedCamera)
+        {
+            // grabs the script.
+            Camera cam = gameObject.GetComponent<Camera>();
+
+            // destroys the script.
+            if (cam != null)
+                Destroy(cam);
+        }
     }
 
     // called when entering the screen.

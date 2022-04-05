@@ -26,6 +26,10 @@ public class WireConnectNode : MonoBehaviour
         if (wireConnect == null)
             wireConnect = GetComponentInParent<WireConnect>();
 
+        // not found.
+        if (wireConnect == null)
+            Debug.LogAssertion("Not connected to a wire connect puzzle mechanic.");
+
         // line not set.
         if (line == null)
         {
@@ -184,7 +188,7 @@ public class WireConnectNode : MonoBehaviour
         // the mouse is up.
         wireConnect.mouseDown = false;
 
-        Debug.Log("Mouseup? " + wireConnect.mouseDown);
+        // Debug.Log("Mouseup? " + wireConnect.mouseDown);
 
         // this node is not connected to anything yet.
         if (connected)
@@ -252,7 +256,9 @@ public class WireConnectNode : MonoBehaviour
             }
 
             // checks if all of the nodes are connected.
-            wireConnect.AllConnected();
+            // removed.
+            // wireConnect.mouseDown = false; // let go of mouse.
+            wireConnect.AllConnected(); // check if connected.
         }
 
         // not connected.

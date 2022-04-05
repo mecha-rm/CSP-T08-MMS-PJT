@@ -6,6 +6,10 @@ using UnityEngine;
 // NOTE: inherit this script when putting in unique puzzle behaviour. This is meant to be specialized to a given puzzle.
 public class Puzzle : MonoBehaviour
 {
+    // becomes 'true' if the puzzle is finished.
+    // NOTE: if a puzzle has multiple parts, only call OnPuzzleCompletion when all of them are done.
+    public bool finished = false;
+
     // the description of the puzzle.
     public Descriptor desc;
 
@@ -29,19 +33,24 @@ public class Puzzle : MonoBehaviour
     public virtual void OnPuzzleCompletion()
     {
         // override this function for the individual puzzle.
+        
         // TODO: comment out this message.
-        Debug.Log("Puzzle Complete!");
+        if (!finished)
+            Debug.Log("Puzzle Complete!");
+
+        finished = true;
+
     }
 
     // called when the puzzle is being reset.
     public virtual void OnPuzzleReset()
     {
-        // ...
+        finished = false;
     }
 
     // Update is called once per frame
     protected void Update()
     {
-        
+       // ... 
     }
 }

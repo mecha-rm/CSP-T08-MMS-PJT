@@ -24,8 +24,12 @@ public class WireConnect : PuzzleMechanic
 
     // becomes 'true' if the mouse is down.
     // used for the wire connected nodes.
-    [HideInInspector()]
+    // [HideInInspector()] // removed for testing purposes.
     public bool mouseDown;
+
+    // becomes 'true' when everything is connected.
+    [Tooltip("Becomes 'true' when everything is connected. Call AllConnected() to actually check if everything is connected.")]
+    public bool allConnected;
 
     // Start is called before the first frame update
     protected new void Start()
@@ -63,8 +67,10 @@ public class WireConnect : PuzzleMechanic
             }
         }
 
+        // this was causing problems for checking puzzle completion.
+        // this line was moved to the wire node area.
         // the mouse down is now false.
-        mouseDown = false;
+        // mouseDown = false;
 
         // the puzzle is complete.
         if (result && puzzle != null)
@@ -73,7 +79,10 @@ public class WireConnect : PuzzleMechanic
         // everything has been connected.
         //Debug.Log("All Connected!");
 
-        // all of the nodes are connected.
+        // saves the result.
+        allConnected = result;
+
+        // are all of the nodes are connected?
         return result;
     }
 
@@ -92,7 +101,8 @@ public class WireConnect : PuzzleMechanic
     public override bool IsPuzzleComplete()
     {
         // checks if complete.
-        return AllConnected();
+        // this might get called every frame, so just return the variable.
+        return allConnected;
     }
 
     // resets the puzzle.
