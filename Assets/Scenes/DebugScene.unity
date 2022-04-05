@@ -8144,6 +8144,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire Connect Puzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 341835225735948497, guid: 34a0613bde886304eb858601604c3c1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7910796773084444274, guid: 34a0613bde886304eb858601604c3c1e,
         type: 3}
       propertyPath: m_RootOrder
