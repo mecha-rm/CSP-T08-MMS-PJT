@@ -5,6 +5,9 @@ using UnityEngine;
 // the class for the player.
 public class Player : MonoBehaviour
 {
+    // the current player.
+    private static Player current;
+
     // the gameplay manager for the game.
     public GameplayManager manager;
 
@@ -14,9 +17,18 @@ public class Player : MonoBehaviour
     // the mouse light for the mouse.
     public MouseLight mouseLight;
 
+    // sets the current player.
+
+    private void Awake()
+    {
+        current = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        current = this;
+
         // finds the gameplay manager if it's not set.
         if(manager == null)
             manager = FindObjectOfType<GameplayManager>();
@@ -24,6 +36,18 @@ public class Player : MonoBehaviour
         // finds the mouse light in the scene.
         if (mouseLight == null)
             mouseLight = FindObjectOfType<MouseLight>(true);
+    }
+
+    // grabs the current player.
+    public static Player Current
+    {
+        get
+        {
+            if (current == null)
+                current = FindObjectOfType<Player>(true);
+
+            return current;
+        }
     }
 
     // returns 'true' if the mouse light component is enabled

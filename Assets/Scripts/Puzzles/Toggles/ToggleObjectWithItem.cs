@@ -28,7 +28,8 @@ public class ToggleObjectWithItem : ToggleObjectOnClick
     {
         base.Start();
 
-        if(manager != null)
+        // finds the manager.
+        if(manager == null)
             manager = FindObjectOfType<GameplayManager>();
 
     }

@@ -101,7 +101,7 @@ public class WireConnectNode : MonoBehaviour
         if (connected)
             return;
 
-        Debug.Log("MouseDown? " + wireConnect.mouseDown);
+        // Debug.Log("MouseDown? " + wireConnect.mouseDown);
 
         // the mouse position and line position are not in the same scale.
         // I don't know why, but the line position is different than the mouse position at the same place.
@@ -141,8 +141,8 @@ public class WireConnectNode : MonoBehaviour
             return;
 
         // mouse has been dragged.
-        Debug.Log("MouseEntered on " + gameObject.name);
-        Debug.Log("MouseDown? " + wireConnect.mouseDown);
+        // Debug.Log("MouseEntered on " + gameObject.name);
+        // Debug.Log("MouseDown? " + wireConnect.mouseDown);
 
         // if the mouse is down.
         if(wireConnect.mouseDown)
@@ -154,7 +154,7 @@ public class WireConnectNode : MonoBehaviour
                 // enters in the node.
                 wireConnect.node2 = this;
 
-                Debug.Log("assigning node2 " + wireConnect.node2);
+                // Debug.Log("assigning node2 " + wireConnect.node2);
 
                 // checks to see if the object is connected.
                 // this should only be called when the second node is entered.

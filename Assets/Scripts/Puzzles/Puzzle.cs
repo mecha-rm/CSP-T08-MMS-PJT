@@ -13,6 +13,8 @@ public class Puzzle : MonoBehaviour
     // commented out because the puzzle might have multiple parts.
     // public bool puzzleComplete = false;
 
+    // TODO: make list for puzzle interactions.
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -20,6 +22,8 @@ public class Puzzle : MonoBehaviour
         if (desc == null)
             desc = GetComponent<Descriptor>();
     }
+
+    // TODO: make on puzzle failure.
 
     // called when the puzzle is completed.
     public virtual void OnPuzzleCompletion()

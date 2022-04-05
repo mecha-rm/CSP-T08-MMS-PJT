@@ -56,6 +56,9 @@ public class ToggleObjectOnClick : MonoBehaviour
     // called when the mouse button goes down
     private void OnMouseDown()
     {
+        // TODO: this only gets called if the left mouse button is clicked.
+        // move this to the update loop so that this actually does something.
+        // use mouseOver instead.
         // key has been pressed down.
         if (useUnityMouse && Input.GetKeyDown(key))
             toggle = true;

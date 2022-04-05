@@ -7,6 +7,12 @@ using UnityEngine.Rendering.PostProcessing; // post processing volume.
 // manages gameplay operations.
 public class GameplayManager : Manager
 {
+    // the current gameplay manager. Since there's only 1, this will be set to said variable.
+    // set in awake.
+    // NOTE: this was a late addition, so we don't use this variable.
+    // But for future work, maybe use this instead of saving a manager object.
+    private static GameplayManager current;
+
     // becomes 'true', when the first update has been finished.
     private bool passedFirstUpdate = false;
 
@@ -85,13 +91,22 @@ public class GameplayManager : Manager
     public Button forwardScreenButton;
     public Button backScreenButton;
 
+    // saves this as the current gameplay manager.
+    private void Awake()
+    {
+        current = this;
+    }
+
     // Start is called before the first frame update
-    new void Start()
+    protected new void Start()
     {
         // sets the frame rate.
         // This happens in the title scene, so this function call is only needed when testing.
         if(Application.isEditor)
             base.Start();
+
+        // makes sure the active gameplay manager is saved.
+        current = this;
 
         // finds the player in the scene.
         if (player == null)
@@ -200,6 +215,19 @@ public class GameplayManager : Manager
         // TODO: sometimes the forward screen seems to be set automatically when it shouldn't. Try to fix that.
         // maybe it's just an objects being overlayed issue? If so, just move things around.
 
+    }
+
+    // gets the current manager.
+    public static GameplayManager Current
+    {
+        get
+        {
+            // saves the gameplay manager if not set.
+            if (current == null)
+                current = FindObjectOfType<GameplayManager>(true);
+
+            return current;
+        }
     }
 
     // switches to the left screen.
