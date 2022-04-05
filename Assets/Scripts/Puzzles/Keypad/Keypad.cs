@@ -20,6 +20,9 @@ public class Keypad : PuzzleMechanic
     // there is only one keypad, and this is its passcode, so this is the default.
     public string passcode = "44789";
 
+    // the canvas used for displaying the text.
+    public Canvas textCanvas;
+
     // the text display
     public Text textDisplay;
 
@@ -27,6 +30,22 @@ public class Keypad : PuzzleMechanic
     protected new void Start()
     {
         base.Start();
+
+        // looks in the children for the component.
+        if (textCanvas == null)
+            textCanvas = GetComponentInChildren<Canvas>();
+
+        // text canvas is set.
+        if (textCanvas != null)
+        {
+            // if not set, this script will set the world camera (event camera).
+            // this is needed for the text display.
+            if (textCanvas.worldCamera == null)
+                textCanvas.worldCamera = Camera.main;
+        }
+            
+
+        // deault text set to whatever's saved as the default.
         defaultText = text;
     }
 
