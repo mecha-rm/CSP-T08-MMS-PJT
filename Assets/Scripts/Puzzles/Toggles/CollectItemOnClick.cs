@@ -57,6 +57,8 @@ public class CollectItemOnClick : ToggleObjectOnClick
         // this disables the item object if that's the paired object.
         base.OnToggle();
 
+        Debug.Log("Item toggled");
+
         // TODO: give item to player before toggling it.
         // also, maybe take out the conditional statement here?
 
