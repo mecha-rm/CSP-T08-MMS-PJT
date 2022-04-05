@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  interactable: 1
   checkCompleteInUpdate: 1
   desc: {fileID: 0}
   noteItem: {fileID: 0}
@@ -79,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  secondName: Wyvern
+  label: 
   description: A strange winged creature wants to talk with you.
 --- !u!1001 &1953318460578940868
 PrefabInstance:
@@ -183,6 +184,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1953318460225541168}
     m_Modifications:
+    - target: {fileID: 8295310360345771860, guid: 52638818d592704469016ee053a88a56,
+        type: 3}
+      propertyPath: label
+      value: Wyvern's Note
+      objectReference: {fileID: 0}
     - target: {fileID: 8295310360345771860, guid: 52638818d592704469016ee053a88a56,
         type: 3}
       propertyPath: secondName

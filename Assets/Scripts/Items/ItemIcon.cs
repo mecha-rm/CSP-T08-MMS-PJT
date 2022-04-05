@@ -22,7 +22,7 @@ public class ItemIcon : MonoBehaviour
     public Descriptor descriptor;
 
     // the default descriptor name.
-    private string defaultDescName = "Item";
+    private string defaultDescLabel = "Item";
 
     // the default descriptor description.
     private string defaultDescDesc = "An icon for an item in the player's inventory.";
@@ -68,7 +68,7 @@ public class ItemIcon : MonoBehaviour
         {
             // change name.
             if (descriptor.label == "")
-                descriptor.label = defaultDescName;
+                descriptor.label = defaultDescLabel;
 
             // change description.
             if (descriptor.description == "")
@@ -99,6 +99,22 @@ public class ItemIcon : MonoBehaviour
             descriptor.CopyContent(newDesc);
         }
 
+    }
+
+    // resets the icon to its default values.
+    public void ResetIcon()
+    {
+        // shows/hides the image.
+        iconImage.sprite = null; // no image
+        iconImage.enabled = false; // hide since there's no image.
+
+        // number text is 0, and hide amount.
+        amountText.text = "x0";
+        amountText.enabled = false;
+
+        // update description.
+        descriptor.label = defaultDescLabel;
+        descriptor.description = defaultDescDesc;
     }
 
     // Update is called once per frame

@@ -55,8 +55,14 @@ public class GameplayManager : Manager
     // the inspector default
     private string inspectDefault = "...";
 
+    // contains the old inspector name.
+    private string currInspectName;
+
     // the name of the object clicked on.
     public string inspectName = "";
+
+    // contains the old inspector description.
+    private string currInspectDesc;
 
     // the description of the object clicked on.
     public string inspectDesc = "...";
@@ -131,6 +137,21 @@ public class GameplayManager : Manager
         // grabs the timer component.
         if (timer == null)
             timer = GetComponent<Timer>();
+
+        // inspect text not set.
+        if(inspectText == null)
+        {
+            // looks for the object.
+            GameObject temp = GameObject.Find("Inspect Text");
+
+            // trys to grab the text component.
+            if (temp != null)
+                temp.TryGetComponent<Text>(out inspectText);
+        }
+
+        // saves the existing values of these variables.
+        currInspectName = inspectName;
+        currInspectDesc = inspectDesc;
             
     }
 
@@ -306,6 +327,13 @@ public class GameplayManager : Manager
             // updates the icon.
             // if there is only one item in the stack the number is not listed.
             itemIcon.UpdateIcon(item.itemIcon, amount, (amount > 1), item.descriptor);
+        }
+
+        // resets the rest of the icons.
+        while(itemIcons.Count > 0)
+        {
+            ItemIcon itemIcon = itemIcons.Dequeue();
+            itemIcon.ResetIcon();
         }
     }
 
@@ -623,22 +651,38 @@ public class GameplayManager : Manager
             }
         }
 
-        // updates the text element.
-        if (inspectText != null)
+        // updates the text element if the inspector values have changed.
+        if (inspectText != null && (inspectName != currInspectName || inspectDesc != currInspectDesc))
         {
-            // if the overhead text does not contain the inspector description.
-            if(!inspectText.text.Contains(inspectDesc))
+            // TODO: make this more efficient.
+
+            // // if the overhead text does not contain the inspector description.
+            // if(!inspectText.text.Contains(inspectDesc))
+            // {
+            //     // checks if there's a name.
+            //     if(inspectName != "") // there is a name, so include it.
+            //     {
+            //         inspectText.text = inspectName + ": " + inspectDesc;
+            //     }
+            //     else // there is no name, so don't include it.
+            //     {
+            //         inspectText.text = inspectDesc;
+            //     }
+            // }
+
+            // checks if there's a name.
+            if (inspectName != "") // there is a name, so include it.
             {
-                // checks if there's a name.
-                if(inspectName != "") // there is a name, so include it.
-                {
-                    inspectText.text = inspectName + ": " + inspectDesc;
-                }
-                else // there is no name, so don't include it.
-                {
-                    inspectText.text = inspectDesc;
-                }
+                inspectText.text = inspectName + ": " + inspectDesc;
             }
+            else // there is no name, so don't include it.
+            {
+                inspectText.text = inspectDesc;
+            }
+
+            // saves the values.
+            currInspectName = inspectName;
+            currInspectDesc = inspectDesc;
         }
             
 

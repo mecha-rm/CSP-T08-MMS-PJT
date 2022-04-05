@@ -5289,6 +5289,7 @@ GameObject:
   - component: {fileID: 1402685400}
   - component: {fileID: 1402685399}
   - component: {fileID: 1402685402}
+  - component: {fileID: 1402685403}
   m_Layer: 0
   m_Name: Treasure Cube
   m_TagString: Untagged
@@ -5387,6 +5388,21 @@ MonoBehaviour:
   descriptor: {fileID: 0}
   itemId: treasure
   itemIcon: {fileID: 21300000, guid: d0a624b179a2589468499eb2713ae305, type: 3}
+--- !u!114 &1402685403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402685397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356d9ff2dc0cfa948b2ceddcd70849d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  label: Treasure (Debug)
+  description: A debug item used to represent treasure.
 --- !u!1 &1451725272
 GameObject:
   m_ObjectHideFlags: 0
