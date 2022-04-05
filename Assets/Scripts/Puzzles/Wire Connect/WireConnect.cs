@@ -71,7 +71,7 @@ public class WireConnect : PuzzleMechanic
             puzzle.OnPuzzleCompletion();
 
         // everything has been connected.
-        Debug.Log("All Connected!");
+        //Debug.Log("All Connected!");
 
         // all of the nodes are connected.
         return result;
