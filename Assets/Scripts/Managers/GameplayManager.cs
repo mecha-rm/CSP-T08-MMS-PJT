@@ -56,7 +56,7 @@ public class GameplayManager : Manager
     private string inspectDefault = "...";
 
     // the name of the object clicked on.
-    public string inspectName = "...";
+    public string inspectName = "";
 
     // the description of the object clicked on.
     public string inspectDesc = "...";
@@ -293,6 +293,7 @@ public class GameplayManager : Manager
             // saves the amount of items in the stack.
             amount = indexes.Count;
 
+            // removes stacked items.
             // while there are remaining indexes.
             while(indexes.Count > 0)
             {
@@ -304,7 +305,7 @@ public class GameplayManager : Manager
 
             // updates the icon.
             // if there is only one item in the stack the number is not listed.
-            itemIcon.UpdateIcon(item.itemIcon, amount, (amount > 1));
+            itemIcon.UpdateIcon(item.itemIcon, amount, (amount > 1), item.descriptor);
         }
     }
 
@@ -418,6 +419,8 @@ public class GameplayManager : Manager
         player.SetMouseLightEnabled(!e);
     }
 
+    // DESCRIPTOR //
+
     // refreshes the game manager with its descriptor.
     public void RefreshDescriptor()
     {
@@ -425,7 +428,7 @@ public class GameplayManager : Manager
         if (descriptor == null)
             return;
 
-        inspectName = descriptor.secondName;
+        inspectName = descriptor.label;
         inspectDesc = descriptor.description;
     }
 
@@ -434,6 +437,60 @@ public class GameplayManager : Manager
     {
         descriptor = newDesc;
         RefreshDescriptor();
+    }
+
+    // reads an item icon's descriptor.
+    public void ReadItemDescriptor(int itemNum)
+    {
+        // reads an item icon.
+        switch(itemNum)
+        {
+            case 1: // 1
+                SetDescriptor(item1.descriptor);
+                break;
+            case 2: // 2
+                SetDescriptor(item2.descriptor);
+                break;
+            case 3: // 3
+                SetDescriptor(item3.descriptor);
+                break;
+            case 4: // 4
+                SetDescriptor(item4.descriptor);
+                break;
+            case 5: // 5
+                SetDescriptor(item5.descriptor);
+                break;
+        }
+    }
+
+    // reads item 1's descriptor.
+    public void ReadItem1Descriptor()
+    {
+        ReadItemDescriptor(1);
+    }
+
+    // reads item 2's descriptor.
+    public void ReadItem2Descriptor()
+    {
+        ReadItemDescriptor(2);
+    }
+
+    // reads item 3's descriptor.
+    public void ReadItem3Descriptor()
+    {
+        ReadItemDescriptor(3);
+    }
+
+    // reads item 4's descriptor.
+    public void ReadItem4Descriptor()
+    {
+        ReadItemDescriptor(4);
+    }
+
+    // reads item 5's descriptor.
+    public void ReadItem5Descriptor()
+    {
+        ReadItemDescriptor(5);
     }
 
 
@@ -560,7 +617,7 @@ public class GameplayManager : Manager
                 else
                 {
                     // clear out the name and description.
-                    inspectName = inspectDefault;
+                    inspectName = ""; // name is blank.
                     inspectDesc = inspectDefault;
                 }
             }
@@ -569,9 +626,19 @@ public class GameplayManager : Manager
         // updates the text element.
         if (inspectText != null)
         {
-            // if the overhead text has not been updated.
-            if(inspectText.text != inspectDesc)
-                inspectText.text = inspectDesc;
+            // if the overhead text does not contain the inspector description.
+            if(!inspectText.text.Contains(inspectDesc))
+            {
+                // checks if there's a name.
+                if(inspectName != "") // there is a name, so include it.
+                {
+                    inspectText.text = inspectName + ": " + inspectDesc;
+                }
+                else // there is no name, so don't include it.
+                {
+                    inspectText.text = inspectDesc;
+                }
+            }
         }
             
 

@@ -44,8 +44,8 @@ public class Wyvern : PuzzleMechanic
         if(desc != null)
         {
             // name
-            if (desc.secondName == "")
-                desc.secondName = "Wyvern";
+            if (desc.label == "")
+                desc.label = "Wyvern";
 
             // description
             if (desc.description == "")
@@ -60,12 +60,14 @@ public class Wyvern : PuzzleMechanic
         // the note item has been set.
         if(noteItem != null)
         {
+            // DEFAULTS
+
             // sets the note title.
-            if (noteItem.Title != "")
+            if (noteItem.Title == "")
                 noteItem.Title = "Wyvern Note";
 
             // sets the text.
-            if(noteItem.Text != "")
+            if(noteItem.Text == "")
                 noteItem.Text = "Ring bell with floor number.";
         }
 

@@ -18,6 +18,15 @@ public class ItemIcon : MonoBehaviour
     // if 'true', the text is hidden on start.
     public bool showTextOnStart = false;
 
+    // the descriptor for the item icon.
+    public Descriptor descriptor;
+
+    // the default descriptor name.
+    private string defaultDescName = "Item";
+
+    // the default descriptor description.
+    private string defaultDescDesc = "An icon for an item in the player's inventory.";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +52,37 @@ public class ItemIcon : MonoBehaviour
                 amountText = GetComponentInChildren<Text>();
         }
 
+        // if not set, try to find it.
+        if (descriptor == null)
+        {
+            // if the component isn't found, add it.
+            if(!TryGetComponent<Descriptor>(out descriptor))
+            {
+                // adds a descriptor.
+                descriptor = gameObject.AddComponent<Descriptor>();
+            }
+        }
+
+        // descriptor is set.
+        if(descriptor != null)
+        {
+            // change name.
+            if (descriptor.label == "")
+                descriptor.label = defaultDescName;
+
+            // change description.
+            if (descriptor.description == "")
+                descriptor.description = defaultDescDesc;
+        }
+            
+
         // shows/hides the text.
         amountText.enabled = showTextOnStart;
 
     }
 
     // updates the icon image.
-    public void UpdateIcon(Sprite newSprite, int amount, bool showAmount)
+    public void UpdateIcon(Sprite newSprite, int amount, bool showAmount, Descriptor newDesc = null)
     {
         // updates the sprite.
         iconImage.sprite = newSprite;
@@ -58,6 +91,13 @@ public class ItemIcon : MonoBehaviour
         // updates the text.
         amountText.text = "x" + amount.ToString();
         amountText.enabled = showAmount;
+
+        // copies the values of the descriptor.
+        if(newDesc != null)
+        {
+            // copies the content from the provided descriptor.
+            descriptor.CopyContent(newDesc);
+        }
 
     }
 

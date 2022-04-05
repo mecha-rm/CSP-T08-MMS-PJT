@@ -7,7 +7,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     // the item's descriptor.
-    public Descriptor desc;
+    public Descriptor descriptor;
 
     // the ID for stacking the item for the UI display.
     // TODO: maybe hide this from the inspector?
@@ -36,13 +36,13 @@ public class Item : MonoBehaviour
     protected virtual void Start()
     {
         // description not set.
-        if (desc == null)
+        if (descriptor == null)
         {
             // try to get the component.
-            if (!TryGetComponent<Descriptor>(out desc))
+            if (!TryGetComponent<Descriptor>(out descriptor))
             {
                 // adds the description component.
-                desc = gameObject.AddComponent<Descriptor>();
+                descriptor = gameObject.AddComponent<Descriptor>();
             }
         }
     }

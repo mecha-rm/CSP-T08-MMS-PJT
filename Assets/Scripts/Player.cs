@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
         // the last piece is already in the frame, so the player must collect it before they can fill the frame.
         // TODO: maybe rework this?
         int ownedPieces = 0;
-        string stackId = PuzzlePiece.DefaultStackId;
+        string stackId = PuzzlePieceItem.DefaultStackId;
 
         // goes through the inventory.
         foreach(Item item in inventory)
@@ -139,5 +139,35 @@ public class Player : MonoBehaviour
             // iniates whatever highlighted action the player has.
             manager.InitiateMainAction();
         }
+
+        // ITEM ICON DESCRIPTIONS
+        // TODO: maybe check if the description shouldn't change in some cases?
+
+        // icon 1
+        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            manager.ReadItem1Descriptor();
+        }
+        // icon 2
+        else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            manager.ReadItem2Descriptor();
+        }
+        // icon 3
+        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            manager.ReadItem3Descriptor();
+        }
+        // icon 4
+        else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            manager.ReadItem4Descriptor();
+        }
+        // icon 5
+        else if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            manager.ReadItem5Descriptor();
+        }
+
     }
 }
