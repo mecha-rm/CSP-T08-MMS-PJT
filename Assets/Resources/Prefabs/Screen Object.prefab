@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6156828910853453653}
   - component: {fileID: 6156828910853453651}
+  - component: {fileID: 1531149045600914717}
   - component: {fileID: -156592686222504753}
   m_Layer: 0
   m_Name: Screen Object
@@ -45,14 +46,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  screenName: 
-  screenDesc: 
+  descriptor: {fileID: 0}
   orthographic: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  destroyAttachedCamera: 1
+--- !u!114 &1531149045600914717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156828910853453652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356d9ff2dc0cfa948b2ceddcd70849d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  label: Room Screen
+  description: A screen in the room.
 --- !u!20 &-156592686222504753
 Camera:
   m_ObjectHideFlags: 0

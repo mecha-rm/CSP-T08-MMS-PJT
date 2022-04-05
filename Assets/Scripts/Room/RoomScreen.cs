@@ -13,11 +13,8 @@ public class RoomScreen : MonoBehaviour
     // if a room is provided, the room activity is changed when entering and leaving a scene.
     // public bool disableInactiveRoom = true;
 
-    // the name of the screen. This can just be a number, or a full-blown name.
-    public string screenName = "";
-
-    // the description of the screen. This can be used to describe what the player can view.
-    public string screenDesc = "";
+    // the descriptor for the screen.
+    public Descriptor descriptor;
 
     // if 'true', this scene uses a perspective camera. If false, this screen using an orthographic camera.
     public bool orthographic = false;
@@ -55,6 +52,17 @@ public class RoomScreen : MonoBehaviour
         {
             room = GetComponentInParent<Room>();
         }            
+
+        // descriptor not set.
+        if(descriptor == null)
+        {
+            // grab descriptor.
+            descriptor = GetComponent<Descriptor>();
+
+            // add descriptor.
+            if (descriptor == null)
+                descriptor = gameObject.AddComponent<Descriptor>();
+        }
 
         // gets gameplay manager.
         if (manager == null)
