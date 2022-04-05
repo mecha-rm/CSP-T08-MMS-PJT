@@ -10,37 +10,57 @@ public class ScreenTrigger : MonoBehaviour
     public RoomScreen screen = null;
 
     // the collider for the screen trigger.
-    public Collider trigCollider;
+    public new Collider collider;
+
+    // turns off the collider when in the screen, on otherwise.
+    public bool colOffWhenInScreen = true;
 
     // Start is called before the first frame update
     private void Start()
     {
         // gets the attached collider.
-        trigCollider = GetComponent<Collider>();
+        collider = GetComponent<Collider>();
     }
 
     // enables the collider.
     public void EnableCollider()
     {
-        trigCollider.enabled = true;
+        collider.enabled = true;
     }
 
     // disables the collider.
 
     public void DisableCollider()
     {
-        trigCollider.enabled = false;
+        collider.enabled = false;
     }
 
     // toggles collider.
     public void ToggleColliderEnabled()
     {
-        trigCollider.enabled = !trigCollider.enabled;
+        collider.enabled = !collider.enabled;
     }
 
     // checks of the collider is enabled
     public bool IsCollderEnabled()
     {
-        return trigCollider.enabled;
+        return collider.enabled;
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        // keep collider enabled no matter what.
+        if(colOffWhenInScreen && screen != null)
+        {
+            // TODO: is it efficient to override this every time?
+
+            // checks if this is the current screen.
+            if (screen.manager.currentScreen == screen) // in screen, so turn collider off.
+                collider.enabled = false;
+            else // not current screen, so turn collider on.
+                collider.enabled = true;
+        }
+
     }
 }
