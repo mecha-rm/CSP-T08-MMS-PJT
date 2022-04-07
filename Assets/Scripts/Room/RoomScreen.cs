@@ -16,13 +16,29 @@ public class RoomScreen : MonoBehaviour
     // the descriptor for the screen.
     public Descriptor descriptor;
 
-    // if 'true', this scene uses a perspective camera. If false, this screen using an orthographic camera.
-    public bool orthographic = false;
-
     // manager for the game.
     public GameplayManager manager;
 
-    [Header("Screens")]
+    // settings for the room.
+    [Header("Settings")]
+
+    // if 'true', this scene uses a perspective camera. If false, this screen using an orthographic camera.
+    public bool orthographic = false;
+
+    // lock settings for the screen.
+    [Header("Settings/Locked")]
+
+    // if 'true', the screen is locked and you cannot set it as a forward screen.
+    [Tooltip("If true, this screen cannot be switched to.")]
+    public bool locked = false;
+
+    // text for a locked screen.
+    public string lockedDesc = "This screen is locked.";
+
+    // text for an unlocked screen.
+    public string unlockedDesc = "This screen is unlocked.";
+
+    [Header("Settings/Screens")]
 
     // the screen to the left of the current scene.
     // this may be disabled if zoomed in on a given object.
@@ -154,7 +170,8 @@ public class RoomScreen : MonoBehaviour
     public void SwitchToBackScreen()
     {
         // player needs to click to go forward again.
-        if (backScreen != null)
+        // if th screen 
+        if (backScreen != null && !locked)
             backScreen.forwardScreen = null;
 
         SwitchScreen(backScreen);
@@ -163,6 +180,13 @@ public class RoomScreen : MonoBehaviour
     // moves to the next screen.
     private void SwitchScreen(RoomScreen nextRoom)
     {
+        // if the screen is locked.
+        if(locked)
+        {
+            Debug.Log("The screen is locked, so you can't access it.");
+            return;
+        }
+
         // no next room.
         if (nextRoom == null)
             return;
@@ -177,6 +201,11 @@ public class RoomScreen : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        // the descriptor is set.
+        if(descriptor != null)
+        {
+            // update descriptor every frame.
+            descriptor.description = (locked) ? lockedDesc : unlockedDesc;
+        }
     }
 }

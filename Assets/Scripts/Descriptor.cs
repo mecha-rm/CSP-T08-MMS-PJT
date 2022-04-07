@@ -15,6 +15,10 @@ public class Descriptor : MonoBehaviour
     // the description of the descriptor.
     public string description = "";
 
+    // shows the label if one is set.
+    [Tooltip("Shows the label in the inspect text if it is available.")]
+    public bool showLabel = true;
+
     // Start is called before the first frame update
     void Start()
     {

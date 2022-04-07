@@ -401,14 +401,32 @@ public class GameplayManager : Manager
         // screen found, and it's not the screen you're currently in.
         if (rs != null && rs != currentScreen)
         {
-            // sets the forward screen of the last clicked object.
-            currentScreen.forwardScreen = rs;
+            // sets the descriptor.
+            SetDescriptor(rs.descriptor);
 
-            // saves the back screen for the forward screen.
-            rs.backScreen = currentScreen;
+            // can't set if the screen is locked.
+            if (rs.locked) // locked
+            {
+                Debug.Log("Screen locked, so you can't switch to it. If you unlock it, you need to click off and back on it.");
 
-            // screen switched.
-            return true;
+                // NOTE: if you unlock the screen you need to click off and click on it again.
+
+                return false;
+            }
+            else // unlocked
+            {
+                // sets the forward screen of the last clicked object.
+                currentScreen.forwardScreen = rs;
+
+                // saves the back screen for the forward screen.
+                rs.backScreen = currentScreen;
+
+                // uses the room's descriptor.
+                SetDescriptor(rs.descriptor);
+
+                // screen switched.
+                return true;
+            }  
         }
 
         // screen did not switch.
@@ -484,7 +502,10 @@ public class GameplayManager : Manager
         if (descriptor == null)
             return;
 
-        inspectName = descriptor.label;
+        // set name text.
+        inspectName = descriptor.showLabel ? descriptor.label : "";
+
+        // set description text.
         inspectDesc = descriptor.description;
     }
 
@@ -701,10 +722,16 @@ public class GameplayManager : Manager
             // checks if there's a name.
             if (inspectName != "") // there is a name, so include it.
             {
-                inspectText.text = inspectName + ": " + inspectDesc;
+                // if the description is set, include it.
+                // if it isn't, just include the name.
+                if(inspectDesc != "")
+                    inspectText.text = inspectName + ": " + inspectDesc;
+                else
+                    inspectText.text = inspectName;
             }
             else // there is no name, so don't include it.
             {
+                // description only, even if it's blank.
                 inspectText.text = inspectDesc;
             }
 

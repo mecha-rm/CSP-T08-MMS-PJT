@@ -466,6 +466,7 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   orthographic: 0
+  locked: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 623072272}
   rightScreen: {fileID: 2008952477}
@@ -1129,6 +1130,7 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   orthographic: 0
+  locked: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 2008952477}
   rightScreen: {fileID: 623072272}
@@ -1798,6 +1800,7 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   orthographic: 0
+  locked: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 349972588}
   rightScreen: {fileID: 119248058}
@@ -5526,6 +5529,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   label: Treasure (Debug)
   description: A debug item used to represent treasure.
+  showLabel: 1
 --- !u!1 &1451725272
 GameObject:
   m_ObjectHideFlags: 0
@@ -6374,6 +6378,7 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   orthographic: 0
+  locked: 1
   manager: {fileID: 0}
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
@@ -6937,6 +6942,7 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   orthographic: 0
+  locked: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
@@ -7289,6 +7295,7 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   orthographic: 0
+  locked: 0
   manager: {fileID: 0}
   leftScreen: {fileID: 119248058}
   rightScreen: {fileID: 349972588}
