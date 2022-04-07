@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO: implement light box.
-// toggles something on or off if the correct item is had.
-public class ToggleObjectWithItem : ToggleObjectOnClick
+// toggles something on or off if the correct item(s) are held by the player.
+public class ToggleObjectWithItems : ToggleObjectOnClick
 {
     [Header("ToggleObjectWithItem")]
 
@@ -23,13 +22,17 @@ public class ToggleObjectWithItem : ToggleObjectOnClick
         "This only requires one of each item to trigger the toggle if set to true.")]
     public bool needAll = true;
 
+    // take the items once they are used.
+    [Tooltip("Takes the items used to toggle the object.")]
+    public bool takeItems = true;
+
     // Start is called before the first frame update
     protected new void Start()
     {
         base.Start();
 
         // finds the manager.
-        if(manager == null)
+        if (manager == null)
             manager = FindObjectOfType<GameplayManager>();
 
     }
@@ -43,7 +46,7 @@ public class ToggleObjectWithItem : ToggleObjectOnClick
             base.OnToggle();
         }
         // checks object toggle.
-        else if(itemIds.Count != 0 && manager.player != null)
+        else if (itemIds.Count != 0 && manager.player != null)
         {
             // requirements met.
             bool toggle = true;
@@ -55,10 +58,14 @@ public class ToggleObjectWithItem : ToggleObjectOnClick
                 bool result = manager.player.HasItem(itemId);
 
                 // player has the item.
-                if(result)
+                if (result)
                 {
                     // item should be toggled.
                     toggle = true;
+
+                    // takes the item if this is true.
+                    if (takeItems)
+                        manager.player.TakeItem(itemId);
 
                     // if only one item is needed, leave the loop.
                     // the requirement has been met.
@@ -72,7 +79,7 @@ public class ToggleObjectWithItem : ToggleObjectOnClick
 
                     // all of them are needed.
                     // one was not found, so this can't be toggled.
-                    if(needAll)
+                    if (needAll)
                         break;
                 }
             }
@@ -81,6 +88,10 @@ public class ToggleObjectWithItem : ToggleObjectOnClick
             if (toggle)
                 base.OnToggle();
         }
+
+        // if items were taken, refresh the inventory display.
+        if (takeItems)
+            manager.RefreshInventoryDisplay();
     }
 
     // Update is called once per frame
