@@ -64,6 +64,12 @@ public class LockEntry : MonoBehaviour
             comboLock.DecreaseEntryByOne(index);
     }
 
+    // rotates the dial by 36 degrees every click (10 sided shape, 360/10 = 36)
+    public void RotateDial()
+    {
+        this.transform.Rotate(0,0,36);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -87,10 +93,12 @@ public class LockEntry : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0)) // left mouse click.
             {
                 IncreaseEntryByOne();
+                RotateDial();
             }
             else if (Input.GetKeyDown(KeyCode.Mouse1)) // right mouse click.
             {
                 DecreaseEntryByOne();
+                RotateDial();
             }
         }
     }
