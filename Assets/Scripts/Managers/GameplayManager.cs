@@ -167,6 +167,12 @@ public class GameplayManager : Manager
         // saves the existing values of these variables.
         currInspectName = inspectName;
         currInspectDesc = inspectDesc;
+
+        // sets starting description.
+        if (currentScreen != null)
+        {
+            SetDescriptor(currentScreen.descriptor);
+        }
             
     }
 
@@ -404,12 +410,25 @@ public class GameplayManager : Manager
             // sets the descriptor.
             SetDescriptor(rs.descriptor);
 
+            /*
+             * NOTE: there is an exploit here.
+             * If you click on a locked screen the screen will be inacessible, but the object will still be saved.
+             * This is because it was still the lastClicked object.
+             * If you then unlock the screen and shift screens (but not to the newly unlocked screen)...
+             *  it will still be available as the forward screen.
+             * This is because it is still the last clicked object, and only goes away once the user clicks on something else.
+             * This exploit likely won't come up in practice, but it's still something that should be fixed.
+             */
+
             // can't set if the screen is locked.
             if (rs.locked) // locked
             {
                 Debug.Log("Screen locked, so you can't switch to it. If you unlock it, you need to click off and back on it.");
 
                 // NOTE: if you unlock the screen you need to click off and click on it again.
+
+                // the forward screen should not remain set.
+                currentScreen.forwardScreen = null;
 
                 return false;
             }
@@ -675,28 +694,39 @@ public class GameplayManager : Manager
             {
                 bool success;
 
+                // if 'true', the descriptor should be updated.
+                // this is set to false if a room descriptor was set.
+                // this is for room triggers, since the room descriptions should be read, not the trigger descriptions.
+                bool updateDesc = true;
+
                 // tries to grab the room screen from the clicked object.
                 success = GetRoomScreenFromClicked();
 
                 // TODO: this may not be needed, but an item shouldn't be set to a room screen anyway.
                 if (!success)
                     GetItemFromClicked();
-
-                // tries to grab a descriptor.
-                Descriptor tempDesc;
-
-                // tries to find a descriptor object.
-                if(lastClicked.gameObject.TryGetComponent<Descriptor>(out tempDesc))
-                {
-                    // replaces the descriptor.
-                    SetDescriptor(tempDesc);
-                }
                 else
+                    updateDesc = false;
+
+                // description should be updated.
+                if(updateDesc)
                 {
-                    // clear out the name and description.
-                    inspectName = ""; // name is blank.
-                    inspectDesc = inspectDefault;
+                    Descriptor tempDesc;
+
+                    // tries to find a descriptor object.
+                    if (lastClicked.gameObject.TryGetComponent<Descriptor>(out tempDesc))
+                    {
+                        // replaces the descriptor.
+                        SetDescriptor(tempDesc);
+                    }
+                    else
+                    {
+                        // clear out the name and description.
+                        inspectName = ""; // name is blank.
+                        inspectDesc = inspectDefault;
+                    }
                 }
+                
             }
         }
 

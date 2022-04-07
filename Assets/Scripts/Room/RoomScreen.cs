@@ -113,7 +113,9 @@ public class RoomScreen : MonoBehaviour
             // if(disableInactiveRoom)
             //     room.gameObject.SetActive(true);
         }
-            
+
+        // set the descriptor to that of the new room.
+        manager.SetDescriptor(descriptor);
     }
 
     // called whene exiting the screen.
@@ -170,9 +172,12 @@ public class RoomScreen : MonoBehaviour
     public void SwitchToBackScreen()
     {
         // player needs to click to go forward again.
-        // if th screen 
-        if (backScreen != null && !locked)
+        if (backScreen != null)
+        {
+            // clear out the forward screen.
             backScreen.forwardScreen = null;
+        }
+            
 
         SwitchScreen(backScreen);
     }
@@ -180,16 +185,21 @@ public class RoomScreen : MonoBehaviour
     // moves to the next screen.
     private void SwitchScreen(RoomScreen nextRoom)
     {
-        // if the screen is locked.
-        if(locked)
-        {
-            Debug.Log("The screen is locked, so you can't access it.");
-            return;
-        }
-
         // no next room.
         if (nextRoom == null)
             return;
+
+        // if the screen is locked.
+        if (nextRoom.locked)
+        {
+            // debug message (TODO: comment out)
+            Debug.Log("The desired screen is locked, so you can't access it.");
+            
+            // sets the descriptor to show that the next room is locked.
+            manager.SetDescriptor(nextRoom.descriptor);
+
+            return;
+        }
 
         // enables the next room.
         nextRoom.EnableScreen();

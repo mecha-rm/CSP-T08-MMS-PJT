@@ -465,9 +465,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
+  manager: {fileID: 0}
   orthographic: 0
   locked: 0
-  manager: {fileID: 0}
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 623072272}
   rightScreen: {fileID: 2008952477}
   forwardScreen: {fileID: 0}
@@ -1129,9 +1131,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
+  manager: {fileID: 0}
   orthographic: 0
   locked: 0
-  manager: {fileID: 0}
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 2008952477}
   rightScreen: {fileID: 623072272}
   forwardScreen: {fileID: 0}
@@ -1799,9 +1803,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
+  manager: {fileID: 0}
   orthographic: 0
   locked: 0
-  manager: {fileID: 0}
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 349972588}
   rightScreen: {fileID: 119248058}
   forwardScreen: {fileID: 0}
@@ -5622,7 +5628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465743516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: 0, z: 2.23}
+  m_LocalPosition: {x: 0.45, y: 0, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 349972589}
@@ -5639,7 +5645,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Size: {x: 1.4, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1465743519
 MonoBehaviour:
@@ -6377,9 +6383,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
+  manager: {fileID: 0}
   orthographic: 0
   locked: 1
-  manager: {fileID: 0}
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
@@ -6941,9 +6949,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
+  manager: {fileID: 0}
   orthographic: 0
   locked: 0
-  manager: {fileID: 0}
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
@@ -7294,9 +7304,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
+  manager: {fileID: 0}
   orthographic: 0
   locked: 0
-  manager: {fileID: 0}
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 119248058}
   rightScreen: {fileID: 349972588}
   forwardScreen: {fileID: 0}
