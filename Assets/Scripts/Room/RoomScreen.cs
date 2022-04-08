@@ -8,6 +8,8 @@ public class RoomScreen : MonoBehaviour
 {
     // the room the screen is part of.
     public Room room;
+    public AudioManager audioManager;
+    public bool isDoor = false;
 
     // TODO: this works, but until we get a more streamlined solution I'm taking this out.
     // if a room is provided, the room activity is changed when entering and leaving a scene.
@@ -115,6 +117,15 @@ public class RoomScreen : MonoBehaviour
             // if the room activity should be changed.
             // if(disableInactiveRoom)
             //     room.gameObject.SetActive(true);
+
+
+            //Audio Managing?
+
+            //if (isDoor)
+            //{
+            //    audioManager.PlayAudio(audioManager.Door_SFX_RM1_EXT);
+            //}
+            
         }
 
         // This loop activates all accessibility components on objects associated with this screen.
@@ -177,6 +188,13 @@ public class RoomScreen : MonoBehaviour
                 Debug.Log("EXIT Accessible label 3D " + i);
             }
         }
+
+        //Audio Managing.
+
+        //if (isDoor)
+        //{
+        //    audioManager.PlayAudio(audioManager.Door_SFX_RM1_EXT);
+        //}
     }
 
     // enables the room screen.

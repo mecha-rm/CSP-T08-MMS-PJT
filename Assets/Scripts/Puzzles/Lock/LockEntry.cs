@@ -6,6 +6,8 @@ using UnityEngine.UI;
 // an entry into the lock.
 public class LockEntry : MonoBehaviour
 {
+    public AudioManager audioManager;
+
     // the combination lock.
     public CombinationLock comboLock;
 
@@ -68,6 +70,7 @@ public class LockEntry : MonoBehaviour
     public void RotateDial()
     {
         this.transform.Rotate(0,0,36);
+        audioManager.PlayAudio(audioManager.Padlock_SFX);
     }
 
     // Update is called once per frame
