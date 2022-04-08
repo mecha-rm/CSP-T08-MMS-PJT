@@ -52,7 +52,7 @@ public class EndManager : Manager
         // RESULTS DATA //
 
         // tries to find an endgame data object.
-        ResultsData resultsData = FindObjectOfType<ResultsData>(true);
+        GameEndInfo resultsData = FindObjectOfType<GameEndInfo>(true);
 
         // there is endgame data.
         if(resultsData != null)

@@ -13,6 +13,10 @@ public class GameplayManager : Manager
     // But for future work, maybe use this instead of saving a manager object.
     private static GameplayManager current;
 
+    // the accessibility manager.
+    [Tooltip("The accessibility manager.")]
+    public UAP_AccessibilityManager accessibility;
+
     // becomes 'true', when the first update has been finished.
     private bool passedFirstUpdate = false;
 
@@ -105,6 +109,10 @@ public class GameplayManager : Manager
         if(Application.isEditor)
             base.Start();
 
+        // finds the accessibility manager
+        if (accessibility == null)
+            accessibility = FindObjectOfType<UAP_AccessibilityManager>(true);
+
         // makes sure the active gameplay manager is saved.
         current = this;
 
@@ -173,7 +181,21 @@ public class GameplayManager : Manager
         {
             SetDescriptor(currentScreen.descriptor);
         }
-            
+
+        // finds the starting information.
+        GameStartInfo gsi = FindObjectOfType<GameStartInfo>(true);
+
+        // enables the accessibility
+        // TODO: seperate this for screen reader and high contrast
+        if (gsi != null)
+        {
+            // sets the accessibility.
+            if(accessibility != null)
+                accessibility.gameObject.SetActive(gsi.useScreenReader);
+
+            // destroys object once it's done being used.
+            Destroy(gsi.gameObject);
+        }
     }
 
     // switches the screen.
@@ -651,13 +673,13 @@ public class GameplayManager : Manager
     public void OnGameEnd()
     {
         // tries to find the results data object if it already exists.
-        ResultsData resultsData = FindObjectOfType<ResultsData>();
+        GameEndInfo resultsData = FindObjectOfType<GameEndInfo>(true);
 
         // this object doe not exist, so make a new object.
         if (resultsData == null)
         {
-            GameObject temp = new GameObject("Game Results");
-            resultsData = temp.AddComponent<ResultsData>();
+            GameObject temp = new GameObject("Game End Info");
+            resultsData = temp.AddComponent<GameEndInfo>();
         }
 
         // saves the current time.

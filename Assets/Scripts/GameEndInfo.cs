@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // the end game data for the results screen.
-public class ResultsData : MonoBehaviour
+public class GameEndInfo : MonoBehaviour
 {
     // the time it took for the player to beat the game.
     public float completionTime = 0.0F;

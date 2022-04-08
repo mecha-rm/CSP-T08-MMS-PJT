@@ -6,10 +6,6 @@ using UnityEngine.UI;
 // the manager for the TitleScene.
 public class TitleManager : Manager
 {
-
-    public bool screenReaderToggle = false;
-    public bool highContrastToggle = false;
-
     // the screens for the menu.
     public GameObject screen1;
     public GameObject screen2;
@@ -18,10 +14,35 @@ public class TitleManager : Manager
     private GameObject controls;
     private GameObject objective;
 
+    // checks if on screen 1.
     private bool isOnScreen1 = true;
 
-    private Image screenReaderCheckmark;
-    private Image highContrastCheckmark;
+    [Header("Accessibility")]
+
+    // finds the screen reader toggles.
+    // these toggles are not meant to be used with the mouse, so that component is disabled.
+    
+    // high contrast
+    [Tooltip("High contrast toggle, which is a visual to show if the screen reader is enabled or not. " +
+        "Use the correspond key to toggle it instead.")]
+    public Toggle highContrastToggle;
+
+    // screen reader
+    [Tooltip("Screen reader toggle, which is a visual to show if the screen reader is enabled or not. " +
+        "Use the correspond key to toggle it instead.")]
+    public Toggle screenReaderToggle;
+
+    
+
+    // accessibility settings.
+    
+    // high contrast
+    [Tooltip("Enables high contrast.")]
+    public bool useHighContrast = false;
+
+    // screen reader.
+    [Tooltip("Enables screen reader.")]
+    public bool useScreenReader = false;
 
     // Start is called before the first frame update
     protected new void Start() 
@@ -30,8 +51,6 @@ public class TitleManager : Manager
         base.Start();
 
         //initialize all required menu objects
-        screenReaderCheckmark = GameObject.Find("Screen Reader Checkmark").GetComponent<Image>();
-        highContrastCheckmark = GameObject.Find("High Contrast Checkmark").GetComponent<Image>();
         
         // screen 1 not set.
         if(screen1 == null)
@@ -53,11 +72,38 @@ public class TitleManager : Manager
 
         objective.SetActive(false);
         controls.SetActive(true);
+
+        // TODO: search for toggles?
+        // high contrast
+        if (highContrastToggle != null)
+            highContrastToggle.isOn = useHighContrast;
+
+        // screen reader
+        if (screenReaderToggle != null)
+            screenReaderToggle.isOn = useScreenReader;
     }
 
     // starts the game scene.
     public void StartGame()
     {
+        // grabs the game start info.
+        GameStartInfo gsi = FindObjectOfType<GameStartInfo>(true);
+
+        // object not found, so make it.
+        if(gsi == null)
+        {
+            // makes the object.
+            GameObject temp = new GameObject("Game Start Info");
+
+            // adds the start info component.
+            gsi = temp.AddComponent<GameStartInfo>();
+        }
+
+        // use these parameters.
+        gsi.useScreenReader = useScreenReader;
+        gsi.useHighContrast = useHighContrast;
+
+        // switch the scene.
         SceneHelper.LoadScene("GameScene");
     }
 
@@ -104,25 +150,28 @@ public class TitleManager : Manager
     void Update()
     {
         //ensures that toggles can only be changed when screen1 GameObject is active
-        if(isOnScreen1){
-
-            if (Input.GetKeyDown("0")){
-
-                //flips screen reader toggle boolean
-                screenReaderToggle = !screenReaderToggle;
-
-                //shows/hides checkmark in screen reader box
-                screenReaderCheckmark.enabled = screenReaderToggle;
+        if(isOnScreen1)
+        {
+            // toggle the high contrast
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                useHighContrast = !useHighContrast;
             }
 
-            if (Input.GetKeyDown("h")){
-
-                //flips high contrast toggle boolean
-                highContrastToggle = !highContrastToggle;
-
-                //shows/hides checkmark in high contrast box
-                highContrastCheckmark.enabled = highContrastToggle;
+            // toggle the screen reader.
+            if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+            {
+                useScreenReader = !useScreenReader;
             }
+
+            // update high contrast visual.
+            if (highContrastToggle != null)
+                highContrastToggle.isOn = useHighContrast;
+
+            // update screen reader visual.
+            if (screenReaderToggle != null)
+                screenReaderToggle.isOn = useScreenReader;
+            
         }
     }
 }
