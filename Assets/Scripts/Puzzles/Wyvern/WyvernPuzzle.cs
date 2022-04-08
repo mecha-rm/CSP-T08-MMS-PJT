@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockPuzzle : Puzzle
+public class WyvernPuzzle : Puzzle
 {
     // Start is called before the first frame update
     protected new void Start()
@@ -17,14 +17,11 @@ public class LockPuzzle : Puzzle
         // call parent's version.
         base.OnPuzzleCompletion();
 
-        // TODO: put puzzle completion implementation here.
+        // Hide Wyvern, I dont think this is the best way to do this
+        // however I cant think of another way
+        GameObject wyvern = GameObject.Find("Wyvern");
 
-        // hides lock
-        GameObject padlock = GameObject.Find("Padlock");
-
-        padlock.SetActive(false);
-
-        // TODO: open closed doors and add animation to lock opening
+        wyvern.SetActive(false);
         
     }
 
