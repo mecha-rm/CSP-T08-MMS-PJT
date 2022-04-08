@@ -20,10 +20,10 @@ public class LockPuzzle : Puzzle
         // TODO: put puzzle completion implementation here.
 
         // hides lock
-        GameObject padlock = GameObject.Find("Padlock");
+        CombinationLock comboLock = FindObjectOfType<CombinationLock>();
 
-        padlock.SetActive(false);
-
+        if(comboLock != null)
+            comboLock.gameObject.SetActive(false);
         // TODO: open closed doors and add animation to lock opening
         
     }

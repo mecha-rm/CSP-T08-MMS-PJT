@@ -19,9 +19,12 @@ public class WyvernPuzzle : Puzzle
 
         // Hide Wyvern, I dont think this is the best way to do this
         // however I cant think of another way
-        GameObject wyvern = GameObject.Find("Wyvern");
+        //GameObject wyvern = GameObject.Find("Wyvern");
 
-        wyvern.SetActive(false);
+        Wyvern wyvern = FindObjectOfType<Wyvern>();
+
+        if(wyvern != null)
+            wyvern.gameObject.SetActive(false);
         
     }
 
