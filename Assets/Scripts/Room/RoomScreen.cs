@@ -44,6 +44,9 @@ public class RoomScreen : MonoBehaviour
     // leave this as blank. Maybe hide them from the inspector?
     public RoomScreen backScreen = null;
 
+    // Used for activating and deactivating objects in each camera view
+    public GameObject[] activeObject = null;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -74,15 +77,64 @@ public class RoomScreen : MonoBehaviour
             // if(disableInactiveRoom)
             //     room.gameObject.SetActive(true);
         }
-            
+
+        // This loop activates all accessibility components on objects associated with this screen.
+        for (int i = 0; i < activeObject.Length; i++)
+        {
+            if (activeObject[i].GetComponent<AccessibleButton>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleButton>().enabled = true;
+                Debug.Log("Accessible button " + i);
+            }
+            else if (activeObject[i].GetComponent<AccessibleButton_3D>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleButton_3D>().enabled = true;
+                Debug.Log("Accessible button 3D " + i);
+            }
+            else if (activeObject[i].GetComponent<AccessibleLabel>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleLabel>().enabled = true;
+                Debug.Log("Accessible label " + i);
+            }
+            else if (activeObject[i].GetComponent<AccessibleLabel_3D>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleLabel_3D>().enabled = true;
+                Debug.Log("Accessible label 3D " + i);
+            }
+        }
     }
 
-    // called whene exiting the screen.
+    // called when exiting the screen.
     public virtual void OnScreenExit()
     {
         // exiting the screen, so turn off the room.
         // if (room != null && disableInactiveRoom)
         //     room.gameObject.SetActive(false);
+
+        // This loop deactivates all accessibility components on objects associated with this screen.
+        for (int i = 0; i < activeObject.Length; i++)
+        {
+            if (activeObject[i].GetComponent<AccessibleButton>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleButton>().enabled = false;
+                Debug.Log("EXIT Accessible button " + i);
+            }
+            else if (activeObject[i].GetComponent<AccessibleButton_3D>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleButton_3D>().enabled = false;
+                Debug.Log("EXIT Accessible button 3D " + i);
+            }
+            else if (activeObject[i].GetComponent<AccessibleLabel>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleLabel>().enabled = false;
+                Debug.Log("EXIT Accessible label " + i);
+            }
+            else if (activeObject[i].GetComponent<AccessibleLabel_3D>() != null)
+            {
+                activeObject[i].GetComponent<AccessibleLabel_3D>().enabled = false;
+                Debug.Log("EXIT Accessible label 3D " + i);
+            }
+        }
     }
 
     // enables the room screen.
@@ -107,6 +159,7 @@ public class RoomScreen : MonoBehaviour
         // get values.
         manager.player.transform.position = transform.position;
         manager.player.transform.rotation = transform.rotation;
+
     }
 
     // switches to the left screen.
