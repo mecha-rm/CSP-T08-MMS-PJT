@@ -8,6 +8,13 @@ public class Room1LightboxPuzzle : Puzzle
     // the gameplay manager.
     public GameplayManager manager;
 
+    // the keypad for this puzzle.
+    public Keypad keypad;
+
+    // the material for the keypad's screen.
+    // TODO: get this working for the emissive parameter.
+    public Material keypadScreenMat;
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -17,6 +24,20 @@ public class Room1LightboxPuzzle : Puzzle
         // if the manager is not set, find it.
         if(manager == null)
             manager = FindObjectOfType<GameplayManager>();
+
+        // hides the keypad text and makes it inaccessible.
+        if (keypad != null)
+        {
+            keypad.interactable = false;
+            keypad.HideText();
+        }
+
+        // disables the emissive property.
+        if (keypadScreenMat != null)
+        {
+            keypadScreenMat.DisableKeyword("_EMISSION");
+        }
+            
     }
 
     // called when the puzzle is completed.
@@ -25,12 +46,46 @@ public class Room1LightboxPuzzle : Puzzle
         // call parent's version.
         base.OnPuzzleCompletion();
 
-        // TODO: put puzzle completion implementation here.
+        // shows the text on the keypad.
+        if (keypad != null)
+        {
+            keypad.interactable = true;
+            keypad.ShowText();
+        }
+
+        // enables the emissive property.
+        if (keypadScreenMat != null)
+        {
+            keypadScreenMat.EnableKeyword("_EMISSION");
+        }
+
 
         //turn on the lights and enable the keypad puzzle
         manager.SetRoomLightingEnabled(true);
 
         // TODO: turn off puzzle mechanic interactions.
+    }
+
+    // called when the puzzle is being reset.
+    public override void OnPuzzleReset()
+    {
+        base.OnPuzzleReset();
+
+        // shows the text on the keypad.
+        if (keypad != null)
+        {
+            keypad.interactable = false;
+            keypad.HideText();
+        }
+
+        // disables the emissive property.
+        if (keypadScreenMat != null)
+        {
+            keypadScreenMat.DisableKeyword("_EMISSION");
+        }
+
+        // turns off the lights.
+        manager.SetRoomLightingEnabled(false);
     }
 
     // Update is called once per frame

@@ -678,49 +678,6 @@ MonoBehaviour:
   paired: {fileID: 690717490119578892}
   line: {fileID: 0}
   connected: 0
---- !u!114 &1465533980047383118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8843648382099456346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f1efec95330b54e8dd9ed10540ef15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desc: {fileID: 0}
-  manager: {fileID: 0}
---- !u!114 &5863438422645365614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8843648382099456346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b9694245ba98e42b5220e058c3912c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzle: {fileID: 1465533980047383118}
-  interactable: 1
-  checkCompleteInUpdate: 1
-  node1: {fileID: 0}
-  node2: {fileID: 0}
-  nodes:
-  - {fileID: 6976435650599194543}
-  - {fileID: 2322377827985509902}
-  - {fileID: 6190782398571619720}
-  - {fileID: 4309454796117334028}
-  - {fileID: 3988347155770105329}
-  - {fileID: 5931411872705412767}
-  - {fileID: 690717490119578892}
-  - {fileID: 4549675182309289364}
-  lineMaterial: {fileID: 0}
-  lineWidth: 0.05
-  mouseDown: 0
 --- !u!1 &8466765730315292420
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +904,53 @@ MonoBehaviour:
   paired: {fileID: 5931411872705412767}
   line: {fileID: 0}
   connected: 0
+--- !u!114 &1465533980047383118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843648382099456346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f1efec95330b54e8dd9ed10540ef15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finished: 0
+  desc: {fileID: 0}
+  manager: {fileID: 0}
+  keypad: {fileID: 0}
+  keypadScreenMat: {fileID: 2100000, guid: 354d1d13376ebb945bc91a4e03a25269, type: 2}
+--- !u!114 &5863438422645365614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843648382099456346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b9694245ba98e42b5220e058c3912c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: {fileID: 1465533980047383118}
+  interactable: 1
+  checkCompleteInUpdate: 1
+  node1: {fileID: 0}
+  node2: {fileID: 0}
+  nodes:
+  - {fileID: 6976435650599194543}
+  - {fileID: 2322377827985509902}
+  - {fileID: 6190782398571619720}
+  - {fileID: 4309454796117334028}
+  - {fileID: 3988347155770105329}
+  - {fileID: 5931411872705412767}
+  - {fileID: 690717490119578892}
+  - {fileID: 4549675182309289364}
+  lineMaterial: {fileID: 0}
+  lineWidth: 0.05
+  mouseDown: 0
+  allConnected: 0
 --- !u!1001 &7406178148582701183
 PrefabInstance:
   m_ObjectHideFlags: 0

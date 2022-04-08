@@ -47,8 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
-  orthographic: 0
   manager: {fileID: 0}
+  orthographic: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
@@ -67,8 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  label: Room Screen
+  label: 
   description: A screen in the room.
+  showLabel: 1
 --- !u!20 &-156592686222504753
 Camera:
   m_ObjectHideFlags: 0

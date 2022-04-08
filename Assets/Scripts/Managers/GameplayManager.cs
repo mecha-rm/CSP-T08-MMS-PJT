@@ -212,7 +212,13 @@ public class GameplayManager : Manager
 
         // screens switched, so change this variable.
         if (cs != currentScreen)
+        {
+            // this prevents the objects from being read twice.
+            // it also prevents the user from keeping their click from last screen.
             lastClicked = null;
+            mouse.lastClickedObject = null;
+        }
+            
 
         // disables all other rooms.
         if (disableOtherRooms)
@@ -420,6 +426,10 @@ public class GameplayManager : Manager
              * This exploit likely won't come up in practice, but it's still something that should be fixed.
              */
 
+            // change the descriptor, regardless of if the screen is locked or not.
+            // message should show if locked or not.
+            SetDescriptor(rs.descriptor);
+
             // can't set if the screen is locked.
             if (rs.locked) // locked
             {
@@ -440,9 +450,6 @@ public class GameplayManager : Manager
                 // saves the back screen for the forward screen.
                 rs.backScreen = currentScreen;
 
-                // uses the room's descriptor.
-                SetDescriptor(rs.descriptor);
-
                 // screen switched.
                 return true;
             }  
@@ -455,16 +462,24 @@ public class GameplayManager : Manager
     // tries to get the item from the clicked object.
     private bool GetItemFromClicked()
     {
+        // item object.
         Item item;
 
         // tries to grab the item component.
         if (mouse.lastClickedObject.TryGetComponent<Item>(out item))
         {
-            // TODO: maybe make this a function in the Item class?
-            player.inventory.Add(item);
-            item.OnItemGet();
-            RefreshInventoryDisplay();
-            item.gameObject.SetActive(false);
+            // if the item is active and enabled.
+            // this stops the same item from being added twice from checking lastClicked multiple times.
+            // this is because the item object is deactivated once the item is gotten.
+            if(item.isActiveAndEnabled)
+            {
+                // TODO: maybe make this a function in the Item class?
+                player.inventory.Add(item);
+                item.OnItemGet();
+                RefreshInventoryDisplay();
+                item.gameObject.SetActive(false);
+            }
+            
         }
 
         return false;
@@ -689,27 +704,37 @@ public class GameplayManager : Manager
             // saves the clicked object.
             lastClicked = mouse.lastClickedObject;
 
+            Debug.Log("Last Clicked: " + lastClicked.name);
+
             // something has been clicked.
-            if(lastClicked != null)
+            if (lastClicked != null)
             {
-                bool success;
+                // // checks if a pull was successful.
+                // bool success;
+                
+                // saves these old values.
+                // if the inspector was not changed, then set the descriptor to the blank message.
+                // if the inspector was changed, don't overwrite siad changes.
+                string oldInspectName = inspectName;
+                string oldInspectDesc = inspectDesc;
 
-                // if 'true', the descriptor should be updated.
-                // this is set to false if a room descriptor was set.
-                // this is for room triggers, since the room descriptions should be read, not the trigger descriptions.
-                bool updateDesc = true;
+                // // tries to grab the room screen from the clicked object.
+                // success = GetRoomScreenFromClicked();
+                // 
+                // // TODO: this may not be needed, but an item shouldn't be set to a room screen anyway.
+                // if (!success)
+                //     GetItemFromClicked();
 
-                // tries to grab the room screen from the clicked object.
-                success = GetRoomScreenFromClicked();
+                // checks for a room screen.
+                GetRoomScreenFromClicked();
 
-                // TODO: this may not be needed, but an item shouldn't be set to a room screen anyway.
-                if (!success)
-                    GetItemFromClicked();
-                else
-                    updateDesc = false;
+                // checks for an item.
+                GetItemFromClicked();
 
-                // description should be updated.
-                if(updateDesc)
+                // tries functions on the door.
+
+                // description should be updated if nothing else changed the existing descriptions.
+                if (oldInspectName == inspectName && oldInspectDesc == inspectDesc)
                 {
                     Descriptor tempDesc;
 

@@ -42,6 +42,12 @@ public class Puzzle : MonoBehaviour
 
     }
 
+    // called when a puzzle fails.
+    public virtual void OnPuzzleFailure()
+    {
+        finished = false;
+    }
+
     // called when the puzzle is being reset.
     public virtual void OnPuzzleReset()
     {

@@ -1871,6 +1871,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keypad Puzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 7762476389308735897, guid: 2b8d0938cd42caf42bb9e1a91b41f069,
+        type: 3}
+      propertyPath: nextRoomEntry
+      value: 
+      objectReference: {fileID: 1952141617}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b8d0938cd42caf42bb9e1a91b41f069, type: 3}
 --- !u!1001 &298754679
@@ -4432,8 +4437,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   descriptor: {fileID: 0}
-  orthographic: 0
   manager: {fileID: 0}
+  orthographic: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 590050934}
   rightScreen: {fileID: 590050934}
   forwardScreen: {fileID: 0}
@@ -5136,6 +5144,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 918165634}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &925492467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5289625666822723250, guid: 2b8d0938cd42caf42bb9e1a91b41f069,
+    type: 3}
+  m_PrefabInstance: {fileID: 298436480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa90607225a430a4db49e1b0931c258d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &928046751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5423,6 +5443,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   label: Screwdriver
   description: A tool used for tightening or unfastening screws.
+  showLabel: 1
 --- !u!1001 &974462239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5519,6 +5540,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 538297236768355205}
     m_Modifications:
+    - target: {fileID: 1465533980047383118, guid: c5f95c7e482f11443bec6a487234e8cd,
+        type: 3}
+      propertyPath: keypad
+      value: 
+      objectReference: {fileID: 925492467}
     - target: {fileID: 4836006451048973027, guid: c5f95c7e482f11443bec6a487234e8cd,
         type: 3}
       propertyPath: m_IsActive
@@ -6720,6 +6746,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1328344933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 538297236768355205}
+    m_Modifications:
+    - target: {fileID: 3911868849089073592, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_Name
+      value: Puzzle Piece 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911868849089073595, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685255233236618150, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70,
+        type: 3}
+      propertyPath: label
+      value: Puzzle Piece 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44a2d983d03f8f74dbd7d6e4b3a9da70, type: 3}
 --- !u!4 &1330538498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4060481939114612, guid: e5df5caad603c8349ba3481b8ded0927,
@@ -9479,10 +9594,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: unlockedDesc
+      value: A screen in the room.
+      objectReference: {fileID: 0}
     - target: {fileID: 538297238271978983, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131467821215580815, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: description
+      value: This screen is locked.
       objectReference: {fileID: 0}
     - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}

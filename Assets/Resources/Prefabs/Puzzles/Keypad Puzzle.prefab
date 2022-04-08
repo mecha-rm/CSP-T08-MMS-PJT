@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finished: 0
   desc: {fileID: 0}
+  nextRoomEntry: {fileID: 0}
 --- !u!1001 &8664434125462850434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58,6 +59,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3555247118220107056, guid: c64c7e3fcb2d44345ac207b994a28819,
+        type: 3}
+      propertyPath: puzzle
+      value: 
+      objectReference: {fileID: 7762476389308735897}
     - target: {fileID: 4405160526382584350, guid: c64c7e3fcb2d44345ac207b994a28819,
         type: 3}
       propertyPath: m_Name
@@ -118,15 +124,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 4780028447794335811, guid: c64c7e3fcb2d44345ac207b994a28819,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.04
-      objectReference: {fileID: 0}
     - target: {fileID: 8283443199615066199, guid: c64c7e3fcb2d44345ac207b994a28819,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.91327375
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8283443199615066199, guid: c64c7e3fcb2d44345ac207b994a28819,
         type: 3}
@@ -136,7 +137,7 @@ PrefabInstance:
     - target: {fileID: 8283443199615066199, guid: c64c7e3fcb2d44345ac207b994a28819,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c64c7e3fcb2d44345ac207b994a28819, type: 3}

@@ -21,6 +21,23 @@ MonoBehaviour:
   itemIds:
   - screwdriver
   needAll: 1
+  takeItems: 1
+--- !u!114 &6004041159437263842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610726714979770162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356d9ff2dc0cfa948b2ceddcd70849d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  label: Locked Lightbox
+  description: Looking at Light Controls. It has four screws holding it shut.
+  showLabel: 1
 --- !u!1001 &8036624481300694491
 PrefabInstance:
   m_ObjectHideFlags: 0

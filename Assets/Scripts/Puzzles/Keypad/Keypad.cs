@@ -26,6 +26,9 @@ public class Keypad : PuzzleMechanic
     // the text display
     public Text textDisplay;
 
+    // becomes 'true' when the passcode is acceped.
+    public bool accepted = false;
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -49,6 +52,29 @@ public class Keypad : PuzzleMechanic
         defaultText = text;
     }
 
+    // hides the text.
+    public void HideText()
+    {
+        // deactivates the text object.
+        if (textDisplay != null)
+            textDisplay.gameObject.SetActive(false);
+    }
+
+    // shows the text.
+    public void ShowText()
+    {
+        // shows the text object.
+        if (textDisplay != null)
+            textDisplay.gameObject.SetActive(true);
+    }
+
+    // toggles the text.
+    public void ToggleText()
+    {
+        // toggles the text object.
+        if (textDisplay != null)
+            textDisplay.gameObject.SetActive(!textDisplay.gameObject.activeSelf);
+    }
 
     // adds text to the text object.
     public void AddCharacter(char ch)
@@ -91,6 +117,7 @@ public class Keypad : PuzzleMechanic
         if (correct && puzzle != null)
             puzzle.OnPuzzleCompletion();
 
+        accepted = correct;
         return correct;
     }
 
@@ -108,7 +135,7 @@ public class Keypad : PuzzleMechanic
     public override bool IsPuzzleComplete()
     {
         // checks if complete.
-        return ConfirmEntry();
+        return accepted;
     }
 
     // resets the puzzle.
@@ -116,6 +143,9 @@ public class Keypad : PuzzleMechanic
     {
         // reset to the default text.
         text = defaultText;
+
+        // reset parameter.
+        accepted = false;
 
         // called to reset the puzzle.
         if (puzzle != null)
