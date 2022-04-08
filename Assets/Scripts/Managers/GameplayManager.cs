@@ -242,6 +242,20 @@ public class GameplayManager : Manager
         }
     }
 
+    // returns the player.
+    public static Player Player
+    {
+        get
+        {
+            // if player not set...
+            if (Current.player == null)
+                Current.player = FindObjectOfType<Player>();
+
+            // return player.
+            return Current.player;
+        }
+    }
+
     // switches to the left screen.
     public void SwitchToLeftScreen()
     {
@@ -524,7 +538,11 @@ public class GameplayManager : Manager
         postProcessing.SetActive(!e);
 
         // sets the mouse light so that it can control the post-processed vingette effect.
-        player.SetMouseLightEnabled(!e);
+        
+        // for some reason this wasn't set at the start anymore, so this just makes sure to find it.
+        // player.SetMouseLightEnabled(!e);
+
+        Player.SetMouseLightEnabled(!e);
     }
 
     // DESCRIPTOR //

@@ -27,10 +27,7 @@ public class Elevator : PuzzleMechanic
     // have the timer run.
     public bool runTimer = true;
 
-    [Header("Other")]
-
-    // becomes 'true' when the puzzle is complete.
-    public bool complete = false;
+    // [Header("Other")]
 
 
     // TOOD: have space for opening the door in here or in the puzzle script.
@@ -96,17 +93,17 @@ public class Elevator : PuzzleMechanic
     // returns 'true' if the puzzle is complete.
     public override bool IsPuzzleComplete()
     {
-        return complete;
+        return solved;
     }
 
     // resets the puzzle.
     public override void ResetPuzzle()
     {
         // reset values.
+        solved = false;
         pulls = 0;
         resetTimer = resetTimerMax;
         runTimer = true;
-        complete = false;
     }
 
     // Update is called once per frame
@@ -128,7 +125,7 @@ public class Elevator : PuzzleMechanic
                 if (pulls == pullsNeeded)
                 {
                     // puzzle complete.
-                    complete = true;
+                    solved = true;
 
                     // open the door.
                     if (puzzle != null)
@@ -142,7 +139,7 @@ public class Elevator : PuzzleMechanic
                 else
                 {
                     // puzzle note complete.
-                    complete = false;
+                    solved = false;
 
                     // reset pull count.
                     pulls = 0;

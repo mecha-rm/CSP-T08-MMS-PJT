@@ -139,6 +139,7 @@ public class CombinationLock : PuzzleMechanic
             puzzle.OnPuzzleCompletion();
 
         // return result
+        solved = correct;
         return correct;
     }
 
@@ -157,12 +158,15 @@ public class CombinationLock : PuzzleMechanic
     public override bool IsPuzzleComplete()
     {
         // checks if complete.
-        return ConfirmCombination();
+        return solved;
     }
 
     // resets the puzzle.
     public override void ResetPuzzle()
     {
+        // no longer solved.
+        solved = false;
+
         // resets all entries to 0.
         for (int i = 0; i < entries.Count; i++)
             entries[i] = 0;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 952386968537250847}
   - component: {fileID: 952386968537250840}
   m_Layer: 0
-  m_Name: Periodic Table (x1_1200)
+  m_Name: Periodic Table (Unity Cube) [x1_1200]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

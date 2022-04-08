@@ -116,6 +116,7 @@ public class Wyvern : PuzzleMechanic
         if (puzzle != null)
             puzzle.OnPuzzleCompletion();
 
+        solved = hasItem;
         return hasItem;
     }
 
@@ -149,12 +150,13 @@ public class Wyvern : PuzzleMechanic
     // the puzzle was successful.
     public override bool IsPuzzleComplete()
     {
-        return hasTreasure;
+        return solved;
     }
 
     // the puzzle is being reset.
     public override void ResetPuzzle()
     {
+        solved = false;
         hasTreasure = false;
         UpdateDescriptor();
     }

@@ -26,9 +26,6 @@ public class Keypad : PuzzleMechanic
     // the text display
     public Text textDisplay;
 
-    // becomes 'true' when the passcode is acceped.
-    public bool accepted = false;
-
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -117,7 +114,7 @@ public class Keypad : PuzzleMechanic
         if (correct && puzzle != null)
             puzzle.OnPuzzleCompletion();
 
-        accepted = correct;
+        solved = correct;
         return correct;
     }
 
@@ -135,17 +132,17 @@ public class Keypad : PuzzleMechanic
     public override bool IsPuzzleComplete()
     {
         // checks if complete.
-        return accepted;
+        return solved;
     }
 
     // resets the puzzle.
     public override void ResetPuzzle()
     {
+        // reset parameter.
+        solved = false;
+
         // reset to the default text.
         text = defaultText;
-
-        // reset parameter.
-        accepted = false;
 
         // called to reset the puzzle.
         if (puzzle != null)

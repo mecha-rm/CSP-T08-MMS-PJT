@@ -474,6 +474,7 @@ MonoBehaviour:
   rightScreen: {fileID: 2008952477}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  activeObject: []
   destroyAttachedCamera: 1
 --- !u!1 &138006233
 GameObject:
@@ -1140,6 +1141,7 @@ MonoBehaviour:
   rightScreen: {fileID: 623072272}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  activeObject: []
   destroyAttachedCamera: 1
 --- !u!4 &349972589
 Transform:
@@ -1818,6 +1820,7 @@ MonoBehaviour:
   rightScreen: {fileID: 119248058}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  activeObject: []
   destroyAttachedCamera: 1
 --- !u!4 &623072273
 Transform:
@@ -4038,6 +4041,7 @@ MonoBehaviour:
   passcode: 44789
   textCanvas: {fileID: 0}
   textDisplay: {fileID: 624329087}
+  accepted: 0
 --- !u!1 &1083937028
 GameObject:
   m_ObjectHideFlags: 0
@@ -6400,6 +6404,7 @@ MonoBehaviour:
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  activeObject: []
   destroyAttachedCamera: 1
 --- !u!65 &1586191965
 BoxCollider:
@@ -6966,6 +6971,7 @@ MonoBehaviour:
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  activeObject: []
   destroyAttachedCamera: 1
 --- !u!4 &1788092474
 Transform:
@@ -7321,6 +7327,7 @@ MonoBehaviour:
   rightScreen: {fileID: 349972588}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  activeObject: []
   destroyAttachedCamera: 1
 --- !u!4 &2008952478
 Transform:

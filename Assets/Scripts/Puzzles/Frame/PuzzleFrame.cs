@@ -11,9 +11,6 @@ public class PuzzleFrame : PuzzleMechanic
     // the game object for the complete puzzle.
     public GameObject completePuzzleObject;
 
-    // if 'true', the puzzle is consideerd complete.
-    public bool complete = false;
-
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -25,7 +22,7 @@ public class PuzzleFrame : PuzzleMechanic
 
         // hides the complete puzzle model.
         if (completePuzzleObject != null)
-            completePuzzleObject.SetActive(complete);
+            completePuzzleObject.SetActive(solved);
 
     }
 
@@ -75,8 +72,10 @@ public class PuzzleFrame : PuzzleMechanic
             Debug.Log("Missing pieces still.");
         }
 
-        // TODO: add in puzzle functioanlity.
+        // TODO: add in puzzle functionality.
 
+        // send back result.
+        solved = result;
         return result;
     }
 
@@ -89,17 +88,19 @@ public class PuzzleFrame : PuzzleMechanic
     // puzzle complete success
     public override bool IsPuzzleComplete()
     {
-        return complete;
+        return solved;
     }
 
     // reset puzzle.
     public override void ResetPuzzle()
     {
+        solved = false;
+
         // revert to false.
         if (completePuzzleObject != null)
             completePuzzleObject.SetActive(false);
 
-        complete = false;
+        // TODO: reactivate all puzzle pieces?
     }
 
 

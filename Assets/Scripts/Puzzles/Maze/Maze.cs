@@ -232,6 +232,8 @@ public class Maze : PuzzleMechanic
         if (complete)
             Debug.Log("Maze Complete!");
 
+        // save result.
+        solved = complete;
         return complete;
 
     }
@@ -250,13 +252,16 @@ public class Maze : PuzzleMechanic
     // checks if the puzzle was completed successfully successful.
     public override bool IsPuzzleComplete()
     {
-        // checks if complete.
-        return IsComplete();
+        // checks if complete, but does not re-run the operation.
+        return solved;
     }
 
     // resets the puzzle.
     public override void ResetPuzzle()
     {
+        // reset solved variable.
+        solved = false;
+
         // reset to the default text.
         index = 0;
 

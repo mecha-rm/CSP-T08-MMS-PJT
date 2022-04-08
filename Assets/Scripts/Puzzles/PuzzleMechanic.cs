@@ -8,6 +8,10 @@ public abstract class PuzzleMechanic : MonoBehaviour
     // the puzzle that this keypad belongs to.
     public Puzzle puzzle;
 
+    // becomes 'true' when the puzzle is solved.
+    [Tooltip("Becomes 'true' when the puzzle is completed.")]
+    public bool solved;
+
     // TODO: have puzzle enabled
 
     // TODO: make puzzle start?
