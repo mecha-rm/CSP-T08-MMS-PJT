@@ -26,6 +26,14 @@ public class Keypad : PuzzleMechanic
     // the text display
     public Text textDisplay;
 
+    [Header("Audio")]
+
+    // the audio manager for the lock. This is used by the individual keys, but it's put here for ease of access.
+    public AudioManager audioManager;
+
+    // audio clip for the keypad being pressed.
+    public AudioClip keyPressedClip;
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -47,6 +55,14 @@ public class Keypad : PuzzleMechanic
 
         // deault text set to whatever's saved as the default.
         defaultText = text;
+
+        // uses the main audio manager.
+        if (audioManager == null)
+            audioManager = GameplayManager.Current.audioManager;
+
+        // loads up the keypad clip.
+        if (keyPressedClip == null)
+            keyPressedClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_KEYPAD_BUTTON_PRESS_CUT");
     }
 
     // hides the text.
@@ -116,6 +132,14 @@ public class Keypad : PuzzleMechanic
 
         solved = correct;
         return correct;
+    }
+
+    // play the sound for when the key is pressed.
+    public void PlayKeyPressedSound()
+    {
+        // plays the key pressed clip.
+        if (audioManager != null)
+            audioManager.PlayAudio(keyPressedClip);
     }
 
     // initiates the main action for this puzzle.

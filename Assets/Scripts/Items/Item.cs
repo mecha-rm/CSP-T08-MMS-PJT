@@ -19,6 +19,18 @@ public class Item : MonoBehaviour
     // TODO: see if there's a more efficient way to do this.
     public Sprite itemIcon;
 
+    [Header("Audio")]
+
+    // the audio manager used to play the clip.
+    public AudioManager audioManager;
+
+    // the audio clip for using this item.
+    public AudioClip audioClip;
+
+    // if an audio clip is set, use it.
+    [Header("Plays the saved audio clip when the item is being used.")]
+    public bool playAudio = true;
+
     // ID names.
 
     // item IDs
@@ -45,6 +57,10 @@ public class Item : MonoBehaviour
                 descriptor = gameObject.AddComponent<Descriptor>();
             }
         }
+
+        // grabs the audio manager.
+        if (audioManager == null)
+            audioManager = GameplayManager.Current.audioManager;
     }
 
     // called when the item is put into the player's inventory.
@@ -53,6 +69,19 @@ public class Item : MonoBehaviour
         // ...
     }
 
+    // call this when the item is being used.
+    public virtual void OnItemUse()
+    {
+        // plays the audio clip when the item is taken.
+        if (playAudio && audioClip != null)
+            audioManager.PlayAudio(audioClip);
+    }
+
+    // call this when the item is being taken from the player.
+    public virtual void OnItemLose()
+    {
+        // ...
+    }
 
     // Update is called once per frame
     void Update()

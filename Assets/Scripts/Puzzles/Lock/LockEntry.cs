@@ -6,8 +6,6 @@ using UnityEngine.UI;
 // an entry into the lock.
 public class LockEntry : MonoBehaviour
 {
-    public AudioManager audioManager;
-
     // the combination lock.
     public CombinationLock comboLock;
 
@@ -18,12 +16,22 @@ public class LockEntry : MonoBehaviour
     // this is used for the right mouse click.
     private bool overButton = false;
 
+    [Header("Action")]
+
+    // the dial for the lock.
+    [Tooltip("The dial for this lock entry. By default, it's the object this script is attached to.")]
+    public GameObject dial;
+
     // Start is called before the first frame update
     void Start()
     {
         // tries to find the combination lock.
         if (comboLock == null)
             comboLock = GetComponentInParent<CombinationLock>();
+
+        // this is the dial.
+        if (dial == null)
+            dial = gameObject;
     }
 
     // NOTE: for consistency, the left and right click have been put in the same place.
@@ -69,9 +77,17 @@ public class LockEntry : MonoBehaviour
     // rotates the dial by 36 degrees every click (10 sided shape, 360/10 = 36)
     public void RotateDial()
     {
-        this.transform.Rotate(0,0,36);
-        audioManager.PlayAudio(audioManager.Padlock_SFX);
+        // rotates the dial.
+        if(dial != null)
+        {
+            // rotates the dial.
+            dial.transform.Rotate(0, 0, 360.0F / comboLock.GetNumberCount());
+
+            // plays the dial turn audio.
+            comboLock.PlayDialTurnSound();
+        }
     }
+
 
     // Update is called once per frame
     void Update()

@@ -8,8 +8,6 @@ public class RoomScreen : MonoBehaviour
 {
     // the room the screen is part of.
     public Room room;
-    public AudioManager audioManager;
-    public bool isDoor = false;
 
     // TODO: this works, but until we get a more streamlined solution I'm taking this out.
     // if a room is provided, the room activity is changed when entering and leaving a scene.
@@ -20,6 +18,16 @@ public class RoomScreen : MonoBehaviour
 
     // manager for the game.
     public GameplayManager manager;
+
+    // an audio manager script.
+    public AudioManager audioManager;
+
+    // an audio clip.
+    public AudioClip audioClip;
+
+    // if the audio clip is available, play it.
+    [Tooltip("Use audio component if it is set.")]
+    public bool playAudio = false;
 
     // settings for the room.
     [Header("Settings")]
@@ -87,7 +95,15 @@ public class RoomScreen : MonoBehaviour
 
         // gets gameplay manager.
         if (manager == null)
-            manager = FindObjectOfType<GameplayManager>();
+            manager = GameplayManager.Current;
+
+        // uses the main audio manager.
+        if (audioManager == null)
+            audioManager = manager.audioManager;
+
+        // sets default audio clip.
+        if (audioClip == null)
+            audioClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_DOOR_OPENING");
 
         // if the attached camera should be destroyed.
         // these are just for testing purposes, and thus should not be kept.
@@ -117,14 +133,6 @@ public class RoomScreen : MonoBehaviour
             // if the room activity should be changed.
             // if(disableInactiveRoom)
             //     room.gameObject.SetActive(true);
-
-
-            //Audio Managing?
-
-            //if (isDoor)
-            //{
-            //    audioManager.PlayAudio(audioManager.Door_SFX_RM1_EXT);
-            //}
             
         }
 
@@ -155,6 +163,10 @@ public class RoomScreen : MonoBehaviour
 
         // set the descriptor to that of the new room.
         manager.SetDescriptor(descriptor);
+
+        // if the audio should be played, and the audio manager is set.
+        if (playAudio && audioManager != null)
+            audioManager.PlayAudio(audioClip);
     }
 
     // called when exiting the screen.

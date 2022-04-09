@@ -62,6 +62,35 @@ public class Player : MonoBehaviour
         mouseLight.SetLightEnabled(e);
     }
 
+    // gets an item in the player's inventory using the item index.
+    // this does not remove the item from the inventory.
+    public Item GetItemInInventory(int index)
+    {
+        // checks bounds of index.
+        if (index < 0 || index >= inventory.Count)
+            return null;
+        else
+            return inventory[index];
+    }
+
+    // gets the first item with the provided ID.
+    // this does not remove the item from the inventory.
+    public Item GetItemInInventory(string itemId)
+    {
+        // goes through all inventory items.
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            // item ID matches, so return item.
+            if (inventory[i].itemId == itemId)
+            {
+                return inventory[i];
+            }
+        }
+
+        // item not found.
+        return null;
+    }
+
     // gives the player an item.
     public void GiveItem(Item item)
     {
@@ -95,7 +124,9 @@ public class Player : MonoBehaviour
             }
         }
 
+        // update display.
         manager.RefreshInventoryDisplay();
+
         return null;
     }
 

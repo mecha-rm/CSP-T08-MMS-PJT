@@ -20,11 +20,18 @@ public class CombinationLock : PuzzleMechanic
     [Tooltip("The highest number in the lock for [0, highestNumber]. The total amount of numbers is highestNumber + 1 since 0 is included.")]
     public int highestNumber = 9;
 
+    [Header("Audio")]
+    // the audio manager for the lock. This is used by the individual keys, but it's put here for ease of access.
+    public AudioManager audioManager;
+
+    // the dial turn audio clip.
+    public AudioClip dialTurnClip;
+
     // Start is called before the first frame update
     protected new void Start()
     {
         base.Start();
-        
+
         // NOTE: text displays are not always needed.
         // no text entries saved (may come in at the wrong order).
         // if(textDisplays.Count == 0)
@@ -32,6 +39,15 @@ public class CombinationLock : PuzzleMechanic
         //     GetComponentsInChildren<Text>(textDisplays);
         // 
         // }
+
+        // uses the main audio manager.
+        if (audioManager == null)
+            audioManager = GameplayManager.Current.audioManager;
+
+        // loads up the dial clip.
+        if (dialTurnClip == null)
+            dialTurnClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_LOCK_CLICKING_CUT");
+
     }
 
     // gets the total amount of numbers.
@@ -141,6 +157,14 @@ public class CombinationLock : PuzzleMechanic
         // return result
         solved = correct;
         return correct;
+    }
+
+    // plays the dial turn sound.
+    public void PlayDialTurnSound()
+    {
+        // plays the sound.
+        if (audioManager != null && dialTurnClip != null)
+            audioManager.PlayAudio(dialTurnClip);
     }
 
     // initiates the main action for this puzzle.

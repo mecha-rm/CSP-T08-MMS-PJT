@@ -13,9 +13,14 @@ public class GameplayManager : Manager
     // But for future work, maybe use this instead of saving a manager object.
     private static GameplayManager current;
 
+    // the audio manager for the game.
+    public AudioManager audioManager;
+
     // the accessibility manager.
     [Tooltip("The accessibility manager.")]
     public UAP_AccessibilityManager accessibility;
+
+    [Header("Gameplay")]
 
     // becomes 'true', when the first update has been finished.
     private bool passedFirstUpdate = false;
@@ -95,10 +100,23 @@ public class GameplayManager : Manager
     public Button forwardScreenButton;
     public Button backScreenButton;
 
-    // saves this as the current gameplay manager.
+    // Awake is called when the script instance is being loaded.
     private void Awake()
     {
+        // there is only one
         current = this;
+
+        // checks if the audio manager has been set.
+        if (audioManager == null)
+        {
+            // tries to get the audio manager. If it doesn't get it, then it generates a new one.
+            if (!TryGetComponent<AudioManager>(out audioManager))
+                audioManager = gameObject.AddComponent<AudioManager>();
+        }
+
+        // finds the accessibility manager
+        if (accessibility == null)
+            accessibility = FindObjectOfType<UAP_AccessibilityManager>(true);
     }
 
     // Start is called before the first frame update
@@ -108,10 +126,6 @@ public class GameplayManager : Manager
         // This happens in the title scene, so this function call is only needed when testing.
         if(Application.isEditor)
             base.Start();
-
-        // finds the accessibility manager
-        if (accessibility == null)
-            accessibility = FindObjectOfType<UAP_AccessibilityManager>(true);
 
         // makes sure the active gameplay manager is saved.
         current = this;

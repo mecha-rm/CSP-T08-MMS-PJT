@@ -8,10 +8,11 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
     [Header("ToggleObjectWithItem")]
 
     // the gameplay manager.
-    public GameplayManager manager;
+    public GameplayManager gameManager;
+    
+    // the audio manager.
     public AudioManager audioManager;
 
-    public AudioSource sfx;
 
     // the item (stack ids) for the used items.
     [Tooltip("The items being checked for. If no IDs are provided, the object is toggled without needing anything.")]
@@ -34,9 +35,13 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
     {
         base.Start();
 
-        // finds the manager.
-        if (manager == null)
-            manager = FindObjectOfType<GameplayManager>();
+        // saves the gameplay manager.
+        if (gameManager == null)
+            gameManager = GameplayManager.Current;
+
+        // saves the audio manager.
+        if (audioManager == null)
+            audioManager = gameManager.audioManager;
 
     }
 
@@ -46,35 +51,48 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
         // no items, so no requirements to toggle the object.
         if (itemIds.Count == 0)
         {
-            if (sfx != null)
-            {
-                audioManager.PlayAudio(sfx);
-               
-            }
-
             base.OnToggle();
         }
         // checks object toggle.
-        else if (itemIds.Count != 0 && manager.player != null)
+        else if (itemIds.Count != 0 && gameManager.player != null)
         {
             // requirements met.
             bool toggle = true;
+
+            // saves the player.
+            Player player = gameManager.player;
+
+            // the list of audio clips. Only the first one is played for now.
+            List<AudioClip> clips = new List<AudioClip>();
 
             // goes through each item.
             foreach (string itemId in itemIds)
             {
                 // checks if the player has the item.
-                bool result = manager.player.HasItem(itemId);
+                bool result = player.HasItem(itemId);
 
                 // player has the item.
                 if (result)
                 {
+                    // the item.
+                    Item item = player.GetItemInInventory(itemId);
+
+                    // adds the audio clip if it's available.
+                    if (item.playAudio && item.audioClip != null)
+                        clips.Add(item.audioClip);
+
+
                     // item should be toggled.
                     toggle = true;
 
+                    // plays the audio
+
+                    audioManager.PlayAudio(player.GetItemInInventory(itemId).audioClip);
+
+
                     // takes the item if this is true.
                     if (takeItems)
-                        manager.player.TakeItem(itemId);
+                        player.TakeItem(itemId);
 
                     // if only one item is needed, leave the loop.
                     // the requirement has been met.
@@ -96,11 +114,15 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
             // this should be toggled.
             if (toggle)
             {
-                if (sfx != null)
+                // plays the audio.
+                if (clips.Count != 0 && audioManager != null)
                 {
-                    audioManager.PlayAudio(sfx);
-                    Debug.Log("Playing Audio");
+                    // plays sound 0.
+                    // TODO: maybe play multiple sounds at once?
+                    audioManager.PlayAudio(clips[0]);
                 }
+
+                // TODO: move audio play here.
 
                 base.OnToggle();
             }
@@ -109,7 +131,7 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
 
         // if items were taken, refresh the inventory display.
         if (takeItems)
-            manager.RefreshInventoryDisplay();
+            gameManager.RefreshInventoryDisplay();
     }
 
     // Update is called once per frame

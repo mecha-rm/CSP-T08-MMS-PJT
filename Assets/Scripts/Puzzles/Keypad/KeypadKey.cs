@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 // a key for a keypad.
 public class KeypadKey : MonoBehaviour
 {
-
-    public AudioManager audioManager;
-
-
     // the key operation
     public enum keyFunc { text, backspace, clear, confirm }
 
@@ -41,7 +35,6 @@ public class KeypadKey : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             PerformFunction();
-            audioManager.PlayAudio(audioManager.KeyPad_Pressed);
         }
             
     }
@@ -75,6 +68,9 @@ public class KeypadKey : MonoBehaviour
                     keypad.ConfirmEntry();
                     break;
             }
+
+            // plays audio.
+            keypad.PlayKeyPressedSound();
         }
     }
 

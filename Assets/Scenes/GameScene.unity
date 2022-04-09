@@ -441,7 +441,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 730282736}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &56698816
 PrefabInstance:
@@ -3319,12 +3319,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 375177113}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &381304117 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5894741202621398787, guid: 2b8d0938cd42caf42bb9e1a91b41f069,
-    type: 3}
-  m_PrefabInstance: {fileID: 298436480}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &391783665
 GameObject:
   m_ObjectHideFlags: 0
@@ -5036,11 +5030,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4886550897262811721, guid: 5577b6451f7525944a7ed75b3744f3cf,
-        type: 3}
-      propertyPath: audioManager
-      value: 
-      objectReference: {fileID: 730282735}
     - target: {fileID: 4886550897912667000, guid: 5577b6451f7525944a7ed75b3744f3cf,
         type: 3}
       propertyPath: puzzle
@@ -5071,21 +5060,6 @@ PrefabInstance:
       propertyPath: entries.Array.data[3]
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4886550898080895747, guid: 5577b6451f7525944a7ed75b3744f3cf,
-        type: 3}
-      propertyPath: audioManager
-      value: 
-      objectReference: {fileID: 730282735}
-    - target: {fileID: 4886550898250021902, guid: 5577b6451f7525944a7ed75b3744f3cf,
-        type: 3}
-      propertyPath: audioManager
-      value: 
-      objectReference: {fileID: 730282735}
-    - target: {fileID: 4886550898325545773, guid: 5577b6451f7525944a7ed75b3744f3cf,
-        type: 3}
-      propertyPath: audioManager
-      value: 
-      objectReference: {fileID: 730282735}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5577b6451f7525944a7ed75b3744f3cf, type: 3}
 --- !u!1001 &690008537
@@ -5577,9 +5551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cc13c54e83ed9469aba703a9a80f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door_SFX_RM1_EXT: {fileID: 20392078}
-  KeyPad_Pressed: {fileID: 381304117}
-  Padlock_SFX: {fileID: 1631552594}
 --- !u!4 &730282736
 Transform:
   m_ObjectHideFlags: 0
@@ -5591,7 +5562,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1510226975}
   - {fileID: 1235008028}
   - {fileID: 49449994}
   m_Father: {fileID: 0}
@@ -5713,10 +5683,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  audioManager: {fileID: 0}
-  isDoor: 0
   descriptor: {fileID: 0}
   manager: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 0
   orthographic: 0
   locked: 0
   lockedDesc: This screen is locked.
@@ -6912,6 +6883,9 @@ MonoBehaviour:
   descriptor: {fileID: 0}
   itemId: screwdriver
   itemIcon: {fileID: 21300000, guid: 9380c4e996e526a43aa305295a4ced4b, type: 3}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 3f172ca88d67e0e47bee33d55b305021, type: 3}
+  playAudio: 1
 --- !u!65 &968568218
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8010,10 +7984,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1631552593}
+  m_Children: []
   m_Father: {fileID: 730282736}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1235034303
 GameObject:
@@ -8251,7 +8224,7 @@ PrefabInstance:
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}

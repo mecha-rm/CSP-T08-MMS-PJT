@@ -25,14 +25,18 @@ public class NoteItem : Item
     {
         get
         {
-            // TODO: descriptor may not be set.
-
-            return descriptor.label;
+            // checks if the descriptor is set.
+            if (HasDescriptor())
+                return descriptor.label;
+            else
+                return "";
         }
 
         set
         {
-            descriptor.label = value;
+            // descriptor is set.
+            if(HasDescriptor())
+                descriptor.label = value;
         }
     }
 
@@ -41,13 +45,29 @@ public class NoteItem : Item
     {
         get
         {
-            return descriptor.description;
+            // descriptor is set.
+            if (HasDescriptor())
+                return descriptor.description;
+            else
+                return "";
         }
 
         set
         {
-            descriptor.description = value;
+            // descriptor is set.
+            if (HasDescriptor())
+                descriptor.description = value;
         }
+    }
+    
+    // if the note item has a descriptor, it returns this variable.
+    public bool HasDescriptor()
+    {
+        // descriptor is not set, so try to find it.
+        if (descriptor == null)
+            descriptor = GetComponent<Descriptor>();
+
+        return descriptor != null;
     }
 
     // gets the text.
