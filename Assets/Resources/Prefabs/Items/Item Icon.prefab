@@ -225,7 +225,7 @@ MonoBehaviour:
   showImageOnStart: 0
   amountText: {fileID: 7993565473343281336}
   showTextOnStart: 0
-  descriptor: {fileID: 0}
+  descriptor: {fileID: 5932812002965605846}
 --- !u!114 &5932812002965605846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,5 +239,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  secondName: 
+  label: 
   description: An icon for an item in the player's inventory.
+  showLabel: 1

@@ -55,7 +55,7 @@ public class Wyvern : PuzzleMechanic
         // NOTE
         // finds note item.
         if (noteItem == null)
-            noteItem = GetComponentInChildren<NoteItem>();
+            noteItem = GetComponentInChildren<NoteItem>(true);
 
         // the note item has been set.
         if(noteItem != null)

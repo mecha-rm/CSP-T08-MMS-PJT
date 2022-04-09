@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fb38c837ca7c942a0e04760a3e99df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  descriptor: {fileID: 0}
+  descriptor: {fileID: 4685255233236618150}
   itemId: 
   itemIcon: {fileID: 21300000, guid: 6e4207e3954b7a04dbaeed125fb788dc, type: 3}
 --- !u!114 &4685255233236618150
@@ -77,6 +77,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   label: Puzzle Piece
   description: A puzzle piece needed to complete the game.
+  showLabel: 1
 --- !u!1001 &6975749786010148127
 PrefabInstance:
   m_ObjectHideFlags: 0

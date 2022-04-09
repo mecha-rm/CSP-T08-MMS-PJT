@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  descriptor: {fileID: 0}
+  descriptor: {fileID: 1531149045600914717}
   manager: {fileID: 0}
   orthographic: 0
   locked: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
+  activeObject: []
   destroyAttachedCamera: 1
 --- !u!114 &1531149045600914717
 MonoBehaviour:

@@ -61,10 +61,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  solved: 0
   interactable: 1
   checkCompleteInUpdate: 1
-  desc: {fileID: 0}
-  noteItem: {fileID: 0}
+  desc: {fileID: 1953318460225541173}
+  noteItem: {fileID: 1953318459867505610}
   manager: {fileID: 0}
   hasTreasure: 0
 --- !u!114 &1953318460225541173
@@ -82,6 +83,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   label: 
   description: A strange winged creature wants to talk with you.
+  showLabel: 1
 --- !u!1001 &1953318460578940868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,3 +269,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7495476426093321375}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1953318459867505610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8295310360345771861, guid: 52638818d592704469016ee053a88a56,
+    type: 3}
+  m_PrefabInstance: {fileID: 7495476426093321375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628ead7a31a583e41a2cbf6ae935d040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

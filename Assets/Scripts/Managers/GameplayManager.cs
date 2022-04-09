@@ -546,24 +546,18 @@ public class GameplayManager : Manager
         if (postProcessing == null)
             return;
 
-        // turn on post processing to simulate flashlight if lights are off.
-        // postProcessing.SetActive(!e);
-
-        // call this function to change the settings.
-        // currentScreen.room.SetLightingEnabled(e);
-
-
-        // if the post-processing effect is on, the lighting is considered "off".
-        // Debug.Log("Room Lighting: " + e.ToString());
+        // // changes the lights on setting for the room.
+        // if(currentScreen != null)
+        // {
+        //     // checks if the room exists.
+        //     if (currentScreen.room != null)
+        //         currentScreen.room.lightsOn = e;
+        // }
 
         // enable the post-processing effect.
         postProcessing.SetActive(!e);
 
         // sets the mouse light so that it can control the post-processed vingette effect.
-        
-        // for some reason this wasn't set at the start anymore, so this just makes sure to find it.
-        // player.SetMouseLightEnabled(!e);
-
         Player.SetMouseLightEnabled(!e);
     }
 

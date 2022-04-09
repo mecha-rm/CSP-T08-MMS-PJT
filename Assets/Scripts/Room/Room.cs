@@ -94,13 +94,17 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO: this is just for testing. It should justbe removed.
-        // if this is the room the player is in, check for the lights.
-        if (manager.currentScreen.room == this && manager.IsRoomLightingEnabled() != lightsOn)
+        // TODO: this is just for testing. It should just be removed.
+        // this gets buggy outside of the editor, so for now this code should only run when in the editor.
+        if(Application.isEditor)
         {
-            // manager.SetRoomLightingEnabled(lightsOn);
-            SetLightingEnabled(lightsOn);
+            // if this is the room the player is in, check for the lights.
+            if (manager.currentScreen.room == this && manager.IsRoomLightingEnabled() != lightsOn)
+            {
+                // manager.SetRoomLightingEnabled(lightsOn);
+                SetLightingEnabled(lightsOn);
+            }
         }
-            
+           
     }
 }

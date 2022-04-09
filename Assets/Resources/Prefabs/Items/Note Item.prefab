@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628ead7a31a583e41a2cbf6ae935d040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desc: {fileID: 0}
+  descriptor: {fileID: 8295310360345771860}
   itemId: 
   itemIcon: {fileID: 21300000, guid: b669f9acb6b72e44696191427d1c419e, type: 3}
 --- !u!114 &8295310360345771860
@@ -60,5 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  secondName: 
+  label: 
   description: 
+  showLabel: 1

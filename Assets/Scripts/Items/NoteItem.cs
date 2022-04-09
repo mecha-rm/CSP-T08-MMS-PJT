@@ -25,6 +25,8 @@ public class NoteItem : Item
     {
         get
         {
+            // TODO: descriptor may not be set.
+
             return descriptor.label;
         }
 
