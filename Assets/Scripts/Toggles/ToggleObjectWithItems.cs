@@ -9,6 +9,9 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
 
     // the gameplay manager.
     public GameplayManager manager;
+    public AudioManager audioManager;
+
+    public AudioSource sfx;
 
     // the item (stack ids) for the used items.
     [Tooltip("The items being checked for. If no IDs are provided, the object is toggled without needing anything.")]
@@ -43,6 +46,12 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
         // no items, so no requirements to toggle the object.
         if (itemIds.Count == 0)
         {
+            if (sfx != null)
+            {
+                audioManager.PlayAudio(sfx);
+               
+            }
+
             base.OnToggle();
         }
         // checks object toggle.
@@ -86,7 +95,16 @@ public class ToggleObjectWithItems : ToggleObjectOnClick
 
             // this should be toggled.
             if (toggle)
+            {
+                if (sfx != null)
+                {
+                    audioManager.PlayAudio(sfx);
+                    Debug.Log("Playing Audio");
+                }
+
                 base.OnToggle();
+            }
+                
         }
 
         // if items were taken, refresh the inventory display.

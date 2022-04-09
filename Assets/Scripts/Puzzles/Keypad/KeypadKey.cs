@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 // a key for a keypad.
 public class KeypadKey : MonoBehaviour
 {
+
+    public AudioManager audioManager;
+
+
     // the key operation
     public enum keyFunc { text, backspace, clear, confirm }
 
@@ -32,8 +38,12 @@ public class KeypadKey : MonoBehaviour
     private void OnMouseDown()
     {
         // performs the function weh
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
             PerformFunction();
+            audioManager.PlayAudio(audioManager.KeyPad_Pressed);
+        }
+            
     }
 
     // performs the function.
