@@ -589,6 +589,12 @@ public class GameplayManager : Manager
         Player.SetMouseLightEnabled(!e);
     }
 
+    // toggles the room light.
+    public void ToggleRoomLighting()
+    {
+        SetRoomLightingEnabled(!IsRoomLightingEnabled());
+    }
+
     // DESCRIPTOR //
 
     // refreshes the game manager with its descriptor.
@@ -766,14 +772,14 @@ public class GameplayManager : Manager
             // saves the clicked object.
             lastClicked = mouse.lastClickedObject;
 
-            Debug.Log("Last Clicked: " + lastClicked.name);
-
             // something has been clicked.
             if (lastClicked != null)
             {
+                Debug.Log("Last Clicked: " + lastClicked.name);
+
                 // // checks if a pull was successful.
                 // bool success;
-                
+
                 // saves these old values.
                 // if the inspector was not changed, then set the descriptor to the blank message.
                 // if the inspector was changed, don't overwrite siad changes.

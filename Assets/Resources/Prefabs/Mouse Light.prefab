@@ -139,4 +139,5 @@ MonoBehaviour:
   mouse: {fileID: 0}
   postProcessVolume: {fileID: 0}
   updateRate: 0
+  usePrediction: 0
   alterEffect: 1

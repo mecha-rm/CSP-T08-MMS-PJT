@@ -18,7 +18,11 @@ public class Room : MonoBehaviour
     // TODO: since the vingette is applied over everything the in-scene lights are covered.
     // public GameObject lights;
 
+    // if 'true', the room changes the lighting on enable.
+    public bool changeLightingOnEnable = true;
+
     // if 'true', the room starts with the lights on.
+    [Tooltip("Turns the lighting on or off.")]
     public bool lightsOn = true;
 
     // Start is called before the first frame update
@@ -27,34 +31,11 @@ public class Room : MonoBehaviour
         // finds the gameplay manager.
         if (manager == null)
             manager = FindObjectOfType<GameplayManager>();
-
-        // // finds the light object, which is used for scene lights.
-        // if (lights == null)
-        // {
-        //     // finds object.
-        //     Transform tform = transform.Find("Lights");
-        //     
-        //     // object found, so it sets it.
-        //     if (tform != null)
-        //         lights = tform.gameObject;
-        // 
-        //     // finds a post processing object.
-        //     // lights = GameObject.Find("Post Processing");
-        // }
-
-        // sets if the lighting should be enabled or not.
-        SetLightingEnabled(lightsOn);
     }
 
     // returns 'true' if the lights are enabled.
     public bool IsLightingEnabled()
     {
-        // // no lighting object.
-        // if (lights == null)
-        //     return false;
-        // 
-        // return lights.activeSelf;
-
         // returns value.
         return lightsOn;
     }
@@ -68,15 +49,12 @@ public class Room : MonoBehaviour
         // saves value.
         lightsOn = lighting;
 
-        // // no lighting object.
-        // if (lights == null)
-        //     return;
-        // 
-        // lights.SetActive(lighting);
-
-        // enables the room lighting.
+        // changes lighting.
         if (manager != null)
+        {
             manager.SetRoomLightingEnabled(lightsOn);
+        }
+        
     }
 
     // enable the room's lighting.
@@ -91,20 +69,19 @@ public class Room : MonoBehaviour
         SetLightingEnabled(false);
     }
 
+    // This function is called when the object becomes enabled and active.
+    private void OnEnable()
+    {
+        // changes the room lighting when the script is enabled.
+        if(changeLightingOnEnable)
+        {
+            // change the lighting.
+            SetLightingEnabled(lightsOn);
+        }
+    }
+
     // Update is called once per frame
     void Update()
-    {
-        // TODO: this is just for testing. It should just be removed.
-        // this gets buggy outside of the editor, so for now this code should only run when in the editor.
-        if(Application.isEditor)
-        {
-            // if this is the room the player is in, check for the lights.
-            if (manager.currentScreen.room == this && manager.IsRoomLightingEnabled() != lightsOn)
-            {
-                // manager.SetRoomLightingEnabled(lightsOn);
-                SetLightingEnabled(lightsOn);
-            }
-        }
-           
+    {      
     }
 }

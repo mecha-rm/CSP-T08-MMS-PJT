@@ -17,7 +17,8 @@ MonoBehaviour:
   interact: {fileID: 0}
   useUnityMouse: 1
   changeToggleComponent: 0
-  manager: {fileID: 0}
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
   itemIds:
   - screwdriver
   needAll: 1
@@ -58,21 +59,6 @@ PrefabInstance:
     - target: {fileID: 7222140840326043985, guid: 477d5618995d9f041836475e4a86248b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7222140840326043985, guid: 477d5618995d9f041836475e4a86248b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7222140840326043985, guid: 477d5618995d9f041836475e4a86248b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7222140840326043985, guid: 477d5618995d9f041836475e4a86248b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7222140840326043985, guid: 477d5618995d9f041836475e4a86248b,
