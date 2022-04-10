@@ -31,13 +31,6 @@ public class GameplayManager : Manager
     // the mouse operations for the game.
     public Mouse mouse;
 
-    // post processing object.
-    // this is used to simulate the flashlight.
-    public GameObject mouseLightPostProcessing;
-
-    // the high contrast post processing effect.
-    public GameObject highContrastPostProcessing;
-
     // the current screen. It also saves the next screens.
     [Tooltip("The current screen. This this to the starting screen when you start running the game.")]
     public RoomScreen currentScreen;
@@ -87,6 +80,21 @@ public class GameplayManager : Manager
 
     // display text for the description information.
     public Text inspectText;
+
+    // the post processing effects
+    [Header("Post Processing")]
+    
+    // post processing object.
+    // this is used to simulate the flashlight.
+    [Tooltip("Post processing for the mouse light.")]
+    public GameObject mouseLightPostProcessing;
+
+    // the high contrast post processing effect.
+    [Tooltip("Post processing for the high contrast.")]
+    public GameObject highContrastPostProcessing;
+
+    // if 'true', the high contrast post processing is allowed to be used.
+    public bool allowHighContrast = false;
 
     // inventory UI
     [Header("UI/Inventory")]
@@ -204,12 +212,14 @@ public class GameplayManager : Manager
         GameStartInfo gsi = FindObjectOfType<GameStartInfo>(true);
 
         // enables the accessibility
-        // TODO: seperate this for screen reader and high contrast
         if (gsi != null)
         {
             // sets the accessibility.
             if(accessibility != null)
                 accessibility.gameObject.SetActive(gsi.useScreenReader);
+
+            // checks for high contast.
+            allowHighContrast = gsi.useHighContrast;
 
             // destroys object once it's done being used.
             Destroy(gsi.gameObject);

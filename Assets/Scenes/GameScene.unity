@@ -5655,6 +5655,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   playAudio: 0
   orthographic: 0
+  useHighContrast: 0
   locked: 0
   lockedDesc: This screen is locked.
   unlockedDesc: This screen is unlocked.
@@ -9460,6 +9461,11 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 730282735}
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: useHighContrast
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
@@ -13326,11 +13332,6 @@ PrefabInstance:
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 136279931}
-    - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
-        type: 3}
-      propertyPath: audioManager
-      value: 
-      objectReference: {fileID: 730282735}
     - target: {fileID: 538297237564422342, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_Name

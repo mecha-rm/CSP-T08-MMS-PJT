@@ -35,6 +35,10 @@ public class RoomScreen : MonoBehaviour
     // if 'true', this scene uses a perspective camera. If false, this screen using an orthographic camera.
     public bool orthographic = false;
 
+    // if 'true', the screen uses high contrast. This only works if the GameplayManager has 'allowHighContrast' available.
+    [Tooltip("If 'true', the screen uses high contrast. This only works if 'allowHighContrast' in the GameplayManager is set to true.")]
+    public bool useHighContrast = false;
+
     // lock settings for the screen.
     [Header("Settings/Locked")]
 
@@ -167,6 +171,13 @@ public class RoomScreen : MonoBehaviour
         // if the audio should be played, and the audio manager is set.
         if (playAudio && audioManager != null)
             audioManager.PlayAudio(audioClip);
+
+        // checks for high contrast post processing.
+        if(manager.highContrastPostProcessing != null && manager.allowHighContrast)
+        {
+            // change settings.
+            manager.highContrastPostProcessing.SetActive(useHighContrast);
+        }
     }
 
     // called when exiting the screen.

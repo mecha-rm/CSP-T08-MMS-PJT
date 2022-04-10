@@ -471,6 +471,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   playAudio: 0
   orthographic: 0
+  useHighContrast: 0
   locked: 0
   lockedDesc: This screen is locked.
   unlockedDesc: This screen is unlocked.
@@ -1216,6 +1217,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   playAudio: 0
   orthographic: 0
+  useHighContrast: 0
   locked: 0
   lockedDesc: This screen is locked.
   unlockedDesc: This screen is unlocked.
@@ -1898,6 +1900,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   playAudio: 0
   orthographic: 0
+  useHighContrast: 0
   locked: 0
   lockedDesc: This screen is locked.
   unlockedDesc: This screen is unlocked.
@@ -2111,6 +2114,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629482593}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &632309508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109588672311769902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &647658607
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,6 +3481,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74961fa7d012fdc4dadd44f58bb1f917, type: 3}
+--- !u!1 &960643570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 771758403908038749, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 138617141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &976149210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,7 +5743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465743516
 GameObject:
@@ -6518,6 +6533,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   playAudio: 0
   orthographic: 0
+  useHighContrast: 0
   locked: 1
   lockedDesc: This screen is locked.
   unlockedDesc: This screen is unlocked.
@@ -7104,6 +7120,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   playAudio: 0
   orthographic: 0
+  useHighContrast: 0
   locked: 0
   lockedDesc: This screen is locked.
   unlockedDesc: This screen is unlocked.
@@ -7494,6 +7511,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   playAudio: 0
   orthographic: 0
+  useHighContrast: 0
   locked: 0
   lockedDesc: This screen is locked.
   unlockedDesc: This screen is unlocked.
@@ -7851,7 +7869,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1109588672311769902}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 632309508}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
@@ -8060,7 +8078,7 @@ PrefabInstance:
     - target: {fileID: 3603107488084803636, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3603107488084803636, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
@@ -8172,6 +8190,16 @@ PrefabInstance:
       propertyPath: forwardScreenButton
       value: 
       objectReference: {fileID: 734734543}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
+      propertyPath: mouseLightPostProcessing
+      value: 
+      objectReference: {fileID: 632309508}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
+      propertyPath: highContrastPostProcessing
+      value: 
+      objectReference: {fileID: 960643570}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08e43a396d6738d48b45b0f92a155139, type: 3}
 --- !u!1001 &3911868849313688077
