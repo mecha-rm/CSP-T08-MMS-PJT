@@ -686,7 +686,11 @@ public class GameplayManager : Manager
             if (lastClicked.TryGetComponent<PuzzleMechanic>(out pm))
             {
                 // triggers the action.
-                pm.InitiateMainAction();
+                if (pm.enabled)
+                {
+                    pm.InitiateMainAction();
+                }
+                
                 return;
             }
         }

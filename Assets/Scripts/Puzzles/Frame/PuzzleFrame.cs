@@ -85,6 +85,18 @@ public class PuzzleFrame : PuzzleMechanic
         PlayerHasAllPuzzlePieces();
     }
 
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        // N/A
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        // N/A
+    }
+
     // puzzle complete success
     public override bool IsPuzzleComplete()
     {

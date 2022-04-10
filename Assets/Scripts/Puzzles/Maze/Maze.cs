@@ -249,6 +249,18 @@ public class Maze : PuzzleMechanic
         IsComplete();
     }
 
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        // N/A
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        // N/A
+    }
+
     // checks if the puzzle was completed successfully successful.
     public override bool IsPuzzleComplete()
     {

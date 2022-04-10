@@ -28,8 +28,28 @@ public abstract class PuzzleMechanic : MonoBehaviour
         // ...
     }
 
+    // This function is called when the object becomes enabled or active.
+    private void OnEnable()
+    {
+        OnComponentEnable();
+    }
+
+    // This function is called when the object becomes disabled or inactive.
+    private void OnDisable()
+    {
+        OnComponentDisable();
+    }
+
     // iniates the main action from the puzzle.
     public abstract void InitiateMainAction();
+
+    // called to enable a puzzle mechanic. Use this to disable the individaul parts.
+    // this does not change the 'interactable' variable.
+    public abstract void OnComponentEnable();
+
+    // called to disable a puzzle mechanic. Use this to enable the individaul parts.
+    // this does not change the 'interactable' variable.
+    public abstract void OnComponentDisable();
 
     // checks if the puzzle is complete.
     public abstract bool IsPuzzleComplete();

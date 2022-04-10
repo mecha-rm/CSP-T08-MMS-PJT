@@ -93,6 +93,22 @@ public class WireConnect : PuzzleMechanic
         AllConnected();
     }
 
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        // enables all node scripts.
+        foreach (WireConnectNode node in nodes)
+            node.enabled = true;
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        // enables all node scripts.
+        foreach (WireConnectNode node in nodes)
+            node.enabled = false;
+    }
+
     // checks if the puzzle was completed successfully successful.
     public override bool IsPuzzleComplete()
     {

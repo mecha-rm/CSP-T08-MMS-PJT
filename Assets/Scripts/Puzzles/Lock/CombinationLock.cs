@@ -7,10 +7,15 @@ using UnityEngine.UI;
 public class CombinationLock : PuzzleMechanic
 {
     // the combination lock entries (four total, but the value can vary).
+    [Tooltip("The amount of dials in the lock.")]
     public List<int> entries = new List<int>();
 
     // the passcode for the combination lock.
     public string combinaton = "1264";
+
+    // list of lock entry objects, which are used for enabling and disabling the mechanic.
+    [Tooltip("List of lock entries, which are enabled/disabled along with this component.")]
+    public List<LockEntry> lockEntries = new List<LockEntry>(); 
 
     // displays for the text. This should match up wth the entry list size.
     // NOTE: make it so that you don't need the text displays since the puzzle won't use them.
@@ -39,6 +44,13 @@ public class CombinationLock : PuzzleMechanic
         //     GetComponentsInChildren<Text>(textDisplays);
         // 
         // }
+
+        // list not filled.
+        if (lockEntries.Count == 0)
+        {
+            GetComponentsInChildren<LockEntry>(true, lockEntries);
+        }          
+
 
         // uses the main audio manager.
         if (audioManager == null)
@@ -176,6 +188,20 @@ public class CombinationLock : PuzzleMechanic
 
         // tries out the combination.
         ConfirmCombination();
+    }
+
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        foreach (LockEntry le in lockEntries)
+            le.enabled = true;
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        foreach (LockEntry le in lockEntries)
+            le.enabled = false;
     }
 
     // checks if the puzzle was completed successfully successful.

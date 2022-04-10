@@ -147,6 +147,18 @@ public class Wyvern : PuzzleMechanic
         ReceiveTreasure();
     }
 
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        // N/A
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        // N/A
+    }
+
     // the puzzle was successful.
     public override bool IsPuzzleComplete()
     {

@@ -90,6 +90,18 @@ public class Elevator : PuzzleMechanic
         PullCable();
     }
 
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        throw new System.NotImplementedException();
+    }
+
     // returns 'true' if the puzzle is complete.
     public override bool IsPuzzleComplete()
     {

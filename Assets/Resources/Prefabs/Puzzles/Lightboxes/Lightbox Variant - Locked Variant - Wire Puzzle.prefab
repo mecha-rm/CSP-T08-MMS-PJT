@@ -692,6 +692,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finished: 0
   desc: {fileID: 0}
+  mechanics:
+  - {fileID: 5863438422645365614}
   manager: {fileID: 0}
   keypad: {fileID: 0}
   keypadScreenMat: {fileID: 2100000, guid: 354d1d13376ebb945bc91a4e03a25269, type: 2}

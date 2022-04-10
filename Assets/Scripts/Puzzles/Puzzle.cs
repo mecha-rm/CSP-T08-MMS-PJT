@@ -13,11 +13,9 @@ public class Puzzle : MonoBehaviour
     // the description of the puzzle.
     public Descriptor desc;
 
-    // becomes 'true' when the puzzle is complete.
-    // commented out because the puzzle might have multiple parts.
-    // public bool puzzleComplete = false;
-
-    // TODO: make list for puzzle interactions.
+    // the list of puzzle mechanics. These are enabled and disabled as needed.
+    [Tooltip("The list of puzzle mechanics, which have their scripts enabled/disabled based on the puzzle.")]
+    public List<PuzzleMechanic> mechanics = new List<PuzzleMechanic>();
 
     // Start is called before the first frame update
     protected void Start()
@@ -27,7 +25,33 @@ public class Puzzle : MonoBehaviour
             desc = GetComponent<Descriptor>();
     }
 
-    // TODO: make on puzzle failure.
+    // This function is called when the object becomes enabled or active.
+    private void OnEnable()
+    {
+        EnablePuzzleMechanics();
+    }
+
+    // This function is called when the object becomes disabled or inactive.
+    private void OnDisable()
+    {
+        DisablePuzzleMechanics();
+    }
+
+    // called to enable the puzzle.
+    public virtual void EnablePuzzleMechanics()
+    {
+        // enables all puzzle mechanics.
+        foreach (PuzzleMechanic m in mechanics)
+            m.enabled = true;
+    }
+
+    // called to disable the puzzle.
+    public virtual void DisablePuzzleMechanics()
+    {
+        // enables all puzzle mechanics.
+        foreach (PuzzleMechanic m in mechanics)
+            m.enabled = false;
+    }
 
     // called when the puzzle is completed.
     public virtual void OnPuzzleCompletion()

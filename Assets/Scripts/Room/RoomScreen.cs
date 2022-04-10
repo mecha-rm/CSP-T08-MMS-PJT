@@ -19,6 +19,14 @@ public class RoomScreen : MonoBehaviour
     // manager for the game.
     public GameplayManager manager;
 
+    // the list of puzzles that are in this screen.
+    // these are enabled when entering the screen, and disabled when leaving the screen.
+    [Tooltip("List of puzzles associated with this screen")]
+    public List<Puzzle> puzzles = new List<Puzzle>();
+
+    [Tooltip("Enables and disables puzzle components when entering/leaving the screen if true.")]
+    public bool changePuzzlesEnabled = true;
+
     [Header("Audio")]
 
     // an audio manager script.
@@ -160,6 +168,14 @@ public class RoomScreen : MonoBehaviour
             
         }
 
+        // if the screen puzzles should be changed when entering.
+        if(changePuzzlesEnabled)
+        {
+            // enables the puzzle mechanics.
+            foreach (Puzzle p in puzzles)
+                p.enabled = true;
+        }
+
         // This loop activates all accessibility components on objects associated with this screen.
         for (int i = 0; i < activeObject.Length; i++)
         {
@@ -210,6 +226,14 @@ public class RoomScreen : MonoBehaviour
         // exiting the screen, so turn off the room.
         // if (room != null && disableInactiveRoom)
         //     room.gameObject.SetActive(false);
+
+        // if the screen puzzles should be changed when exiting.
+        if (changePuzzlesEnabled)
+        {
+            // disables the puzzle mechanics.
+            foreach (Puzzle p in puzzles)
+                p.enabled = false;
+        }
 
         // This loop deactivates all accessibility components on objects associated with this screen.
         for (int i = 0; i < activeObject.Length; i++)

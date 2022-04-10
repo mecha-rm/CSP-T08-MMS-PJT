@@ -26,6 +26,10 @@ public class Keypad : PuzzleMechanic
     // the text display
     public Text textDisplay;
 
+    // the list of keypad keys.
+    [Tooltip("The list of keys for the keypad, which are enabled/disabled with this component.")]
+    public List<KeypadKey> keys = new List<KeypadKey>();
+
     [Header("Audio")]
 
     // the audio manager for the lock. This is used by the individual keys, but it's put here for ease of access.
@@ -51,6 +55,12 @@ public class Keypad : PuzzleMechanic
             if (textCanvas.worldCamera == null)
                 textCanvas.worldCamera = Camera.main;
         }
+
+        // keys for the keypad.
+        if(keys.Count != 0)
+        {
+            GetComponentsInChildren<KeypadKey>(true, keys);
+        }    
             
 
         // deault text set to whatever's saved as the default.
@@ -150,6 +160,20 @@ public class Keypad : PuzzleMechanic
             return;
 
         ConfirmEntry();
+    }
+
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        foreach (KeypadKey key in keys)
+            key.enabled = true;
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        foreach (KeypadKey key in keys)
+            key.enabled = false;
     }
 
     // checks if the puzzle was completed successfully successful.

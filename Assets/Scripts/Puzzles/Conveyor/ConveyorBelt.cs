@@ -19,6 +19,10 @@ public class ConveyorBelt : PuzzleMechanic
     // becomes 'true' if the conveyor belt is completed in reverse.
     public bool completeReversed = false;
 
+    // the list of conveyor belt buttons
+    [Tooltip("The list of coneyor belt buttons, which are enabled/disabled along with this component.")]
+    public List<ConveyorButton> buttons;
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -30,6 +34,12 @@ public class ConveyorBelt : PuzzleMechanic
             buttonOrder.Add(ConveyorButton.conveyorButton.surface);
             buttonOrder.Add(ConveyorButton.conveyorButton.swave);
             buttonOrder.Add(ConveyorButton.conveyorButton.pwave);
+        }
+
+        // adds the components.
+        if(buttons.Count == 0)
+        {
+            GetComponentsInChildren<ConveyorButton>(true, buttons);
         }
     }
 
@@ -140,6 +150,20 @@ public class ConveyorBelt : PuzzleMechanic
             return;
 
         IsCorrectInputOrder();
+    }
+
+    // called when the puzzle mechanic component is enabled.
+    public override void OnComponentEnable()
+    {
+        foreach (ConveyorButton b in buttons)
+            b.enabled = true;
+    }
+
+    // called when the puzzle mechanic component is disabled.
+    public override void OnComponentDisable()
+    {
+        foreach (ConveyorButton b in buttons)
+            b.enabled = false;
     }
 
     // only successful if completed in the right order.
