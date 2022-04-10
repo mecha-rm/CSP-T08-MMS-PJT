@@ -55,9 +55,10 @@ public class MouseLight : MonoBehaviour
             mouse = FindObjectOfType<Mouse>();
 
         // tries to find the post processing volume.
+        // NOTE: this shouldn't be used anymore since now the high contrast has its own post processing.
         if (postProcessVolume == null)
         {
-            postProcessVolume = FindObjectOfType<PostProcessVolume>(true);
+            postProcessVolume = FindObjectOfType<PostProcessVolume>();
         }
 
         // gets the vingette settings.

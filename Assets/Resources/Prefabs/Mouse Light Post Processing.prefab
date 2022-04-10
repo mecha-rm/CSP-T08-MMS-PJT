@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1109588672756804416}
   - component: {fileID: 1109588672756804417}
   m_Layer: 8
-  m_Name: Post Processing
+  m_Name: Mouse Light Post Processing
   m_TagString: Post Processing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

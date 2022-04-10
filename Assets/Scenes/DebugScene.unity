@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 1
+  dial: {fileID: 0}
 --- !u!65 &72352407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -466,6 +467,9 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   manager: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 0
   orthographic: 0
   locked: 0
   lockedDesc: This screen is locked.
@@ -578,6 +582,80 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &138617141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038749, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_Name
+      value: High Contrast Post Processing
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038749, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d14262734a15b1a4c8fa9ff23123b0b2, type: 3}
 --- !u!1 &146711440
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 3
+  dial: {fileID: 0}
 --- !u!65 &240117752
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1133,6 +1212,9 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   manager: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 0
   orthographic: 0
   locked: 0
   lockedDesc: This screen is locked.
@@ -1812,6 +1894,9 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   manager: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 0
   orthographic: 0
   locked: 0
   lockedDesc: This screen is locked.
@@ -3435,6 +3520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 2
+  dial: {fileID: 0}
 --- !u!65 &976149213
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4044,6 +4130,8 @@ MonoBehaviour:
   passcode: 44789
   textCanvas: {fileID: 0}
   textDisplay: {fileID: 624329087}
+  audioManager: {fileID: 0}
+  keyPressedClip: {fileID: 0}
 --- !u!1 &1083937028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4092,6 +4180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 0
+  dial: {fileID: 0}
 --- !u!65 &1083937031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4604,6 +4693,9 @@ MonoBehaviour:
   descriptor: {fileID: 0}
   itemId: 
   itemIcon: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 1
 --- !u!1 &1286597893
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,6 +5645,9 @@ MonoBehaviour:
   descriptor: {fileID: 0}
   itemId: treasure
   itemIcon: {fileID: 21300000, guid: d0a624b179a2589468499eb2713ae305, type: 3}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 1
 --- !u!114 &1402685403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5695,6 +5790,8 @@ MonoBehaviour:
   screen: {fileID: 1788092473}
   collider: {fileID: 0}
   colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
 --- !u!114 &1482228034 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1335738019410036198, guid: 1f11740eb949488409511f3b5267b80f,
@@ -6417,6 +6514,9 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   manager: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 0
   orthographic: 0
   locked: 1
   lockedDesc: This screen is locked.
@@ -6624,6 +6724,8 @@ MonoBehaviour:
   - {fileID: 1044447523}
   - {fileID: 185581464}
   highestNumber: 9
+  audioManager: {fileID: 0}
+  dialTurnClip: {fileID: 0}
 --- !u!1 &1650134518
 GameObject:
   m_ObjectHideFlags: 0
@@ -6998,6 +7100,9 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   manager: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 0
   orthographic: 0
   locked: 0
   lockedDesc: This screen is locked.
@@ -7307,7 +7412,7 @@ Transform:
   - {fileID: 377553602}
   - {fileID: 1063356417}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2008952475
 GameObject:
@@ -7385,6 +7490,9 @@ MonoBehaviour:
   room: {fileID: 0}
   descriptor: {fileID: 0}
   manager: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 0
   orthographic: 0
   locked: 0
   lockedDesc: This screen is locked.
@@ -7728,7 +7836,7 @@ PrefabInstance:
     - target: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
         type: 3}
       propertyPath: m_Name
-      value: Post Processing
+      value: Mouse Light Post Processing
       objectReference: {fileID: 0}
     - target: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
         type: 3}
@@ -7737,6 +7845,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7af2d8da7617804f885dbbab72a3d53, type: 3}
+--- !u!114 &1109588672311769903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1109588672756804417, guid: f7af2d8da7617804f885dbbab72a3d53,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109588672311769902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1953318460100095379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8685,6 +8805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6480731993145763622, guid: b2620eda5a9b314438258f6a0dc11fb9,
+        type: 3}
+      propertyPath: postProcessVolume
+      value: 
+      objectReference: {fileID: 1109588672311769903}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2620eda5a9b314438258f6a0dc11fb9, type: 3}
 --- !u!20 &5809319064749623046 stripped

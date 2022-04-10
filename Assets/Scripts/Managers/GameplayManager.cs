@@ -33,7 +33,10 @@ public class GameplayManager : Manager
 
     // post processing object.
     // this is used to simulate the flashlight.
-    public GameObject postProcessing;
+    public GameObject mouseLightPostProcessing;
+
+    // the high contrast post processing effect.
+    public GameObject highContrastPostProcessing;
 
     // the current screen. It also saves the next screens.
     [Tooltip("The current screen. This this to the starting screen when you start running the game.")]
@@ -138,17 +141,18 @@ public class GameplayManager : Manager
         if (mouse == null)
             mouse = FindObjectOfType<Mouse>();
 
-        // if the post processing object has not been set.
-        if(postProcessing == null)
-        {
-            // looks to find the post-process volume.
-            PostProcessVolume volume = FindObjectOfType<PostProcessVolume>(true);
-
-            // object found.
-            if (volume != null)
-                postProcessing = volume.gameObject;
-
-        }
+        // taken out since we now have two post processing effects.
+        // // if the post processing object has not been set.
+        // if(mouseLightPostProcessing == null)
+        // {
+        //     // looks to find the post-process volume.
+        //     PostProcessVolume volume = FindObjectOfType<PostProcessVolume>();
+        // 
+        //     // object found.
+        //     if (volume != null)
+        //         mouseLightPostProcessing = volume.gameObject;
+        // 
+        // }
 
         // // if no current screen is set, just set a random room.
         // if (currentScreen == null)
@@ -545,8 +549,8 @@ public class GameplayManager : Manager
 
 
         // this simulates a flashlight, so if it's on, the room lighting is considered off.
-        if (postProcessing != null)
-            return !postProcessing.activeSelf;
+        if (mouseLightPostProcessing != null)
+            return !mouseLightPostProcessing.activeSelf;
         
         // on by default.
         return true;
@@ -557,7 +561,7 @@ public class GameplayManager : Manager
     public void SetRoomLightingEnabled(bool e)
     {
         // variable not set.
-        if (postProcessing == null)
+        if (mouseLightPostProcessing == null)
             return;
 
         // // changes the lights on setting for the room.
@@ -569,7 +573,7 @@ public class GameplayManager : Manager
         // }
 
         // enable the post-processing effect.
-        postProcessing.SetActive(!e);
+        mouseLightPostProcessing.SetActive(!e);
 
         // sets the mouse light so that it can control the post-processed vingette effect.
         Player.SetMouseLightEnabled(!e);
