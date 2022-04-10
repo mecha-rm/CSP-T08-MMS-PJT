@@ -5700,8 +5700,11 @@ MonoBehaviour:
   descriptor: {fileID: 0}
   manager: {fileID: 0}
   audioManager: {fileID: 0}
-  audioClip: {fileID: 0}
   playAudio: 0
+  playEntranceClip: 0
+  entranceClip: {fileID: 0}
+  playExitClip: 0
+  exitClip: {fileID: 0}
   orthographic: 0
   useHighContrast: 0
   locked: 0

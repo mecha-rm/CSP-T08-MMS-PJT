@@ -19,15 +19,30 @@ public class RoomScreen : MonoBehaviour
     // manager for the game.
     public GameplayManager manager;
 
+    [Header("Audio")]
+
     // an audio manager script.
     public AudioManager audioManager;
 
-    // an audio clip.
-    public AudioClip audioClip;
-
     // if the audio clip is available, play it.
-    [Tooltip("Use audio component if it is set.")]
+    [Tooltip("Use audio component if it is set. This will play the audio event saved to this screen.")]
     public bool playAudio = false;
+
+    // plays the entrance audio clip.
+    [Tooltip("Play the entrance audio clp if playAudio is set to true.")]
+    public bool playEntranceClip = false;
+
+    // entrance audio clip.
+    [Tooltip("Clip played when entering the screen.")]
+    public AudioClip entranceClip;
+
+    // plays the exit audio clip.
+    [Tooltip("Play the exit audio clp if playAudio is set to true.")]
+    public bool playExitClip = false;
+
+    // exit audio clip.
+    [Tooltip("Clip played when leaving the screen.")]
+    public AudioClip exitClip;
 
     // settings for the room.
     [Header("Settings")]
@@ -106,12 +121,17 @@ public class RoomScreen : MonoBehaviour
             audioManager = manager.audioManager;
 
         // sets default audio clip.
-        if (audioClip == null)
-            audioClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_DOOR_OPENING");
+        // this is only set if the entrance clip should be played.
+        if (entranceClip == null && playEntranceClip)
+            entranceClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_DOOR_OPENING");
+
+        // this is only set if the exit clip should be played.
+        if (exitClip == null && playExitClip)
+            exitClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_DOOR_OPENING");
 
         // if the attached camera should be destroyed.
         // these are just for testing purposes, and thus should not be kept.
-        if(destroyAttachedCamera)
+        if (destroyAttachedCamera)
         {
             // grabs the script.
             Camera cam = gameObject.GetComponent<Camera>();
@@ -169,8 +189,12 @@ public class RoomScreen : MonoBehaviour
         manager.SetDescriptor(descriptor);
 
         // if the audio should be played, and the audio manager is set.
-        if (playAudio && audioManager != null)
-            audioManager.PlayAudio(audioClip);
+        if(playAudio && audioManager != null)
+        {
+            // plays the entrance clip.
+            if(playEntranceClip && entranceClip != null)
+                audioManager.PlayAudio(entranceClip);
+        }
 
         // checks for high contrast post processing.
         if(manager.highContrastPostProcessing != null && manager.allowHighContrast)
@@ -212,24 +236,27 @@ public class RoomScreen : MonoBehaviour
             }
         }
 
-        //Audio Managing.
-
-        //if (isDoor)
-        //{
-        //    audioManager.PlayAudio(audioManager.Door_SFX_RM1_EXT);
-        //}
+        // if the audio should be played, and the audio manager is set.
+        if (playAudio && audioManager != null)
+        {
+            // plays the exit clip.
+            if (playExitClip && exitClip != null)
+                audioManager.PlayAudio(exitClip);
+        }
     }
 
     // enables the room screen.
     public void EnableScreen()
     {
         // changes current screen.
-        // called for the screen exit.
-        if (manager.currentScreen != null)
+        // calls on screen exit if this screen is actually changing.
+        if (manager.currentScreen != null && manager.currentScreen != this)
             manager.currentScreen.OnScreenExit();
         
         // switch screen and call enter function.
         manager.currentScreen = this;
+
+        // TODO: check if you're leaving and entering the same screen?
         OnScreenEnter();
 
         // makes the player a child of this screen.
