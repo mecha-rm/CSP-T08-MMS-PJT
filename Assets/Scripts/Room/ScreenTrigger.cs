@@ -15,11 +15,22 @@ public class ScreenTrigger : MonoBehaviour
     // turns off the collider when in the screen, on otherwise.
     public bool colOffWhenInScreen = true;
 
+    // the debug object used to represent the screen trigger. It deletes this object when the game starts.
+    [Tooltip("Use an object to display the screen trigger's collider, but delete it when the game starts using this variable.")]
+    public GameObject colliderDisplay;
+
+    // deletes the display of the collider.
+    public bool deleteColliderDisplay = true;
+
     // Start is called before the first frame update
     private void Start()
     {
         // gets the attached collider.
         collider = GetComponent<Collider>();
+
+        // destroys the debug object.
+        if (deleteColliderDisplay && colliderDisplay != null)
+            Destroy(colliderDisplay);
     }
 
     // enables the collider.
