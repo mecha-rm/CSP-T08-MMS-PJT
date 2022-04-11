@@ -95,7 +95,9 @@ public class WireConnectNode : MonoBehaviour
         // saves the mouse world position in world space at this stage.
         // TODO: the z-value change may not be sufficient in the future.
         mouseWorldPosOnDown = Mouse.GetMousePositionInWorldSpace();
-        mouseWorldPosOnDown.z = transform.position.z; // z-value should not change.
+
+        // Old code, removing it improves functionality
+        //mouseWorldPosOnDown.x = transform.position.x; // z-value should not change.
     }
 
     // called when the mouse has been clicked on a collider and has been dragged whiles still being held down.
@@ -119,17 +121,19 @@ public class WireConnectNode : MonoBehaviour
         Vector3 mouseWPos = Mouse.GetMousePositionInWorldSpace();
 
         // difference in position.
-        Vector3 mouseWPosDiff = mouseWPos - mouseWorldPosOnDown;
+        Vector3 mouseWPosDiff = (mouseWPos - mouseWorldPosOnDown) * 0.1F;
 
+        // Old code, removing it improves functionality
         // z-value should stay the same.
-        mouseWPosDiff.z = 0;
+        //mouseWPosDiff.z = 0;
 
         // gets the final position.
         Vector3 finalPos = p0 + 
             mouseWPosDiff.normalized * mouseWPosDiff.magnitude;
 
+        // Old code, removing it improves functionality
         // saves the final position z-value.
-        finalPos.z = p0.z;
+        //finalPos.z = p0.z;
 
         // changes the line ending position.
         // the position must be adjusted for it to be accurate.
