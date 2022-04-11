@@ -57,6 +57,7 @@ public abstract class PuzzleMechanic : MonoBehaviour
     // resets the puzzle.
     // this makes sure that PuzzleMechanic is an abstract class.
     // this doesn't need any actual code in it.
+    // TODO: don't call the OnPuzzleReset parameter.
     public abstract void ResetPuzzle();
 
     // Update is called once per frame

@@ -69,6 +69,10 @@ public class Wyvern : PuzzleMechanic
             // sets the text.
             if(noteItem.Text == "")
                 noteItem.Text = "Ring bell with floor number.";
+
+            // set the note id.
+            noteItem.itemId = "wyvern-note";
+
         }
 
 

@@ -51,7 +51,7 @@ public class PuzzleFrame : PuzzleMechanic
         if(result)
         {
             // removes all of the puzzle pieces from the player.
-            manager.player.TakeItems(Item.PUZZLE_ID);
+            manager.player.TakeItems(Item.PUZZLE_PIECE_ID);
 
             // turns on the model.
             if (completePuzzleObject != null)

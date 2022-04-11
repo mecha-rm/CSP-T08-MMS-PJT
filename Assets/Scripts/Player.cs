@@ -172,7 +172,9 @@ public class Player : MonoBehaviour
         // the last piece is already in the frame, so the player must collect it before they can fill the frame.
         // TODO: maybe rework this?
         int ownedPieces = 0;
-        string stackId = PuzzlePieceItem.DefaultStackId;
+
+        // the stack id
+        string stackId = Item.PUZZLE_PIECE_ID;
 
         // goes through the inventory.
         foreach(Item item in inventory)

@@ -18,6 +18,31 @@ public class NoteItem : Item
         // the note's description will be what the note says.
         if (descriptor.description == "")
             descriptor.description = "...";
+
+        // NOTE: this causes the notes to be stacked, which means only one can be read.
+        // as such, while this is the default, each note has a different id.
+        // the user never has two notes at a time, but to be safe the note ids should vary by note.
+
+        // stack id
+        if (itemId == "") // saves the note.
+            itemId = NOTE_ID;
+
+        // item icon not set.
+        if (itemIcon == null)
+        {
+            // file to be loaded.
+            string file = "Images/Inventory/note_icon";
+
+            // loads resource.
+            Sprite temp = Resources.Load<Sprite>(file);
+
+            // checks if valid.
+            if (temp != null)
+            {
+                // if the object can be converted from a sprite.
+                itemIcon = temp;
+            }
+        }
     }
 
     // note title.

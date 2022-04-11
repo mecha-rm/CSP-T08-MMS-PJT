@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// an item in the game world.
-// TODO: maybe make an inventory script?
+// an item in the game world. Items are collected my checking the mouse script in the GameplayManager.
 public class Item : MonoBehaviour
 {
     // the item's descriptor.
@@ -28,21 +27,24 @@ public class Item : MonoBehaviour
     public AudioClip audioClip;
 
     // if an audio clip is set, use it.
-    [Header("Plays the saved audio clip when the item is being used.")]
+    [Tooltip("Plays the saved audio clip when the item is being used.")]
     public bool playAudio = true;
 
     // ID names.
 
     // item IDs
     // puzzle piece
-    public const string PUZZLE_ID = "puzzle-piece";
+    public const string PUZZLE_PIECE_ID = "puzzle-piece";
     
     // note id.
     public const string NOTE_ID = "note";
     
     // treasure
     public const string TREASURE_ID = "treasure";
-    
+
+    // certificate
+    public const string CERTIFICATE_ID = "certificate";
+
 
     // Start is called before the first frame update
     protected virtual void Start()
