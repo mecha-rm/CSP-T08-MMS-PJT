@@ -13,8 +13,10 @@ public class ConveyorBeltPuzzle : Puzzle
 
     // the certificate object.
     [Tooltip("A certificate that's given upon putting the inputs in reverse order.")]
-    public CertificateItem certificate;
+    public Item certificate;
 
+    // called when there has been a reverse win.
+    public bool reverseWin = false;
 
     // Start is called before the first frame update
     protected new void Start()
@@ -25,10 +27,6 @@ public class ConveyorBeltPuzzle : Puzzle
         // tries to find the conveyor belt.
         if (conveyor == null)
             conveyor = GetComponentInChildren<ConveyorBelt>();
-
-        // the certificate is not set. There's only one.
-        if (certificate == null)
-            certificate = FindObjectOfType<CertificateItem>(true);
     }
 
     // called when the puzzle is completed.
@@ -79,7 +77,11 @@ public class ConveyorBeltPuzzle : Puzzle
             // remove the certificate from the player's inventory.
             Player.Current.TakeItem(certificate.itemId);
         }
-            
+
+        // no reverse win.
+        reverseWin = false;
+
+
     }
 
     // Update is called once per frame
@@ -89,13 +91,16 @@ public class ConveyorBeltPuzzle : Puzzle
         base.Update();
 
         // if the reversed conveyor is complete, show the certificate.
-        if(conveyor.completeReversed)
+        if(conveyor.completeReversed && !reverseWin)
         {
             // TODO: run an animation instead of enable the certificate.
             
             // activate the certificate.
             if(certificate != null)
                 certificate.gameObject.SetActive(true);
+
+            // stops it from constantly enabling the certificate.
+            reverseWin = true;
 
         }
     }

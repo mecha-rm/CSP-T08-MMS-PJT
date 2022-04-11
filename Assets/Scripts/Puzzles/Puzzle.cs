@@ -13,6 +13,7 @@ public class Puzzle : MonoBehaviour
     // the description of the puzzle.
     public Descriptor desc;
 
+    // TODO: rewrite complete function so that multiple mechanics can be saved for one puzzle?
     // the list of puzzle mechanics. These are enabled and disabled as needed.
     [Tooltip("The list of puzzle mechanics, which have their scripts enabled/disabled based on the puzzle.")]
     public List<PuzzleMechanic> mechanics = new List<PuzzleMechanic>();

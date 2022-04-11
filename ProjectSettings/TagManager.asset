@@ -8,6 +8,7 @@ TagManager:
   - Puzzle
   - Post Processing
   - Accessibility
+  - Puzzle Piece
   layers:
   - Default
   - TransparentFX

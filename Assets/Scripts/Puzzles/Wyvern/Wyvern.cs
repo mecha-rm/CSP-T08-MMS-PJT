@@ -114,11 +114,13 @@ public class Wyvern : PuzzleMechanic
 
             // updates the wyvern's line.
             UpdateDescriptor();
+
+            // if the puzzle has been set, tell it the things are complete.
+            if (puzzle != null)
+                puzzle.OnPuzzleCompletion();
         }
 
-        // if the puzzle has been set, tell it the things are complete.
-        if (puzzle != null)
-            puzzle.OnPuzzleCompletion();
+        
 
         solved = hasItem;
         return hasItem;

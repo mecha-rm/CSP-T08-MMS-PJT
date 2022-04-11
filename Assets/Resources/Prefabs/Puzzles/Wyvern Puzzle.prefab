@@ -45,9 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finished: 0
-  desc: {fileID: 0}
+  desc: {fileID: 7195354976240461947}
   mechanics:
   - {fileID: 7195354976240461945}
+  wyvern: {fileID: 7195354976240461945}
+  wyvernDelay: 0
+  wyvernDelayMax: 0.02
 --- !u!1001 &8701128135092091982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,12 +107,7 @@ PrefabInstance:
         type: 3}
       propertyPath: puzzle
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953318460225541175, guid: 0419a1a960a13eb49b522f0310edb8de,
-        type: 3}
-      propertyPath: noteItem
-      value: 
-      objectReference: {fileID: 7195354976259907460}
+      objectReference: {fileID: 8199147101200663013}
     - target: {fileID: 5364070158233369173, guid: 0419a1a960a13eb49b522f0310edb8de,
         type: 3}
       propertyPath: m_CullingMode
@@ -135,15 +133,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b141a8dce65a9e43b2e6dd9bab75ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7195354976259907460 stripped
+--- !u!114 &7195354976240461947 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1953318459867505610, guid: 0419a1a960a13eb49b522f0310edb8de,
+  m_CorrespondingSourceObject: {fileID: 1953318460225541173, guid: 0419a1a960a13eb49b522f0310edb8de,
     type: 3}
   m_PrefabInstance: {fileID: 8701128135092091982}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 628ead7a31a583e41a2cbf6ae935d040, type: 3}
+  m_Script: {fileID: 11500000, guid: 356d9ff2dc0cfa948b2ceddcd70849d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,0 +1,12 @@
+# Blender MTL File: 'CSP - T08 - Items.blend'
+# Material Count: 1
+
+newmtl Treasure
+Ns 728.999998
+Ka 0.100000 0.100000 0.100000
+Kd 0.649023 0.734811 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.063380 0.087371 0.108768
+Ni 1.450000
+d 0.800000
+illum 6
