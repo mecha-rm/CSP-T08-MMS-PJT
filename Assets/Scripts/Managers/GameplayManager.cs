@@ -183,6 +183,14 @@ public class GameplayManager : Manager
             rooms.AddRange(roomArr);
         }    
 
+        // checks for current screen.
+        if(currentScreen != null)
+        {
+            // uses the default room lighting setting.
+            if (currentScreen.room != null)
+                SetRoomLightingEnabled(currentScreen.room.lightsOn);
+        }
+
         // grabs the timer component.
         if (timer == null)
             timer = GetComponent<Timer>();
@@ -584,6 +592,14 @@ public class GameplayManager : Manager
 
         // enable the post-processing effect.
         mouseLightPostProcessing.SetActive(!e);
+
+        // changes this variable.
+        if(currentScreen != null)
+        {
+            // gives it lights value.
+            if (currentScreen.room != null)
+                currentScreen.room.lightsOn = e;
+        }
 
         // sets the mouse light so that it can control the post-processed vingette effect.
         Player.SetMouseLightEnabled(!e);

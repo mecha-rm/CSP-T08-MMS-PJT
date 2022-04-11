@@ -1087,7 +1087,7 @@ PrefabInstance:
     - target: {fileID: 846080479506160779, guid: 1a50c3fcf90dbff428a25efe875d1e54,
         type: 3}
       propertyPath: m_Name
-      value: Lightbox Variant - Locked Variant - Wire Puzzle
+      value: Lightbox Variant - Locked Variant - Wire Puzzle (R1)
       objectReference: {fileID: 0}
     - target: {fileID: 846080480496642234, guid: 1a50c3fcf90dbff428a25efe875d1e54,
         type: 3}
