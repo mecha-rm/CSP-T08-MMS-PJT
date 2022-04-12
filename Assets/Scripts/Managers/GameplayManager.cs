@@ -532,7 +532,7 @@ public class GameplayManager : Manager
     }
 
     // tries to get the item from the clicked object.
-    private bool GetItemFromClicked()
+    public void GetItemFromClicked()
     {
         // item object.
         Item item;
@@ -553,9 +553,14 @@ public class GameplayManager : Manager
             }
             
         }
+    }
 
-        return false;
-
+    public void CollectItem(Item item)
+    {
+        player.inventory.Add(item);
+        item.OnItemGet();
+        RefreshInventoryDisplay();
+        item.gameObject.SetActive(false);
     }
 
     // checks if the room's lighting is enabled.

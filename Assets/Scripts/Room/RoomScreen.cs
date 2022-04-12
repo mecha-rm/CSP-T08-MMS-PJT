@@ -184,17 +184,17 @@ public class RoomScreen : MonoBehaviour
                 activeObject[i].GetComponent<AccessibleButton>().enabled = true;
                 Debug.Log("Accessible button " + i);
             }
-            else if (activeObject[i].GetComponent<AccessibleButton_3D>() != null)
+            if (activeObject[i].GetComponent<AccessibleButton_3D>() != null)
             {
                 activeObject[i].GetComponent<AccessibleButton_3D>().enabled = true;
                 Debug.Log("Accessible button 3D " + i);
             }
-            else if (activeObject[i].GetComponent<AccessibleLabel>() != null)
+            if (activeObject[i].GetComponent<AccessibleLabel>() != null)
             {
                 activeObject[i].GetComponent<AccessibleLabel>().enabled = true;
                 Debug.Log("Accessible label " + i);
             }
-            else if (activeObject[i].GetComponent<AccessibleLabel_3D>() != null)
+            if (activeObject[i].GetComponent<AccessibleLabel_3D>() != null)
             {
                 activeObject[i].GetComponent<AccessibleLabel_3D>().enabled = true;
                 Debug.Log("Accessible label 3D " + i);
@@ -243,17 +243,17 @@ public class RoomScreen : MonoBehaviour
                 activeObject[i].GetComponent<AccessibleButton>().enabled = false;
                 Debug.Log("EXIT Accessible button " + i);
             }
-            else if (activeObject[i].GetComponent<AccessibleButton_3D>() != null)
+            if (activeObject[i].GetComponent<AccessibleButton_3D>() != null)
             {
                 activeObject[i].GetComponent<AccessibleButton_3D>().enabled = false;
                 Debug.Log("EXIT Accessible button 3D " + i);
             }
-            else if (activeObject[i].GetComponent<AccessibleLabel>() != null)
+            if (activeObject[i].GetComponent<AccessibleLabel>() != null)
             {
                 activeObject[i].GetComponent<AccessibleLabel>().enabled = false;
                 Debug.Log("EXIT Accessible label " + i);
             }
-            else if (activeObject[i].GetComponent<AccessibleLabel_3D>() != null)
+            if (activeObject[i].GetComponent<AccessibleLabel_3D>() != null)
             {
                 activeObject[i].GetComponent<AccessibleLabel_3D>().enabled = false;
                 Debug.Log("EXIT Accessible label 3D " + i);
