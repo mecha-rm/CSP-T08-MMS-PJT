@@ -621,10 +621,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  screenName: 
-  screenDesc: 
-  orthographic: 0
+  descriptor: {fileID: 0}
   manager: {fileID: 0}
+  puzzles: []
+  changePuzzlesEnabled: 1
+  audioManager: {fileID: 0}
+  playAudio: 0
+  playEntranceClip: 0
+  entranceClip: {fileID: 0}
+  playExitClip: 0
+  exitClip: {fileID: 0}
+  orthographic: 0
+  useHighContrast: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 623072272}
   rightScreen: {fileID: 2008952477}
   forwardScreen: {fileID: 0}
@@ -634,6 +645,7 @@ MonoBehaviour:
   - {fileID: 1140529667}
   - {fileID: 806934242}
   - {fileID: 400010654}
+  destroyAttachedCamera: 1
 --- !u!1 &129665827
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,7 +754,7 @@ Transform:
   m_Children:
   - {fileID: 809690535}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185588454 stripped
 GameObject:
@@ -1070,15 +1082,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  screenName: 
-  screenDesc: 
-  orthographic: 0
+  descriptor: {fileID: 0}
   manager: {fileID: 0}
+  puzzles: []
+  changePuzzlesEnabled: 1
+  audioManager: {fileID: 0}
+  playAudio: 0
+  playEntranceClip: 0
+  entranceClip: {fileID: 0}
+  playExitClip: 0
+  exitClip: {fileID: 0}
+  orthographic: 0
+  useHighContrast: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 2008952477}
   rightScreen: {fileID: 623072272}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
   activeObject: []
+  destroyAttachedCamera: 1
 --- !u!4 &349972589
 Transform:
   m_ObjectHideFlags: 0
@@ -1198,6 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 3
+  dial: {fileID: 0}
 --- !u!65 &400010658
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1732,6 +1757,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513817022}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &534026757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1957082431450810772, guid: 1f11740eb949488409511f3b5267b80f,
+    type: 3}
+  m_PrefabInstance: {fileID: 734734541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &534172837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3353443028056796265, guid: 1f11740eb949488409511f3b5267b80f,
+    type: 3}
+  m_PrefabInstance: {fileID: 734734541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &541223547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,6 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 0
+  dial: {fileID: 0}
 --- !u!65 &575756577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2471,15 +2521,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  screenName: 
-  screenDesc: 
-  orthographic: 0
+  descriptor: {fileID: 0}
   manager: {fileID: 0}
+  puzzles: []
+  changePuzzlesEnabled: 1
+  audioManager: {fileID: 0}
+  playAudio: 0
+  playEntranceClip: 0
+  entranceClip: {fileID: 0}
+  playExitClip: 0
+  exitClip: {fileID: 0}
+  orthographic: 0
+  useHighContrast: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 349972588}
   rightScreen: {fileID: 119248058}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
   activeObject: []
+  destroyAttachedCamera: 1
 --- !u!4 &623072273
 Transform:
   m_ObjectHideFlags: 0
@@ -3094,6 +3156,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 549524323}
     m_Modifications:
+    - target: {fileID: 1957082431450810772, guid: 1f11740eb949488409511f3b5267b80f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1011065581}
+    - target: {fileID: 1957082431450810772, guid: 1f11740eb949488409511f3b5267b80f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchToBackScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 2068020861762863607, guid: 1f11740eb949488409511f3b5267b80f,
         type: 3}
       propertyPath: m_Enabled
@@ -3114,6 +3186,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchToRightScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3353443028056796265, guid: 1f11740eb949488409511f3b5267b80f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1011065581}
+    - target: {fileID: 3353443028056796265, guid: 1f11740eb949488409511f3b5267b80f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchToLeftScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 4681744136506863840, guid: 1f11740eb949488409511f3b5267b80f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3123,6 +3205,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchToBackScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528821307245030977, guid: 1f11740eb949488409511f3b5267b80f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1011065581}
+    - target: {fileID: 5528821307245030977, guid: 1f11740eb949488409511f3b5267b80f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchToForwardScreen
       objectReference: {fileID: 0}
     - target: {fileID: 5844708763780955511, guid: 1f11740eb949488409511f3b5267b80f,
         type: 3}
@@ -3268,45 +3360,9 @@ PrefabInstance:
     - {fileID: 2068020861762863607, guid: 1f11740eb949488409511f3b5267b80f, type: 3}
     - {fileID: 5844708763780955511, guid: 1f11740eb949488409511f3b5267b80f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f11740eb949488409511f3b5267b80f, type: 3}
---- !u!114 &734734542 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4681744136506863840, guid: 1f11740eb949488409511f3b5267b80f,
-    type: 3}
-  m_PrefabInstance: {fileID: 734734541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &734734543 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6943258643242243892, guid: 1f11740eb949488409511f3b5267b80f,
-    type: 3}
-  m_PrefabInstance: {fileID: 734734541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &734734544 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3322056792078059975, guid: 1f11740eb949488409511f3b5267b80f,
-    type: 3}
-  m_PrefabInstance: {fileID: 734734541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &734734545 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6973095675984172685, guid: 1f11740eb949488409511f3b5267b80f,
     type: 3}
   m_PrefabInstance: {fileID: 734734541}
   m_PrefabAsset: {fileID: 0}
@@ -3419,6 +3475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 2
+  dial: {fileID: 0}
 --- !u!65 &806934246
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4406,16 +4463,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  solved: 0
   interactable: 1
   checkCompleteInUpdate: 1
   entries: 00000000000000000000000000000000
   combinaton: 1264
+  lockEntries: []
   textDisplays:
   - {fileID: 33197392}
   - {fileID: 549306730}
   - {fileID: 977471207}
   - {fileID: 129665830}
   highestNumber: 9
+  audioManager: {fileID: 0}
+  dialTurnClip: {fileID: 0}
 --- !u!1 &1130248167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,6 +4659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboLock: {fileID: 0}
   index: 1
+  dial: {fileID: 0}
 --- !u!65 &1140529671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5606,6 +5668,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1457545597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5528821307245030977, guid: 1f11740eb949488409511f3b5267b80f,
+    type: 3}
+  m_PrefabInstance: {fileID: 734734541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1465743516
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,7 +5738,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screen: {fileID: 1788092473}
-  trigCollider: {fileID: 0}
+  collider: {fileID: 0}
+  colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
+--- !u!1 &1474765589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109588672311769902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1474765590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1109588672756804417, guid: f7af2d8da7617804f885dbbab72a3d53,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109588672311769902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474765589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1482228034 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1335738019410036198, guid: 1f11740eb949488409511f3b5267b80f,
@@ -6412,12 +6507,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  solved: 0
   interactable: 1
   checkCompleteInUpdate: 1
   text: 
   lengthLimit: 5
   passcode: 44789
+  textCanvas: {fileID: 0}
   textDisplay: {fileID: 1130248170}
+  keys: []
+  audioManager: {fileID: 0}
+  keyPressedClip: {fileID: 0}
 --- !u!1001 &1580884948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6576,15 +6676,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  screenName: 
-  screenDesc: 
-  orthographic: 0
+  descriptor: {fileID: 0}
   manager: {fileID: 0}
+  puzzles: []
+  changePuzzlesEnabled: 1
+  audioManager: {fileID: 0}
+  playAudio: 0
+  playEntranceClip: 0
+  entranceClip: {fileID: 0}
+  playExitClip: 0
+  exitClip: {fileID: 0}
+  orthographic: 0
+  useHighContrast: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
   activeObject: []
+  destroyAttachedCamera: 1
 --- !u!65 &1586191965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6709,7 +6821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1720315350
 GameObject:
@@ -6836,6 +6948,9 @@ MonoBehaviour:
   descriptor: {fileID: 0}
   itemId: 
   itemIcon: {fileID: 0}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 1
 --- !u!65 &1720315355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7166,15 +7281,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  screenName: 
-  screenDesc: 
-  orthographic: 0
+  descriptor: {fileID: 0}
   manager: {fileID: 0}
+  puzzles: []
+  changePuzzlesEnabled: 1
+  audioManager: {fileID: 0}
+  playAudio: 0
+  playEntranceClip: 0
+  entranceClip: {fileID: 0}
+  playExitClip: 0
+  exitClip: {fileID: 0}
+  orthographic: 0
+  useHighContrast: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 0}
   rightScreen: {fileID: 0}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
   activeObject: []
+  destroyAttachedCamera: 1
 --- !u!4 &1788092474
 Transform:
   m_ObjectHideFlags: 0
@@ -7248,6 +7375,81 @@ MonoBehaviour:
   m_CallbackOnHighlight:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &1848723248
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038738, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 771758403908038749, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+        type: 3}
+      propertyPath: m_Name
+      value: High Contrast Post Processing
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d14262734a15b1a4c8fa9ff23123b0b2, type: 3}
+--- !u!1 &1848723249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 771758403908038749, guid: d14262734a15b1a4c8fa9ff23123b0b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1848723248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1860934710
 GameObject:
   m_ObjectHideFlags: 0
@@ -7464,15 +7666,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  screenName: 
-  screenDesc: 
-  orthographic: 0
+  descriptor: {fileID: 0}
   manager: {fileID: 0}
+  puzzles: []
+  changePuzzlesEnabled: 1
+  audioManager: {fileID: 0}
+  playAudio: 0
+  playEntranceClip: 0
+  entranceClip: {fileID: 0}
+  playExitClip: 0
+  exitClip: {fileID: 0}
+  orthographic: 0
+  useHighContrast: 0
+  locked: 0
+  lockedDesc: This screen is locked.
+  unlockedDesc: This screen is unlocked.
   leftScreen: {fileID: 119248058}
   rightScreen: {fileID: 349972588}
   forwardScreen: {fileID: 0}
   backScreen: {fileID: 0}
   activeObject: []
+  destroyAttachedCamera: 1
 --- !u!4 &2008952478
 Transform:
   m_ObjectHideFlags: 0
@@ -8058,7 +8272,7 @@ PrefabInstance:
     - target: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
         type: 3}
       propertyPath: m_Name
-      value: Post Processing
+      value: Mouse Light Post Processing
       objectReference: {fileID: 0}
     - target: {fileID: 1109588672756804419, guid: f7af2d8da7617804f885dbbab72a3d53,
         type: 3}
@@ -8168,12 +8382,12 @@ PrefabInstance:
         type: 3}
       propertyPath: backScreenButton
       value: 
-      objectReference: {fileID: 734734542}
+      objectReference: {fileID: 534026757}
     - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
       propertyPath: leftScreenButton
       value: 
-      objectReference: {fileID: 734734545}
+      objectReference: {fileID: 534172837}
     - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
         type: 3}
       propertyPath: rightScreenButton
@@ -8183,7 +8397,17 @@ PrefabInstance:
         type: 3}
       propertyPath: forwardScreenButton
       value: 
-      objectReference: {fileID: 734734543}
+      objectReference: {fileID: 1457545597}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
+      propertyPath: mouseLightPostProcessing
+      value: 
+      objectReference: {fileID: 1474765589}
+    - target: {fileID: 3603107488084803639, guid: 08e43a396d6738d48b45b0f92a155139,
+        type: 3}
+      propertyPath: highContrastPostProcessing
+      value: 
+      objectReference: {fileID: 1848723249}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08e43a396d6738d48b45b0f92a155139, type: 3}
 --- !u!1001 &3911868849313688077
@@ -8338,6 +8562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6480731993145763622, guid: b2620eda5a9b314438258f6a0dc11fb9,
+        type: 3}
+      propertyPath: postProcessVolume
+      value: 
+      objectReference: {fileID: 1474765590}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2620eda5a9b314438258f6a0dc11fb9, type: 3}
 --- !u!20 &5809319064749623046 stripped

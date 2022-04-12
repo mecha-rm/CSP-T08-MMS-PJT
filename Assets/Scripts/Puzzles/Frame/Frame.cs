@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // the puzzle frame.
-public class PuzzleFrame : PuzzleMechanic
+public class Frame : PuzzleMechanic
 {
     // gameplay manager.
     public GameplayManager manager;
