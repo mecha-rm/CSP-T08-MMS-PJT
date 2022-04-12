@@ -26,7 +26,8 @@ public class ScreenTrigger : MonoBehaviour
     private void Start()
     {
         // gets the attached collider.
-        collider = GetComponent<Collider>();
+        if(collider == null)
+            collider = GetComponent<Collider>();
 
         // destroys the debug object.
         if (deleteColliderDisplay && colliderDisplay != null)
@@ -62,15 +63,17 @@ public class ScreenTrigger : MonoBehaviour
     private void Update()
     {
         // keep collider enabled no matter what.
-        if(colOffWhenInScreen && screen != null)
+        if(colOffWhenInScreen && screen != null && collider != null)
         {
             // TODO: is it efficient to override this every time?
-
-            // checks if this is the current screen.
-            if (screen.manager.currentScreen == screen) // in screen, so turn collider off.
-                collider.enabled = false;
-            else // not current screen, so turn collider on.
-                collider.enabled = true;
+            if(screen.manager != null)
+            {
+                // checks if this is the current screen.
+                if (screen.manager.currentScreen == screen) // in screen, so turn collider off.
+                    collider.enabled = false;
+                else // not current screen, so turn collider on.
+                    collider.enabled = true;
+            }
         }
 
     }

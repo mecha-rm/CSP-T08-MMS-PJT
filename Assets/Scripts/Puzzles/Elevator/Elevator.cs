@@ -5,6 +5,9 @@ using UnityEngine;
 // elevator puzzle.
 public class Elevator : PuzzleMechanic
 {
+    // the elevator's cable.
+    public ElevatorCable cable;
+
     // if 'true', clicking on the elevator acts as a pull.
     // if 'false', it doesn't.
     public bool elevatorIsCable = true;
@@ -39,6 +42,10 @@ public class Elevator : PuzzleMechanic
     {
         // calls the base start.
         base.Start();
+
+        // gets the elevator cable.
+        if (cable == null)
+            cable = GetComponent<ElevatorCable>();
 
         // the amount of pulls needed.
         if (pullsNeeded <= 0)
@@ -93,13 +100,17 @@ public class Elevator : PuzzleMechanic
     // called when the puzzle mechanic component is enabled.
     public override void OnComponentEnable()
     {
-        throw new System.NotImplementedException();
+        // enable cable if set.
+        if (cable != null)
+            cable.enabled = true;
     }
 
     // called when the puzzle mechanic component is disabled.
     public override void OnComponentDisable()
     {
-        throw new System.NotImplementedException();
+        // hide cable if set.
+        if (cable != null)
+            cable.enabled = false;
     }
 
     // returns 'true' if the puzzle is complete.

@@ -27,6 +27,21 @@ public class RoomScreen : MonoBehaviour
     [Tooltip("Enables and disables puzzle components when entering/leaving the screen if true.")]
     public bool changePuzzlesEnabled = true;
 
+    [Header("Collider")]
+
+    // the collider for the screen trigger.
+    public new Collider collider;
+
+    // turns off the collider when in the screen, on otherwise.
+    public bool colOffWhenInScreen = true;
+
+    // the debug object used to represent the screen trigger. It deletes this object when the game starts.
+    [Tooltip("Use an object to display the screen trigger's collider, but delete it when the game starts using this variable.")]
+    public GameObject colliderDisplay;
+
+    // deletes the display of the collider.
+    public bool deleteColliderDisplay = true;
+
     [Header("Audio")]
 
     // an audio manager script.
@@ -124,6 +139,22 @@ public class RoomScreen : MonoBehaviour
         if (manager == null)
             manager = GameplayManager.Current;
 
+        // turns off puzzles to start off.
+        if (changePuzzlesEnabled && manager.currentScreen != this)
+        {
+            // enables the puzzle mechanics.
+            foreach (Puzzle p in puzzles)
+                p.enabled = false;
+        }
+
+        // grabs the collider.
+        if (collider == null)
+            collider = GetComponent<Collider>();
+
+        // destroys the display object.
+        if (colliderDisplay != null)
+            Destroy(colliderDisplay.gameObject);
+
         // uses the main audio manager.
         if (audioManager == null)
             audioManager = manager.audioManager;
@@ -167,6 +198,10 @@ public class RoomScreen : MonoBehaviour
             //     room.gameObject.SetActive(true);
             
         }
+
+        // turns off the collider.
+        if (collider != null && colOffWhenInScreen)
+            collider.enabled = false;
 
         // if the screen puzzles should be changed when entering.
         if(changePuzzlesEnabled)
@@ -226,6 +261,10 @@ public class RoomScreen : MonoBehaviour
         // exiting the screen, so turn off the room.
         // if (room != null && disableInactiveRoom)
         //     room.gameObject.SetActive(false);
+
+        // turns on the collider.
+        if (collider != null && colOffWhenInScreen)
+            collider.enabled = true;
 
         // if the screen puzzles should be changed when exiting.
         if (changePuzzlesEnabled)

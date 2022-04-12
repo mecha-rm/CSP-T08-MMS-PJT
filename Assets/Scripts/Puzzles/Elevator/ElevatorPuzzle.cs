@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// used for the frame puzzle.
-public class FramePuzzle : Puzzle
+public class ElevatorPuzzle : Puzzle
 {
-    // the frame object.
-    public Frame frame;
+    // TODO: seperate the elevator bell from the elevator door.
+    // the elevator for this puzzle.
+    public Elevator elevator;
+
+    // the gate for the elevator.
+    public GameObject gate;
 
     // Start is called before the first frame update
     protected new void Start()
@@ -14,9 +17,9 @@ public class FramePuzzle : Puzzle
         // call parent's version.
         base.Start();
 
-        // Tries to find the frame.
-        if (frame == null)
-            frame = GetComponentInChildren<Frame>(true);
+        // tries to find the elevator.
+        if (elevator == null)
+            GetComponentInChildren<Elevator>();
     }
 
     // called when the puzzle is completed.
@@ -25,23 +28,20 @@ public class FramePuzzle : Puzzle
         // call parent's version.
         base.OnPuzzleCompletion();
 
-        // TODO: fade out of existence.
-        // hides the frame.
-        if (frame != null)
-            frame.gameObject.SetActive(false);
-
         // TODO: put puzzle completion implementation here.
+
+        // TODO: do an animation instead of just hiding it.
+        if (gate != null)
+            gate.SetActive(false);
     }
 
-    // called when the puzzle is being reset.
+    // shows the gate again.
     public override void OnPuzzleReset()
     {
-        // called to reset the puzzle.
         base.OnPuzzleReset();
 
-        // shows the frame.
-        if (frame != null)
-            frame.gameObject.SetActive(true);
+        if (gate != null)
+            gate.SetActive(true);
     }
 
     // Update is called once per frame
