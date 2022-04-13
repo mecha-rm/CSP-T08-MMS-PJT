@@ -184,7 +184,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -683974367
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &5707803843455658487
@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  solved: 0
   interactable: 1
   checkCompleteInUpdate: 1
   text: '*****'
@@ -358,6 +359,9 @@ MonoBehaviour:
   passcode: 44789
   textCanvas: {fileID: 1877247811452831236}
   textDisplay: {fileID: 8283443199615066199}
+  keys: []
+  audioManager: {fileID: 0}
+  keyPressedClip: {fileID: 0}
 --- !u!1 &4405160526382584350
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +373,7 @@ GameObject:
   - component: {fileID: 4405160526382584351}
   m_Layer: 0
   m_Name: Keypad
-  m_TagString: Untagged
+  m_TagString: Puzzle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

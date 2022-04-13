@@ -67,6 +67,14 @@ public class Puzzle : MonoBehaviour
 
     }
 
+    // calls the on puzzle completion functon with the mechanic that was just completed.
+    public virtual void OnPuzzleCompletion(PuzzleMechanic mechanic)
+    {
+        // TODO: if you were using multiple mechanics you could check which one finished.
+
+        OnPuzzleCompletion();
+    }
+
     // called when a puzzle fails.
     public virtual void OnPuzzleFailure()
     {

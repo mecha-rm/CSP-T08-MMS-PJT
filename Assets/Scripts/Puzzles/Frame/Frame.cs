@@ -59,7 +59,7 @@ public class Frame : PuzzleMechanic
 
             // puzzle has been completed.
             if (puzzle != null)
-                puzzle.OnPuzzleCompletion();
+                puzzle.OnPuzzleCompletion(this);
 
             Debug.Log("All pieces inputed.");
         }

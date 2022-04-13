@@ -46,6 +46,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Flashlight
+  - name: World Text
     uniqueID: 3610992929
     locked: 0

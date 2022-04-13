@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1953318460225541173}
   m_Layer: 0
   m_Name: Wyvern
-  m_TagString: Untagged
+  m_TagString: Puzzle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,6 +186,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1953318460225541168}
     m_Modifications:
+    - target: {fileID: 5186518909919524232, guid: 52638818d592704469016ee053a88a56,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997880341023329520, guid: 52638818d592704469016ee053a88a56,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8295310360345771860, guid: 52638818d592704469016ee053a88a56,
         type: 3}
       propertyPath: label

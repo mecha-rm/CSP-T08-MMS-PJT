@@ -43,4 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f1efec95330b54e8dd9ed10540ef15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finished: 0
   desc: {fileID: 0}
+  mechanics: []
+  manager: {fileID: 0}
+  keypad: {fileID: 0}
+  keypadScreenMat: {fileID: 0}

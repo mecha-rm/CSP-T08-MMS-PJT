@@ -152,7 +152,7 @@ public class Elevator : PuzzleMechanic
 
                     // open the door.
                     if (puzzle != null)
-                        puzzle.OnPuzzleCompletion();
+                        puzzle.OnPuzzleCompletion(this);
 
                     // stop running the timer since the puzzle is complete.
                     runTimer = false;

@@ -70,7 +70,7 @@ public class WireConnect : PuzzleMechanic
 
         // the puzzle is complete.
         if (result && puzzle != null)
-            puzzle.OnPuzzleCompletion();
+            puzzle.OnPuzzleCompletion(this);
 
         // everything has been connected.
         //Debug.Log("All Connected!");

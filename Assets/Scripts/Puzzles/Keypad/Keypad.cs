@@ -138,7 +138,7 @@ public class Keypad : PuzzleMechanic
 
         // if the combination is correct and the puzzle is set.
         if (correct && puzzle != null)
-            puzzle.OnPuzzleCompletion();
+            puzzle.OnPuzzleCompletion(this);
 
         solved = correct;
         return correct;

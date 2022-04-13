@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3026631097097256752}
   m_Layer: 0
   m_Name: Puzzle Frame
-  m_TagString: Untagged
+  m_TagString: Puzzle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,10 +59,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  solved: 0
+  interactable: 1
   checkCompleteInUpdate: 1
   manager: {fileID: 0}
-  completePuzzle: {fileID: 702175431121301158}
-  complete: 0
+  completePuzzleObject: {fileID: 0}
 --- !u!1001 &3026631096986101333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,12 +136,6 @@ PrefabInstance:
 --- !u!4 &3281568933928010174 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 40243af7ccaa366468470d42e7f44538,
-    type: 3}
-  m_PrefabInstance: {fileID: 3026631096986101333}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &702175431121301158 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2575601761817200883, guid: 40243af7ccaa366468470d42e7f44538,
     type: 3}
   m_PrefabInstance: {fileID: 3026631096986101333}
   m_PrefabAsset: {fileID: 0}

@@ -117,7 +117,7 @@ public class Wyvern : PuzzleMechanic
 
             // if the puzzle has been set, tell it the things are complete.
             if (puzzle != null)
-                puzzle.OnPuzzleCompletion();
+                puzzle.OnPuzzleCompletion(this);
         }
 
         

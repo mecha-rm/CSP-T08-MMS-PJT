@@ -223,7 +223,7 @@ public class Maze : PuzzleMechanic
 
         // tells the puzzle the maze is complete.
         if (complete && puzzle != null)
-            puzzle.OnPuzzleCompletion();
+            puzzle.OnPuzzleCompletion(this);
 
         // moves the marker up so that it can go through the maze?
         // marker.transform.Translate(0, spaceSize * transform.localScale.y, 0);

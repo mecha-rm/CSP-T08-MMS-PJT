@@ -127,7 +127,7 @@ public class ConveyorBelt : PuzzleMechanic
 
         // the puzzle is complete.
         if (result && puzzle != null)
-            puzzle.OnPuzzleCompletion();
+            puzzle.OnPuzzleCompletion(this);
 
         // returns the result.
         return result;
