@@ -75,13 +75,19 @@ public class LockEntry : MonoBehaviour
     }
 
     // rotates the dial by 36 degrees every click (10 sided shape, 360/10 = 36)
-    public void RotateDial()
+    public void RotateDial(bool positive)
     {
         // rotates the dial.
         if(dial != null)
         {
+            // the angle of rotation.
+            float theta = 360.0F / comboLock.GetNumberCount();
+
             // rotates the dial.
-            dial.transform.Rotate(0, 0, 360.0F / comboLock.GetNumberCount());
+            if(positive)
+                dial.transform.Rotate(0, 0, theta);
+            else
+                dial.transform.Rotate(0, 0, -theta);
 
             // plays the dial turn audio.
             comboLock.PlayDialTurnSound();
@@ -112,12 +118,12 @@ public class LockEntry : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0)) // left mouse click.
             {
                 IncreaseEntryByOne();
-                RotateDial();
+                RotateDial(true);
             }
             else if (Input.GetKeyDown(KeyCode.Mouse1)) // right mouse click.
             {
                 DecreaseEntryByOne();
-                RotateDial();
+                RotateDial(false);
             }
         }
     }

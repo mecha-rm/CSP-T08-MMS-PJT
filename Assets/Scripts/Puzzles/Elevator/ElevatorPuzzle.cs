@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ElevatorPuzzle : Puzzle
 {
-    // TODO: seperate the elevator bell from the elevator door.
     // the elevator for this puzzle.
     public Elevator elevator;
 
     // the gate for the elevator.
-    public GameObject gate;
+    public GameObject door;
 
     // Start is called before the first frame update
     protected new void Start()
@@ -31,8 +30,8 @@ public class ElevatorPuzzle : Puzzle
         // TODO: put puzzle completion implementation here.
 
         // TODO: do an animation instead of just hiding it.
-        if (gate != null)
-            gate.SetActive(false);
+        if (door != null)
+            door.SetActive(false);
     }
 
     // shows the gate again.
@@ -40,8 +39,8 @@ public class ElevatorPuzzle : Puzzle
     {
         base.OnPuzzleReset();
 
-        if (gate != null)
-            gate.SetActive(true);
+        if (door != null)
+            door.SetActive(true);
     }
 
     // Update is called once per frame

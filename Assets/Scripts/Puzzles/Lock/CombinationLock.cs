@@ -160,7 +160,7 @@ public class CombinationLock : PuzzleMechanic
 
         // debug message.
         // TODO: uncomment for final.
-        Debug.Log((correct) ? "CORRECT COMBINATION" : "WRONG COMBINATION");
+        // Debug.Log((correct) ? "CORRECT COMBINATION" : "WRONG COMBINATION");
 
         // if the combination is correct and the puzzle is set.
         if (correct && puzzle != null)

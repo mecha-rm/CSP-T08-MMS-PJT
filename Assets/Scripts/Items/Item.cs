@@ -35,7 +35,10 @@ public class Item : MonoBehaviour
     // item IDs
     // puzzle piece
     public const string PUZZLE_PIECE_ID = "puzzle-piece";
-    
+
+    // key id.
+    public const string KEY_ID = "key";
+
     // note id.
     public const string NOTE_ID = "note";
     
