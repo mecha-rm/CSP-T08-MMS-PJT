@@ -152,6 +152,21 @@ public class Player : MonoBehaviour
     }
 
     // checks if the player has a given item.
+    public bool HasItem(Item checkedItem)
+    {
+        // goes through inventory.
+        foreach (Item item in inventory)
+        {
+            // item match.
+            if (item == checkedItem)
+                return true;
+        }
+
+        // no id match.
+        return false;
+    }
+
+    // checks if the player has a given item.
     public bool HasItem(string itemId)
     {
         // goes through inventory.

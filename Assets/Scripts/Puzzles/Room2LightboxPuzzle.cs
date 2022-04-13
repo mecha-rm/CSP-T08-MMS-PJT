@@ -7,8 +7,21 @@ public class Room2LightboxPuzzle : Puzzle
     // the gameplay manager.
     public GameplayManager manager;
 
+    // the player of the game.
+    public Player player;
+
+    [Header("Linked Objects")]
+
     // the note for room 2 (only given when the puzzle is solved).
+    // TODO: maybe make it so that doing the maze opens the door.
     public NoteItem note;
+
+    // the colliders for the maze boxes.
+    // TODO: enable them when the light puzzle is finished.
+    public MazeDoor mazeBox1;
+    public MazeDoor mazeBox3;
+    public MazeDoor mazeBox2;
+    public MazeDoor mazeBox4;
 
     // can't play maze until the lights are on.
 
@@ -21,6 +34,10 @@ public class Room2LightboxPuzzle : Puzzle
         // if the manager is not set, find it.
         if (manager == null)
             manager = GameplayManager.Current;
+
+        // grabs the player.
+        if (player == null)
+            player = Player.Current;
 
         // note is not set.
         if (note == null)
@@ -43,7 +60,7 @@ public class Room2LightboxPuzzle : Puzzle
         // TODO: turn off puzzle mechanic interactions.
 
         // turn on the note.
-        if (note != null)
+        if (note != null && !player.HasItem(note))
             note.gameObject.SetActive(true);
     }
 

@@ -77,6 +77,7 @@ public class LockPuzzle : Puzzle
             // TODO: open the door.
 
             // turns off this screen.
+            puzzleScreen.locked = true; // lock the screen.
             puzzleScreen.gameObject.SetActive(false);
         }
 
@@ -107,6 +108,13 @@ public class LockPuzzle : Puzzle
             // resets all entries to 0.
             for (int i = 0; i < comboLock.entries.Count; i++)
                 comboLock.entries[i] = 0;
+        }
+
+        // the puzzle screen is now accessible.
+        if (puzzleScreen != null)
+        {
+            puzzleScreen.locked = false; // unlock the screen.
+            puzzleScreen.gameObject.SetActive(true);
         }
 
         // close the doors.

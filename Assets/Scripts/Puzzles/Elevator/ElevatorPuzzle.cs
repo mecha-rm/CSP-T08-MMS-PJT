@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// the puzzle tied to the elevator.
 public class ElevatorPuzzle : Puzzle
 {
     // the elevator for this puzzle.

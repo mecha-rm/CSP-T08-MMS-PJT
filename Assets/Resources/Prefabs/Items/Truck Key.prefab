@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2124339813783879607}
   - component: {fileID: 2124339813783879605}
   - component: {fileID: 2124339813783879606}
+  - component: {fileID: 8069087033095688171}
   m_Layer: 0
-  m_Name: Key
+  m_Name: Truck Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2124339813783879592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.0156}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children:
   - {fileID: 2124339814635056401}
   m_Father: {fileID: 0}
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptor: {fileID: 2124339813783879606}
   itemId: key
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 1e43d96cfc39e9b4ab8ab658eddb1823, type: 3}
   audioManager: {fileID: 0}
   audioClip: {fileID: 0}
   playAudio: 1
@@ -64,9 +65,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  label: 
-  description: 
+  label: Key
+  description: A key to something.
   showLabel: 1
+--- !u!65 &8069087033095688171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124339813783879592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2124339814635056402
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 2124339814635056402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2124339813783879607}
   m_RootOrder: 0
