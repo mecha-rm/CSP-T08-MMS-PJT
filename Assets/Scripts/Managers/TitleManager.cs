@@ -6,10 +6,18 @@ using UnityEngine.UI;
 // the manager for the TitleScene.
 public class TitleManager : Manager
 {
-    // the screens for the menu.
+    // the current title manager.
+    private static TitleManager current;
 
+    // the screens for the menu.
+    [Header("Screens")]
+    // screen 1 (staritng screen)
     public GameObject screen1;
+
+    // screen2 
     public GameObject screen2;
+
+    // screen 3
     public GameObject screen3;
 
     // controls group.
@@ -20,10 +28,6 @@ public class TitleManager : Manager
 
     // checks if on screen 1.
     private bool isOnScreen1 = true;
-
-    // the exit button for the game.
-    [Tooltip("The exit button. This is only for debug purposes, and is removed if in WebGL.")]
-    public Button exitButton;
 
     // audio manager
     [Header("Audio")]
@@ -57,12 +61,21 @@ public class TitleManager : Manager
     // screen reader.
     [Tooltip("Enables screen reader.")]
     public bool useScreenReader = false;
+    
+    // Awake is called when the script instance is being loaded.
+    private void Awake()
+    {
+        // there is only one
+        current = this;
+    }
 
     // Start is called before the first frame update
     protected new void Start() 
     {
         // changes frame rate at the start of the game.
         base.Start();
+
+        current = this;
 
         //initialize all required menu objects
         
@@ -90,17 +103,6 @@ public class TitleManager : Manager
         objective.SetActive(false);
         controls.SetActive(true);
 
-        // the exit button.
-        if(exitButton != null)
-        {
-            // if this is the web player, delete the exit button.
-            if (Application.platform == RuntimePlatform.WebGLPlayer)
-            {
-                exitButton.interactable = false;
-                Destroy(exitButton);
-            }
-        }
-
         // AUDIO
         // finds the audio manager.
         if (audioManager == null)
@@ -122,6 +124,19 @@ public class TitleManager : Manager
         // screen reader
         if (screenReaderToggle != null)
             screenReaderToggle.isOn = useScreenReader;
+    }
+
+    // gets the current manager.
+    public static TitleManager Current
+    {
+        get
+        {
+            // saves the end manager if not set.
+            if (current == null)
+                current = FindObjectOfType<TitleManager>(true);
+
+            return current;
+        }
     }
 
     // starts the game scene.
@@ -186,6 +201,8 @@ public class TitleManager : Manager
     {
         objective.SetActive(false);
         controls.SetActive(true);
+
+        PlayButtonSfx();
     }
 
     //display objective
@@ -193,6 +210,8 @@ public class TitleManager : Manager
     {
         controls.SetActive(false);
         objective.SetActive(true);
+
+        PlayButtonSfx();
     }
 
     // plays a sound.

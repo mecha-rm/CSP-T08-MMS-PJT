@@ -12,6 +12,7 @@ TagManager:
   - Item
   - Screen
   - Screen Trigger
+  - UI
   layers:
   - Default
   - TransparentFX

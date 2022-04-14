@@ -317,10 +317,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1642649295}
     m_Modifications:
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: useHighContrast
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
-      value: R2 Screen 2 - Sub 1
+      value: R2 Screen 2 - Sub 1 (Lock)
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
@@ -473,6 +478,11 @@ PrefabInstance:
       objectReference: {fileID: 590050937}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
+      propertyPath: useHighContrast
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
       propertyPath: puzzles.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -484,7 +494,7 @@ PrefabInstance:
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
-      value: R3 Screen 5
+      value: R3 Screen 5 (Conveyor Belt)
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
@@ -3504,12 +3514,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 590050935}
+    m_TransformParent: {fileID: 1952141616}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6f8aa5484ae1e7c4d8a40d699ac454d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f8aa5484ae1e7c4d8a40d699ac454d1,
         type: 3}
@@ -5850,7 +5860,7 @@ PrefabInstance:
     - target: {fileID: 5911283722902467586, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_Name
-      value: R3 Screen 4 (Exit Screen)
+      value: R3 Screen 4 (Frame)
       objectReference: {fileID: 0}
     - target: {fileID: 5911283722902467586, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -10044,7 +10054,7 @@ PrefabInstance:
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
-      value: R3 Screen 2
+      value: R3 Screen 2 (Wyvern)
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
@@ -11019,6 +11029,11 @@ PrefabInstance:
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 1269608184}
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: useHighContrast
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
@@ -11047,12 +11062,12 @@ PrefabInstance:
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9659258
+      value: 0.97629607
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2588191
+      value: 0.2164396
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
@@ -11067,7 +11082,7 @@ PrefabInstance:
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
@@ -11201,6 +11216,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1936128855}
     m_Modifications:
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: useHighContrast
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
@@ -12570,6 +12590,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
+      propertyPath: useHighContrast
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
       propertyPath: puzzles.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -12739,7 +12764,7 @@ PrefabInstance:
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
-      value: R3 Screen 4 - Subscreen 1
+      value: R3 Screen 4 - Subscreen 1 (Elevator)
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
@@ -13648,6 +13673,11 @@ PrefabInstance:
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 1189580842}
+    - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: useHighContrast
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6092676530871682113, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: manager

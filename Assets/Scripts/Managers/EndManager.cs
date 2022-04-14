@@ -7,6 +7,9 @@ using System.Runtime.InteropServices;
 // the ending manager for the game.
 public class EndManager : Manager
 {
+    // the current end manager.
+    private static EndManager current;
+
     // the length of the game the player just completed.
     // TODO: this is here for testing purposes. This value only needs to be updated once, so this can be a local variable.
     public float completionTime = 0.0F;
@@ -27,6 +30,7 @@ public class EndManager : Manager
     public Text timeText;
 
     // the text for the bonus item.
+    // TODO: maybe replace this iwth a symbol rather than have text?
     public Text bonusText;
 
     // the screenshot button.
@@ -39,7 +43,14 @@ public class EndManager : Manager
     //open link in new tab
     [DllImport("__Internal")]
     private static extern void OpenURLInExternalWindow(string url);
-   
+
+    // Awake is called when the script instance is being loaded.
+    private void Awake()
+    {
+        // there is only one
+        current = this;
+    }
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -47,6 +58,8 @@ public class EndManager : Manager
         // this is called by the title manager, so in normal play this isn't called.
         if (Application.isEditor)
             base.Start();
+
+        current = this;
 
         // finds the input field if not set.
         // TODO: if there's more than one input field remove this.
@@ -81,9 +94,9 @@ public class EndManager : Manager
         {
             // TODO: maybe replace this with an icon instead of a text component.
             if(gotCertificate)
-                bonusText.text = "Got Bonus Item!";
+                bonusText.text = "You Got the Bonus Item!";
             else
-                bonusText.text = "Did not get bonus item.";
+                bonusText.text = "You Did Not Get the Bonus Item.";
         }
 
         // if the screenshot button has been set.
@@ -104,6 +117,19 @@ public class EndManager : Manager
         }
             
 
+    }
+
+    // gets the current manager.
+    public static EndManager Current
+    {
+        get
+        {
+            // saves the end manager manager if not set.
+            if (current == null)
+                current = FindObjectOfType<EndManager>(true);
+
+            return current;
+        }
     }
 
     // starts the game scene.
