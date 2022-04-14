@@ -52,7 +52,6 @@ MonoBehaviour:
   accessibility: {fileID: 0}
   player: {fileID: 0}
   mouse: {fileID: 3603107488084803637}
-  postProcessing: {fileID: 0}
   currentScreen: {fileID: 0}
   rooms: []
   disableOtherRooms: 1
@@ -62,6 +61,9 @@ MonoBehaviour:
   inspectName: 
   inspectDesc: ...
   inspectText: {fileID: 0}
+  mouseLightPostProcessing: {fileID: 0}
+  highContrastPostProcessing: {fileID: 0}
+  allowHighContrast: 0
   item1: {fileID: 0}
   item2: {fileID: 0}
   item3: {fileID: 0}
@@ -88,7 +90,7 @@ MonoBehaviour:
   hoveredObject: {fileID: 0}
   heldObject: {fileID: 0}
   lastClickedObject: {fileID: 0}
-  ignoreUI: 0
+  ignoreUI: 1
 --- !u!114 &7908407170224848497
 MonoBehaviour:
   m_ObjectHideFlags: 0

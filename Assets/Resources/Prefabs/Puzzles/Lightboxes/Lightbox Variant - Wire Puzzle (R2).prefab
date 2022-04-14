@@ -452,6 +452,36 @@ MonoBehaviour:
   paired: {fileID: 9061878950865162202}
   line: {fileID: 0}
   connected: 0
+--- !u!114 &2242155397230222863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6061111489992259971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b9694245ba98e42b5220e058c3912c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: {fileID: 2630759245439919383}
+  solved: 0
+  interactable: 1
+  checkCompleteInUpdate: 1
+  node1: {fileID: 0}
+  node2: {fileID: 0}
+  nodes:
+  - {fileID: 4996407080169349824}
+  - {fileID: 3775492937138195857}
+  - {fileID: 3732514499414259593}
+  - {fileID: 178862094962276897}
+  - {fileID: 5966949132731637138}
+  - {fileID: 9061878950865162202}
+  - {fileID: 7982223702773657162}
+  - {fileID: 3685167738999662818}
+  lineMaterial: {fileID: 0}
+  lineWidth: 0.05
+  mouseDown: 0
 --- !u!114 &2630759245439919383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,9 +497,11 @@ MonoBehaviour:
   finished: 0
   desc: {fileID: 0}
   mechanics:
-  - {fileID: 6061111487999069618}
+  - {fileID: 2242155397230222863}
   manager: {fileID: 0}
+  player: {fileID: 0}
   note: {fileID: 494989363245318060}
+  mazeScreen: {fileID: 0}
 --- !u!1 &4692252992785158719
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,18 +1029,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3469836720743080147}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6061111487999069618 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7222140838863056225, guid: 477d5618995d9f041836475e4a86248b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3469836720743080147}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b9694245ba98e42b5220e058c3912c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6061111489992259970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7222140840326043985, guid: 477d5618995d9f041836475e4a86248b,

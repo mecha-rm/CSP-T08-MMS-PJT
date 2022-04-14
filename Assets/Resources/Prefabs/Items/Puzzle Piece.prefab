@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4685255233236618150}
   m_Layer: 0
   m_Name: Puzzle Piece
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +62,9 @@ MonoBehaviour:
   descriptor: {fileID: 4685255233236618150}
   itemId: 
   itemIcon: {fileID: 21300000, guid: 6e4207e3954b7a04dbaeed125fb788dc, type: 3}
+  audioManager: {fileID: 0}
+  audioClip: {fileID: 0}
+  playAudio: 1
 --- !u!114 &4685255233236618150
 MonoBehaviour:
   m_ObjectHideFlags: 0

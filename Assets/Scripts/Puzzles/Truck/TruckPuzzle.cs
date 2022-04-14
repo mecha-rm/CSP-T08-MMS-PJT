@@ -11,9 +11,6 @@ public class TruckPuzzle : Puzzle
     // the box collider for the ligthbox screen.
     public RoomScreen lightboxScreen;
 
-    // the trigger for the maze screen.
-    public ScreenTrigger mazeScreenTrigger;
-
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -27,10 +24,6 @@ public class TruckPuzzle : Puzzle
         // locks the lightbox screen.
         if (lightboxScreen != null)
             lightboxScreen.locked = true;
-
-        // hide the screen trigger.
-        if (mazeScreenTrigger != null)
-            mazeScreenTrigger.gameObject.SetActive(false);
     }
 
     // called when the puzzle is completed.
@@ -43,9 +36,6 @@ public class TruckPuzzle : Puzzle
         if (lightboxScreen != null)
             lightboxScreen.locked = false;
 
-        // shows the screen trigger.
-        if (mazeScreenTrigger != null)
-            mazeScreenTrigger.gameObject.SetActive(true);
     }
 
     // shows the gate again.
@@ -60,10 +50,6 @@ public class TruckPuzzle : Puzzle
         // locks the lightbox screen.
         if (lightboxScreen != null)
             lightboxScreen.locked = true;
-
-        // hide the screen trigger.
-        if (mazeScreenTrigger != null)
-            mazeScreenTrigger.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

@@ -24,8 +24,10 @@ public class MazeBox : PuzzleMechanic
     public GameObject storedObject;
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Start();
+
         // hide the puzzle peice as if it's stored.
         if (storedObject != null)
             storedObject.SetActive(false);
@@ -58,6 +60,10 @@ public class MazeBox : PuzzleMechanic
 
         isOpen = true;
         solved = true;
+
+        // this part of the puzzle is complete.
+        if (puzzle != null)
+            puzzle.OnPuzzleCompletion(this);
     }
 
     // closes the door.
@@ -120,7 +126,7 @@ public class MazeBox : PuzzleMechanic
     // Update is called once per frame
     protected new void Update()
     {
-
+        base.Update();
     }
 
     

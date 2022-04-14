@@ -27,6 +27,16 @@ public class MazePuzzle : Puzzle
     public override void OnPuzzleCompletion()
     {
         base.OnPuzzleCompletion();
+
+        // grabs the current player.
+        Player player = Player.Current;
+
+        // takes the note from the player.
+        if(player != null)
+        {
+            // This does not check what note to take.
+            player.TakeItem(Item.NOTE_ID);
+        }
     }
 
     // calls the on puzzle completion functon with the mechanic that was just completed.
@@ -52,6 +62,7 @@ public class MazePuzzle : Puzzle
                     if (useHint && wrongAnswers >= hintThreshold && maze != null)
                     {
                         maze.gameObject.SetActive(true);
+                        maze.ResetPuzzle();
                     }
 
                 }

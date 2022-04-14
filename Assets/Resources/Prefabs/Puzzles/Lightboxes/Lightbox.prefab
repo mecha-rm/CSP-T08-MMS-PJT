@@ -61,28 +61,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7222140838863056225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7564740079444345162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b9694245ba98e42b5220e058c3912c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzle: {fileID: 0}
-  solved: 0
-  interactable: 1
-  checkCompleteInUpdate: 1
-  node1: {fileID: 0}
-  node2: {fileID: 0}
-  nodes: []
-  lineMaterial: {fileID: 0}
-  lineWidth: 0.05
-  mouseDown: 0
 --- !u!1001 &7222140839118371867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,12 +155,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 657c1f1e28791fc4ab9b9828fe3c2144, type: 3}
---- !u!1 &7564740079444345162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 657c1f1e28791fc4ab9b9828fe3c2144,
-    type: 3}
-  m_PrefabInstance: {fileID: 7222140839118371867}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7183394965228133360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 657c1f1e28791fc4ab9b9828fe3c2144,

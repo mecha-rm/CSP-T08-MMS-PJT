@@ -259,6 +259,7 @@ public class Maze : PuzzleMechanic
     public override void OnComponentDisable()
     {
         // N/A
+        Debug.Log("Test");
     }
 
     // checks if the puzzle was completed successfully successful.
@@ -287,9 +288,10 @@ public class Maze : PuzzleMechanic
             marker.transform.eulerAngles = markerResetRotEulers;
         }
 
+        // TODO: remove this.
         // called to reset the puzzle.
-        if (puzzle != null)
-            puzzle.OnPuzzleReset();
+        // if (puzzle != null)
+        //     puzzle.OnPuzzleReset();
     }
 
     // Update is called once per frame

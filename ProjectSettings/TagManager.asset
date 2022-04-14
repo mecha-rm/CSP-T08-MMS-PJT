@@ -9,6 +9,7 @@ TagManager:
   - Post Processing
   - Accessibility
   - Puzzle Piece
+  - Item
   layers:
   - Default
   - TransparentFX

@@ -31,7 +31,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3078659325335478380
+--- !u!65 &607970796847992328
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028249338429021077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.023, y: 0.023, z: 0.024}
+  m_Center: {x: 0, y: 0, z: 0.011757756}
+--- !u!114 &1680627647605594330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,7 +62,7 @@ MonoBehaviour:
   checkCompleteInUpdate: 1
   isOpen: 0
   openOnly: 1
-  door: {fileID: 0}
+  door: {fileID: 5233860344953579340}
   closedDoorEulers: {x: 0, y: 0, z: 0}
   theta: 180
   storedObject: {fileID: 0}
@@ -131,6 +144,12 @@ GameObject:
 --- !u!4 &7215262003833848111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d56f72e359b08e54ca7fc50869bc8d54,
+    type: 3}
+  m_PrefabInstance: {fileID: 7181970288699942596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5233860344953579340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3101031456158810504, guid: d56f72e359b08e54ca7fc50869bc8d54,
     type: 3}
   m_PrefabInstance: {fileID: 7181970288699942596}
   m_PrefabAsset: {fileID: 0}

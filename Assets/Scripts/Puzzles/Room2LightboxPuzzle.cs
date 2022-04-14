@@ -16,11 +16,9 @@ public class Room2LightboxPuzzle : Puzzle
     // TODO: maybe make it so that doing the maze opens the door.
     public NoteItem note;
 
-    // enables the four maze doors.
-    public MazeBox mazeBox1;
-    public MazeBox mazeBox3;
-    public MazeBox mazeBox2;
-    public MazeBox mazeBox4;
+    // the maze screen, which will be locked until the puzzle is complete.
+    public RoomScreen mazeScreen;
+
 
     // can't play maze until the lights are on.
 
@@ -45,6 +43,10 @@ public class Room2LightboxPuzzle : Puzzle
         // hide the note.
         if (note != null)
             note.gameObject.SetActive(false);
+
+        // hide the screen trigger.
+        if (mazeScreen != null)
+            mazeScreen.locked = true;
     }
 
     // called when the puzzle is completed.
@@ -63,6 +65,10 @@ public class Room2LightboxPuzzle : Puzzle
         // turn on the note.
         if (note != null && !player.HasItem(note))
             note.gameObject.SetActive(true);
+
+        // shows the screen trigger.
+        if (mazeScreen != null)
+            mazeScreen.locked = false;
     }
 
     // called when the puzzle is being reset.
@@ -76,6 +82,10 @@ public class Room2LightboxPuzzle : Puzzle
         // hide the note.
         if (note != null)
             note.gameObject.SetActive(false);
+
+        // hide the screen trigger.
+        if (mazeScreen != null)
+            mazeScreen.locked = true;
     }
 
     // Update is called once per frame
