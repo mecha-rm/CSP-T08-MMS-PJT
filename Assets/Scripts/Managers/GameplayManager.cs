@@ -51,9 +51,6 @@ public class GameplayManager : Manager
     // the last object that has been clicked.
     private GameObject lastClicked = null;
 
-    // if 'true', the player got the bonus easter egg.
-    public bool hasCertificate;
-
     // the timer for the game. There should only be one.
     public Timer timer;
 
@@ -735,7 +732,7 @@ public class GameplayManager : Manager
             resultsData.completionTime = timer.currentTime;
 
         // saves this value.
-        resultsData.gotCertificate = hasCertificate;
+        resultsData.gotCertificate = player.HasItem(Item.CERTIFICATE_ID);
 
         // goes to the end screen.
         SceneHelper.LoadScene("EndScene");
