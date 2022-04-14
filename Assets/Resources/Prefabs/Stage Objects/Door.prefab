@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6037189967935745506}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Screen Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,8 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screen: {fileID: 0}
-  collider: {fileID: 0}
+  collider: {fileID: 6037189967935745507}
   colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
 --- !u!1001 &3149232701565367532
 PrefabInstance:
   m_ObjectHideFlags: 0

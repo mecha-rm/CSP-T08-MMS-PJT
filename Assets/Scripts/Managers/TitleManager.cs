@@ -7,15 +7,31 @@ using UnityEngine.UI;
 public class TitleManager : Manager
 {
     // the screens for the menu.
+
     public GameObject screen1;
     public GameObject screen2;
     public GameObject screen3;
 
-    private GameObject controls;
-    private GameObject objective;
+    // controls group.
+    public GameObject controls;
+
+    // objective group.
+    public GameObject objective;
 
     // checks if on screen 1.
     private bool isOnScreen1 = true;
+
+    // the exit button for the game.
+    [Tooltip("The exit button. This is only for debug purposes, and is removed if in WebGL.")]
+    public Button exitButton;
+
+    // audio manager
+    [Header("Audio")]
+    // the audio manager for the title screen.
+    public AudioManager audioManager;
+
+    // the button audio.
+    public AudioClip buttonClip;
 
     [Header("Accessibility")]
 
@@ -31,8 +47,6 @@ public class TitleManager : Manager
     [Tooltip("Screen reader toggle, which is a visual to show if the screen reader is enabled or not. " +
         "Use the correspond key to toggle it instead.")]
     public Toggle screenReaderToggle;
-
-    
 
     // accessibility settings.
     
@@ -54,25 +68,52 @@ public class TitleManager : Manager
         
         // screen 1 not set.
         if(screen1 == null)
-            screen1 = GameObject.Find("Screen 1");
+            screen1 = GameObject.Find("Screen 1"); // active objects only
         
         // screen 2 not set.
         if(screen2 == null)
-            screen2 = GameObject.Find("Screen 2");
-        
+            screen2 = GameObject.Find("Screen 2"); // active objects only
+
         // screen 3 not set.
-        if(screen3 == null)
-            screen3 = GameObject.Find("Screen 3");
+        if (screen3 == null)
+            screen3 = GameObject.Find("Screen 3"); // active objects only
 
-        screen2.SetActive(false);
-        screen3.SetActive(false);
+        // start on screen 1.
+        GoToScreen1();
 
-        objective = screen3.transform.Find("Objective").gameObject;
-        controls = screen3.transform.Find("Controls").gameObject;
+        if(objective == null && screen3 != null)
+            objective = screen3.transform.Find("Objective").gameObject;
+
+        if (controls == null && screen3 != null)
+            controls = screen3.transform.Find("Controls").gameObject;
 
         objective.SetActive(false);
         controls.SetActive(true);
 
+        // the exit button.
+        if(exitButton != null)
+        {
+            // if this is the web player, delete the exit button.
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                exitButton.interactable = false;
+                Destroy(exitButton);
+            }
+        }
+
+        // AUDIO
+        // finds the audio manager.
+        if (audioManager == null)
+            audioManager = FindObjectOfType<AudioManager>();
+
+        // checks for the audio clip.
+        if (buttonClip == null)
+        {
+            // loads the audio clip.
+            buttonClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_MAIN_MENU_BUTTON_PRESS");
+        }
+
+        // ACCESSIBILITY
         // TODO: search for toggles?
         // high contrast
         if (highContrastToggle != null)
@@ -113,6 +154,9 @@ public class TitleManager : Manager
         isOnScreen1 = true;
         screen1.SetActive(true);
         screen2.SetActive(false);
+        screen3.SetActive(false);
+
+        PlayButtonSfx();
     }
 
     //display screen 2
@@ -122,13 +166,19 @@ public class TitleManager : Manager
         screen1.SetActive(false);
         screen2.SetActive(true);
         screen3.SetActive(false);
+
+        PlayButtonSfx();
     }
 
     //display screen 3
     public void GoToScreen3()
     {
+        isOnScreen1 = false;
+        screen1.SetActive(false);
         screen2.SetActive(false);
         screen3.SetActive(true);
+
+        PlayButtonSfx();
     }
 
     //display controls
@@ -145,6 +195,20 @@ public class TitleManager : Manager
         objective.SetActive(true);
     }
 
+    // plays a sound.
+    public void PlayButtonSfx()
+    {
+        // plays a sound.
+        if(audioManager != null)
+        {
+            // plays the specific clip, otherwise it plays audio 0.
+            if(buttonClip != null)
+                audioManager.PlayAudio(buttonClip);
+            else
+                audioManager.PlayAudio(0);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -156,12 +220,16 @@ public class TitleManager : Manager
             if (Input.GetKeyDown(KeyCode.H))
             {
                 useHighContrast = !useHighContrast;
+
+                PlayButtonSfx();
             }
 
             // toggle the screen reader.
             if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
             {
                 useScreenReader = !useScreenReader;
+
+                PlayButtonSfx();
             }
 
             // update high contrast visual.
