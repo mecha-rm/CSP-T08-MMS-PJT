@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2925826479080236287}
   m_Layer: 0
   m_Name: Maze Door
-  m_TagString: Untagged
+  m_TagString: Puzzle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +31,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3078659325335478380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028249338429021077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c36ab5109c82b42a181f244a7babd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: {fileID: 0}
+  solved: 0
+  interactable: 1
+  checkCompleteInUpdate: 1
+  isOpen: 0
+  openOnly: 1
+  door: {fileID: 0}
+  closedDoorEulers: {x: 0, y: 0, z: 0}
+  theta: 180
+  storedObject: {fileID: 0}
 --- !u!1001 &7181970288699942596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +122,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d56f72e359b08e54ca7fc50869bc8d54, type: 3}
+--- !u!1 &8028249338429021077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d56f72e359b08e54ca7fc50869bc8d54,
+    type: 3}
+  m_PrefabInstance: {fileID: 7181970288699942596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7215262003833848111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d56f72e359b08e54ca7fc50869bc8d54,

@@ -16,12 +16,11 @@ public class Room2LightboxPuzzle : Puzzle
     // TODO: maybe make it so that doing the maze opens the door.
     public NoteItem note;
 
-    // the colliders for the maze boxes.
-    // TODO: enable them when the light puzzle is finished.
-    public MazeDoor mazeBox1;
-    public MazeDoor mazeBox3;
-    public MazeDoor mazeBox2;
-    public MazeDoor mazeBox4;
+    // enables the four maze doors.
+    public MazeBox mazeBox1;
+    public MazeBox mazeBox3;
+    public MazeBox mazeBox2;
+    public MazeBox mazeBox4;
 
     // can't play maze until the lights are on.
 
@@ -58,6 +57,8 @@ public class Room2LightboxPuzzle : Puzzle
         manager.SetRoomLightingEnabled(true);
 
         // TODO: turn off puzzle mechanic interactions.
+        // if(mazeBox1 != null)
+        //     mazeBox1.
 
         // turn on the note.
         if (note != null && !player.HasItem(note))

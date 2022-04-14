@@ -1,7 +1,7 @@
 # Blender v2.90.0 OBJ File: 'CSP - T08 - Posters.blend'
 # www.blender.org
 mtllib RuN_Ac_sign_model.mtl
-o RuN_Ac_Sign
+o RuN_Ac_sign
 v 1.530734 -3.695518 -0.025000
 v 1.530734 -3.695518 0.025000
 v -1.530734 -3.695518 -0.025000

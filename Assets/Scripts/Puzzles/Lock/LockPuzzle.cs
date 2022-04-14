@@ -20,13 +20,19 @@ public class LockPuzzle : Puzzle
     public GameObject leftDoor;
 
     // the base leftward rotation.
-    public Quaternion baseLeftDoorRot;
+    public Vector3 baseLeftDoorEulers;
+
+    // auto set the left door reset.
+    public bool autoSetLeftDoorReset = true;
 
     // the right door for the closet.
     public GameObject rightDoor;
 
     // the base rightward rotation.
-    public Quaternion baseRightDoorRot;
+    public Vector3 baseRightDoorEulers;
+
+    // auto set the right door reset.
+    public bool autoSetRightDoorReset = true;
 
     // rotation factor
     [Tooltip("The rotation amount.")]
@@ -47,12 +53,12 @@ public class LockPuzzle : Puzzle
             comboLock = GetComponentInChildren<CombinationLock>();
 
         // saves the rotation for the left door.
-        if (leftDoor != null)
-            baseLeftDoorRot = leftDoor.transform.rotation;
+        if (leftDoor != null && autoSetLeftDoorReset)
+            baseLeftDoorEulers = leftDoor.transform.eulerAngles;
 
         // saves the rotation for the right door.
-        if (rightDoor != null)
-            baseRightDoorRot = rightDoor.transform.rotation;
+        if (rightDoor != null && autoSetLeftDoorReset)
+            baseRightDoorEulers = rightDoor.transform.eulerAngles;
     }
 
     // called when the puzzle is completed.
@@ -82,12 +88,12 @@ public class LockPuzzle : Puzzle
         }
 
         // open the doors.
-        // open left
-        if (leftDoor != null)
+        // open left if it isn't already open.
+        if (leftDoor != null && leftDoor.transform.eulerAngles == baseLeftDoorEulers)
             leftDoor.transform.Rotate(leftDoor.transform.up, -theta);
 
-        // open right
-        if (rightDoor != null)
+        // open right if it isn't already open.
+        if (rightDoor != null && rightDoor.transform.eulerAngles == baseRightDoorEulers)
             rightDoor.transform.Rotate(leftDoor.transform.up, theta);
 
     }
@@ -120,11 +126,11 @@ public class LockPuzzle : Puzzle
         // close the doors.
         // close left
         if (leftDoor != null)
-            leftDoor.transform.rotation = baseLeftDoorRot;
+            leftDoor.transform.eulerAngles = baseLeftDoorEulers;
 
         // close right
         if (rightDoor != null)
-            rightDoor.transform.rotation = baseRightDoorRot;
+            rightDoor.transform.eulerAngles = baseRightDoorEulers;
 
     }
 

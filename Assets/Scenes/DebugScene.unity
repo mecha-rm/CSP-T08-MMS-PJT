@@ -469,6 +469,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   puzzles: []
   changePuzzlesEnabled: 1
+  collider: {fileID: 0}
+  colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
   audioManager: {fileID: 0}
   playAudio: 0
   playEntranceClip: 0
@@ -1214,6 +1218,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   puzzles: []
   changePuzzlesEnabled: 1
+  collider: {fileID: 0}
+  colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
   audioManager: {fileID: 0}
   playAudio: 0
   playEntranceClip: 0
@@ -1932,6 +1940,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   puzzles: []
   changePuzzlesEnabled: 1
+  collider: {fileID: 0}
+  colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
   audioManager: {fileID: 0}
   playAudio: 0
   playEntranceClip: 0
@@ -2898,6 +2910,7 @@ MonoBehaviour:
   solved: 0
   interactable: 1
   checkCompleteInUpdate: 1
+  cable: {fileID: 0}
   elevatorIsCable: 1
   pulls: 0
   pullsNeeded: 2
@@ -6601,6 +6614,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   puzzles: []
   changePuzzlesEnabled: 1
+  collider: {fileID: 0}
+  colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
   audioManager: {fileID: 0}
   playAudio: 0
   playEntranceClip: 0
@@ -7195,6 +7212,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   puzzles: []
   changePuzzlesEnabled: 1
+  collider: {fileID: 0}
+  colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
   audioManager: {fileID: 0}
   playAudio: 0
   playEntranceClip: 0
@@ -7591,6 +7612,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   puzzles: []
   changePuzzlesEnabled: 1
+  collider: {fileID: 0}
+  colOffWhenInScreen: 1
+  colliderDisplay: {fileID: 0}
+  deleteColliderDisplay: 1
   audioManager: {fileID: 0}
   playAudio: 0
   playEntranceClip: 0

@@ -1,7 +1,7 @@
 # Blender MTL File: 'CSP - T08 - Marker.blend'
 # Material Count: 1
 
-newmtl Material
+newmtl Marker_Arrow_Material
 Ns 323.999994
 Ka 1.000000 1.000000 1.000000
 Kd 0.893977 0.734704 0.007613

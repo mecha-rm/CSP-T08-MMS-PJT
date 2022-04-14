@@ -1,7 +1,7 @@
 # Blender v2.90.0 OBJ File: 'CSP - T08 - Posters.blend'
 # www.blender.org
 mtllib periodic_table_model.mtl
-o Periodic_Table
+o periodic_table
 v 16.000000 -8.999999 -0.025000
 v -15.999999 -9.000001 -0.025000
 v 16.000000 -8.999999 0.025000

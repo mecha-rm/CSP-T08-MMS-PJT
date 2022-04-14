@@ -47,6 +47,16 @@ MonoBehaviour:
   finished: 0
   desc: {fileID: 0}
   mechanics: []
+  manager: {fileID: 0}
+  comboLock: {fileID: 0}
+  puzzleScreen: {fileID: 0}
+  leftDoor: {fileID: 0}
+  baseLeftDoorEulers: {x: 0, y: 0, z: 0}
+  autoSetLeftDoorReset: 1
+  rightDoor: {fileID: 0}
+  baseRightDoorEulers: {x: 0, y: 0, z: 0}
+  autoSetRightDoorReset: 1
+  theta: 180
 --- !u!1001 &3972273835549572944
 PrefabInstance:
   m_ObjectHideFlags: 0

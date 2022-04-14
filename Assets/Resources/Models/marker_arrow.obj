@@ -1,7 +1,7 @@
 # Blender v2.90.0 OBJ File: 'CSP - T08 - Marker.blend'
 # www.blender.org
-mtllib screen_marker.mtl
-o Marker_Arrow
+mtllib marker_arrow.mtl
+o marker_arrow
 v -0.050000 0.025000 0.425000
 v -0.050000 -0.000000 0.425000
 v -0.500000 0.025000 -0.500000
@@ -58,7 +58,7 @@ vn 0.8533 0.0000 0.5215
 vn 0.0000 0.0000 1.0000
 vn 0.4061 0.0000 -0.9138
 vn 0.0000 0.0000 -1.0000
-usemtl Material
+usemtl Marker_Arrow_Material
 s off
 f 15/1/1 5/2/1 7/3/1 12/4/1
 f 13/5/2 12/6/2 7/7/2 8/8/2
