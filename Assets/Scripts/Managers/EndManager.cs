@@ -35,6 +35,10 @@ public class EndManager : Manager
     // Screenshot stuff from Robert
     [DllImport("__Internal")]
     private static extern void openWindow(string url);
+
+    //open link in new tab
+    [DllImport("__Internal")]
+    private static extern void OpenURLInExternalWindow(string url);
    
     // Start is called before the first frame update
     protected new void Start()
@@ -111,7 +115,10 @@ public class EndManager : Manager
     //sends player to mining matters website
     public void LearnMore()
     {
-        Application.OpenURL("https://miningmatters.ca/");
+        // Application.OpenURL("https://miningmatters.ca/");
+        #if !UNITY_EDITOR
+            OpenURLInExternalWindow("https://miningmatters.ca/");
+        #endif
     }
 
     //captures screenshot of Certificate of completion
