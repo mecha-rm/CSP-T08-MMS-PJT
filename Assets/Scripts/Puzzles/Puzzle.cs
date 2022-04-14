@@ -87,6 +87,13 @@ public class Puzzle : MonoBehaviour
         finished = false;
     }
 
+    // resets hte puzzle.
+    public void ResetPuzzle()
+    {
+        // calls this to run all puzzle reset functions.
+        OnPuzzleReset();
+    }
+
     // Update is called once per frame
     protected void Update()
     {
