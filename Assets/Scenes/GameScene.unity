@@ -317,6 +317,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1642649295}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Lock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at lock.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: useHighContrast
@@ -1159,7 +1169,7 @@ BoxCollider:
   m_GameObject: {fileID: 107568807}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1465,6 +1475,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 538297236768355206}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Sparkling Coloured Gems
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at sparkling coloured gems.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -2426,6 +2446,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1781515530}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Luminescent Mushrooms
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at Luminescent Mushrooms.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -2449,7 +2479,7 @@ PrefabInstance:
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.75
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453653, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
@@ -3539,7 +3569,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6f8aa5484ae1e7c4d8a40d699ac454d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.5
+      value: -27.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f8aa5484ae1e7c4d8a40d699ac454d1,
         type: 3}
@@ -4911,7 +4941,7 @@ BoxCollider:
   m_GameObject: {fileID: 502981956}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5477,7 +5507,7 @@ BoxCollider:
   m_GameObject: {fileID: 566245048}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5914,9 +5944,19 @@ PrefabInstance:
       objectReference: {fileID: 1269608184}
     - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
+      propertyPath: lockedDesc
+      value: Door to room 2. It is locked.
+      objectReference: {fileID: 0}
+    - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 27614355}
+    - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: unlockedDesc
+      value: Door to room 2. It is unlocked.
+      objectReference: {fileID: 0}
     - target: {fileID: 538297237564422342, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_Name
@@ -5937,6 +5977,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1317251823733083723, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: label
+      value: Frame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317251823733083723, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: description
+      value: Looking at frame.
+      objectReference: {fileID: 0}
     - target: {fileID: 1752856471571810664, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_Lightmapping
@@ -5946,6 +5996,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131467821215580815, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: label
+      value: Room 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131467821215580815, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: description
+      value: Door to room 2.
       objectReference: {fileID: 0}
     - target: {fileID: 5911283722902467586, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -6810,7 +6870,7 @@ BoxCollider:
   m_GameObject: {fileID: 735142897}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -6882,6 +6942,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 526381909}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Elevator/Cage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Inside the elevator.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -9165,6 +9235,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 263855862}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Maze
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at a grid type maze that leads to four doors.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: puzzles.Array.size
@@ -9878,6 +9958,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 263855862}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Keys are needed to move the truck.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: collider
@@ -10122,6 +10212,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 951305349}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Wyvern
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at wyvern.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -11110,6 +11210,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 951305349}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Seismograph
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at seismograph
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -11206,6 +11316,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 538297236768355206}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Periodic Table Poster
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at periodic table poster.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -11307,6 +11427,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1936128855}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Pipes on Ceiling
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at pipes.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: useHighContrast
@@ -12679,6 +12809,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 882187180}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Thermostat Keypad
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at thermostat keypad.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: useHighContrast
@@ -12832,6 +12972,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 526381909}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Elevator/Cage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at cage and sign.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: collider
@@ -13477,6 +13627,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 538297236768355206}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Room corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at room.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -13711,13 +13871,18 @@ PrefabInstance:
       objectReference: {fileID: 1076599266}
     - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
+      propertyPath: lockedDesc
+      value: Door to room 1. It is locked.
+      objectReference: {fileID: 0}
+    - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 1643290826}
     - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: unlockedDesc
-      value: A screen in the room.
+      value: Door to room 1. It is unlocked.
       objectReference: {fileID: 0}
     - target: {fileID: 538297237564422342, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -13744,10 +13909,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1317251823733083723, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: label
+      value: Room 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317251823733083723, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: description
+      value: Door to room 3.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131467821215580815, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: label
+      value: Room 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5131467821215580815, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: description
-      value: This screen is locked.
+      value: Door to room 1.
       objectReference: {fileID: 0}
     - target: {fileID: 5911283722902467586, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -13766,9 +13946,19 @@ PrefabInstance:
       objectReference: {fileID: 1643290826}
     - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
+      propertyPath: lockedDesc
+      value: Door to room 3. It is locked.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 1189580842}
+    - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: unlockedDesc
+      value: Door to room 3. It is unlocked.
+      objectReference: {fileID: 0}
     - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: useHighContrast
@@ -13992,7 +14182,7 @@ BoxCollider:
   m_GameObject: {fileID: 1964528768}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -15124,6 +15314,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1781515530}
     m_Modifications:
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: label
+      value: Supply Closet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531149045600914717, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: description
+      value: Looking at supply closet.
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: leftScreen
@@ -15532,9 +15732,21 @@ PrefabInstance:
       objectReference: {fileID: 1513195725}
     - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
+      propertyPath: lockedDesc
+      value: I just escaped from the Refuge Station, I need to find the cage to get
+        to the surface.
+      objectReference: {fileID: 0}
+    - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 136279931}
+    - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: unlockedDesc
+      value: I just escaped from the Refuge Station, I need to find the cage to get
+        to the surface.
+      objectReference: {fileID: 0}
     - target: {fileID: 538297237564422337, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: puzzles.Array.size
@@ -15560,10 +15772,31 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1317251823733083723, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: label
+      value: Room 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317251823733083723, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: description
+      value: Door to room 2.
+      objectReference: {fileID: 0}
     - target: {fileID: 3966721410889303631, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131467821215580815, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: label
+      value: Refuge Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131467821215580815, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: description
+      value: I just escaped from the Refuge Station, I need to find the cage to get
+        to the surface.
       objectReference: {fileID: 0}
     - target: {fileID: 5911283722902467586, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
@@ -15582,6 +15815,11 @@ PrefabInstance:
       objectReference: {fileID: 136279931}
     - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
+      propertyPath: lockedDesc
+      value: Door to room 2. It is locked.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
       propertyPath: rightScreen
       value: 
       objectReference: {fileID: 1936128854}
@@ -15589,6 +15827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: audioManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
+        type: 3}
+      propertyPath: unlockedDesc
+      value: Door to room 2. It is unlocked.
       objectReference: {fileID: 0}
     - target: {fileID: 5911283722902467589, guid: 74961fa7d012fdc4dadd44f58bb1f917,
         type: 3}
