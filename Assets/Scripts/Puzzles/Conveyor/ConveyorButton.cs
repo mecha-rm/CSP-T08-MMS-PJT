@@ -27,10 +27,16 @@ public class ConveyorButton : MonoBehaviour
     // called when the mouse button is clicked down.
     private void OnMouseDown()
     {
+        PerformAction();
+    }
+
+    public void PerformAction()
+    {
         // perform action on left mouse click.
         if (Input.GetKeyDown(KeyCode.Mouse0))
             AddInput();
     }
+
 
     // adds an input to the conveyor.
     public void AddInput()
