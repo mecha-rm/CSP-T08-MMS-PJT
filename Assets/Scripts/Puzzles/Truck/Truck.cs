@@ -119,11 +119,12 @@ public class Truck : PuzzleMechanic
     }
 
     // on the puzzle reset.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        transform.position = startPos;
+        // the mechanic has been reset.
+        base.ResetMechanic();
 
-        solved = false;
+        transform.position = startPos;
     }
 
     // Update is called once per frame

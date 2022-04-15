@@ -17,6 +17,14 @@ public class FramePuzzle : Puzzle
         // Tries to find the frame.
         if (frame == null)
             frame = GetComponentInChildren<Frame>(true);
+
+        // the frame is set.
+        if (frame != null)
+        {
+            // frame not in list, so add it.
+            if (!mechanics.Contains(frame))
+                mechanics.Add(frame);
+        }
     }
 
     // called when the puzzle is completed.
@@ -39,9 +47,9 @@ public class FramePuzzle : Puzzle
         // called to reset the puzzle.
         base.OnPuzzleReset();
 
-        // shows the frame.
-        if (frame != null)
-            frame.gameObject.SetActive(true);
+        // // hides the frame.
+        // if (frame != null)
+        //     frame.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

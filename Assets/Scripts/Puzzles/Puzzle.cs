@@ -85,6 +85,13 @@ public class Puzzle : MonoBehaviour
     public virtual void OnPuzzleReset()
     {
         finished = false;
+
+        // resets all mechanics.
+        foreach(PuzzleMechanic mechanic in mechanics)
+        {
+            // resets the puzzle.
+            mechanic.ResetMechanic();
+        }
     }
 
     // resets hte puzzle.

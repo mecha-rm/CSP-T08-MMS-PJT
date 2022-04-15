@@ -44,6 +44,9 @@ public class ConveyorButton : MonoBehaviour
 
             // adds the input.
             conveyor.AddInput(button);
+
+            // plays the button sound.
+            conveyor.PlayButtonSound();
         }
             
     }

@@ -170,6 +170,8 @@ MonoBehaviour:
   complete: 0
   completeReversed: 0
   buttons: []
+  audioManager: {fileID: 0}
+  buttonClip: {fileID: 8300000, guid: 41927f9fddd948f4f8ebab46651ebf8a, type: 3}
 --- !u!1 &6969717273955261320
 GameObject:
   m_ObjectHideFlags: 0

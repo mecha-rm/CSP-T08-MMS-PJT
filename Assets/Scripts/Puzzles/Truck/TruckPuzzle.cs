@@ -19,7 +19,15 @@ public class TruckPuzzle : Puzzle
 
         // tries to find the truck.
         if (truck == null)
-            GetComponentInChildren<Truck>();
+            GetComponentInChildren<Truck>(true);
+
+        // the truck is set.
+        if (truck != null)
+        {
+            // the mechanic isn't in the list.
+            if (!mechanics.Contains(truck))
+                mechanics.Add(truck);
+        }
 
         // locks the lightbox screen.
         if (lightboxScreen != null)
@@ -43,9 +51,7 @@ public class TruckPuzzle : Puzzle
     {
         base.OnPuzzleReset();
 
-        // need to rework the reset function.
-        // if (truck != null)
-        //     truck.ResetPuzzle();
+        // truck reset in parent.
 
         // locks the lightbox screen.
         if (lightboxScreen != null)

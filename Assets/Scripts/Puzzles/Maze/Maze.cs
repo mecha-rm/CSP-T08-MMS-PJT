@@ -209,7 +209,7 @@ public class Maze : PuzzleMechanic
         }
         else // wrong direction chosen, so reset.
         {
-            ResetPuzzle();
+            ResetMechanic();
         }
             
     }
@@ -270,10 +270,10 @@ public class Maze : PuzzleMechanic
     }
 
     // resets the puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        // reset solved variable.
-        solved = false;
+        // the mechanic has been reset.
+        base.ResetMechanic();
 
         // reset to the default text.
         index = 0;

@@ -118,12 +118,13 @@ public class WireConnect : PuzzleMechanic
     }
 
     // resets the puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        solved = false;
+        // the mechanic has been reset.
+        base.ResetMechanic();
 
         // disconnects all nodes.
-        foreach(WireConnectNode node in nodes)
+        foreach (WireConnectNode node in nodes)
         {
             node.Disconnect();
         }

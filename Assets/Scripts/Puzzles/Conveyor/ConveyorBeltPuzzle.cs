@@ -27,6 +27,14 @@ public class ConveyorBeltPuzzle : Puzzle
         // tries to find the conveyor belt.
         if (conveyor == null)
             conveyor = GetComponentInChildren<ConveyorBelt>();
+
+        // conveyor is set.
+        if(conveyor != null)
+        {
+            // conveyor not already in list, so add it.
+            if (!mechanics.Contains(conveyor))
+                mechanics.Add(conveyor);
+        }
     }
 
     // called when the puzzle is completed.
@@ -56,13 +64,7 @@ public class ConveyorBeltPuzzle : Puzzle
     {
         base.OnPuzzleReset();
 
-        // the conveyor belt does this already, but this is to make sure these values have been changed.
-        if(conveyor != null)
-        {
-            conveyor.buttonInputs.Clear();
-            conveyor.complete = false;
-            conveyor.completeReversed = false;
-        }
+        // the conveyor belt is reset in the base function.
 
         // deactivate the reward.
         if (reward != null)
@@ -80,8 +82,6 @@ public class ConveyorBeltPuzzle : Puzzle
 
         // no reverse win.
         reverseWin = false;
-
-
     }
 
     // Update is called once per frame

@@ -172,9 +172,11 @@ public class Wyvern : PuzzleMechanic
     }
 
     // the puzzle is being reset.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        solved = false;
+        // the mechanic has been reset.
+        base.ResetMechanic();
+
         hasTreasure = false;
         UpdateDescriptor();
     }

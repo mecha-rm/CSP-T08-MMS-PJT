@@ -23,6 +23,13 @@ public class ConveyorBelt : PuzzleMechanic
     [Tooltip("The list of coneyor belt buttons, which are enabled/disabled along with this component.")]
     public List<ConveyorButton> buttons;
 
+    [Header("Audio")]
+    // the audio manager for the conveyor button.
+    public AudioManager audioManager;
+
+    // the button audio clip.
+    public AudioClip buttonClip;
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -40,6 +47,13 @@ public class ConveyorBelt : PuzzleMechanic
         if(buttons.Count == 0)
         {
             GetComponentsInChildren<ConveyorButton>(true, buttons);
+        }
+
+        // button clip is not set.
+        if (buttonClip == null)
+        {
+            // load the audio.
+            buttonClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_CONVEYOR_BUTTON");
         }
     }
 
@@ -142,6 +156,17 @@ public class ConveyorBelt : PuzzleMechanic
         return completeReversed;
     }
 
+    // plays a sound.
+    public void PlayButtonSound()
+    {
+        // plays a sound.
+        if (audioManager != null && buttonClip != null)
+        {
+            // plays the specific clip.
+            audioManager.PlayAudio(buttonClip);
+        }
+    }
+
     // initiates the main action for this puzzle.
     public override void InitiateMainAction()
     {
@@ -173,17 +198,16 @@ public class ConveyorBelt : PuzzleMechanic
     }
 
     // resets the puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
+        // the mechanic has been reset.
+        base.ResetMechanic();
+
+        // not complete.
         complete = false;
+        completeReversed = false;
+
         buttonInputs.Clear(); // clears out inputs.
-
-        // called to reset the puzzle.
-        if (puzzle != null)
-            puzzle.OnPuzzleReset();
-
-        // TODO: restore conveyor belt to default.
-
     }
 
     // Update is called once per frame

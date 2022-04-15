@@ -120,10 +120,12 @@ public class Elevator : PuzzleMechanic
     }
 
     // resets the puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        // reset values.
-        solved = false;
+        // the mechanic has been reset.
+        base.ResetMechanic();
+
+
         pulls = 0;
         resetTimer = resetTimerMax;
         runTimer = true;

@@ -26,6 +26,14 @@ public class WyvernPuzzle : Puzzle
         // tries to find the wyvern.
         if (wyvern == null)
             wyvern = GetComponentInChildren<Wyvern>(true);
+
+        // adds the wyvern is set. 
+        if(wyvern != null)
+        {
+            // if the wyevrn isn't in the list, add it.
+            if (!mechanics.Contains(wyvern))
+                mechanics.Add(wyvern);
+        }
     }
 
     // called when the puzzle is completed.
@@ -51,12 +59,7 @@ public class WyvernPuzzle : Puzzle
         // called to reset the puzzle.
         base.OnPuzzleReset();
 
-        // removes treasure.
-        if(wyvern != null)
-        {
-            wyvern.hasTreasure = false;
-        }
-
+        // wyvern is reset in the parent function.
         wyvernDelay = 0.0F;
     }
 

@@ -184,10 +184,10 @@ public class Keypad : PuzzleMechanic
     }
 
     // resets the puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        // reset parameter.
-        solved = false;
+        // the mechanic has been reset.
+        base.ResetMechanic();
 
         // reset to the default text.
         text = defaultText;

@@ -21,6 +21,18 @@ public class MazePuzzle : Puzzle
     protected new void Start()
     {
         base.Start();
+
+        // grabs the maze in the children.
+        if (maze == null)
+            maze = GetComponentInChildren<Maze>(true);
+
+        // if the maze is set.
+        if (maze != null)
+        {
+            // not in list, so add it.
+            if (!mechanics.Contains(maze))
+                mechanics.Add(maze);
+        }
     }
 
     // called when the puzzle is completed.
@@ -62,7 +74,7 @@ public class MazePuzzle : Puzzle
                     if (useHint && wrongAnswers >= hintThreshold && maze != null)
                     {
                         maze.gameObject.SetActive(true);
-                        maze.ResetPuzzle();
+                        maze.ResetMechanic();
                     }
 
                 }

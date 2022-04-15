@@ -104,9 +104,10 @@ public class Frame : PuzzleMechanic
     }
 
     // reset puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        solved = false;
+        // the mechanic has been reset.
+        base.ResetMechanic();
 
         // revert to false.
         if (completePuzzleObject != null)

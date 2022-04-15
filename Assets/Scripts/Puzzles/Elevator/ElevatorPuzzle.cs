@@ -20,6 +20,14 @@ public class ElevatorPuzzle : Puzzle
         // tries to find the elevator.
         if (elevator == null)
             GetComponentInChildren<Elevator>();
+
+        // elevator is set.
+        if(elevator != null)
+        {
+            // elevator not in list.
+            if (!mechanics.Contains(elevator))
+                mechanics.Add(elevator);
+        }
     }
 
     // called when the puzzle is completed.
@@ -39,6 +47,8 @@ public class ElevatorPuzzle : Puzzle
     public override void OnPuzzleReset()
     {
         base.OnPuzzleReset();
+
+        // elevator reset in base function.
 
         if (door != null)
             door.SetActive(true);

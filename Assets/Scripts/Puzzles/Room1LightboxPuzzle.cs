@@ -28,6 +28,10 @@ public class Room1LightboxPuzzle : Puzzle
         // hides the keypad text and makes it inaccessible.
         if (keypad != null)
         {
+            // adds the keypad to the mechanics list.
+            if (!mechanics.Contains(keypad))
+                mechanics.Add(keypad);
+
             keypad.interactable = false;
             keypad.HideText();
         }
@@ -71,7 +75,7 @@ public class Room1LightboxPuzzle : Puzzle
     {
         base.OnPuzzleReset();
 
-        // shows the text on the keypad.
+        // hides the text on the keypad.
         if (keypad != null)
         {
             keypad.interactable = false;

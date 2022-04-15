@@ -171,7 +171,7 @@ public class TitleManager : Manager
         screen2.SetActive(false);
         screen3.SetActive(false);
 
-        PlayButtonSfx();
+        PlayButtonSound();
     }
 
     //display screen 2
@@ -182,7 +182,7 @@ public class TitleManager : Manager
         screen2.SetActive(true);
         screen3.SetActive(false);
 
-        PlayButtonSfx();
+        PlayButtonSound();
     }
 
     //display screen 3
@@ -193,7 +193,7 @@ public class TitleManager : Manager
         screen2.SetActive(false);
         screen3.SetActive(true);
 
-        PlayButtonSfx();
+        PlayButtonSound();
     }
 
     //display controls
@@ -202,7 +202,7 @@ public class TitleManager : Manager
         objective.SetActive(false);
         controls.SetActive(true);
 
-        PlayButtonSfx();
+        PlayButtonSound();
     }
 
     //display objective
@@ -211,11 +211,11 @@ public class TitleManager : Manager
         controls.SetActive(false);
         objective.SetActive(true);
 
-        PlayButtonSfx();
+        PlayButtonSound();
     }
 
     // plays a sound.
-    public void PlayButtonSfx()
+    public void PlayButtonSound()
     {
         // plays a sound.
         if(audioManager != null)
@@ -240,7 +240,7 @@ public class TitleManager : Manager
             {
                 useHighContrast = !useHighContrast;
 
-                PlayButtonSfx();
+                PlayButtonSound();
             }
 
             // toggle the screen reader.
@@ -248,7 +248,7 @@ public class TitleManager : Manager
             {
                 useScreenReader = !useScreenReader;
 
-                PlayButtonSfx();
+                PlayButtonSound();
             }
 
             // update high contrast visual.

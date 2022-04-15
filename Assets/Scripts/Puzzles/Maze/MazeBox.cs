@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // a door in the maze.
+// this doesn't call the maze puzzle's complete function.
 public class MazeBox : PuzzleMechanic
 {
     // open value is off.
@@ -116,8 +117,11 @@ public class MazeBox : PuzzleMechanic
     }
 
     // resets the puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
+        // resets the mechaninc.
+        base.ResetMechanic();
+
         // closes the door.
         isOpen = true; // makes sure it will close.
         CloseDoor();

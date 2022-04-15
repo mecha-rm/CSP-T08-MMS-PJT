@@ -50,7 +50,15 @@ public class LockPuzzle : Puzzle
 
         // grabs the combination lock in the children.
         if (comboLock == null)
-            comboLock = GetComponentInChildren<CombinationLock>();
+            comboLock = GetComponentInChildren<CombinationLock>(true);
+
+        // if the combo lock is set.
+        if(comboLock != null)
+        {
+            // not in list, so add it.
+            if (!mechanics.Contains(comboLock))
+                mechanics.Add(comboLock);
+        }
 
         // saves the rotation for the left door.
         if (leftDoor != null && autoSetLeftDoorReset)
@@ -103,17 +111,10 @@ public class LockPuzzle : Puzzle
     {
         base.OnPuzzleReset();
 
-        // TODO: call reset instead (needs a rework)?
+        // reset happens in the base function.
         if (comboLock != null)
         {
             comboLock.gameObject.SetActive(true);
-
-            // no longer solved.
-            comboLock.solved = false;
-
-            // resets all entries to 0.
-            for (int i = 0; i < comboLock.entries.Count; i++)
-                comboLock.entries[i] = 0;
         }
 
         // the puzzle screen is now accessible.

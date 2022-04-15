@@ -212,18 +212,14 @@ public class CombinationLock : PuzzleMechanic
     }
 
     // resets the puzzle.
-    public override void ResetPuzzle()
+    public override void ResetMechanic()
     {
-        // no longer solved.
-        solved = false;
+        // the mechanic has been reset.
+        base.ResetMechanic();
 
         // resets all entries to 0.
         for (int i = 0; i < entries.Count; i++)
             entries[i] = 0;
-
-        // called to reset the puzzle.
-        if (puzzle != null)
-            puzzle.OnPuzzleReset();
     }
 
     // Update is called once per frame
