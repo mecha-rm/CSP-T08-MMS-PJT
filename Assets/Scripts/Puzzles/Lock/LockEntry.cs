@@ -65,6 +65,7 @@ public class LockEntry : MonoBehaviour
     {
         if (comboLock != null)
             comboLock.IncreaseEntryByOne(index);
+        RotateDial();
     }
 
     // decreases the lock entry by 1.
