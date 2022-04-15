@@ -29,6 +29,11 @@ public class Frame : PuzzleMechanic
     // called when the mouse is pressed down.
     private void OnMouseDown()
     {
+        PerformAction();
+    }
+
+    public void PerformAction()
+    {
         // perform action on left mouse click.
         if (Input.GetKeyDown(KeyCode.Mouse0))
             PlayerHasAllPuzzlePieces();

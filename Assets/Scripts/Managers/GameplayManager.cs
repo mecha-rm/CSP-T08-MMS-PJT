@@ -540,19 +540,24 @@ public class GameplayManager : Manager
             // if the item is active and enabled.
             // this stops the same item from being added twice from checking lastClicked multiple times.
             // this is because the item object is deactivated once the item is gotten.
-            if(item.isActiveAndEnabled)
-            {
-                // TODO: maybe make this a function in the Item class?
-                player.inventory.Add(item);
-                item.OnItemGet();
-                RefreshInventoryDisplay();
-                item.gameObject.SetActive(false);
-            }
+            CollectItem(item);
             
         }
 
         return false;
 
+    }
+
+    public void CollectItem(Item item)
+    {
+        if (item.isActiveAndEnabled)
+        {
+            // TODO: maybe make this a function in the Item class?
+            player.inventory.Add(item);
+            item.OnItemGet();
+            RefreshInventoryDisplay();
+            item.gameObject.SetActive(false);
+        }
     }
 
     // checks if the room's lighting is enabled.
