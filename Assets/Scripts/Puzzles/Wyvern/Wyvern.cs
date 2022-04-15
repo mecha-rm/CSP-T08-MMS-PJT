@@ -91,13 +91,13 @@ public class Wyvern : PuzzleMechanic
     }
 
     // tries to receive the item from the player.
-    public bool ReceiveTreasure()
+    public void ReceiveTreasure()
     {
         // can't interact with the puzzle, so don't do anything.
         if (!interactable)
         {
             Debug.Log("This can't be interacted with, so this always returns false.");
-            return false;
+            return;
         }
             
 
@@ -118,12 +118,10 @@ public class Wyvern : PuzzleMechanic
             // if the puzzle has been set, tell it the things are complete.
             if (puzzle != null)
                 puzzle.OnPuzzleCompletion(this);
-        }
-
-        
+        }        
 
         solved = hasItem;
-        return hasItem;
+        return;
     }
 
     // updates the wyvern's display line.
