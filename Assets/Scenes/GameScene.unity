@@ -332,6 +332,16 @@ PrefabInstance:
       propertyPath: useHighContrast
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: puzzles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
+        type: 3}
+      propertyPath: puzzles.Array.data[0]
+      value: 
+      objectReference: {fileID: 953127615}
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name
@@ -1127,6 +1137,8 @@ MonoBehaviour:
   resetTimer: 0
   resetTimerMax: 2
   runTimer: 1
+  audioManager: {fileID: 0}
+  bellClip: {fileID: 8300000, guid: b59373f1c13242e45979c1d2abdd9add, type: 3}
 --- !u!1 &107568807
 GameObject:
   m_ObjectHideFlags: 0
@@ -14127,6 +14139,8 @@ MonoBehaviour:
   startIsCurrentPos: 1
   endPos: {x: -8, y: 0, z: -23.78}
   keyId: key
+  audioManager: {fileID: 0}
+  engineClip: {fileID: 8300000, guid: 57f5478d4a160bb4d9f0eb904ea60b19, type: 3}
 --- !u!65 &1952431093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15336,14 +15350,9 @@ PrefabInstance:
       objectReference: {fileID: 1952141617}
     - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
-      propertyPath: puzzles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6156828910853453651, guid: a85558401a8fc904799bda08e8defd35,
-        type: 3}
       propertyPath: puzzles.Array.data[0]
       value: 
-      objectReference: {fileID: 953127615}
+      objectReference: {fileID: 0}
     - target: {fileID: 6156828910853453652, guid: a85558401a8fc904799bda08e8defd35,
         type: 3}
       propertyPath: m_Name

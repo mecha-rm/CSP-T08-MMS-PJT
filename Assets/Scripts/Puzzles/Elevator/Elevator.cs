@@ -32,6 +32,13 @@ public class Elevator : PuzzleMechanic
 
     // [Header("Other")]
 
+    [Header("Audio")]
+
+    // the audio manager.
+    public AudioManager audioManager;
+
+    // the bell clip.
+    public AudioClip bellClip;
 
     // TOOD: have space for opening the door in here or in the puzzle script.
 
@@ -53,6 +60,17 @@ public class Elevator : PuzzleMechanic
 
         // set this to the max.
         resetTimer = resetTimerMax;
+
+        // grabs the main audio manager.
+        if (audioManager == null)
+            audioManager = GameplayManager.Current.audioManager;
+
+        // bell clip is not set.
+        if (bellClip == null)
+        {
+            // load the audio.
+            bellClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_BELL_RINGING");
+        }
     }
 
     // Called when the mouse button is pressed down.
@@ -89,6 +107,17 @@ public class Elevator : PuzzleMechanic
     {
         // pull only once.
         PullCable(1);
+
+        // plays the bell sound.
+        PlayBellSound();
+    }
+
+    // plays the bell sound.
+    public void PlayBellSound()
+    {
+        // plays the bell audio clip.
+        if (audioManager != null && bellClip != null)
+            audioManager.PlayAudio(bellClip);
     }
 
     // initiates the main action for this puzzle.

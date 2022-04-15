@@ -27,6 +27,9 @@ public class ConveyorBelt : PuzzleMechanic
     // the audio manager for the conveyor button.
     public AudioManager audioManager;
 
+    // the audio for the conveyor belt.
+    public AudioClip beltClip;
+
     // the button audio clip.
     public AudioClip buttonClip;
 
@@ -47,6 +50,17 @@ public class ConveyorBelt : PuzzleMechanic
         if(buttons.Count == 0)
         {
             GetComponentsInChildren<ConveyorButton>(true, buttons);
+        }
+
+        // grabs the main audio manager.
+        if (audioManager == null)
+            audioManager = GameplayManager.Current.audioManager;
+
+        // belt clip is not set.
+        if (beltClip == null)
+        {
+            // load the audio.
+            beltClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_CONVEYOR_BELT_CUT");
         }
 
         // button clip is not set.
@@ -156,7 +170,18 @@ public class ConveyorBelt : PuzzleMechanic
         return completeReversed;
     }
 
-    // plays a sound.
+    // plays the conveyor sound.
+    public void PlayConveyorBeltSound()
+    {
+        // plays a sound.
+        if (audioManager != null && beltClip != null)
+        {
+            // plays the specific clip.
+            audioManager.PlayAudio(beltClip);
+        }
+    }
+
+    // plays the button sound.
     public void PlayButtonSound()
     {
         // plays a sound.

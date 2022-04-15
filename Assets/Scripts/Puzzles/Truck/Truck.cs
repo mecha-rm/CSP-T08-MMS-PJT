@@ -26,6 +26,13 @@ public class Truck : PuzzleMechanic
     // the identifier for the key.
     public string keyId = Item.KEY_ID;
 
+    [Header("Audio")]
+    // the manager
+    public AudioManager audioManager;
+
+    // the engine clip.
+    public AudioClip engineClip;
+
     // Start is called before the first frame update
     protected new void Start()
     {
@@ -43,6 +50,14 @@ public class Truck : PuzzleMechanic
         // the key id for the truck.
         if (keyId == "")
             keyId = Item.KEY_ID;
+
+        // grabs the audio manager.
+        if (audioManager == null)
+            audioManager = manager.audioManager;
+
+        // loads the engine clip.
+        if (engineClip == null)
+            engineClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_TRUCK_ENGINE_START");
     }
 
     // mouse clicked on truck.
@@ -84,6 +99,9 @@ public class Truck : PuzzleMechanic
             // the puzzle is complete.
             if (puzzle != null)
                 puzzle.OnPuzzleCompletion(this);
+
+            // plays the engine sound.
+            PlayEngineSound();
         }
         else
         {
@@ -92,6 +110,14 @@ public class Truck : PuzzleMechanic
 
 
         return solved;
+    }
+
+    // plays the engine sound.
+    public void PlayEngineSound()
+    {
+        // plays the engine clip.
+        if (audioManager != null && engineClip != null)
+            audioManager.PlayAudio(engineClip);
     }
 
     // initiate the main action.
