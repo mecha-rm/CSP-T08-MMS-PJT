@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // this script is for a puzzle.
-// NOTE: inherit this script when putting in unique puzzle behaviour. This is meant to be specialized to a given puzzle.
+// NOTE: inherit this script when putting in unique puzzle behaviour.
+// children of this script was meant to be specialized to specific puzzles.
 public class Puzzle : MonoBehaviour
 {
     // becomes 'true' if the puzzle is finished.
-    // NOTE: if a puzzle has multiple parts, only call OnPuzzleCompletion when all of them are done.
+    // this is set in OnPuzzleCompletion(void).
+    // If a puzzle has multiple mechanics, check them using OnPuzzleCompletion(PuzzleMechanic).
     public bool finished = false;
 
     // the description of the puzzle.
     public Descriptor desc;
 
-    // TODO: rewrite complete function so that multiple mechanics can be saved for one puzzle?
     // the list of puzzle mechanics. These are enabled and disabled as needed.
     [Tooltip("The list of puzzle mechanics, which have their scripts enabled/disabled based on the puzzle.")]
     public List<PuzzleMechanic> mechanics = new List<PuzzleMechanic>();

@@ -600,14 +600,6 @@ public class GameplayManager : Manager
         if (mouseLightPostProcessing == null)
             return;
 
-        // // changes the lights on setting for the room.
-        // if(currentScreen != null)
-        // {
-        //     // checks if the room exists.
-        //     if (currentScreen.room != null)
-        //         currentScreen.room.lightsOn = e;
-        // }
-
         // enable the post-processing effect.
         mouseLightPostProcessing.SetActive(!e);
 

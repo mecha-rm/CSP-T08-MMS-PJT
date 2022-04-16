@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems; // used for event system components.
 
 // class for the mouse interacting with the game world.
-// NOTE: clickong on UI elements triggers the click check. This cannot collide with the UI, so it acts as if you clicked on something behind the UI.
+// NOTE: clickong on UI elements triggers the click check.
+// - This cannot collide with the UI, so it acts as if you clicked on something behind the UI.
 public class Mouse : MonoBehaviour
 {
-    // the mouse key for mouse operations. The default is Keycode.Mouse0, which is the left mouse button.
+    // the mouse key for mouse operations.
+    // the default is Keycode.Mouse0, which is the left mouse button.
     public KeyCode mouseKey = KeyCode.Mouse0;
 
     // the world position of the mouse.
@@ -17,10 +19,12 @@ public class Mouse : MonoBehaviour
     public GameObject hoveredObject = null;
 
     // the object that has been clicked and held on.
-    // when the mouse button is released, this is set to null. This variable gets set to null when the mouse button is released.
+    // when the mouse button is released, this is set to null.
+    // this variable gets set to null when the mouse button is released.
     public GameObject heldObject = null;
 
-    // the last object that was clicked on. The next time someone clicks on something, this will be set to null.
+    // the last object that was clicked on.
+    // the next time someone clicks on something, this will be set to null.
     public GameObject lastClickedObject = null;
 
     // if set to 'true', the UI is ignored for raycasting.

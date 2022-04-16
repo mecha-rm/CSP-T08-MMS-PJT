@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
 
     // the icon for this item to be used in the user interface.
     // the items CANNOT be destroyed, otherwise the icons are lost.
-    // TODO: see if there's a more efficient way to do this.
+    // TODO: see if there's a more efficient way to handle this.
     public Sprite itemIcon;
 
     [Header("Audio")]

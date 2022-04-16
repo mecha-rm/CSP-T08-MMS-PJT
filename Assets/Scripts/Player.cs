@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
         // if the space bar was pressed.
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            // iniates whatever highlighted action the player has.
+            // initiaes whatever highlighted action the player has.
             manager.InitiateMainAction();
         }
 

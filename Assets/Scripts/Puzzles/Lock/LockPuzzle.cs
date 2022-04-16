@@ -75,20 +75,17 @@ public class LockPuzzle : Puzzle
         // call parent's version.
         base.OnPuzzleCompletion();
 
-        // TODO: put puzzle completion implementation here.
-
         // hides lock
         if(comboLock != null)
             comboLock.gameObject.SetActive(false);
-        // TODO: open closed doors and add animation to lock opening
+        
+        // TODO: add animation to lock opening
 
         // the puzzle screen is no longer accessible.
         if(puzzleScreen != null)
         {
             // makes the player go back a screen.
             manager.SwitchToBackScreen();
-
-            // TODO: open the door.
 
             // turns off this screen.
             puzzleScreen.locked = true; // lock the screen.

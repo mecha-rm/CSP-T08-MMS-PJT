@@ -148,7 +148,7 @@ public class WireConnectNode : MonoBehaviour
         if (connected)
             return;
 
-        // mouse has been dragged.
+        // debug messages:
         // Debug.Log("MouseEntered on " + gameObject.name);
         // Debug.Log("MouseDown? " + wireConnect.mouseDown);
 

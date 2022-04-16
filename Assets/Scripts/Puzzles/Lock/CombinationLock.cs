@@ -158,8 +158,7 @@ public class CombinationLock : PuzzleMechanic
         // gets the result.
         bool correct = number == combinaton;
 
-        // debug message.
-        // TODO: uncomment for final.
+        // debug message. Commented if testing.
         // Debug.Log((correct) ? "CORRECT COMBINATION" : "WRONG COMBINATION");
 
         // if the combination is correct and the puzzle is set.

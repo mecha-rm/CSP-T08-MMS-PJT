@@ -132,14 +132,7 @@ public class MouseLight : MonoBehaviour
         // if the effect should be altered, and the alloted time has passed.
         if(alterEffect && updateTimer >= updateRate)
         {
-            // original
-            // // updates to mouse world position.
-            // Vector3 newNormal = Rotation.NormalTowardsMouse3D(transform.position, Camera.main);
-            // 
-            // // sets new forward.
-            // transform.forward = newNormal;
-
-            // TODO: maybe check to see if the mouse has actually moved.
+            // TODO: maybe check to see if the mouse has actually moved for more efficiency.
             // gets the viewpoint position ([0, 1] range)
             Vector3 viewPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
             

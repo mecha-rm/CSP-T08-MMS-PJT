@@ -12,9 +12,7 @@ public abstract class PuzzleMechanic : MonoBehaviour
     [Tooltip("Becomes 'true' when the puzzle is completed.")]
     public bool solved;
 
-    // TODO: have puzzle enabled
-
-    // TODO: make puzzle start?
+    // TODO: it doesn't seem needed, but you could have an OnPuzzleStart() function.
 
     // the puzzle mechanic can be interacted with.
     public bool interactable = true;

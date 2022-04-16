@@ -77,8 +77,6 @@ public class Frame : PuzzleMechanic
             Debug.Log("Missing pieces still.");
         }
 
-        // TODO: add in puzzle functionality.
-
         // send back result.
         solved = result;
         return result;
