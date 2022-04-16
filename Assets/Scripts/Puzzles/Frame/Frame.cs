@@ -52,8 +52,13 @@ public class Frame : PuzzleMechanic
         // checks player for puzzle pieces.
         bool result = manager.player.HasAllPuzzlePieces();
 
+        // set solved to this result.
+        // something screwed up to where this wasn't happening, so this line happens twice.
+        // this is just a quick fix, so this should be revised.
+        solved = result;
+
         // if this was a success.
-        if(result)
+        if (result)
         {
             // removes all of the puzzle pieces from the player.
             manager.player.TakeItems(Item.PUZZLE_PIECE_ID);
