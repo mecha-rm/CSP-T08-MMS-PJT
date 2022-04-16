@@ -108,6 +108,10 @@ public class GameplayManager : Manager
     public Button forwardScreenButton;
     public Button backScreenButton;
 
+    // audio clip for buttons.
+    [Header("Audio Clips")]
+    public AudioClip buttonClip;
+
     // Awake is called when the script instance is being loaded.
     private void Awake()
     {
@@ -213,6 +217,13 @@ public class GameplayManager : Manager
             SetDescriptor(currentScreen.descriptor);
         }
 
+        // checks for the audio clip.
+        if (buttonClip == null)
+        {
+            // loads the audio clip.
+            buttonClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_MAIN_MENU_BUTTON_PRESS");
+        }
+
         // finds the starting information.
         GameStartInfo gsi = FindObjectOfType<GameStartInfo>(true);
 
@@ -229,6 +240,8 @@ public class GameplayManager : Manager
             // destroys object once it's done being used.
             Destroy(gsi.gameObject);
         }
+
+
     }
 
     // switches the screen.
@@ -278,6 +291,9 @@ public class GameplayManager : Manager
         // disables all other rooms.
         if (disableOtherRooms)
             DisableAllOtherRooms();
+
+        // plays the button sound.
+        PlayButtonSound();
 
         // TODO: sometimes the forward screen seems to be set automatically when it shouldn't. Try to fix that.
         // maybe it's just an objects being overlayed issue? If so, just move things around.
@@ -688,6 +704,18 @@ public class GameplayManager : Manager
     public void ReadItem5Descriptor()
     {
         ReadItemDescriptor(5);
+    }
+
+    // plays the button sound.
+    public void PlayButtonSound()
+    {
+        // plays a sound.
+        if (audioManager != null)
+        {
+            // button clip set, so play that.
+            if (buttonClip != null)
+                audioManager.PlayAudio(buttonClip);
+        }
     }
 
 

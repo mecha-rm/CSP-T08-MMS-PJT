@@ -44,6 +44,14 @@ public class EndManager : Manager
     [DllImport("__Internal")]
     private static extern void OpenURLInExternalWindow(string url);
 
+    // audio manager
+    [Header("Audio")]
+    // the audio manager for the title screen.
+    public AudioManager audioManager;
+
+    // the button audio.
+    public AudioClip buttonClip;
+
     // Awake is called when the script instance is being loaded.
     private void Awake()
     {
@@ -64,7 +72,19 @@ public class EndManager : Manager
         // finds the input field if not set.
         // TODO: if there's more than one input field remove this.
         if (nameInputField == null)
-            nameInputField = FindObjectOfType<InputField>();    
+            nameInputField = FindObjectOfType<InputField>();
+
+        // AUDIO
+        // finds the audio manager.
+        if (audioManager == null)
+            audioManager = FindObjectOfType<AudioManager>();
+
+        // checks for the audio clip.
+        if (buttonClip == null)
+        {
+            // loads the audio clip.
+            buttonClip = Resources.Load<AudioClip>("Audio/SFXs/SFX_MAIN_MENU_BUTTON_PRESS");
+        }
 
         // RESULTS DATA //
 
@@ -135,12 +155,19 @@ public class EndManager : Manager
     // starts the game scene.
     public void ReturnToTitle()
     {
+        // the audio doesn't get played on scene switch, likely due to the object being destroyed.
+        // // plays the button sound before leaving.
+        // PlayButtonSound();
+
         SceneHelper.LoadScene("TitleScene");
     }
     
     //sends player to mining matters website
     public void LearnMore()
     {
+        // plays the button sound.
+        PlayButtonSound();
+
         // Application.OpenURL("https://miningmatters.ca/");
         #if !UNITY_EDITOR
             OpenURLInExternalWindow("https://miningmatters.ca/");
@@ -150,6 +177,9 @@ public class EndManager : Manager
     //captures screenshot of Certificate of completion
     public void CaptureScreen()
     {
+        // plays the button sound.
+        PlayButtonSound();
+
         StartCoroutine(UploadPNG());
     }
 
@@ -179,6 +209,20 @@ public class EndManager : Manager
         #if !UNITY_EDITOR
             openWindow(image_url);
         #endif
+    }
+
+    // plays a sound.
+    public void PlayButtonSound()
+    {
+        // plays a sound.
+        if (audioManager != null)
+        {
+            // plays the specific clip, otherwise it plays audio 0.
+            if (buttonClip != null)
+                audioManager.PlayAudio(buttonClip);
+            else
+                audioManager.PlayAudio(0);
+        }
     }
 
     // Update is called once per frame

@@ -55,7 +55,6 @@ MonoBehaviour:
   currentScreen: {fileID: 0}
   rooms: []
   disableOtherRooms: 1
-  hasCertificate: 0
   timer: {fileID: 7908407170224848497}
   descriptor: {fileID: 0}
   inspectName: 
@@ -73,6 +72,7 @@ MonoBehaviour:
   rightScreenButton: {fileID: 0}
   forwardScreenButton: {fileID: 0}
   backScreenButton: {fileID: 0}
+  buttonClip: {fileID: 8300000, guid: d827263bb9f63754c921d487657c50d3, type: 3}
 --- !u!114 &3603107488084803637
 MonoBehaviour:
   m_ObjectHideFlags: 0
