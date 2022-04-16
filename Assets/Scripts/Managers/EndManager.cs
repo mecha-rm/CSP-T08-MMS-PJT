@@ -11,7 +11,7 @@ public class EndManager : Manager
     private static EndManager current;
 
     // the length of the game the player just completed.
-    // TODO: this is here for testing purposes. This value only needs to be updated once, so this can be a local variable.
+    // TODO: this is here for testing purposes. This value only needs to be updated once, so it doesn't need to be saved here.
     public float completionTime = 0.0F;
 
     // if the end manager has the certificate.
@@ -30,7 +30,7 @@ public class EndManager : Manager
     public Text timeText;
 
     // the text for the bonus item.
-    // TODO: maybe replace this iwth a symbol rather than have text?
+    // TODO: maybe replace this with a symbol rather than have text?
     public Text bonusText;
 
     // the screenshot button.

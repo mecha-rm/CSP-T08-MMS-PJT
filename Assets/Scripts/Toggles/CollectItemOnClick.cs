@@ -59,10 +59,7 @@ public class CollectItemOnClick : ToggleObjectOnClick
 
         Debug.Log("Item toggled");
 
-        // TODO: give item to player before toggling it.
-        // also, maybe take out the conditional statement here?
-
-        // // toggles item.
+        // // TODO: toggles item. This doesn't seem needed anymore?
         // if(gameObject != item.gameObject)
         //     item.gameObject.SetActive(!item.gameObject.activeSelf);
     }

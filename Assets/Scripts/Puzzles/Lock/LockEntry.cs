@@ -35,7 +35,7 @@ public class LockEntry : MonoBehaviour
     }
 
     // NOTE: for consistency, the left and right click have been put in the same place.
-    // // on the entry being clocked on.
+    // // on the entry being clicked on.
     // private void OnMouseDown()
     // {
     //     // NOTE: OnMouseDown events only work for left mouse clicks, not right, so the second set of code is never reached.

@@ -9,10 +9,6 @@ public class RoomScreen : MonoBehaviour
     // the room the screen is part of.
     public Room room;
 
-    // TODO: this works, but until we get a more streamlined solution I'm taking this out.
-    // if a room is provided, the room activity is changed when entering and leaving a scene.
-    // public bool disableInactiveRoom = true;
-
     // the descriptor for the screen.
     public Descriptor descriptor;
 

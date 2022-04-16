@@ -116,6 +116,7 @@ public class MazePuzzle : Puzzle
     {
         base.Update();
 
+        // TODO: removed since Maze.cs's mechanic is turned off anyway. If you want to use it, you might need something like this.
         // // maze is not set.
         // if(maze != null)
         // {

@@ -12,7 +12,8 @@ public class MouseLight : MonoBehaviour
     // the post-processing volume for the cene.
     public PostProcessVolume postProcessVolume;
 
-    // TODO: doesn't seem like this stopped the lag.
+    // TODO: doesn't seem like this stopped the lag, so it isn't really used.
+    // - reducing the frame rate seemed to fix the lag, but the project could probably be optimized more.
     // the update rate for the mouse light in seconds.
     public float updateRate = 0.0F;
 

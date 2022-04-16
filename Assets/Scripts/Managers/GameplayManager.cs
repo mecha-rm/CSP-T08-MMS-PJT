@@ -868,21 +868,7 @@ public class GameplayManager : Manager
         // updates the text element if the inspector values have changed.
         if (inspectText != null && (inspectName != currInspectName || inspectDesc != currInspectDesc))
         {
-            // TODO: make this more efficient.
-
-            // // if the overhead text does not contain the inspector description.
-            // if(!inspectText.text.Contains(inspectDesc))
-            // {
-            //     // checks if there's a name.
-            //     if(inspectName != "") // there is a name, so include it.
-            //     {
-            //         inspectText.text = inspectName + ": " + inspectDesc;
-            //     }
-            //     else // there is no name, so don't include it.
-            //     {
-            //         inspectText.text = inspectDesc;
-            //     }
-            // }
+            // TODO: this could probably be made more efficient.
 
             // checks if there's a name.
             if (inspectName != "") // there is a name, so include it.
@@ -911,7 +897,7 @@ public class GameplayManager : Manager
         //     currentScreen.forwardScreen = null;
 
         // enables/disables buttons as needed.
-        // TODO: these probably don't have to happen every frame. Could be optimized.
+        // TODO: these operations probably don't have to happen every frame. Could be optimized.
         {
             leftScreenButton.interactable = (currentScreen.leftScreen != null);
             rightScreenButton.interactable = (currentScreen.rightScreen != null);

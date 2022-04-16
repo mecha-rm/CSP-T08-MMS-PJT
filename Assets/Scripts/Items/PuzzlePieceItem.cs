@@ -42,8 +42,8 @@ public class PuzzlePieceItem : Item
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
-        
+        base.Update();
     }
 }

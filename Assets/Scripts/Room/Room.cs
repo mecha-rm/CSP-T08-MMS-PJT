@@ -12,12 +12,6 @@ public class Room : MonoBehaviour
     // the gameplay manager.
     public GameplayManager manager;
 
-    // the game object that contains all the lights that are room specific.
-    // these add extra illumination to the game.
-    // use this object for any in-room specific lighting that you want.
-    // TODO: since the vingette is applied over everything the in-scene lights are covered.
-    // public GameObject lights;
-
     // if 'true', the room changes the lighting on enable.
     public bool changeLightingOnEnable = true;
 
