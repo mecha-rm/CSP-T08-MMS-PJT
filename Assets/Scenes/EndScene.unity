@@ -542,6 +542,8 @@ MonoBehaviour:
   timeText: {fileID: 613427992}
   bonusText: {fileID: 1243915313}
   screenshotButton: {fileID: 1662597537}
+  audioManager: {fileID: 201171426}
+  buttonClip: {fileID: 8300000, guid: d827263bb9f63754c921d487657c50d3, type: 3}
 --- !u!114 &201171426
 MonoBehaviour:
   m_ObjectHideFlags: 0
